@@ -37,7 +37,7 @@ add_action("admin_init", "upcloo_init");
 register_activation_hook(__FILE__, 'upcloo_install'); 
 
 /* Runs on plugin deactivation*/
-register_deactivation_hook( __FILE__, 'upcloo_remove' );
+register_deactivation_hook(__FILE__, 'upcloo_remove');
 
 /**
  * Intialize the plugin
@@ -87,6 +87,8 @@ function upcloo_install() {
     add_option("upcloo_userkey", "", "", "yes");
     add_option("upcloo_sitekey", "", "", "yes");
     add_option("upcloo_network", "", "", "yes");
+    add_option("upcloo_index_category", "1", "", "yes");
+    add_option("upcloo_index_tag", "1", "", "yes");
 }
 
 
@@ -95,6 +97,8 @@ function upcloo_remove() {
     delete_option('upcloo_userkey');
     delete_option('upcloo_sitekey');
     delete_option('upcloo_network');
+    delete_option('upcloo_index_category');
+    delete_option('upcloo_index_tag');
 }
 
 add_action('admin_menu', 'upcloo_admin_menu');
