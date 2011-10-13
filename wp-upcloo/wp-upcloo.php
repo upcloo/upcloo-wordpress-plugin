@@ -72,14 +72,24 @@ function upcloo_page_sync($pid)
 
 function upcloo_content_sync($pid)
 {
-   $result = get_post($pid); 
-   $categories = get_the_category($pid);
-   $tags = get_the_tags($pid);
+    if (get_option("upcloo_index_post") == "1") {
+        $post = get_post($pid); 
+        $categories = array();
+        $tags = array();
 
-   var_dump($result);
-   var_dump($categories);
-   var_dump($tags);
-   die();  
+        $permalink = get_permalink($pid);
+
+        if (get_option("upcloo_index_category") == "1") {
+            $categories = get_the_category($pid);
+        }
+
+        if (get_option("upcloo_index_tag") == "1") {
+            $tags = get_the_tags($pid);
+        }
+
+        var_dump($permalink);
+        die(var_dump($post));
+    }
 }
 
 function upcloo_install() {
@@ -89,6 +99,8 @@ function upcloo_install() {
     add_option("upcloo_network", "", "", "yes");
     add_option("upcloo_index_category", "1", "", "yes");
     add_option("upcloo_index_tag", "1", "", "yes");
+    add_option("upcloo_index_page", "1", "", "yes");
+    add_option("upcloo_index_post", "1", "", "yes");
 }
 
 
@@ -99,6 +111,8 @@ function upcloo_remove() {
     delete_option('upcloo_network');
     delete_option('upcloo_index_category');
     delete_option('upcloo_index_tag');
+    delete_option('upcloo_index_page');
+    delete_option('upcloo_index_post');
 }
 
 add_action('admin_menu', 'upcloo_admin_menu');
