@@ -31,11 +31,56 @@ License: MIT
  * THE SOFTWARE.
  */
 
+add_action("admin_init", "upcloo_init");
+
 /* Runs when plugin is activated */
 register_activation_hook(__FILE__, 'upcloo_install'); 
 
 /* Runs on plugin deactivation*/
 register_deactivation_hook( __FILE__, 'upcloo_remove' );
+
+/**
+ * Intialize the plugin
+ */
+function upcloo_init() {
+    if (current_user_can("edit_posts") || current_user_can('publish_posts')) {
+        add_action('publish_post', 'upcloo_content_sync');
+        add_action('edit_post', 'upcloo_content_sync');
+    }
+
+    /* When a page is published */
+    if (current_user_can('publish_pages')) {
+        add_action('publish_page', 'upcloo_page_sync');
+    }
+
+    /* Engaged on delete post */
+    if (current_user_can('delete_posts')) {
+        add_action('delete_post', 'upcloo_remove_post_sync');
+        add_action('trash_post', 'upcloo_remove_post_sync');
+    }
+}
+
+function upcloo_remove_post_sync($pid)
+{
+
+}
+
+function upcloo_page_sync($pid)
+{
+    
+}
+
+function upcloo_content_sync($pid)
+{
+   $result = get_post($pid); 
+   $categories = get_the_category($pid);
+   $tags = get_the_tags($pid);
+
+   var_dump($result);
+   var_dump($categories);
+   var_dump($tags);
+   die();  
+}
 
 function upcloo_install() {
     /* Creates new database field */
