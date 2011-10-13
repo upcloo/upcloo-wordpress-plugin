@@ -33,6 +33,8 @@ License: MIT
 
 add_action("admin_init", "upcloo_init");
 
+add_filter( 'the_content', 'upcloo_content' );
+    
 /* Runs when plugin is activated */
 register_activation_hook(__FILE__, 'upcloo_install'); 
 
@@ -87,8 +89,7 @@ function upcloo_content_sync($pid)
             $tags = get_the_tags($pid);
         }
 
-        var_dump($permalink);
-        die(var_dump($post));
+        //TODO: Send the content to UpCloo
     }
 }
 
@@ -124,4 +125,25 @@ function upcloo_admin_menu() {
 
 function upcloo_general_option_page() {
     include realpath(dirname(__FILE__)) . "/general-options.php";
+}
+
+/**
+ * Working on contents
+ */
+function upcloo_content($content) {
+    global $post;
+
+    $original = $content;
+
+    /**
+     * Check if the content is single
+     */
+    if (is_single($post)) {
+        $content = "<div class=\"upcloo-related-contents\">";
+        $content .= include realpath(dirname(__FILE__)) . "/related-content.php";
+        $content .= "</div>";
+        $content = $original . $content;
+    }
+
+    return $content;
 }
