@@ -59,10 +59,17 @@
                     <input type="checkbox" name="upcloo_index_tag" value="1" <?php checked("1" == $index_tag); ?> />
                     <strong><?php _e("Use tags during index creation");?></strong></td>
             </tr>
+            <tr valign="top">
+                <th width="92" scope="row"><?php _e("Show also in pages");?></th>
+                <td width="406">
+                    <?php $show_on_page = get_option("upcloo_show_on_page");?>
+                    <input type="checkbox" name="upcloo_show_on_page" value="1" <?php checked("1" == $show_on_page); ?> />
+                    <strong><?php _e("Show related contents on pages");?></strong></td>
+            </tr>
         </table>
 
         <input type="hidden" name="action" value="update" />
-        <input type="hidden" name="page_options" value="upcloo_userkey,upcloo_sitekey,upcloo_index_category,upcloo_index_tag,upcloo_index_page,upcloo_index_post" />
+        <input type="hidden" name="page_options" value="upcloo_userkey,upcloo_sitekey,upcloo_index_category,upcloo_index_tag,upcloo_index_page,upcloo_index_post,upcloo_show_on_page" />
 
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />

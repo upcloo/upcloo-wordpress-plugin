@@ -102,6 +102,7 @@ function upcloo_install() {
     add_option("upcloo_index_tag", "1", "", "yes");
     add_option("upcloo_index_page", "1", "", "yes");
     add_option("upcloo_index_post", "1", "", "yes");
+    add_option("upcloo_show_on_page", "1", "", "yes");
 }
 
 
@@ -114,6 +115,7 @@ function upcloo_remove() {
     delete_option('upcloo_index_tag');
     delete_option('upcloo_index_page');
     delete_option('upcloo_index_post');
+    delete_option('upcloo_show_on_page');
 }
 
 add_action('admin_menu', 'upcloo_admin_menu');
@@ -138,7 +140,7 @@ function upcloo_content($content) {
     /**
      * Check if the content is single
      */
-    if (is_single($post)) {
+    if (is_single($post) || (is_page($post) && get_option("upcloo_show_on_page") == "1")) {
         $content = "<div class=\"upcloo-related-contents\">";
         $content .= include realpath(dirname(__FILE__)) . "/related-content.php";
         $content .= "</div>";
