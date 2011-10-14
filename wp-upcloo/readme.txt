@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Wordpress UpCloo Plugin ===
 Contributors: wdalmut, gmittica
 Donate link: http://www.upcloo.com/
 Tags: post, page
