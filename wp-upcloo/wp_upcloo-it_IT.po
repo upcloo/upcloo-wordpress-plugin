@@ -1,0 +1,89 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: UpCloo\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-10-14 21:42+0100\n"
+"PO-Revision-Date: 2011-10-14 21:43+0100\n"
+"Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
+"Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;_e;__\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Italian\n"
+"X-Poedit-Country: ITALY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: general-options.php:2
+#: wp-upcloo.php:126
+msgid "UpCloo General Options"
+msgstr "UpCloo Opzioni Generali"
+
+#: general-options.php:4
+msgid "UpCloo is a new service created for web site with a lot of contents (from 10.000 to milions)."
+msgstr "UpCloo è un nuovo servizio creato per siti web con milioni di contenuti (da 10.000 a milioni)"
+
+#: general-options.php:7
+msgid "If you manage contents on your web site (news, pages, reviews, products, comments...) then you're likely to spend a lot of time (and money!) to create correlations between different contents."
+msgstr "Se gestisci contenuti sul tuo sito web (news, pagine, revisioni, prodotti, commenti...) allora probabilmente spenderai un sacco di tempo (e soldi!) per creare correlazioni tra i tuoi diversi contenuti."
+
+#: general-options.php:10
+msgid "UpCloo can index your pages and send, whenever a visitor goes on you web site, the best correlations at the moment through a simple xml feed, so you can show links and correlations inside or outside the text of your page."
+msgstr "UpCloo può indicizzare le tue pagine ed richiedere, quando un visitatore arriva sul tuo sito, le migliori correlazioni attualmente disponibili tramite una semplice e flessibile interfaccia XML. Puoi visualizzare link e correlazioni dentro e fuori dalla tua pagina."
+
+#: general-options.php:14
+msgid "Don't worry anymore about \"more like this\" and \"maybe you're interested at\": UpCloo manages all your correlations with a cloudy, smart and brilliant semantic engine."
+msgstr "Non preoccuparti più di problemi come: \"altri come questi\" e \"Magari ti interessa anche\": UpCloo gestisce tutte le tue correlazioni direttamente nella nuvola. E' un efficace, veloce e brillante motore di correlazione."
+
+#: general-options.php:23
+msgid "Enter your User Key"
+msgstr "Inserisci la tua Chiave Utente"
+
+#: general-options.php:29
+msgid "Enter your Site Key"
+msgstr "Inserisci la tua Chiave Sito"
+
+#: general-options.php:35
+#: general-options.php:39
+msgid "Index Posts"
+msgstr "Indicizza i Post"
+
+#: general-options.php:42
+#: general-options.php:46
+msgid "Index Pages"
+msgstr "Indicizza le Pagine"
+
+#: general-options.php:49
+msgid "Use Categories during Indexing"
+msgstr "Use le categorie durante l'indicizzazione"
+
+#: general-options.php:53
+msgid "Use categories during index creation"
+msgstr "Usa le categorie durante l'indicizzazione"
+
+#: general-options.php:56
+msgid "Use Tags during Indexing"
+msgstr "Usa i Tag durante l'indicizzazione"
+
+#: general-options.php:60
+msgid "Use tags during index creation"
+msgstr "Usa i Tag durante la creazione dell'indice"
+
+#: general-options.php:63
+msgid "Show also in pages"
+msgstr "Mostra anche nelle Pagine"
+
+#: general-options.php:67
+msgid "Show related contents on pages"
+msgstr "Mostra i correlati nelle Pagine"
+
+#: general-options.php:75
+msgid "Save Changes"
+msgstr "Salva le Modifiche"
+
+#: wp-upcloo.php:126
+msgid "UpCloo Options"
+msgstr "Opzioni UpCloo"
+
