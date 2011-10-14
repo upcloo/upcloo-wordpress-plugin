@@ -45,6 +45,8 @@ register_deactivation_hook(__FILE__, 'upcloo_remove');
  * Intialize the plugin
  */
 function upcloo_init() {
+    load_plugin_textdomain('wp_upcloo', false, basename(dirname(__FILE__)));
+
     if (current_user_can("edit_posts") || current_user_can('publish_posts')) {
         add_action('publish_post', 'upcloo_content_sync');
         add_action('edit_post', 'upcloo_content_sync');
@@ -121,7 +123,7 @@ function upcloo_remove() {
 add_action('admin_menu', 'upcloo_admin_menu');
 
 function upcloo_admin_menu() {
-    add_options_page('UpCloo General Options', 'UpCloo Options', 'manage_options',
+    add_options_page(__('UpCloo General Options'), __('UpCloo Options'), 'manage_options',
         'upcloo-general-option', 'upcloo_general_option_page') ;
 }
 
@@ -139,6 +141,8 @@ function upcloo_content($content) {
 
     /**
      * Check if the content is single
+     *
+     * Use a filter login to perform this kind of selection
      */
     if (is_single($post) || (is_page($post) && get_option("upcloo_show_on_page") == "1")) {
         $content = "<div class=\"upcloo-related-contents\">";
