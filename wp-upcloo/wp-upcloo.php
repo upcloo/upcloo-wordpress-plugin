@@ -38,7 +38,44 @@ define("UPCLOO_POST_PUBLISH", "publish");
 add_action("admin_init", "upcloo_init");
 
 add_filter( 'the_content', 'upcloo_content' );
-    
+
+add_filter('admin_footer_text', "upcloo_admin_footer");
+
+add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
+
+function upcloo_admin_footer($text)
+{
+    return $text . " • <span><a target=\"_blank\" href='http://www.upcloo.com'>UpCloo Inside<a></span>";
+}
+
+/* Adds a box to the main column on the Post and Page edit screens */
+function upcloo_add_custom_box() {
+    add_meta_box( 
+        'upcloo_sectionid',
+        __( 'UpCloo Custom Metadata', 'wp_upcloo' ),
+        'upcloo_inner_custom_box',
+        'post' 
+    );
+    add_meta_box(
+        'myplugin_sectionid',
+        __( 'UpCloo Custom Metadata', 'wp_upcloo' ), 
+        'upcloo_inner_custom_box',
+        'page'
+    );
+}
+
+function upcloo_inner_custom_box()
+{
+    // Use nonce for verification
+    wp_nonce_field( plugin_basename( __FILE__ ), 'upcloo_noncename' );
+
+    //The actual fields for data entry
+    echo '<label for="upcloo_custom_field">';
+    _e("Example of future implementation", 'wp_upcloo' );
+    echo '</label> ';
+    echo '<input type="text" id="myplugin_new_field" name="myplugin_new_field" value="whatever" size="25" />';
+}
+
 /* Runs when plugin is activated */
 register_activation_hook(__FILE__, 'upcloo_install'); 
 
@@ -199,7 +236,7 @@ function upcloo_remove() {
 add_action('admin_menu', 'upcloo_admin_menu');
 
 function upcloo_admin_menu() {
-    add_options_page(__('UpCloo General Options'), __('UpCloo Options'), 'manage_options',
+    add_options_page(__('UpCloo General Options', "wp_upcloo"), __('UpCloo Options', "wp_upcloo"), 'manage_options',
         'upcloo-general-option', 'upcloo_general_option_page') ;
 }
 
