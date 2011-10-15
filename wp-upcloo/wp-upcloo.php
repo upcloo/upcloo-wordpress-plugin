@@ -31,9 +31,12 @@ License: MIT
  * THE SOFTWARE.
  */
 
-define("UPCLOO_UPDATE_END_POINT", "%s.update.upcloo.com");
-define("UPCLOO_REPOSITORY_END_POINT", "repository.upcloo.com/%s");
+//Only secure protocol on post/page publishing
+define("UPCLOO_UPDATE_END_POINT", "https://%s.update.upcloo.com");
+//TODO: analyze https protocol feature.
+define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
 define("UPCLOO_POST_PUBLISH", "publish");
+define("UPCLOO_POST_TRASH", "trash");
 
 add_action("admin_init", "upcloo_init");
 
@@ -112,14 +115,14 @@ function upcloo_remove_post_sync($pid)
 
     $post = get_post($pid);
 
-    if ($post->post_status == 'trash') {
+    if ($post->post_status == UPCLOO_POST_TRASH) {
 
         $xml = upcloo_model_to_xml(
             array(
                 "model" => array(
-                    "id" => $post->post_type . "_" . $post->ID
+                    "id" => $post->post_type . "_" . $post->ID,
                     "sitekey" => get_option("upcloo_sitekey"),
-                    "password" => get_option("upcloo_password"),
+                    "password" => get_option("upcloo_password")
                 )
             )
         );
