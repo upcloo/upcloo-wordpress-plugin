@@ -31,6 +31,10 @@ License: MIT
  * THE SOFTWARE.
  */
 
+define("UPCLOO_UPDATE_END_POINT", "%s.update.upcloo.com");
+define("UPCLOO_REPOSITORY_END_POINT", "repository.upcloo.com/%s");
+define("UPCLOO_POST_PUBLISH", "publish");
+
 add_action("admin_init", "upcloo_init");
 
 add_filter( 'the_content', 'upcloo_content' );
@@ -78,20 +82,92 @@ function upcloo_content_sync($pid)
 {
     if (get_option("upcloo_index_post") == "1") {
         $post = get_post($pid); 
-        $categories = array();
-        $tags = array();
+        if ($post->post_status == UPCLOO_POST_PUBLISH) {
+            $categories = array();
+            $tags = array();
 
-        $permalink = get_permalink($pid);
+            $permalink = get_permalink($pid);
 
-        if (get_option("upcloo_index_category") == "1") {
-            $categories = get_the_category($pid);
+            if (get_option("upcloo_index_category") == "1") {
+                $categories = get_the_category($pid);
+            }
+
+            if (get_option("upcloo_index_tag") == "1") {
+                $tags = get_the_tags($pid);
+            }
+
+            $model = array(
+                "model" => array(
+                    "id" => $post->post_type . "_" . $pid,
+                    "sitekey" => get_option("upcloo_sitekey"),
+                    "title" => $post->post_title,
+                    "content" => $post->post_content,
+                    "summary" => $post->post_excerpt,
+                    "publish_date" => $post->post_date,
+                    "url" => $permalink,
+                    "categories" => array(),
+                    "tags" => array()
+                )
+            );
+
+            if ($categories) {
+                foreach ($categories as $category) {
+                    $model["model"]["categories"][] = $category->name;
+                }
+            }
+
+            if ($tags) {
+                foreach ($tags as $tag) {
+                    $model["model"]["tags"][] = $tag->name;
+                }
+            }
+
+            if (!upcloo_send_content($model)) {
+                //Raise 
+            }
         }
+    }
+}
 
-        if (get_option("upcloo_index_tag") == "1") {
-            $tags = get_the_tags($pid);
-        }
+function upcloo_send_content($model)
+{
+    $endPointURL = sprintf(UPCLOO_UPDATE_END_POINT, get_option("upcloo_userkey"));
 
-        //TODO: Send the content to UpCloo
+    $xml = upcloo_model_to_xml($model);
+
+    /* raw post on curl module */
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL,            $endPointURL);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST,           1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,     $xml); 
+    curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
+
+    $result=curl_exec ($ch);
+    $headers = curl_getinfo($ch);
+    curl_close($ch);
+
+    if (is_array($headers) && $headers["http_code"] == 200) {
+        return true;
+    } else {
+        return false;
+    } 
+}
+
+function upcloo_model_to_xml($model)
+{
+    if (is_string($model)) {
+        return "<![CDATA[" . $model . "]]>";        
+    } else {
+        foreach ($model as $key => $value) {
+            if (is_int($key)) {
+                $key = "element";
+            }
+            $xml .= sprintf("<%s>" . upcloo_model_to_xml($value) . "</%s>", $key, $key);
+        }   
+
+        return $xml;
     }
 }
 
