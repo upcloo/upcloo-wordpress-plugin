@@ -25,9 +25,9 @@ After that you can install this plugin:
 
 == Frequently Asked Questions ==
 
-= What about foo bar? =
+= CURL Support =
 
-Answer to foo bar dilemma.
+This plugin needs the CURL support, please check that your PHP installation have this feature enabled
 
 == Screenshots ==
 
@@ -36,3 +36,5 @@ Answer to foo bar dilemma.
 
 == Changelog ==
 
+= 0.1 =
+ * Base plugin structure
