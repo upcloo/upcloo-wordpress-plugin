@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-15 21:02+0100\n"
-"PO-Revision-Date: 2011-10-15 21:03+0100\n"
+"POT-Creation-Date: 2011-10-15 22:02+0100\n"
+"PO-Revision-Date: 2011-10-15 22:02+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:278
+#: wp-upcloo.php:280
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -112,11 +112,15 @@ msgstr "Mostra anche nelle Pagine"
 msgid "Show related contents on pages"
 msgstr "Mostra i correlati nelle Pagine"
 
-#: wp-upcloo.php:278
+#: wp-upcloo.php:280
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
 
-#: wp-upcloo.php:284
+#: wp-upcloo.php:286
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
+
+#: wp-upcloo.php:311
+msgid "Maybe you are interested at"
+msgstr "Forse ti potrebbero interessare"
 

@@ -34,7 +34,8 @@ License: MIT
 //Only secure protocol on post/page publishing
 define("UPCLOO_UPDATE_END_POINT", "https://%s.update.upcloo.com");
 //TODO: analyze https protocol feature.
-define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
+//define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
+define("UPCLOO_REPOSITORY_END_POINT", "https://s3-eu-west-1.amazonaws.com/com.upcloo.test/%s");
 define("UPCLOO_POST_PUBLISH", "publish");
 define("UPCLOO_POST_TRASH", "trash");
 
@@ -301,11 +302,47 @@ function upcloo_content($content) {
      * Use a filter login to perform this kind of selection
      */
     if (is_single($post) || (is_page($post) && get_option("upcloo_show_on_page") == "1")) {
-        $content = "<div class=\"upcloo-related-contents\">";
-        $content .= include realpath(dirname(__FILE__)) . "/related-content.php";
-        $content .= "</div>";
+        //Get it 
+        $listOfModels = upcloo_get_from_repository($post->post_type . "_" . $post->ID);
+
+        $content = '';
+        if (property_exists($listOfModels, "doc") && is_array($listOfModels->doc) && count($listOfModels->doc)) {
+            $content .= "<div class=\"upcloo-related-contents\">";
+            $content .= "<h2>" . __("Maybe you are interested at", "wp_upcloo") . ":</h2>";
+            $content .= "<ul>";
+            foreach ($listOfModels->doc as $element) {
+                $content .= "<li><a href=\"{$element->url}\">{$element->title}</a></li>";    
+            }
+
+            $content .= "</ul>";
+            $content .= "</div>";
+        }
         $content = $original . $content;
     }
 
     return $content;
+}
+
+function upcloo_get_from_repository($name)
+{
+    $endPointURL = sprintf(UPCLOO_REPOSITORY_END_POINT, get_option("upcloo_sitekey"));
+    $endPointURL .= "/{$name}.xml";
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL,            $endPointURL);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST,           1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,     $xml); 
+    curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "GET");
+    curl_setopt($ch, CURLOPT_ENCODING ,      "gzip");
+
+    $result=curl_exec ($ch);
+    $headers = curl_getinfo($ch);
+    curl_close($ch);
+
+    if (is_array($headers) && $headers["http_code"] == 200) {
+        return json_decode(json_encode(simplexml_load_string($result)));
+    }
 }
