@@ -41,7 +41,7 @@ add_filter( 'the_content', 'upcloo_content' );
 
 add_filter('admin_footer_text', "upcloo_admin_footer");
 
-add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
+//add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
 
 function upcloo_admin_footer($text)
 {
@@ -49,32 +49,32 @@ function upcloo_admin_footer($text)
 }
 
 /* Adds a box to the main column on the Post and Page edit screens */
-function upcloo_add_custom_box() {
-    add_meta_box( 
-        'upcloo_sectionid',
-        __( 'UpCloo Custom Metadata', 'wp_upcloo' ),
-        'upcloo_inner_custom_box',
-        'post' 
-    );
-    add_meta_box(
-        'myplugin_sectionid',
-        __( 'UpCloo Custom Metadata', 'wp_upcloo' ), 
-        'upcloo_inner_custom_box',
-        'page'
-    );
-}
+//function upcloo_add_custom_box() {
+//    add_meta_box( 
+//        'upcloo_sectionid',
+//        __( 'UpCloo Custom Metadata', 'wp_upcloo' ),
+//        'upcloo_inner_custom_box',
+//       'post' 
+//    );
+//   add_meta_box(
+//        'myplugin_sectionid',
+//       __( 'UpCloo Custom Metadata', 'wp_upcloo' ), 
+//        'upcloo_inner_custom_box',
+//        'page'
+//    );
+//}
 
-function upcloo_inner_custom_box()
-{
-    // Use nonce for verification
-    wp_nonce_field( plugin_basename( __FILE__ ), 'upcloo_noncename' );
-
-    //The actual fields for data entry
-    echo '<label for="upcloo_custom_field">';
-    _e("Example of future implementation", 'wp_upcloo' );
-    echo '</label> ';
-    echo '<input type="text" id="myplugin_new_field" name="myplugin_new_field" value="whatever" size="25" />';
-}
+//function upcloo_inner_custom_box()
+//{
+//    // Use nonce for verification
+//    wp_nonce_field( plugin_basename( __FILE__ ), 'upcloo_noncename' );
+//
+//    //The actual fields for data entry
+//    echo '<label for="upcloo_custom_field">';
+//    _e("Example of future implementation", 'wp_upcloo' );
+//    echo '</label> ';
+//    echo '<input type="text" id="myplugin_new_field" name="myplugin_new_field" value="whatever" size="25" />';
+//}
 
 /* Runs when plugin is activated */
 register_activation_hook(__FILE__, 'upcloo_install'); 
@@ -95,7 +95,7 @@ function upcloo_init() {
 
     /* When a page is published */
     if (current_user_can('publish_pages')) {
-        add_action('publish_page', 'upcloo_page_sync');
+        add_action('publish_page', 'upcloo_content_sync');
     }
 
     /* Engaged on delete post */
@@ -105,16 +105,12 @@ function upcloo_init() {
     }
 }
 
+/* Handle the remove operation */
 function upcloo_remove_post_sync($pid)
 {
 
 }
-
-function upcloo_page_sync($pid)
-{
-    
-}
-
+ 
 function upcloo_content_sync($pid)
 {
     if (get_option("upcloo_index_post") == "1") {
@@ -160,12 +156,18 @@ function upcloo_content_sync($pid)
             }
 
             if (!upcloo_send_content($model)) {
-                //Raise 
+                //Raise the error
             }
         }
     }
 }
 
+/**
+ * Send the content to indexer
+ *
+ * @param string $model The data model.
+ * @return boolean Result of operation
+ */
 function upcloo_send_content($model)
 {
     $endPointURL = sprintf(UPCLOO_UPDATE_END_POINT, get_option("upcloo_userkey"));
