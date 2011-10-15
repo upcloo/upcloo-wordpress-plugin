@@ -31,8 +31,7 @@ License: MIT
  * THE SOFTWARE.
  */
 
-//define("UPCLOO_UPDATE_END_POINT", "%s.update.upcloo.com");
-define("UPCLOO_UPDATE_END_POINT", "beach.local");
+define("UPCLOO_UPDATE_END_POINT", "%s.update.upcloo.com");
 define("UPCLOO_REPOSITORY_END_POINT", "repository.upcloo.com/%s");
 define("UPCLOO_POST_PUBLISH", "publish");
 
@@ -115,7 +114,15 @@ function upcloo_remove_post_sync($pid)
 
     if ($post->post_status == 'trash') {
 
-        $xml = upcloo_model_to_xml(array("model" => array("id" => $post->post_type . "_" . $post->ID)));
+        $xml = upcloo_model_to_xml(
+            array(
+                "model" => array(
+                    "id" => $post->post_type . "_" . $post->ID
+                    "sitekey" => get_option("upcloo_sitekey"),
+                    "password" => get_option("upcloo_password"),
+                )
+            )
+        );
 
         $ch = curl_init();
 
@@ -158,6 +165,7 @@ function upcloo_content_sync($pid)
                 "model" => array(
                     "id" => $post->post_type . "_" . $pid,
                     "sitekey" => get_option("upcloo_sitekey"),
+                    "password" => get_option("password"),
                     "title" => $post->post_title,
                     "content" => $post->post_content,
                     "summary" => $post->post_excerpt,
@@ -240,11 +248,11 @@ function upcloo_install() {
     /* Creates new database field */
     add_option("upcloo_userkey", "", "", "yes");
     add_option("upcloo_sitekey", "", "", "yes");
-    add_option("upcloo_network", "", "", "yes");
-    add_option("upcloo_index_category", "1", "", "yes");
-    add_option("upcloo_index_tag", "1", "", "yes");
-    add_option("upcloo_index_page", "1", "", "yes");
-    add_option("upcloo_index_post", "1", "", "yes");
+    add_option("upcloo_password", "", "", "no");
+    add_option("upcloo_index_category", "1", "", "no");
+    add_option("upcloo_index_tag", "1", "", "no");
+    add_option("upcloo_index_page", "1", "", "no");
+    add_option("upcloo_index_post", "1", "", "no");
     add_option("upcloo_show_on_page", "1", "", "yes");
 }
 
@@ -253,7 +261,7 @@ function upcloo_remove() {
     /* Deletes the database field */
     delete_option('upcloo_userkey');
     delete_option('upcloo_sitekey');
-    delete_option('upcloo_network');
+    delete_option('upcloo_password');
     delete_option('upcloo_index_category');
     delete_option('upcloo_index_tag');
     delete_option('upcloo_index_page');
@@ -269,6 +277,9 @@ function upcloo_admin_menu() {
 }
 
 function upcloo_general_option_page() {
+    if (!current_user_can('manage_options'))  {
+        wp_die( __('You do not have sufficient permissions to access this page.') );
+    }
     include realpath(dirname(__FILE__)) . "/general-options.php";
 }
 
