@@ -14,19 +14,37 @@
 <?php _e("Don't worry anymore about \"more like this\" and \"maybe you're interested at\": UpCloo manages all your correlations with a cloudy, smart and brilliant semantic engine.", "wp_upcloo");?>
         </strong>
     </p>
+    <div>
+        <h2>UpCloo Security</h2>
+        <?php _e("All information that you send to UpCloo Cloud System are secured using RSA 1024 bit.");?>
+    </div>
+    <h2>UpCloo Application Configuration</h2>
+    <h3>Login parmeters</h3>
     <form method="post" action="options.php">
         <?php wp_nonce_field('update-options'); ?>
         <table class="form-table">
             <tbody>
             <tr valign="top">
+                <th width="92" scope="row"><?php echo _e("Enter your User Key", "wp_upcloo");?></th>
+                <td width="406">
+                    <input name="upcloo_userkey" type="text" value="<?php echo get_option('upcloo_userkey', "wp_upcloo"); ?>" />
+                    <strong>(eg. your-business-name)</strong></td>
+            </tr>
+            <tr valign="top">
+                <th width="92" scope="row"><?php _e("Enter your Site Key", "wp_upcloo");?></th>
+                <td width="406">
+                    <input name="upcloo_sitekey" type="text" value="<?php echo get_option('upcloo_sitekey', "wp_upcloo"); ?>" />
+                    <strong>(eg. your-site-name)</strong></td>
+            </tr>
+            <tr valign="top">
                 <th width="92" scope="row"><?php echo _e("Enter your Password", "wp_upcloo");?></th>
                 <td width="406">
                     <input name="upcloo_password" type="password" value="" />
-                    <strong>(eg. You account password)</strong></td>
+                    <strong>(eg. You account password [blank for security reasons])</strong></td>
             </tr>
 
             <input type="hidden" name="action" value="update" />
-            <input type="hidden" name="page_options" value="upcloo_password" />
+            <input type="hidden" name="page_options" value="upcloo_userkey,upcloo_sitekey,upcloo_password" />
             </tbody>
         </table>
         <p class="submit">
@@ -41,22 +59,11 @@
         </p>
     </form>
 
+    <h3>Other features</h3>
     <form method="post" action="options.php">
         <?php wp_nonce_field('update-options'); ?>
 
         <table class="form-table" >
-            <tr valign="top">
-                <th width="92" scope="row"><?php echo _e("Enter your User Key", "wp_upcloo");?></th>
-                <td width="406">
-                    <input name="upcloo_userkey" type="text" value="<?php echo get_option('upcloo_userkey', "wp_upcloo"); ?>" />
-                    <strong>(eg. your-business-name)</strong></td>
-            </tr>
-            <tr valign="top">
-                <th width="92" scope="row"><?php _e("Enter your Site Key", "wp_upcloo");?></th>
-                <td width="406">
-                    <input name="upcloo_sitekey" type="text" value="<?php echo get_option('upcloo_sitekey', "wp_upcloo"); ?>" />
-                    <strong>(eg. your-site-name)</strong></td>
-            </tr>
             <tr valign="top">
                 <th width="92" scope="row"><?php _e("Index Posts", "wp_upcloo");?></th>
                 <td width="406">
@@ -95,7 +102,7 @@
         </table>
 
         <input type="hidden" name="action" value="update" />
-        <input type="hidden" name="page_options" value="upcloo_userkey,upcloo_sitekey,upcloo_index_category,upcloo_index_tag,upcloo_index_page,upcloo_index_post,upcloo_show_on_page" />
+        <input type="hidden" name="page_options" value="upcloo_index_category,upcloo_index_tag,upcloo_index_page,upcloo_index_post,upcloo_show_on_page" />
 
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
