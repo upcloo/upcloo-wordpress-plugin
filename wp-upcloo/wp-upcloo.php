@@ -306,7 +306,7 @@ function upcloo_content($content) {
         $listOfModels = upcloo_get_from_repository($post->post_type . "_" . $post->ID);
 
         $content = '';
-        if (property_exists($listOfModels, "doc") && is_array($listOfModels->doc) && count($listOfModels->doc)) {
+        if ($listOfModels && property_exists($listOfModels, "doc") && is_array($listOfModels->doc) && count($listOfModels->doc)) {
             $content .= "<div class=\"upcloo-related-contents\">";
             $content .= "<h2>" . __("Maybe you are interested at", "wp_upcloo") . ":</h2>";
             $content .= "<ul>";
