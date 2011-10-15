@@ -31,7 +31,8 @@ License: MIT
  * THE SOFTWARE.
  */
 
-define("UPCLOO_UPDATE_END_POINT", "%s.update.upcloo.com");
+//define("UPCLOO_UPDATE_END_POINT", "%s.update.upcloo.com");
+define("UPCLOO_UPDATE_END_POINT", "beach.local");
 define("UPCLOO_REPOSITORY_END_POINT", "repository.upcloo.com/%s");
 define("UPCLOO_POST_PUBLISH", "publish");
 
@@ -89,7 +90,7 @@ function upcloo_init() {
     load_plugin_textdomain('wp_upcloo', false, basename(dirname(__FILE__)));
 
     if (current_user_can("edit_posts") || current_user_can('publish_posts')) {
-        add_action('publish_post', 'upcloo_content_sync');
+        //add_action('publish_post', 'upcloo_content_sync');
         add_action('edit_post', 'upcloo_content_sync');
     }
 
@@ -100,7 +101,7 @@ function upcloo_init() {
 
     /* Engaged on delete post */
     if (current_user_can('delete_posts')) {
-        add_action('delete_post', 'upcloo_remove_post_sync');
+        //add_action('delete_post', 'upcloo_remove_post_sync');
         add_action('trash_post', 'upcloo_remove_post_sync');
     }
 }
@@ -108,25 +109,30 @@ function upcloo_init() {
 /* Handle the remove operation */
 function upcloo_remove_post_sync($pid)
 {
+    $endPointURL = sprintf(UPCLOO_UPDATE_END_POINT, get_option("upcloo_userkey"));
+
     $post = get_post($pid);
 
-    $xml = upcloo_model_to_xml(array("model" => array("id" => $post->post_type . "_" . $post->ID)));
+    if ($post->post_status == 'trash') {
 
-    $ch = curl_init();
+        $xml = upcloo_model_to_xml(array("model" => array("id" => $post->post_type . "_" . $post->ID)));
 
-    curl_setopt($ch, CURLOPT_URL,            $endPointURL);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POST,           1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,     $xml); 
-    curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "DELETE");
+        $ch = curl_init();
 
-    $result=curl_exec ($ch);
-    $headers = curl_getinfo($ch);
-    curl_close($ch);
+        curl_setopt($ch, CURLOPT_URL,            $endPointURL);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST,           1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,     $xml); 
+        curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "DELETE");
 
-    if (is_array($headers) && $headers["http_status"] == 200) {
-        //TODO: show the error.
+        $result=curl_exec ($ch);
+        $headers = curl_getinfo($ch);
+        curl_close($ch);
+
+        if (is_array($headers) && $headers["http_status"] == 200) {
+            //TODO: show the error.
+        }
     }
 }
  
