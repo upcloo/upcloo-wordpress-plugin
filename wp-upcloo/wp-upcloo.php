@@ -238,12 +238,15 @@ function upcloo_model_to_xml($model)
     if (is_string($model)) {
         return "<![CDATA[" . $model . "]]>";        
     } else {
-        foreach ($model as $key => $value) {
-            if (is_int($key)) {
-                $key = "element";
-            }
-            $xml .= sprintf("<%s>" . upcloo_model_to_xml($value) . "</%s>", $key, $key);
-        }   
+        $xml = "";
+        if ($model && is_array($model)) {
+            foreach ($model as $key => $value) {
+                if (is_int($key)) {
+                    $key = "element";
+                }
+                $xml .= sprintf("<%s>" . upcloo_model_to_xml($value) . "</%s>", $key, $key);
+            }   
+        }
 
         return $xml;
     }
