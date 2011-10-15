@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-14 21:42+0100\n"
-"PO-Revision-Date: 2011-10-14 21:43+0100\n"
+"POT-Creation-Date: 2011-10-15 21:02+0100\n"
+"PO-Revision-Date: 2011-10-15 21:03+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:126
+#: wp-upcloo.php:278
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -37,53 +37,86 @@ msgstr "UpCloo può indicizzare le tue pagine ed richiedere, quando un visitator
 msgid "Don't worry anymore about \"more like this\" and \"maybe you're interested at\": UpCloo manages all your correlations with a cloudy, smart and brilliant semantic engine."
 msgstr "Non preoccuparti più di problemi come: \"altri come questi\" e \"Magari ti interessa anche\": UpCloo gestisce tutte le tue correlazioni direttamente nella nuvola. E' un efficace, veloce e brillante motore di correlazione."
 
-#: general-options.php:23
+#: general-options.php:18
+msgid "UpCloo Security"
+msgstr "Sicurezza di UpCloo"
+
+#: general-options.php:19
+msgid "All information that you send to UpCloo Cloud System are secured using RSA 1024 bit."
+msgstr "Tutte le informazioni che sono inviate verso la nuvola di servizi UpCloo è messa in sicurezza tramite RSA a 1024 bit."
+
+#: general-options.php:21
+msgid "UpCloo Application Configuration"
+msgstr "Configurazione Applicativa di UpCloo"
+
+#: general-options.php:22
+msgid "Login parmeters"
+msgstr "Parametri di Accesso"
+
+#: general-options.php:28
 msgid "Enter your User Key"
 msgstr "Inserisci la tua Chiave Utente"
 
-#: general-options.php:29
+#: general-options.php:34
 msgid "Enter your Site Key"
 msgstr "Inserisci la tua Chiave Sito"
 
-#: general-options.php:35
-#: general-options.php:39
-msgid "Index Posts"
-msgstr "Indicizza i Post"
+#: general-options.php:40
+msgid "Enter your Password"
+msgstr "La tua password"
 
-#: general-options.php:42
-#: general-options.php:46
-msgid "Index Pages"
-msgstr "Indicizza le Pagine"
+#: general-options.php:43
+msgid "(eg. You account password [blank for security reasons])"
+msgstr "(es. La tua password UpCloo [non visibile per sicurezza])"
 
-#: general-options.php:49
-msgid "Use Categories during Indexing"
-msgstr "Use le categorie durante l'indicizzazione"
-
-#: general-options.php:53
-msgid "Use categories during index creation"
-msgstr "Usa le categorie durante l'indicizzazione"
-
-#: general-options.php:56
-msgid "Use Tags during Indexing"
-msgstr "Usa i Tag durante l'indicizzazione"
-
-#: general-options.php:60
-msgid "Use tags during index creation"
-msgstr "Usa i Tag durante la creazione dell'indice"
-
-#: general-options.php:63
-msgid "Show also in pages"
-msgstr "Mostra anche nelle Pagine"
-
-#: general-options.php:67
-msgid "Show related contents on pages"
-msgstr "Mostra i correlati nelle Pagine"
-
-#: general-options.php:75
+#: general-options.php:58
+#: general-options.php:108
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
-#: wp-upcloo.php:126
+#: general-options.php:62
+msgid "Other features"
+msgstr "Altre Funzionalità"
+
+#: general-options.php:68
+#: general-options.php:72
+msgid "Index Posts"
+msgstr "Indicizza i Post"
+
+#: general-options.php:75
+#: general-options.php:79
+msgid "Index Pages"
+msgstr "Indicizza le Pagine"
+
+#: general-options.php:82
+msgid "Use Categories during Indexing"
+msgstr "Use le categorie durante l'indicizzazione"
+
+#: general-options.php:86
+msgid "Use categories during index creation"
+msgstr "Usa le categorie durante l'indicizzazione"
+
+#: general-options.php:89
+msgid "Use Tags during Indexing"
+msgstr "Usa i Tag durante l'indicizzazione"
+
+#: general-options.php:93
+msgid "Use tags during index creation"
+msgstr "Usa i Tag durante la creazione dell'indice"
+
+#: general-options.php:96
+msgid "Show also in pages"
+msgstr "Mostra anche nelle Pagine"
+
+#: general-options.php:100
+msgid "Show related contents on pages"
+msgstr "Mostra i correlati nelle Pagine"
+
+#: wp-upcloo.php:278
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
+
+#: wp-upcloo.php:284
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 

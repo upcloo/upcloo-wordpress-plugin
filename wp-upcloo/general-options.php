@@ -15,11 +15,11 @@
         </strong>
     </p>
     <div>
-        <h2>UpCloo Security</h2>
-        <?php _e("All information that you send to UpCloo Cloud System are secured using RSA 1024 bit.");?>
+    <h2><?php _e("UpCloo Security", "wp_upcloo");?></h2>
+        <?php _e("All information that you send to UpCloo Cloud System are secured using RSA 1024 bit.", "wp_upcloo");?>
     </div>
-    <h2>UpCloo Application Configuration</h2>
-    <h3>Login parmeters</h3>
+    <h2><?php _e("UpCloo Application Configuration", "wp_upcloo");?></h2>
+    <h3><?php _e("Login parmeters", "wp_upcloo");?></h3>
     <form method="post" action="options.php">
         <?php wp_nonce_field('update-options'); ?>
         <table class="form-table">
@@ -40,7 +40,7 @@
                 <th width="92" scope="row"><?php echo _e("Enter your Password", "wp_upcloo");?></th>
                 <td width="406">
                     <input name="upcloo_password" type="password" value="" />
-                    <strong>(eg. You account password [blank for security reasons])</strong></td>
+                    <strong><?php _e("(eg. You account password [blank for security reasons])", "wp_upcloo");?></strong></td>
             </tr>
 
             <input type="hidden" name="action" value="update" />
@@ -59,7 +59,7 @@
         </p>
     </form>
 
-    <h3>Other features</h3>
+    <h3><?php _e("Other features", "wp_upcloo");?></h3>
     <form method="post" action="options.php">
         <?php wp_nonce_field('update-options'); ?>
 
