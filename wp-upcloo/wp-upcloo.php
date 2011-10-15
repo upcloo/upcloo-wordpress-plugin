@@ -173,6 +173,7 @@ function upcloo_content_sync($pid)
                     "content" => $post->post_content,
                     "summary" => $post->post_excerpt,
                     "publish_date" => $post->post_date,
+                    "type" => $post->post_type,
                     "url" => $permalink,
                     "categories" => array(),
                     "tags" => array()
