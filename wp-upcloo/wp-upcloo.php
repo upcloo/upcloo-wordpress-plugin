@@ -108,7 +108,26 @@ function upcloo_init() {
 /* Handle the remove operation */
 function upcloo_remove_post_sync($pid)
 {
+    $post = get_post($pid);
 
+    $xml = upcloo_model_to_xml(array("model" => array("id" => $post->post_type . "_" . $post->ID)));
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL,            $endPointURL);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_POST,           1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,     $xml); 
+    curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "DELETE");
+
+    $result=curl_exec ($ch);
+    $headers = curl_getinfo($ch);
+    curl_close($ch);
+
+    if (is_array($headers) && $headers["http_status"] == 200) {
+        //TODO: show the error.
+    }
 }
  
 function upcloo_content_sync($pid)
@@ -182,6 +201,7 @@ function upcloo_send_content($model)
     curl_setopt($ch, CURLOPT_POST,           1);
     curl_setopt($ch, CURLOPT_POSTFIELDS,     $xml); 
     curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
 
     $result=curl_exec ($ch);
     $headers = curl_getinfo($ch);
