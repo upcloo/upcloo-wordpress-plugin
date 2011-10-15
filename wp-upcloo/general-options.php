@@ -14,6 +14,32 @@
 <?php _e("Don't worry anymore about \"more like this\" and \"maybe you're interested at\": UpCloo manages all your correlations with a cloudy, smart and brilliant semantic engine.", "wp_upcloo");?>
         </strong>
     </p>
+    <form method="post" action="options.php">
+        <?php wp_nonce_field('update-options'); ?>
+        <table class="form-table">
+            <tbody>
+            <tr valign="top">
+                <th width="92" scope="row"><?php echo _e("Enter your Password", "wp_upcloo");?></th>
+                <td width="406">
+                    <input name="upcloo_password" type="password" value="" />
+                    <strong>(eg. You account password)</strong></td>
+            </tr>
+
+            <input type="hidden" name="action" value="update" />
+            <input type="hidden" name="page_options" value="upcloo_password" />
+            </tbody>
+        </table>
+        <p class="submit">
+            <script type="text/javascript">
+                ;var confirmThat = function() {
+                    if (!confirm("Do you want to set this password?")) {
+                        return false;
+                    }
+                };
+            </script>
+            <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" onclick="javascript:confirmThat()" />
+        </p>
+    </form>
 
     <form method="post" action="options.php">
         <?php wp_nonce_field('update-options'); ?>
