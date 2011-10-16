@@ -32,12 +32,15 @@ License: MIT
  */
 
 //Only secure protocol on post/page publishing
-define("UPCLOO_UPDATE_END_POINT", "https://%s.update.upcloo.com");
+//define("UPCLOO_UPDATE_END_POINT", "https://%s.update.upcloo.com");
+define("UPCLOO_UPDATE_END_POINT", "http://%s.beach.local");
 //TODO: analyze https protocol feature.
 //define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
 define("UPCLOO_REPOSITORY_END_POINT", "https://s3-eu-west-1.amazonaws.com/com.upcloo.test/%s");
 define("UPCLOO_POST_PUBLISH", "publish");
 define("UPCLOO_POST_TRASH", "trash");
+
+define("UPCLOO_USER_AGENT", "WPUpCloo/1.0");
 
 define("UPCLOO_PAGE", "page");
 define("UPCLOO_POST", "post");
@@ -139,6 +142,7 @@ function upcloo_remove_post_sync($pid)
         curl_setopt($ch, CURLOPT_POSTFIELDS,     $xml); 
         curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "DELETE");
+        curl_setopt($ch, CURLOPT_USERAGENT,      UPCLOO_USER_AGENT);
 
         $result=curl_exec ($ch);
         $headers = curl_getinfo($ch);
@@ -239,6 +243,7 @@ function upcloo_send_content($model)
     curl_setopt($ch, CURLOPT_POSTFIELDS,     $xml); 
     curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
+    curl_setopt($ch, CURLOPT_USERAGENT,      UPCLOO_USER_AGENT);
 
     $result=curl_exec ($ch);
     $headers = curl_getinfo($ch);
