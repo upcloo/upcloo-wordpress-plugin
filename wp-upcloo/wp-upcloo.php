@@ -285,6 +285,7 @@ function upcloo_install() {
     add_option("upcloo_index_page", "1", "", "no");
     add_option("upcloo_index_post", "1", "", "no");
     add_option("upcloo_show_on_page", "1", "", "yes");
+    add_option("upcloo_max_show_links", "10", "", "yes");
 }
 
 
@@ -298,6 +299,7 @@ function upcloo_remove() {
     delete_option('upcloo_index_page');
     delete_option('upcloo_index_post');
     delete_option('upcloo_show_on_page');
+    delete_option('upcloo_max_show_links');
 }
 
 add_action('admin_menu', 'upcloo_admin_menu');
@@ -336,7 +338,17 @@ function upcloo_content($content) {
             $content .= "<div class=\"upcloo-related-contents\">";
             $content .= "<h2>" . __("Maybe you are interested at", "wp_upcloo") . ":</h2>";
             $content .= "<ul>";
+            $index = 0;
+            $maxContents = get_option("upcloo_max_show_links")/1;
             foreach ($listOfModels->doc as $element) {
+                if (is_int($maxContents) && $maxContents > 0) {
+                    if ($index >= $maxContents) {
+                        break;
+                        $index=0;
+                    }
+
+                    $index++;
+                }
                 $content .= "<li><a href=\"{$element->url}\">{$element->title}</a></li>";    
             }
 
