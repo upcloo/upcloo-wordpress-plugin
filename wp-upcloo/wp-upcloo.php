@@ -39,6 +39,9 @@ define("UPCLOO_REPOSITORY_END_POINT", "https://s3-eu-west-1.amazonaws.com/com.up
 define("UPCLOO_POST_PUBLISH", "publish");
 define("UPCLOO_POST_TRASH", "trash");
 
+define("UPCLOO_PAGE", "page");
+define("UPCLOO_POST", "post");
+
 add_action("admin_init", "upcloo_init");
 
 add_filter( 'the_content', 'upcloo_content' );
@@ -147,10 +150,18 @@ function upcloo_remove_post_sync($pid)
     }
 }
  
+/**
+ * Mantain updated the contents
+ */
 function upcloo_content_sync($pid)
 {
-    if (get_option("upcloo_index_post") == "1") {
-        $post = get_post($pid); 
+    $post = get_post($pid); 
+
+    /* Check if the content must be indexed */
+    if (
+        ($post->post_type == UPCLOO_POST && get_option("upcloo_index_post") == "1") ||
+        ($post->post_type == UPCLOO_PAGE && get_option("upcloo_index_page") == "1")
+       ) {
         if ($post->post_status == UPCLOO_POST_PUBLISH) {
             $categories = array();
             $tags = array();
@@ -208,7 +219,14 @@ function upcloo_content_sync($pid)
  */
 function upcloo_send_content($model)
 {
-    $endPointURL = sprintf(UPCLOO_UPDATE_END_POINT, get_option("upcloo_userkey"));
+    $userKey = trim(get_option("upcloo_userkey"));
+
+    //If the user key is empty
+    if (empty($userKey)) {
+        return false;
+    }
+
+    $endPointURL = sprintf(UPCLOO_UPDATE_END_POINT, $userKey);
 
     $xml = upcloo_model_to_xml($model);
 
