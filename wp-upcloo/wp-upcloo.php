@@ -361,6 +361,7 @@ function upcloo_content($content) {
     return $content;
 }
 
+/* Get related contents from repository  */
 function upcloo_get_from_repository($name)
 {
     $endPointURL = sprintf(UPCLOO_REPOSITORY_END_POINT, get_option("upcloo_sitekey"));
