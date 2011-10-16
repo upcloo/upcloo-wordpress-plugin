@@ -184,7 +184,7 @@ function upcloo_content_sync($pid)
                 "model" => array(
                     "id" => $post->post_type . "_" . $pid,
                     "sitekey" => get_option("upcloo_sitekey"),
-                    "password" => get_option("password"),
+                    "password" => get_option("upcloo_password"),
                     "title" => $post->post_title,
                     "content" => $post->post_content,
                     "summary" => $post->post_excerpt,
