@@ -180,6 +180,9 @@ function upcloo_content_sync($pid)
                 $tags = get_the_tags($pid);
             }
 
+            $firstname = get_user_meta($post->post_author, "first_name", true);
+            $lastname = get_user_meta($post->post_author, "last_name", true);
+
             $model = array(
                 "model" => array(
                     "id" => $post->post_type . "_" . $pid,
@@ -191,6 +194,7 @@ function upcloo_content_sync($pid)
                     "publish_date" => $post->post_date,
                     "type" => $post->post_type,
                     "url" => $permalink,
+                    "author" => $firstname . " " . $lastname,
                     "categories" => array(),
                     "tags" => array()
                 )
