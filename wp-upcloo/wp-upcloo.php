@@ -33,7 +33,7 @@ License: MIT
 
 //Only secure protocol on post/page publishing
 //define("UPCLOO_UPDATE_END_POINT", "https://%s.update.upcloo.com");
-define("UPCLOO_UPDATE_END_POINT", "http://%s.beach.local");
+define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.local");
 //TODO: analyze https protocol feature.
 //define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
 define("UPCLOO_REPOSITORY_END_POINT", "https://s3-eu-west-1.amazonaws.com/com.upcloo.test/%s");
@@ -183,6 +183,9 @@ function upcloo_content_sync($pid)
             $firstname = get_user_meta($post->post_author, "first_name", true);
             $lastname = get_user_meta($post->post_author, "last_name", true);
 
+            $publish_date = $post->post_date;
+            $publish_date = str_replace(" ", "T", $publish_date) . "Z";
+
             $model = array(
                 "model" => array(
                     "id" => $post->post_type . "_" . $pid,
@@ -191,7 +194,7 @@ function upcloo_content_sync($pid)
                     "title" => $post->post_title,
                     "content" => $post->post_content,
                     "summary" => $post->post_excerpt,
-                    "publish_date" => $post->post_date,
+                    "publish_date" => $publish_date,
                     "type" => $post->post_type,
                     "url" => $permalink,
                     "author" => $firstname . " " . $lastname,
