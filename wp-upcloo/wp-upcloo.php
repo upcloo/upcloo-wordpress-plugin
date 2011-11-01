@@ -33,7 +33,8 @@ License: MIT
 
 //Only secure protocol on post/page publishing
 //define("UPCLOO_UPDATE_END_POINT", "https://%s.update.upcloo.com");
-define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.local");
+//define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.local");
+define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.walterdalmut.com");
 //TODO: analyze https protocol feature.
 //define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
 define("UPCLOO_REPOSITORY_END_POINT", "https://s3-eu-west-1.amazonaws.com/com.upcloo.test/%s");
@@ -274,7 +275,7 @@ function upcloo_model_to_xml($model)
                 if (is_int($key)) {
                     $key = "element";
                 }
-                $xml .= sprintf("<%s>" . upcloo_model_to_xml($value) . "</%s>", $key, $key);
+                $xml .= "<{$key}>" . upcloo_model_to_xml(htmlentities($value)) . "</{$key}>";
             }   
         }
 
