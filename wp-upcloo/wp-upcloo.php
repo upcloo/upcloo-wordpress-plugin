@@ -31,6 +31,8 @@ License: MIT
  * THE SOFTWARE.
  */
 
+require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
+
 //Only secure protocol on post/page publishing
 //define("UPCLOO_UPDATE_END_POINT", "https://%s.update.upcloo.com");
 //define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.local");
@@ -53,6 +55,10 @@ add_filter( 'the_content', 'upcloo_content' );
 add_filter('admin_footer_text', "upcloo_admin_footer");
 
 //add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
+
+//add_widget("UpCloo_Widget_Partner");
+
+add_action( 'widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");' ) );
 
 function upcloo_admin_footer($text)
 {
@@ -370,10 +376,12 @@ function upcloo_content($content) {
 }
 
 /* Get related contents from repository  */
-function upcloo_get_from_repository($name)
+function upcloo_get_from_repository($name, $endPointURL = false)
 {
-    $endPointURL = sprintf(UPCLOO_REPOSITORY_END_POINT, get_option("upcloo_sitekey"));
-    $endPointURL .= "/{$name}.xml";
+    if ($endPointURL === false) {
+        $endPointURL = sprintf(UPCLOO_REPOSITORY_END_POINT, get_option("upcloo_sitekey"));
+        $endPointURL .= "/{$name}.xml";
+    }
 
     $ch = curl_init();
 
