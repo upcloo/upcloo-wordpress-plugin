@@ -6,9 +6,9 @@ class UpCloo_Widget_Partner
     {
         parent::__construct(
             "upcloo_partner_widget", 
-            __("UpCloo Network Widget"), 
+            __("UpCloo Network Widget", 'wp_upcloo'), 
             array(
-                'description' => __('The UpCloo Virtual Partner SiteKey Widget')
+                'description' => __('The UpCloo Virtual Partner SiteKey Widget', 'wp_upcloo')
             )
         ); 
     }
@@ -16,32 +16,37 @@ class UpCloo_Widget_Partner
     public function form($instance)
     {
         if ( $instance ) {
-            $title = esc_attr($instance[ 'upcloo_v_sitekey' ]);
+        	$title = esc_attr($instance[ 'upcloo_v_title' ]);
+            $vsitekey = esc_attr($instance[ 'upcloo_v_sitekey' ]);
             $enableUtmTag = $instance['upcloo_v_utm_tag'];
             $utmCampaign = $instance["upcloo_v_utm_campaign"];
             $utmMedia = $instance['upcloo_v_utm_media'];
             $utmSource = $instance['upcloo_v_utm_source'];
         } else {
-            $title = __( 'Here your Virtual Site Key', 'text_domain' );
+        	$title = __('Related', 'wp_upcloo');
+            $vsitekey = '';
             $enableUtmTag = 0;
             $utmCampaign = '';
             $utmMedia = '';
-            $utmSource = __('upcloo', text_domain);
+            $utmSource = __('upcloo', 'wp_upcloo');
         }
         ?>
+        
+        <label for="<?php echo $this->get_field_id('upcloo_v_title'); ?>"><?php _e('Title:', 'wp_upcloo'); ?></label> 
+        <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_title'); ?>" name="<?php echo $this->get_field_name('upcloo_v_title'); ?>" type="text" value="<?php echo $title; ?>" />
 
-        <label for="<?php echo $this->get_field_id('upcloo_v_sitekey'); ?>"><?php _e('Virtual Partner:'); ?></label> 
-        <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_sitekey'); ?>" name="<?php echo $this->get_field_name('upcloo_v_sitekey'); ?>" type="text" value="<?php echo $title; ?>" />
+        <label for="<?php echo $this->get_field_id('upcloo_v_sitekey'); ?>"><?php _e('Virtual Partner:', 'wp_upcloo'); ?></label> 
+        <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_sitekey'); ?>" name="<?php echo $this->get_field_name('upcloo_v_sitekey'); ?>" type="text" value="<?php echo $vsitekey; ?>" />
         <label for="<?php echo $this->get_field_id('upcloo_v_utm_tag'); ?>"><?php _e('Enable UTM Tagging:'); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_utm_tag'); ?>" name="<?php echo $this->get_field_name('upcloo_v_utm_tag'); ?>" type="checkbox" <?php echo (($enableUtmTag) ? 'checked' : ''); ?> />
         
-        <label for="<?php echo $this->get_field_id('upcloo_v_utm_campaign'); ?>"><?php _e('UTM Campaign:'); ?></label> 
+        <label for="<?php echo $this->get_field_id('upcloo_v_utm_campaign'); ?>"><?php _e('UTM Campaign:', 'wp_upcloo'); ?></label> 
         <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_utm_campaign'); ?>" name="<?php echo $this->get_field_name('upcloo_v_utm_campaign'); ?>" type="text" value="<?php echo $utmCampaign; ?>" />
         
-        <label for="<?php echo $this->get_field_id('upcloo_v_utm_media'); ?>"><?php _e('UTM Media:'); ?></label> 
+        <label for="<?php echo $this->get_field_id('upcloo_v_utm_media'); ?>"><?php _e('UTM Media:', 'wp_upcloo'); ?></label> 
         <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_utm_media'); ?>" name="<?php echo $this->get_field_name('upcloo_v_utm_media'); ?>" type="text" value="<?php echo $utmMedia; ?>" />                
         
-        <label for="<?php echo $this->get_field_id('upcloo_v_utm_source'); ?>"><?php _e('UTM Source:'); ?></label> 
+        <label for="<?php echo $this->get_field_id('upcloo_v_utm_source'); ?>"><?php _e('UTM Source:', 'wp_upcloo'); ?></label> 
         <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_utm_source'); ?>" name="<?php echo $this->get_field_name('upcloo_v_utm_source'); ?>" type="text" value="<?php echo $utmSource; ?>" />
         
         <?php
@@ -50,6 +55,7 @@ class UpCloo_Widget_Partner
     function update($new_instance, $old_instance)
     {
         $instance = $old_instance;
+        $instance['upcloo_v_title'] = strip_tags($new_instance['upcloo_v_title']);
         $instance['upcloo_v_sitekey'] = strip_tags($new_instance['upcloo_v_sitekey']);
         $instance['upcloo_v_utm_tag'] = strip_tags($new_instance['upcloo_v_utm_tag']);
         $instance['upcloo_v_utm_campaign'] = strip_tags($new_instance['upcloo_v_utm_campaign']);
@@ -85,7 +91,7 @@ class UpCloo_Widget_Partner
 			}
 ?>
     <li class="widget-container widget_upcloo">
-        <h3 class="widget-title">Related</h3>
+        <h3 class="widget-title"><?php echo $instance["upcloo_v_title"]?></h3>
         <div>
             <ul>
             <?php
