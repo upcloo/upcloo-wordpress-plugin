@@ -19,8 +19,8 @@
         <?php _e("All information that you send to UpCloo Cloud System are secured using RSA 1024 bit.", "wp_upcloo");?>
     </div>
     <h2><?php _e("UpCloo Application Configuration", "wp_upcloo");?></h2>
-    <h3><?php _e("Login parmeters", "wp_upcloo");?></h3>
-    <form method="post" action="options.php">
+    <h3 id="upcloo-app-config"><?php _e("Login parmeters", "wp_upcloo");?></h3>
+    <form method="post" action="options.php#upcloo-app-config">
         <?php wp_nonce_field('update-options'); ?>
         <table class="form-table">
             <tbody>
@@ -62,8 +62,8 @@
         </p>
     </form>
 
-    <h3><?php _e("Other features", "wp_upcloo");?></h3>
-    <form method="post" action="options.php">
+    <h3 id="upcloo-other-features"><?php _e("Other features", "wp_upcloo");?></h3>
+    <form method="post" action="options.php#upcloo-other-features">
         <?php wp_nonce_field('update-options'); ?>
 
         <table class="form-table" >
@@ -116,6 +116,50 @@
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
         </p>
+    </form>
+    
+    <h3 id="upcloo-roi-monitor"><?php _e("ROI Monitor Parameters", "wp_upcloo");?></h3>
+    <form method="post" action="options.php#upcloo-roi-monitor">
+        <?php wp_nonce_field('update-options'); ?>
+        <table class="form-table">
+            <tbody>
+            	<tr valign="top">
+                    <th width="92" scope="row"><?php echo _e("Enable UTM Tagging", "wp_upcloo");?></th>
+                    <td width="406">
+                    	<input name="upcloo_utm_tag" type="hidden" value="0" />
+                        <input name="upcloo_utm_tag" type="checkbox" <?php echo ((get_option('upcloo_utm_tag', "wp_upcloo")) ? 'checked' : ''); ?> />
+                        <strong>(Enable Google UTM Tag Feature)</strong>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <th width="92" scope="row"><?php echo _e("Enter base UTM Campaing", "wp_upcloo");?></th>
+                    <td width="406">
+                        <input name="upcloo_utm_campaign" type="text" value="<?php echo get_option('upcloo_utm_campaign', "wp_upcloo"); ?>" />
+                        <strong><?php echo _e("(eg. upcloo-check)");?></strong>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <th width="92" scope="row"><?php echo _e("Enter base UTM Medium", "wp_upcloo");?></th>
+                    <td width="406">
+                        <input name="upcloo_utm_medium" type="text" value="<?php echo get_option('upcloo_utm_medium', "wp_upcloo"); ?>" />
+                        <strong><?php echo _e("(eg. mywebsite)");?></strong>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <th width="92" scope="row"><?php echo _e("Enter base UTM Source", "wp_upcloo");?></th>
+                    <td width="406">
+                        <input name="upcloo_utm_source" type="text" value="<?php echo get_option('upcloo_utm_source', "wp_upcloo"); ?>" />
+                        <strong><?php echo _e("(eg. upcloo-base-links)");?></strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            
+        <input type="hidden" name="action" value="update" />
+        <input type="hidden" name="page_options" value="upcloo_utm_campaign,upcloo_utm_tag, upcloo_utm_source, upcloo_utm_medium" />
 
+        <p class="submit">
+            <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+        </p>
     </form>
 </div>

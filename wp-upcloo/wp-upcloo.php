@@ -37,9 +37,9 @@ require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
 //define("UPCLOO_UPDATE_END_POINT", "https://%s.update.upcloo.com");
 //define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.local");
 define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.walterdalmut.com");
-//TODO: analyze https protocol feature.
 //define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
 define("UPCLOO_REPOSITORY_END_POINT", "https://s3-eu-west-1.amazonaws.com/com.upcloo.test/%s");
+
 define("UPCLOO_POST_PUBLISH", "publish");
 define("UPCLOO_POST_TRASH", "trash");
 
@@ -183,7 +183,7 @@ function upcloo_remove_post_sync($pid)
         $headers = curl_getinfo($ch);
         curl_close($ch);
 
-        if (is_array($headers) && $headers["http_status"] == 200) {
+        if (is_array($headers) && $headers["http_status"] != 200) {
             //TODO: show the error.
         }
     }
@@ -251,7 +251,7 @@ function upcloo_content_sync($pid)
             }
 
             if (!upcloo_send_content($model)) {
-                //Raise the error
+                //TODO: Raise the error
             }
         }
     }
@@ -328,6 +328,11 @@ function upcloo_install() {
     add_option("upcloo_index_post", "1", "", "no");
     add_option("upcloo_show_on_page", "1", "", "yes");
     add_option("upcloo_max_show_links", "10", "", "yes");
+    add_option("upcloo_utm_tag", "0", "", "yes");
+    add_option("upcloo_utm_campaign", "", "", "yes");
+    add_option("upcloo_utm_medium", "", "", "yes");
+    add_option("upcloo_utm_source", "", "", "yes");
+    
 }
 
 
@@ -342,6 +347,10 @@ function upcloo_remove() {
     delete_option('upcloo_index_post');
     delete_option('upcloo_show_on_page');
     delete_option('upcloo_max_show_links');
+    delete_option("upcloo_utm_tag", "0", "", "yes");
+    delete_option("upcloo_utm_campaign", "", "", "yes");
+    delete_option("upcloo_utm_medium", "", "", "yes");
+    delete_option("upcloo_utm_source", "", "", "yes");
 }
 
 add_action('admin_menu', 'upcloo_admin_menu');
