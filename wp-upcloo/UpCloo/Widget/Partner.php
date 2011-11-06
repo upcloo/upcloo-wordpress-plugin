@@ -6,9 +6,9 @@ class UpCloo_Widget_Partner
     {
         parent::__construct(
             "upcloo_partner_widget", 
-            "UpCloo Network Widget", 
+            __("UpCloo Network Widget"), 
             array(
-                'description' => 'The UpCloo widget'
+                'description' => __('The UpCloo Virtual Partner SiteKey Widget')
             )
         ); 
     }
@@ -23,9 +23,9 @@ class UpCloo_Widget_Partner
             $utmSource = $instance['upcloo_v_utm_source'];
         } else {
             $title = __( 'Here your Virtual Site Key', 'text_domain' );
-            $enableUtmTag = __('0', 'text_domain');
-            $utmCampaign = __('', 'text_domain');
-            $utmMedia = __('', text_domain);
+            $enableUtmTag = 0;
+            $utmCampaign = '';
+            $utmMedia = '';
             $utmSource = __('upcloo', text_domain);
         }
         ?>

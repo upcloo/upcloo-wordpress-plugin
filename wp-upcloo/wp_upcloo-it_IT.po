@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-10-15 22:53+0100\n"
-"PO-Revision-Date: 2011-10-15 22:53+0100\n"
+"POT-Creation-Date: 2011-11-06 15:06+0100\n"
+"PO-Revision-Date: 2011-11-06 15:07+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:283
+#: wp-upcloo.php:322
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -65,62 +65,108 @@ msgstr "Inserisci la tua Chiave Sito"
 msgid "Enter your Password"
 msgstr "La tua password"
 
-#: general-options.php:43
+#: general-options.php:44
 msgid "(eg. You account password [blank for security reasons])"
 msgstr "(es. La tua password UpCloo [non visibile per sicurezza])"
 
-#: general-options.php:58
-#: general-options.php:108
+#: general-options.php:61
+#: general-options.php:117
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
-#: general-options.php:62
+#: general-options.php:65
 msgid "Other features"
 msgstr "Altre Funzionalità"
 
-#: general-options.php:68
-#: general-options.php:72
+#: general-options.php:71
+#: general-options.php:75
 msgid "Index Posts"
 msgstr "Indicizza i Post"
 
-#: general-options.php:75
-#: general-options.php:79
+#: general-options.php:78
+#: general-options.php:82
 msgid "Index Pages"
 msgstr "Indicizza le Pagine"
 
-#: general-options.php:82
+#: general-options.php:85
 msgid "Use Categories during Indexing"
 msgstr "Use le categorie durante l'indicizzazione"
 
-#: general-options.php:86
+#: general-options.php:89
 msgid "Use categories during index creation"
 msgstr "Usa le categorie durante l'indicizzazione"
 
-#: general-options.php:89
+#: general-options.php:92
 msgid "Use Tags during Indexing"
 msgstr "Usa i Tag durante l'indicizzazione"
 
-#: general-options.php:93
+#: general-options.php:96
 msgid "Use tags during index creation"
 msgstr "Usa i Tag durante la creazione dell'indice"
 
-#: general-options.php:96
+#: general-options.php:99
 msgid "Show also in pages"
 msgstr "Mostra anche nelle Pagine"
 
-#: general-options.php:100
+#: general-options.php:103
 msgid "Show related contents on pages"
 msgstr "Mostra i correlati nelle Pagine"
 
-#: wp-upcloo.php:283
+#: general-options.php:106
+msgid "Max Number of Links"
+msgstr "Massimo numero di link"
+
+#: general-options.php:110
+msgid "Let blank for all"
+msgstr "Lascia in bianco per tutti"
+
+#: wp-upcloo.php:322
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
 
-#: wp-upcloo.php:289
+#: wp-upcloo.php:328
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:314
+#: wp-upcloo.php:353
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
+#: UpCloo/Widget/Partner.php:9
+msgid "UpCloo Network Widget"
+msgstr "Widget Rete di UpCloo"
+
+#: UpCloo/Widget/Partner.php:11
+msgid "The UpCloo Virtual Partner SiteKey Widget"
+msgstr "Widget UpCloo per le Chiavi Sito Partner Virtuali"
+
+#: UpCloo/Widget/Partner.php:25
+msgid "Here your Virtual Site Key"
+msgstr "Inserisci la tua Chiave Sito Virtuale (Partner)"
+
+#: UpCloo/Widget/Partner.php:29
+msgid "upcloo"
+msgstr "upcloo"
+
+#: UpCloo/Widget/Partner.php:33
+msgid "Virtual Partner:"
+msgstr "Partner Virtuale:"
+
+#: UpCloo/Widget/Partner.php:35
+msgid "Enable UTM Tagging:"
+msgstr "Abilita il Tagging UTM"
+
+#: UpCloo/Widget/Partner.php:38
+msgid "UTM Campaign:"
+msgstr "Campagna UTM (UTM Campaign)"
+
+#: UpCloo/Widget/Partner.php:41
+msgid "UTM Media:"
+msgstr "Supporto UTM"
+
+#: UpCloo/Widget/Partner.php:44
+msgid "UTM Source:"
+msgstr "Sorgente UTM"
+
+#~ msgid "0"
+#~ msgstr "0"
