@@ -383,9 +383,16 @@ function upcloo_content($content) {
     if (is_single($post) || (is_page($post) && get_option("upcloo_show_on_page") == "1")) {
         //Get it 
         $listOfModels = upcloo_get_from_repository($post->post_type . "_" . $post->ID);
-
+        
         $content = '';
         if ($listOfModels && property_exists($listOfModels, "doc") && is_array($listOfModels->doc) && count($listOfModels->doc)) {
+            
+            //Prepare link UTM
+            $utmURL = '';
+            if (get_option("upcloo_utm_tag", "wp_upcloo")) {
+                $utmURL .= 'utm_campaign=' . get_option("upcloo_utm_campaign", "wp_upcloo") . '&utm_medium=' . get_option("upcloo_utm_medium", "wp_upcloo") . '&utm_source=' . get_option("upcloo_utm_source", "wp_upcloo"); 
+            }
+            
             $content .= "<div class=\"upcloo-related-contents\">";
             $content .= "<h2>" . __("Maybe you are interested at", "wp_upcloo") . ":</h2>";
             $content .= "<ul>";
@@ -400,7 +407,18 @@ function upcloo_content($content) {
 
                     $index++;
                 }
-                $content .= "<li><a href=\"{$element->url}\">{$element->title}</a></li>";    
+                
+                $finalURL = $element->url;
+                
+                if (strpos($finalURL, "?")) {
+                    $finalURL .= '&';
+                } else {
+                    $finalURL .= '?';
+                }
+                
+                $finalURL .= $utmURL;
+                
+                $content .= "<li><a href=\"{$finalURL}\">{$element->title}</a></li>";    
             }
 
             $content .= "</ul>";
