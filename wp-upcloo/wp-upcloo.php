@@ -48,6 +48,8 @@ define("UPCLOO_USER_AGENT", "WPUpCloo/1.0");
 define("UPCLOO_PAGE", "page");
 define("UPCLOO_POST", "post");
 
+define("UPCLOO_RSS_FEED", "http://www.mxdesign.it/contenuti/rss/0/news.xml");
+
 add_action("admin_init", "upcloo_init");
 
 add_filter( 'the_content', 'upcloo_content' );
@@ -59,6 +61,32 @@ add_filter('admin_footer_text', "upcloo_admin_footer");
 //add_widget("UpCloo_Widget_Partner");
 
 add_action( 'widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");' ) );
+
+// Create the function to output the contents of our Dashboard Widget
+
+function upcloo_dashboard_widget_function() {
+    // Display whatever it is you want to show
+    $xml = simplexml_load_file(UPCLOO_RSS_FEED);
+    
+    $blogInfo = get_bloginfo();
+    $blogTitle = urlencode(strtolower($blogInfo));    
+    
+    echo "<ul>";
+    foreach ($xml->channel->item as $item) {
+        echo "<li><a href='{$item->link}?utm_campaign=wp_dashboardwidget&utm_medium=wordpress&utm_source={$blogTitle}' target='_blank'>{$item->title}</a></li>";
+    }
+    echo "</ul>";
+}
+
+// Create the function use in the action hook
+
+function upcloo_add_dashboard_widgets() {
+    wp_add_dashboard_widget('upcloo_dashboard_widget', __('UpCloo News Widget'), 'upcloo_dashboard_widget_function');
+}
+
+// Hook into the 'wp_dashboard_setup' action to register our other functions
+
+add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
 
 function upcloo_admin_footer($text)
 {
