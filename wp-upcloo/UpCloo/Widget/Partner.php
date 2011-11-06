@@ -89,24 +89,25 @@ class UpCloo_Widget_Partner
 					$utmURL = "&{$utmURL}";
 				}
 			}
+
+			if ($datax->doc) :
 ?>
     <li class="widget-container widget_upcloo">
         <h3 class="widget-title"><?php echo $instance["upcloo_v_title"]?></h3>
         <div>
             <ul>
-            <?php
-            if ($datax->doc) :
+            <?php 
                 foreach ($datax->doc as $doc):
             ?>
             	<li><a href="<?php echo $doc->url . $utmURL?>" target="_blank"><?php echo $doc->title; ?></a></li>
             <?php
                 endforeach;
-            endif;
-?>
+            ?>
             </ul>
         </div>
     </li>
 <?php
+            endif;
             echo $after_widget;
         }
     }
