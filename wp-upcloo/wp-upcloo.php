@@ -410,10 +410,12 @@ function upcloo_content($content) {
                 
                 $finalURL = $element->url;
                 
-                if (strpos($finalURL, "?")) {
-                    $finalURL .= '&';
-                } else {
-                    $finalURL .= '?';
+                if (get_option("upcloo_utm_tag", "wp_upcloo")) {
+                    if (strpos($finalURL, "?")) {
+                        $finalURL .= '&';
+                    } else {
+                        $finalURL .= '?';
+                    }
                 }
                 
                 $finalURL .= $utmURL;
