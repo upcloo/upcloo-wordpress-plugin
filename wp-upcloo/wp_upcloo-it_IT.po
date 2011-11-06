@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-06 15:06+0100\n"
-"PO-Revision-Date: 2011-11-06 15:07+0100\n"
+"POT-Creation-Date: 2011-11-06 17:27+0100\n"
+"PO-Revision-Date: 2011-11-06 17:29+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:322
+#: wp-upcloo.php:359
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -71,6 +71,7 @@ msgstr "(es. La tua password UpCloo [non visibile per sicurezza])"
 
 #: general-options.php:61
 #: general-options.php:117
+#: general-options.php:165
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -120,15 +121,58 @@ msgstr "Massimo numero di link"
 msgid "Let blank for all"
 msgstr "Lascia in bianco per tutti"
 
-#: wp-upcloo.php:322
+#: general-options.php:121
+msgid "ROI Monitor Parameters"
+msgstr "Parametri per il Monitor ROI"
+
+#: general-options.php:123
+msgid "Consider that you have Google Analytics Tracker script activated and visibile on your pages or almost where UpCloo is engaged."
+msgstr "Considera che devi avere il Tracker Google Analytics attivo e visibile sulle tue pagine o almeno dove viene attivato UpCloo."
+
+#: general-options.php:130
+#, fuzzy
+msgid "Enable UTM Tagging"
+msgstr "Abilita il Tagging UTM"
+
+#: general-options.php:138
+msgid "Enter base UTM Campaign"
+msgstr "Inserisci la campagna base UTM"
+
+#: general-options.php:141
+msgid "(eg. upcloo-check)"
+msgstr "(es. upcloo-check)"
+
+#: general-options.php:145
+msgid "Enter base UTM Medium"
+msgstr "Inserisci il media UTM"
+
+#: general-options.php:148
+msgid "(eg. mywebsite)"
+msgstr "(es. ilmiosito)"
+
+#: general-options.php:152
+#, fuzzy
+msgid "Enter base UTM Source"
+msgstr "Sorgente UTM"
+
+#: general-options.php:155
+msgid "(eg. upcloo-base-links)"
+msgstr "(es. upcloo-base-links)"
+
+#: wp-upcloo.php:84
+#, fuzzy
+msgid "UpCloo News Widget"
+msgstr "Widget Rete di UpCloo"
+
+#: wp-upcloo.php:359
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
 
-#: wp-upcloo.php:328
+#: wp-upcloo.php:365
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:353
+#: wp-upcloo.php:397
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
@@ -140,33 +184,40 @@ msgstr "Widget Rete di UpCloo"
 msgid "The UpCloo Virtual Partner SiteKey Widget"
 msgstr "Widget UpCloo per le Chiavi Sito Partner Virtuali"
 
-#: UpCloo/Widget/Partner.php:25
-msgid "Here your Virtual Site Key"
-msgstr "Inserisci la tua Chiave Sito Virtuale (Partner)"
+#: UpCloo/Widget/Partner.php:26
+msgid "Related"
+msgstr "Correlati"
 
-#: UpCloo/Widget/Partner.php:29
+#: UpCloo/Widget/Partner.php:31
 msgid "upcloo"
 msgstr "upcloo"
 
-#: UpCloo/Widget/Partner.php:33
+#: UpCloo/Widget/Partner.php:35
+msgid "Title:"
+msgstr "Titolo:"
+
+#: UpCloo/Widget/Partner.php:38
 msgid "Virtual Partner:"
 msgstr "Partner Virtuale:"
 
-#: UpCloo/Widget/Partner.php:35
+#: UpCloo/Widget/Partner.php:40
 msgid "Enable UTM Tagging:"
 msgstr "Abilita il Tagging UTM"
 
-#: UpCloo/Widget/Partner.php:38
+#: UpCloo/Widget/Partner.php:43
 msgid "UTM Campaign:"
 msgstr "Campagna UTM (UTM Campaign)"
 
-#: UpCloo/Widget/Partner.php:41
+#: UpCloo/Widget/Partner.php:46
 msgid "UTM Media:"
 msgstr "Supporto UTM"
 
-#: UpCloo/Widget/Partner.php:44
+#: UpCloo/Widget/Partner.php:49
 msgid "UTM Source:"
 msgstr "Sorgente UTM"
+
+#~ msgid "Here your Virtual Site Key"
+#~ msgstr "Inserisci la tua Chiave Sito Virtuale (Partner)"
 
 #~ msgid "0"
 #~ msgstr "0"

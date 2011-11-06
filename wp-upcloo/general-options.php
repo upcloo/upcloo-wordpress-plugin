@@ -119,6 +119,9 @@
     </form>
     
     <h3 id="upcloo-roi-monitor"><?php _e("ROI Monitor Parameters", "wp_upcloo");?></h3>
+    <p class="warning">
+    	<?php _e("Consider that you have Google Analytics Tracker script activated and visibile on your pages or almost where UpCloo is engaged.", "wp_upcloo"); ?>
+    </p>
     <form method="post" action="options.php#upcloo-roi-monitor">
         <?php wp_nonce_field('update-options'); ?>
         <table class="form-table">
@@ -132,7 +135,7 @@
                     </td>
                 </tr>
                 <tr valign="top">
-                    <th width="92" scope="row"><?php echo _e("Enter base UTM Campaing", "wp_upcloo");?></th>
+                    <th width="92" scope="row"><?php echo _e("Enter base UTM Campaign", "wp_upcloo");?></th>
                     <td width="406">
                         <input name="upcloo_utm_campaign" type="text" value="<?php echo get_option('upcloo_utm_campaign', "wp_upcloo"); ?>" />
                         <strong><?php echo _e("(eg. upcloo-check)");?></strong>
