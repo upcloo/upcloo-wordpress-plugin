@@ -84,9 +84,9 @@ class UpCloo_Widget_Partner
 
             	$utmURL = "utm_campaign={$instance["upcloo_v_utm_campaign"]}&utm_medium={$instance["upcloo_v_utm_media"]}&utm_source={$instance["upcloo_v_utm_source"]}";
                	if (strpos($url, "?") === false) {
-               		$utmURL .= "?{$utmURL}";
+               		$utmURL = "?{$utmURL}";
 				} else {
-					$utmURL .= "&{$utmURL}";
+					$utmURL = "&{$utmURL}";
 				}
 			}
 ?>
@@ -97,8 +97,8 @@ class UpCloo_Widget_Partner
             <?php
             if ($datax->doc) :
                 foreach ($datax->doc as $doc):
-?>
-<li><a href="<?php echo $doc->url . $utmURL?>" target="_blank"><?php echo $doc->title; ?></a></li>
+            ?>
+            	<li><a href="<?php echo $doc->url . $utmURL?>" target="_blank"><?php echo $doc->title; ?></a></li>
             <?php
                 endforeach;
             endif;
