@@ -180,7 +180,7 @@ function upcloo_remove_post_sync($pid)
         $headers = curl_getinfo($ch);
         curl_close($ch);
 
-        if (is_array($headers) && $headers["http_status"] != 200) {
+        if (is_array($headers) && $headers["http_code"] != 200) {
             //TODO: show the error.
         }
     }
