@@ -33,12 +33,9 @@ License: MIT
 
 require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
 
-//Only secure protocol on post/page publishing
-//define("UPCLOO_UPDATE_END_POINT", "https://%s.update.upcloo.com");
-//define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.local");
-define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.walterdalmut.com");
-//define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
-define("UPCLOO_REPOSITORY_END_POINT", "https://s3-eu-west-1.amazonaws.com/com.upcloo.test/%s");
+//Only secure protocol on post/page publishing (now is beta test... no https)
+define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.com");
+define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
 
 define("UPCLOO_POST_PUBLISH", "publish");
 define("UPCLOO_POST_TRASH", "trash");
@@ -301,7 +298,7 @@ function upcloo_send_content($model)
 function upcloo_model_to_xml($model)
 {
     if (is_string($model)) {
-        return "<![CDATA[" . $model . "]]>";        
+        return "<![CDATA[" . strip_tags($model) . "]]>";        
     } else {
         $xml = "";
         if ($model && is_array($model)) {
@@ -309,7 +306,7 @@ function upcloo_model_to_xml($model)
                 if (is_int($key)) {
                     $key = "element";
                 }
-                $xml .= "<{$key}>" . upcloo_model_to_xml(htmlentities($value)) . "</{$key}>";
+                $xml .= "<{$key}>" . upcloo_model_to_xml($value) . "</{$key}>";
             }   
         }
 
