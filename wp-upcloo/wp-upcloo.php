@@ -67,8 +67,17 @@ add_action( 'widgets_init', create_function( '', 'register_widget("UpCloo_Widget
 add_filter('manage_posts_columns', 'upcloo_my_columns');
 add_action('manage_posts_custom_column',  'upcloo_my_show_columns');
 
-function upcloo_my_columns($columns) {
+add_filter('manage_pages_columns', 'upcloo_my_columns');
+add_action('manage_pages_custom_column',  'upcloo_my_show_columns');
+
+function upcloo_my_columns($columns) 
+{
     $columns['upcloo'] = "UpCloo";
+    
+    if ($_GET["upcloo-reindex"]) {
+        upcloo_content_sync($_GET["post"]);
+    }
+    
     return $columns;
 }
 
@@ -77,7 +86,7 @@ function upcloo_my_show_columns($name) {
     switch ($name) {
         case 'upcloo':
             $upclooSent = get_post_meta($post->ID, UPCLOO_POST_META, true);
-            echo (($upclooSent == '1') ? UPCLOO_CLOUD_IMAGE : UPCLOO_NOT_CLOUD_IMAGE);
+            echo "<a href='?post={$post->ID}&edit=upcloo-reindex'>" . (($upclooSent == '1') ? UPCLOO_CLOUD_IMAGE : UPCLOO_NOT_CLOUD_IMAGE) . '</a>';
             break;
     }
 }
