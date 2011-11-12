@@ -251,11 +251,7 @@ function upcloo_content_sync($pid)
                 }
             }
 
-            //Do not send directly.
-            //Send only when an user go to the page.
-//             if (!upcloo_send_content($model)) {
-//                 //TODO: Raise the error
-//             }
+            return upcloo_send_content($model);
         }
     }
 }
@@ -388,14 +384,13 @@ function upcloo_content($content) {
      * Use a filter login to perform this kind of selection
      */
     if (is_single($post) || (is_page($post) && get_option("upcloo_show_on_page") == "1")) {
-
         /**
          * If not sent to upcloo send it and store the result.
          */
         if (!$current_user->id && $upClooMeta == '') {
-            upcloo_content_sync($post->ID);
-
-            update_post_meta($post->ID, UPCLOO_POST_META, "1", $upClooMeta);
+            if (upcloo_content_sync($post->ID)) {
+                update_post_meta($post->ID, UPCLOO_POST_META, "1", $upClooMeta);
+            }
         }
         
         //Get it 
