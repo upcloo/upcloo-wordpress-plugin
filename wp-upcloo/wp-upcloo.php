@@ -251,9 +251,11 @@ function upcloo_content_sync($pid)
                 }
             }
 
-            if (!upcloo_send_content($model)) {
-                //TODO: Raise the error
-            }
+            //Do not send directly.
+            //Send only when an user go to the page.
+//             if (!upcloo_send_content($model)) {
+//                 //TODO: Raise the error
+//             }
         }
     }
 }
