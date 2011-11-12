@@ -47,7 +47,7 @@ define("UPCLOO_POST", "post");
 
 define("UPCLOO_RSS_FEED", "http://www.mxdesign.it/contenuti/rss/0/news.xml");
 
-define("UPCLOO_COLUMN_NAME", "upcloo");
+define("UPCLOO_POST_META", "upcloo_post_sent");
 
 add_action("admin_init", "upcloo_init");
 
@@ -319,14 +319,6 @@ function upcloo_model_to_xml($model)
 }
 
 function upcloo_install() {
-    $tablename = $wpdb->prefix . "posts";
-    
-    $query = "ALTER TABLE  `{$tablename}` ADD  `" . UPCLOO_COLUMN_NAME . "` TINYINT( 1 ) NOT NULL DEFAULT 0;";
-    
-    //Execute the update
-    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');    
-    dbDelta($query);
-    
     /* Creates new database field */
     add_option("upcloo_userkey", "", "", "yes");
     add_option("upcloo_sitekey", "", "", "yes");
@@ -381,8 +373,12 @@ function upcloo_general_option_page() {
  */
 function upcloo_content($content) {
     global $post;
-
+    global $current_user;
+    get_currentuserinfo();
+    
     $original = $content;
+    
+    $upClooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
     
     /**
      * Check if the content is single
@@ -390,20 +386,14 @@ function upcloo_content($content) {
      * Use a filter login to perform this kind of selection
      */
     if (is_single($post) || (is_page($post) && get_option("upcloo_show_on_page") == "1")) {
-        
+
         /**
          * If not sent to upcloo send it and store the result.
          */
-        if (!$post["upcloo"]) {
-            die("OK");
-            upcloo_content_sync($post["ID"]);
-            
-            //Store that is ok
-            $upost = array();
-            $upost["ID"] = $post["ID"];
-            $upost["upcloo"] = 1;
-            
-            wp_update_post($upost);
+        if (!$current_user->id && $upClooMeta == '') {
+            upcloo_content_sync($post->ID);
+
+            update_post_meta($post->ID, UPCLOO_POST_META, "1", $upClooMeta);
         }
         
         //Get it 
@@ -470,7 +460,6 @@ function upcloo_get_from_repository($name, $endPointURL = false)
     curl_setopt($ch, CURLOPT_URL,            $endPointURL);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
     curl_setopt($ch, CURLOPT_POST,           1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,     $xml); 
     curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "GET");
     curl_setopt($ch, CURLOPT_ENCODING ,      "gzip");
