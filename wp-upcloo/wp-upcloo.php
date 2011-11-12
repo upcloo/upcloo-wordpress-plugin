@@ -68,7 +68,7 @@ add_filter('manage_posts_columns', 'upcloo_my_columns');
 add_action('manage_posts_custom_column',  'upcloo_my_show_columns');
 
 function upcloo_my_columns($columns) {
-    $columns['upcloo'] = UPCLOO_CLOUD_IMAGE;
+    $columns['upcloo'] = "UpCloo";
     return $columns;
 }
 
