@@ -30,6 +30,7 @@ License: MIT
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)));
 
 require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
 
@@ -159,8 +160,6 @@ register_deactivation_hook(__FILE__, 'upcloo_remove');
  * Intialize the plugin
  */
 function upcloo_init() {
-    load_plugin_textdomain('wp_upcloo', false, basename(dirname(__FILE__)));
-
     if (current_user_can("edit_posts") || current_user_can('publish_posts')) {
         //add_action('publish_post', 'upcloo_content_sync');
         add_action('edit_post', 'upcloo_content_sync');
