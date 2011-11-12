@@ -74,7 +74,7 @@ function upcloo_my_columns($columns)
 {
     $columns['upcloo'] = "UpCloo";
     
-    if ($_GET["upcloo-reindex"]) {
+    if ($_GET["upcloo"] == 'reindex') {
         upcloo_content_sync($_GET["post"]);
     }
     
@@ -86,7 +86,7 @@ function upcloo_my_show_columns($name) {
     switch ($name) {
         case 'upcloo':
             $upclooSent = get_post_meta($post->ID, UPCLOO_POST_META, true);
-            echo "<a href='?post={$post->ID}&edit=upcloo-reindex'>" . (($upclooSent == '1') ? UPCLOO_CLOUD_IMAGE : UPCLOO_NOT_CLOUD_IMAGE) . '</a>';
+            echo "<a href='?post={$post->ID}&upcloo=reindex'>" . (($upclooSent == '1') ? UPCLOO_CLOUD_IMAGE : UPCLOO_NOT_CLOUD_IMAGE) . '</a>';
             break;
     }
 }
