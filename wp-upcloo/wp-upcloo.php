@@ -60,7 +60,6 @@ add_filter( 'the_content', 'upcloo_content' );
 add_filter('admin_footer_text', "upcloo_admin_footer");
 
 //add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
-
 //add_widget("UpCloo_Widget_Partner");
 
 add_action( 'widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");' ) );
@@ -224,7 +223,7 @@ function upcloo_remove_post_sync($pid)
 function upcloo_content_sync($pid)
 {
     $post = get_post($pid); 
-
+    
     /* Check if the content must be indexed */
     if (
         ($post->post_type == UPCLOO_POST && get_option("upcloo_index_post") == "1") ||
@@ -266,6 +265,11 @@ function upcloo_content_sync($pid)
                     "tags" => array()
                 )
             );
+            
+            $image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
+            if ($image) {
+                $model["model"]['image'] = $image[0];
+            }
 
             if ($categories) {
                 foreach ($categories as $category) {
