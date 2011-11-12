@@ -49,6 +49,9 @@ define("UPCLOO_RSS_FEED", "http://www.mxdesign.it/contenuti/rss/0/news.xml");
 
 define("UPCLOO_POST_META", "upcloo_post_sent");
 
+define("UPCLOO_CLOUD_IMAGE", '<img src="'.WP_PLUGIN_URL.'/wp-upcloo/upcloo.png" src="UpCloo" />');
+define("UPCLOO_NOT_CLOUD_IMAGE", '<img src="'.WP_PLUGIN_URL.'/wp-upcloo/warn.png" src="UpCloo" />');
+
 add_action("admin_init", "upcloo_init");
 
 add_filter( 'the_content', 'upcloo_content' );
@@ -61,8 +64,25 @@ add_filter('admin_footer_text', "upcloo_admin_footer");
 
 add_action( 'widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");' ) );
 
-// Create the function to output the contents of our Dashboard Widget
+add_filter('manage_posts_columns', 'upcloo_my_columns');
+add_action('manage_posts_custom_column',  'upcloo_my_show_columns');
 
+function upcloo_my_columns($columns) {
+    $columns['upcloo'] = UPCLOO_CLOUD_IMAGE;
+    return $columns;
+}
+
+function upcloo_my_show_columns($name) {
+    global $post;
+    switch ($name) {
+        case 'upcloo':
+            $upclooSent = get_post_meta($post->ID, UPCLOO_POST_META, true);
+            echo (($upclooSent == '1') ? UPCLOO_CLOUD_IMAGE : UPCLOO_NOT_CLOUD_IMAGE);
+            break;
+    }
+}
+
+// Create the function to output the contents of our Dashboard Widget
 function upcloo_dashboard_widget_function() {
     // Display whatever it is you want to show
     $xml = simplexml_load_file(UPCLOO_RSS_FEED);
