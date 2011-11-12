@@ -47,6 +47,8 @@ define("UPCLOO_POST", "post");
 
 define("UPCLOO_RSS_FEED", "http://www.mxdesign.it/contenuti/rss/0/news.xml");
 
+define("UPCLOO_COLUMN_NAME", "upcloo");
+
 add_action("admin_init", "upcloo_init");
 
 add_filter( 'the_content', 'upcloo_content' );
@@ -188,6 +190,8 @@ function upcloo_remove_post_sync($pid)
  
 /**
  * Mantain updated the contents
+ * 
+ * @param int $pid The content PID
  */
 function upcloo_content_sync($pid)
 {
@@ -315,6 +319,14 @@ function upcloo_model_to_xml($model)
 }
 
 function upcloo_install() {
+    $tablename = $wpdb->prefix . "posts";
+    
+    $query = "ALTER TABLE  `{$tablename}` ADD  `" . UPCLOO_COLUMN_NAME . "` TINYINT( 1 ) NOT NULL DEFAULT 0;";
+    
+    //Execute the update
+    require_once(ABSPATH . 'wp-admin/includes/upgrade.php');    
+    dbDelta($query);
+    
     /* Creates new database field */
     add_option("upcloo_userkey", "", "", "yes");
     add_option("upcloo_sitekey", "", "", "yes");
@@ -371,13 +383,29 @@ function upcloo_content($content) {
     global $post;
 
     $original = $content;
-
+    
     /**
      * Check if the content is single
      *
      * Use a filter login to perform this kind of selection
      */
     if (is_single($post) || (is_page($post) && get_option("upcloo_show_on_page") == "1")) {
+        
+        /**
+         * If not sent to upcloo send it and store the result.
+         */
+        if (!$post["upcloo"]) {
+            die("OK");
+            upcloo_content_sync($post["ID"]);
+            
+            //Store that is ok
+            $upost = array();
+            $upost["ID"] = $post["ID"];
+            $upost["upcloo"] = 1;
+            
+            wp_update_post($upost);
+        }
+        
         //Get it 
         $listOfModels = upcloo_get_from_repository($post->post_type . "_" . $post->ID);
         
