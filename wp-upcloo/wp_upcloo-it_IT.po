@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-13 09:22+0100\n"
-"PO-Revision-Date: 2011-11-13 09:23+0100\n"
+"POT-Creation-Date: 2011-11-13 10:47+0100\n"
+"PO-Revision-Date: 2011-11-13 10:47+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:411
+#: wp-upcloo.php:430
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -70,8 +70,8 @@ msgid "(eg. You account password [blank for security reasons])"
 msgstr "(es. La tua password UpCloo [non visibile per sicurezza])"
 
 #: general-options.php:61
-#: general-options.php:117
-#: general-options.php:165
+#: general-options.php:125
+#: general-options.php:173
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -121,75 +121,83 @@ msgstr "Massimo numero di link"
 msgid "Let blank for all"
 msgstr "Lascia in bianco per tutti"
 
-#: general-options.php:121
+#: general-options.php:113
+msgid "Default Language"
+msgstr "Lingua di default"
+
+#: general-options.php:117
+msgid "it (italian), en (english), etc..."
+msgstr "it (italiano), en (inglese), etc..."
+
+#: general-options.php:129
 msgid "ROI Monitor Parameters"
 msgstr "Parametri per il Monitor ROI"
 
-#: general-options.php:123
+#: general-options.php:131
 msgid "Consider that you have Google Analytics Tracker script activated and visibile on your pages or almost where UpCloo is engaged."
 msgstr "Considera che devi avere il Tracker Google Analytics attivo e visibile sulle tue pagine o almeno dove viene attivato UpCloo."
 
-#: general-options.php:130
+#: general-options.php:138
 #, fuzzy
 msgid "Enable UTM Tagging"
 msgstr "Abilita il Tagging UTM"
 
-#: general-options.php:138
+#: general-options.php:146
 msgid "Enter base UTM Campaign"
 msgstr "Inserisci la campagna base UTM"
 
-#: general-options.php:141
+#: general-options.php:149
 msgid "(eg. upcloo-check)"
 msgstr "(es. upcloo-check)"
 
-#: general-options.php:145
+#: general-options.php:153
 msgid "Enter base UTM Medium"
 msgstr "Inserisci il media UTM"
 
-#: general-options.php:148
+#: general-options.php:156
 msgid "(eg. mywebsite)"
 msgstr "(es. ilmiosito)"
 
-#: general-options.php:152
+#: general-options.php:160
 #, fuzzy
 msgid "Enter base UTM Source"
 msgstr "Sorgente UTM"
 
-#: general-options.php:155
+#: general-options.php:163
 msgid "(eg. upcloo-base-links)"
 msgstr "(es. upcloo-base-links)"
 
-#: wp-upcloo.php:113
+#: wp-upcloo.php:120
 #, fuzzy
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo"
 
-#: wp-upcloo.php:129
-#: wp-upcloo.php:135
+#: wp-upcloo.php:132
+#: wp-upcloo.php:138
 msgid "UpCloo Language Definer"
 msgstr "Lingua (i18n) per UpCloo"
 
-#: wp-upcloo.php:148
+#: wp-upcloo.php:155
 msgid "Select the language of your article/page"
 msgstr "Seleziona la lingua del tuo articolo/pagina"
 
-#: wp-upcloo.php:157
+#: wp-upcloo.php:162
 msgid "Italian"
 msgstr "Italiano"
 
-#: wp-upcloo.php:158
+#: wp-upcloo.php:163
 msgid "English"
 msgstr "Inglese"
 
-#: wp-upcloo.php:411
+#: wp-upcloo.php:430
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
 
-#: wp-upcloo.php:417
+#: wp-upcloo.php:436
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:462
+#: wp-upcloo.php:481
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
