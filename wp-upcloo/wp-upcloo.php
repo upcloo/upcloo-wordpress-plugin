@@ -82,10 +82,19 @@ function upcloo_my_columns($columns)
 
 function upcloo_my_show_columns($name) {
     global $post;
+    
     switch ($name) {
         case 'upcloo':
             $upclooSent = get_post_meta($post->ID, UPCLOO_POST_META, true);
-            echo "<a href='?post={$post->ID}&upcloo=reindex'>" . (($upclooSent == '1') ? UPCLOO_CLOUD_IMAGE : UPCLOO_NOT_CLOUD_IMAGE) . '</a>';
+            $image = (($upclooSent == '1') ? UPCLOO_CLOUD_IMAGE : UPCLOO_NOT_CLOUD_IMAGE);
+            
+            //Only how can edit pages can send to upcloo...
+            if (current_user_can("edit_posts") || current_user_can('edit_pages')) {
+                echo "<a href='?post={$post->ID}&upcloo=reindex'>" . $image . '</a>';
+            } else {
+                echo $image;
+            }
+            
             break;
     }
 }
