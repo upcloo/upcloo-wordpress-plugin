@@ -247,6 +247,7 @@ function upcloo_remove_post_sync($pid)
 function upcloo_content_sync($pid)
 {
     $post = get_post($pid); 
+    $language = get_post_meta($post->ID, UPCLOO_META_LANG, true);
     
     /* Check if the content must be indexed */
     if (
@@ -294,7 +295,11 @@ function upcloo_content_sync($pid)
             if ($image) {
                 $model["model"]['image'] = $image[0];
             }
-
+            
+            if ($language != '') {
+                $model["model"]["lang"] = $language;
+            }
+ 
             if ($categories) {
                 foreach ($categories as $category) {
                     $model["model"]["categories"][] = $category->name;
@@ -330,7 +335,7 @@ function upcloo_send_content($model)
     $endPointURL = sprintf(UPCLOO_UPDATE_END_POINT, $userKey);
 
     $xml = upcloo_model_to_xml($model);
-
+    
     /* raw post on curl module */
     $ch = curl_init();
 
@@ -367,7 +372,7 @@ function upcloo_model_to_xml($model)
                 $xml .= "<{$key}>" . upcloo_model_to_xml($value) . "</{$key}>";
             }   
         }
-
+        
         return $xml;
     }
 }
