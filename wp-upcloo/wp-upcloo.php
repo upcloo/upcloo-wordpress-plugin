@@ -37,39 +37,37 @@ require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
 //Only secure protocol on post/page publishing (now is beta test... no https)
 define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.com");
 define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
-
 define("UPCLOO_POST_PUBLISH", "publish");
 define("UPCLOO_POST_TRASH", "trash");
-
 define("UPCLOO_USER_AGENT", "WPUpCloo/1.0");
-
 define("UPCLOO_PAGE", "page");
 define("UPCLOO_POST", "post");
-
 define("UPCLOO_RSS_FEED", "http://www.mxdesign.it/contenuti/rss/0/news.xml");
-
 define("UPCLOO_POST_META", "upcloo_post_sent");
-
 define("UPCLOO_CLOUD_IMAGE", '<img src="'.WP_PLUGIN_URL.'/wp-upcloo/upcloo.png" src="UpCloo" />');
 define("UPCLOO_NOT_CLOUD_IMAGE", '<img src="'.WP_PLUGIN_URL.'/wp-upcloo/warn.png" src="UpCloo" />');
-
 define("UPCLOO_DEFAULT_LANG", "upcloo_default_language");
+define('UPCLOO_META_LANG', 'upcloo_language_field');
 
 add_action("admin_init", "upcloo_init");
+add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
+add_action( 'widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");' ) );
+add_action('manage_posts_custom_column',  'upcloo_my_show_columns');
+add_action('manage_pages_custom_column',  'upcloo_my_show_columns');
+add_action('save_post', 'upcloo_save_data');
+add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
 
 add_filter( 'the_content', 'upcloo_content' );
-
 add_filter('admin_footer_text', "upcloo_admin_footer");
-
-add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
-
-add_action( 'widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");' ) );
-
-add_filter('manage_posts_columns', 'upcloo_my_columns');
-add_action('manage_posts_custom_column',  'upcloo_my_show_columns');
-
 add_filter('manage_pages_columns', 'upcloo_my_columns');
-add_action('manage_pages_custom_column',  'upcloo_my_show_columns');
+add_filter('manage_posts_columns', 'upcloo_my_columns');
+
+
+/* Runs when plugin is activated */
+register_activation_hook(__FILE__, 'upcloo_install');
+
+/* Runs on plugin deactivation*/
+register_deactivation_hook(__FILE__, 'upcloo_remove');
 
 function upcloo_my_columns($columns) 
 {
@@ -113,10 +111,6 @@ function upcloo_add_dashboard_widgets() {
     wp_add_dashboard_widget('upcloo_dashboard_widget', __('UpCloo News Widget'), 'upcloo_dashboard_widget_function');
 }
 
-// Hook into the 'wp_dashboard_setup' action to register our other functions
-
-add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
-
 function upcloo_admin_footer($text)
 {
     return $text . " • <span><a target=\"_blank\" href='http://www.upcloo.com'>UpCloo Inside<a></span>";
@@ -125,13 +119,13 @@ function upcloo_admin_footer($text)
 /* Adds a box to the main column on the Post and Page edit screens */
 function upcloo_add_custom_box() {
    add_meta_box( 
-       'upcloo_language',
+       'upcloo_language_metabox',
        __( 'UpCloo Language Definer', 'wp_upcloo' ),
        'upcloo_inner_custom_box',
       'post' 
    );
   add_meta_box(
-       'myplugin_sectionid',
+       'upcloo_language_metabox',
       __( 'UpCloo Language Definer', 'wp_upcloo' ), 
        'upcloo_inner_custom_box',
        'page'
@@ -140,58 +134,69 @@ function upcloo_add_custom_box() {
 
 function upcloo_inner_custom_box()
 {
-   // Use nonce for verification
-   wp_nonce_field( plugin_basename( __FILE__ ), 'upcloo_noncename' );
+    global $post;
 
-   //The actual fields for data entry
-   echo '<label for="upcloo_lanaguage_custom_field">';
-   _e("Select the language of your article/page", 'wp_upcloo' );
-   echo '</label> ';
-   $selectBoxHTML = '<select name="upcloo_language_field">%s</select>';
+    $metadataLang = get_post_meta($post->ID, UPCLOO_META_LANG, true);
+    
+    // Use nonce for verification
+    wp_nonce_field( plugin_basename( __FILE__ ), 'upcloo_language_metabox_nonce' );
+
+    //The actual fields for data entry
+    echo '<label for="'.UPCLOO_META_LANG.'">';
+    _e("Select the language of your article/page", 'wp_upcloo' );
+    echo '</label> ';
+    $selectBoxHTML = '<select name="'.UPCLOO_META_LANG.'">%s</select>';
    
-   //TODO: move to conf...
+    $defaultLang = ($metadataLang != '') ? $metadataLang : get_option(UPCLOO_DEFAULT_LANG);
    
-   $defaultLang = get_option(UPCLOO_DEFAULT_LANG);
+    $languages = array(
+    	'it' => __('Italian', 'wp_upcloo'),
+    	'en' => __('English', 'wp_upcloo')
+    );
    
-   $languages = array(
-       'it' => __('Italian', 'wp_upcloo'),
-       'en' => __('English', 'wp_upcloo')
-   );
+    $options = '';
+    foreach ($languages as $code => $language) {
+        $options .= '<option value="'.$code.'" '.(($code == $defaultLang) ? 'selected="selected"' : '').'>' .__($language, 'wp_upcloo') . '</option>';
+    }
    
-   $options = '';
-   foreach ($languages as $code => $language) {
-       $options .= '<option value="'.$code.'" '.(($code == $defaultLang) ? 'selected="selected"' : '').'>' .__($language, 'wp_upcloo') . '</option>';
-   }
+    $selectBoxHTML = sprintf($selectBoxHTML, $options);
    
-   $selectBoxHTML = sprintf($selectBoxHTML, $options);
-   
-   echo $selectBoxHTML;
+    echo $selectBoxHTML;
 }
-
-/* Runs when plugin is activated */
-register_activation_hook(__FILE__, 'upcloo_install'); 
-
-/* Runs on plugin deactivation*/
-register_deactivation_hook(__FILE__, 'upcloo_remove');
 
 /**
  * Intialize the plugin
  */
 function upcloo_init() {
-    if (current_user_can("edit_posts") || current_user_can('publish_posts')) {
-        //add_action('publish_post', 'upcloo_content_sync');
-        add_action('edit_post', 'upcloo_content_sync');
-    }
+    
+//     if (current_user_can("edit_posts") || current_user_can('publish_posts')) {
+//         //add_action('publish_post', 'upcloo_content_sync');
+//         add_action('edit_post', 'upcloo_content_sync');
+//     }
 
     /* When a page is published */
-    if (current_user_can('publish_pages')) {
-        add_action('publish_page', 'upcloo_content_sync');
-    }
+//     if (current_user_can('publish_pages')) {
+//         add_action('publish_page', 'upcloo_content_sync');
+//     }
 
     /* Engaged on delete post */
-    if (current_user_can('delete_posts')) {
-        //add_action('delete_post', 'upcloo_remove_post_sync');
-        add_action('trash_post', 'upcloo_remove_post_sync');
+//     if (current_user_can('delete_posts')) {
+//         //add_action('delete_post', 'upcloo_remove_post_sync');
+//         add_action('trash_post', 'upcloo_remove_post_sync');
+//     }
+}
+
+function upcloo_save_data($post_id)
+{
+    global $meta_box;
+
+    $new = $_POST[UPCLOO_META_LANG];
+    $old = get_post_meta($post_id, UPCLOO_META_LANG, true);
+    
+    if ('' == $new && $old) {
+        delete_post_meta($post_id, $new, $old);
+    } else {
+        update_post_meta($post_id, UPCLOO_META_LANG, $new);
     }
 }
 
