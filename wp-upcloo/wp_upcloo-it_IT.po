@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-06 18:00+0100\n"
-"PO-Revision-Date: 2011-11-06 18:03+0100\n"
+"POT-Creation-Date: 2011-11-13 09:22+0100\n"
+"PO-Revision-Date: 2011-11-13 09:23+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:359
+#: wp-upcloo.php:411
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -159,20 +159,37 @@ msgstr "Sorgente UTM"
 msgid "(eg. upcloo-base-links)"
 msgstr "(es. upcloo-base-links)"
 
-#: wp-upcloo.php:84
+#: wp-upcloo.php:113
 #, fuzzy
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo"
 
-#: wp-upcloo.php:359
+#: wp-upcloo.php:129
+#: wp-upcloo.php:135
+msgid "UpCloo Language Definer"
+msgstr "Lingua (i18n) per UpCloo"
+
+#: wp-upcloo.php:148
+msgid "Select the language of your article/page"
+msgstr "Seleziona la lingua del tuo articolo/pagina"
+
+#: wp-upcloo.php:157
+msgid "Italian"
+msgstr "Italiano"
+
+#: wp-upcloo.php:158
+msgid "English"
+msgstr "Inglese"
+
+#: wp-upcloo.php:411
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
 
-#: wp-upcloo.php:365
+#: wp-upcloo.php:417
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:397
+#: wp-upcloo.php:462
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
