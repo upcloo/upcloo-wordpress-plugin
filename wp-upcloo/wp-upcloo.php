@@ -68,7 +68,22 @@ register_activation_hook(__FILE__, 'upcloo_install');
 
 /* Runs on plugin deactivation*/
 register_deactivation_hook(__FILE__, 'upcloo_remove');
-
+function upcloo_add_force_content_send_link()
+{
+    global $post_ID;
+    $post = get_post( $post_ID );
+    
+    if ($post->post_status == 'publish') :
+        $upclooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
+    ?>
+    <div id="upcloo-box-publish" class="misc-pub-section" style="border-top-style:solid; border-top-width:1px; border-bottom-width:0px;">
+    	UpCloo: <strong><?php echo (($upclooMeta != '') ? _e("Indexed", "wp_upcloo") : _e("Not Indexed", "wp_upcloo"));?></strong> 
+    		<a class="submitdelete deletion" href="/wp-admin/edit.php?post=<?php echo $post->ID; ?>&upcloo=reindex"><?php (($upclooMeta != '') ? _e("ReIndex NOW", "wp_upcloo") : _e("Index NOW", "wp_upcloo"));?></a>
+    </div>
+    <?php 
+    endif;
+}
+add_action( 'post_submitbox_misc_actions', 'upcloo_add_force_content_send_link' );
 function upcloo_my_columns($columns) 
 {
     $columns['upcloo'] = "UpCloo";
@@ -247,8 +262,10 @@ function upcloo_remove_post_sync($pid)
         curl_close($ch);
 
         if (is_array($headers) && $headers["http_code"] != 200) {
-            //TODO: show the error.
+            return false;
         }
+        
+        return true;
     }
 }
  
