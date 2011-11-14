@@ -74,7 +74,11 @@ function upcloo_my_columns($columns)
     $columns['upcloo'] = "UpCloo";
     
     if ($_GET["upcloo"] == 'reindex') {
-        upcloo_content_sync($_GET["post"]);
+        $upClooMeta = get_post_meta($_GET["post"], UPCLOO_POST_META, true);
+        
+        if (upcloo_content_sync($_GET["post"])) {
+            update_post_meta($post->ID, UPCLOO_POST_META, "1", $upClooMeta);
+        }
     }
     
     return $columns;
@@ -252,6 +256,7 @@ function upcloo_remove_post_sync($pid)
  * Mantain updated the contents
  * 
  * @param int $pid The content PID
+ * @return boolean if the content is indexed.
  */
 function upcloo_content_sync($pid)
 {
