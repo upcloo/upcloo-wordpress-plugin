@@ -77,7 +77,7 @@ function upcloo_my_columns($columns)
         $upClooMeta = get_post_meta($_GET["post"], UPCLOO_POST_META, true);
         
         if (upcloo_content_sync($_GET["post"])) {
-            update_post_meta($post->ID, UPCLOO_POST_META, "1", $upClooMeta);
+            update_post_meta($_GET["post"], UPCLOO_POST_META, "1", $upClooMeta);
         }
     }
     
