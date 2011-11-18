@@ -61,6 +61,36 @@
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" onclick="javascript:confirmThat()" />
         </p>
     </form>
+    
+    <h3 if="upcloo-enable-vsitekey"><?php _e("Use virtual sitekey as main", "wp_upcloo"); ?></h3>
+    <form method="post" action="options.php#upcloo-enable-vsitekey">
+    	<?php wp_nonce_field('update-options'); ?>
+    	<table class="form-table" >
+        	 <tr valign="top">
+                <th width="92" scope="row"><?php _e("Switch keys", "wp_upcloo");?></th>
+                <td width="406">
+                    <?php $index_post = get_option("upcloo_enable_vsitekey_as_primary");?>
+                    <input type="checkbox" name="upcloo_enable_vsitekey_as_primary" value="1" <?php checked("1" == $index_post); ?> />
+                    <strong><?php _e("Enable virtual sitekey as primary sitekey", "wp_upcloo");?></strong>
+                </td>
+            </tr>
+            <tr valign="top">
+                <th width="92" scope="row"><?php _e("Virtual Sitekey", "wp_upcloo");?></th>
+                <td width="406">
+                    <?php $index_post = get_option("upcloo_vsitekey_as_primary");?>
+                    <input type="text" name="upcloo_vsitekey_as_primary" value="<?php echo $index_post ?>" />
+                    <strong><?php _e("Virtual sitekey", "wp_upcloo");?></strong>
+                </td>
+            </tr>
+        </table>
+        
+        <input type="hidden" name="action" value="update" />
+        <input type="hidden" name="page_options" value="upcloo_vsitekey_as_primary,upcloo_enable_vsitekey_as_primary" />
+
+        <p class="submit">
+            <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+        </p>
+    </form>
 
     <h3 id="upcloo-other-features"><?php _e("Other features", "wp_upcloo");?></h3>
     <form method="post" action="options.php#upcloo-other-features">

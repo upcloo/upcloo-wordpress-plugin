@@ -543,8 +543,14 @@ function upcloo_get_from_repository($name, $endPointURL = false)
 {
     if ($endPointURL === false) {
         $endPointURL = sprintf(UPCLOO_REPOSITORY_END_POINT, get_option("upcloo_sitekey"));
+        if (get_option('upcloo_enable_vsitekey_as_primary') && get_option('upcloo_enable_vsitekey_as_primary') == 1) {
+            $endPointURL = sprintf(UPCLOO_REPOSITORY_END_POINT, get_option("upcloo_sitekey"));
+            $endPointURL  .= "/" . get_option("upcloo_vsitekey_as_primary");
+        } 
         $endPointURL .= "/{$name}.xml";
     }
+    
+    die(var_dump($endPointURL));
 
     $ch = curl_init();
 
