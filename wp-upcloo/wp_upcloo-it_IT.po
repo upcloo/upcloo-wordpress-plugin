@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-13 10:47+0100\n"
-"PO-Revision-Date: 2011-11-13 10:47+0100\n"
+"POT-Creation-Date: 2011-11-18 21:03+0100\n"
+"PO-Revision-Date: 2011-11-18 21:05+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:430
+#: wp-upcloo.php:452
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -70,134 +70,175 @@ msgid "(eg. You account password [blank for security reasons])"
 msgstr "(es. La tua password UpCloo [non visibile per sicurezza])"
 
 #: general-options.php:61
-#: general-options.php:125
-#: general-options.php:173
+#: general-options.php:91
+#: general-options.php:155
+#: general-options.php:203
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
 #: general-options.php:65
+msgid "Use virtual sitekey as main"
+msgstr "Usa un virtual sitekey come primaria"
+
+#: general-options.php:70
+msgid "Switch keys"
+msgstr "Scambia le chiavi"
+
+#: general-options.php:74
+msgid "Enable virtual sitekey as primary sitekey"
+msgstr "Abilita una virtual sitekey come se fosse primaria"
+
+#: general-options.php:78
+#, fuzzy
+msgid "Virtual Sitekey"
+msgstr "Inserisci la tua Chiave Sito Virtuale (Partner)"
+
+#: general-options.php:82
+#, fuzzy
+msgid "Virtual sitekey"
+msgstr "Partner Virtuale:"
+
+#: general-options.php:95
 msgid "Other features"
 msgstr "Altre Funzionalità"
 
-#: general-options.php:71
-#: general-options.php:75
+#: general-options.php:101
+#: general-options.php:105
 msgid "Index Posts"
 msgstr "Indicizza i Post"
 
-#: general-options.php:78
-#: general-options.php:82
+#: general-options.php:108
+#: general-options.php:112
 msgid "Index Pages"
 msgstr "Indicizza le Pagine"
 
-#: general-options.php:85
+#: general-options.php:115
 msgid "Use Categories during Indexing"
 msgstr "Use le categorie durante l'indicizzazione"
 
-#: general-options.php:89
+#: general-options.php:119
 msgid "Use categories during index creation"
 msgstr "Usa le categorie durante l'indicizzazione"
 
-#: general-options.php:92
+#: general-options.php:122
 msgid "Use Tags during Indexing"
 msgstr "Usa i Tag durante l'indicizzazione"
 
-#: general-options.php:96
+#: general-options.php:126
 msgid "Use tags during index creation"
 msgstr "Usa i Tag durante la creazione dell'indice"
 
-#: general-options.php:99
+#: general-options.php:129
 msgid "Show also in pages"
 msgstr "Mostra anche nelle Pagine"
 
-#: general-options.php:103
+#: general-options.php:133
 msgid "Show related contents on pages"
 msgstr "Mostra i correlati nelle Pagine"
 
-#: general-options.php:106
+#: general-options.php:136
 msgid "Max Number of Links"
 msgstr "Massimo numero di link"
 
-#: general-options.php:110
+#: general-options.php:140
 msgid "Let blank for all"
 msgstr "Lascia in bianco per tutti"
 
-#: general-options.php:113
+#: general-options.php:143
 msgid "Default Language"
 msgstr "Lingua di default"
 
-#: general-options.php:117
+#: general-options.php:147
 msgid "it (italian), en (english), etc..."
 msgstr "it (italiano), en (inglese), etc..."
 
-#: general-options.php:129
+#: general-options.php:159
 msgid "ROI Monitor Parameters"
 msgstr "Parametri per il Monitor ROI"
 
-#: general-options.php:131
+#: general-options.php:161
 msgid "Consider that you have Google Analytics Tracker script activated and visibile on your pages or almost where UpCloo is engaged."
 msgstr "Considera che devi avere il Tracker Google Analytics attivo e visibile sulle tue pagine o almeno dove viene attivato UpCloo."
 
-#: general-options.php:138
+#: general-options.php:168
 #, fuzzy
 msgid "Enable UTM Tagging"
 msgstr "Abilita il Tagging UTM"
 
-#: general-options.php:146
+#: general-options.php:176
 msgid "Enter base UTM Campaign"
 msgstr "Inserisci la campagna base UTM"
 
-#: general-options.php:149
+#: general-options.php:179
 msgid "(eg. upcloo-check)"
 msgstr "(es. upcloo-check)"
 
-#: general-options.php:153
+#: general-options.php:183
 msgid "Enter base UTM Medium"
 msgstr "Inserisci il media UTM"
 
-#: general-options.php:156
+#: general-options.php:186
 msgid "(eg. mywebsite)"
 msgstr "(es. ilmiosito)"
 
-#: general-options.php:160
+#: general-options.php:190
 #, fuzzy
 msgid "Enter base UTM Source"
 msgstr "Sorgente UTM"
 
-#: general-options.php:163
+#: general-options.php:193
 msgid "(eg. upcloo-base-links)"
 msgstr "(es. upcloo-base-links)"
 
-#: wp-upcloo.php:120
+#: wp-upcloo.php:80
+#, fuzzy
+msgid "Indexed"
+msgstr "Indicizza le Pagine"
+
+#: wp-upcloo.php:80
+msgid "Not Indexed"
+msgstr "Non indicizzato"
+
+#: wp-upcloo.php:81
+msgid "ReIndex NOW"
+msgstr "Reindicizza subito"
+
+#: wp-upcloo.php:81
+#, fuzzy
+msgid "Index NOW"
+msgstr "Indicizza i Post"
+
+#: wp-upcloo.php:139
 #, fuzzy
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo"
 
-#: wp-upcloo.php:132
-#: wp-upcloo.php:138
+#: wp-upcloo.php:151
+#: wp-upcloo.php:157
 msgid "UpCloo Language Definer"
 msgstr "Lingua (i18n) per UpCloo"
 
-#: wp-upcloo.php:155
+#: wp-upcloo.php:174
 msgid "Select the language of your article/page"
 msgstr "Seleziona la lingua del tuo articolo/pagina"
 
-#: wp-upcloo.php:162
+#: wp-upcloo.php:181
 msgid "Italian"
 msgstr "Italiano"
 
-#: wp-upcloo.php:163
+#: wp-upcloo.php:182
 msgid "English"
 msgstr "Inglese"
 
-#: wp-upcloo.php:430
+#: wp-upcloo.php:452
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
 
-#: wp-upcloo.php:436
+#: wp-upcloo.php:458
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:481
+#: wp-upcloo.php:503
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
@@ -240,9 +281,6 @@ msgstr "Supporto UTM"
 #: UpCloo/Widget/Partner.php:49
 msgid "UTM Source:"
 msgstr "Sorgente UTM"
-
-#~ msgid "Here your Virtual Site Key"
-#~ msgstr "Inserisci la tua Chiave Sito Virtuale (Partner)"
 
 #~ msgid "0"
 #~ msgstr "0"
