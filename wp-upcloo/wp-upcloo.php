@@ -550,8 +550,6 @@ function upcloo_get_from_repository($name, $endPointURL = false)
         $endPointURL .= "/{$name}.xml";
     }
     
-    die(var_dump($endPointURL));
-
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_URL,            $endPointURL);
