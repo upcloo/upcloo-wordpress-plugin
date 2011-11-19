@@ -500,7 +500,13 @@ function upcloo_content($content) {
             }
             
             $content .= "<div class=\"upcloo-related-contents\">";
-            $content .= "<h2>" . __("Maybe you are interested at", "wp_upcloo") . ":</h2>";
+            
+            //User override the default label
+            if (trim(get_option('upcloo_rewrite_public_label')) == '') {
+                $content .= "<h2>" . __("Maybe you are interested at", "wp_upcloo") . ":</h2>";
+            } else {
+                $content .= '<h2>' . get_option('upcloo_rewrite_public_label') . '</h2>';
+            }
             $content .= "<ul>";
             $index = 0;
             $maxContents = get_option("upcloo_max_show_links")/1;

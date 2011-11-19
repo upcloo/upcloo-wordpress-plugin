@@ -146,10 +146,17 @@
                     <input name="<?php echo UPCLOO_DEFAULT_LANG?>" type="text" value="<?php echo get_option(UPCLOO_DEFAULT_LANG, ""); ?>" />
                     <strong><?php _e("it (italian), en (english), etc...", "wp_uplcoo");?></strong></td>
 			</tr>
+			<tr valign="top">
+                <th width="92" scope="row"><?php _e("Rewrite public UpCloo label", "wp_upcloo");?></th>
+                <td width="406">
+                    <?php $show_on_page = get_option("upcloo_rewrite_public_label");?>
+                    <input name="upcloo_rewrite_public_label" type="text" value="<?php echo get_option('upcloo_rewrite_public_label', ""); ?>" />
+                    <strong><?php _e("Let blank for use default label (May be you are interested at)", "wp_uplcoo");?></strong></td>
+			</tr>
         </table>
 
         <input type="hidden" name="action" value="update" />
-        <input type="hidden" name="page_options" value="upcloo_index_category,upcloo_index_tag,upcloo_index_page,upcloo_index_post,upcloo_show_on_page,upcloo_max_show_links,upcloo_default_language" />
+        <input type="hidden" name="page_options" value="upcloo_index_category,upcloo_index_tag,upcloo_index_page,upcloo_index_post,upcloo_show_on_page,upcloo_max_show_links,upcloo_default_language,upcloo_rewrite_public_label" />
 
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />

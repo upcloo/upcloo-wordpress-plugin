@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-18 21:03+0100\n"
-"PO-Revision-Date: 2011-11-18 21:05+0100\n"
+"POT-Creation-Date: 2011-11-19 15:25+0100\n"
+"PO-Revision-Date: 2011-11-19 15:25+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -71,8 +71,8 @@ msgstr "(es. La tua password UpCloo [non visibile per sicurezza])"
 
 #: general-options.php:61
 #: general-options.php:91
-#: general-options.php:155
-#: general-options.php:203
+#: general-options.php:162
+#: general-options.php:210
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -152,41 +152,49 @@ msgstr "Lingua di default"
 msgid "it (italian), en (english), etc..."
 msgstr "it (italiano), en (inglese), etc..."
 
-#: general-options.php:159
+#: general-options.php:150
+msgid "Rewrite public UpCloo label"
+msgstr "Riscrivi l'etichetta pubblica di UpCloo"
+
+#: general-options.php:154
+msgid "Let blank for use default label (May be you are interested at)"
+msgstr "Lascia in bianco per usare l'etichetta di default (Forse ti potrebbero interessare)"
+
+#: general-options.php:166
 msgid "ROI Monitor Parameters"
 msgstr "Parametri per il Monitor ROI"
 
-#: general-options.php:161
+#: general-options.php:168
 msgid "Consider that you have Google Analytics Tracker script activated and visibile on your pages or almost where UpCloo is engaged."
 msgstr "Considera che devi avere il Tracker Google Analytics attivo e visibile sulle tue pagine o almeno dove viene attivato UpCloo."
 
-#: general-options.php:168
+#: general-options.php:175
 #, fuzzy
 msgid "Enable UTM Tagging"
 msgstr "Abilita il Tagging UTM"
 
-#: general-options.php:176
+#: general-options.php:183
 msgid "Enter base UTM Campaign"
 msgstr "Inserisci la campagna base UTM"
 
-#: general-options.php:179
+#: general-options.php:186
 msgid "(eg. upcloo-check)"
 msgstr "(es. upcloo-check)"
 
-#: general-options.php:183
+#: general-options.php:190
 msgid "Enter base UTM Medium"
 msgstr "Inserisci il media UTM"
 
-#: general-options.php:186
+#: general-options.php:193
 msgid "(eg. mywebsite)"
 msgstr "(es. ilmiosito)"
 
-#: general-options.php:190
+#: general-options.php:197
 #, fuzzy
 msgid "Enter base UTM Source"
 msgstr "Sorgente UTM"
 
-#: general-options.php:193
+#: general-options.php:200
 msgid "(eg. upcloo-base-links)"
 msgstr "(es. upcloo-base-links)"
 
@@ -238,7 +246,7 @@ msgstr "Opzioni UpCloo"
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:503
+#: wp-upcloo.php:504
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
