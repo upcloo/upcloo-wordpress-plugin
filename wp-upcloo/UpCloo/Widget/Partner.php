@@ -106,7 +106,7 @@ class UpCloo_Widget_Partner
             <?php 
                 foreach ($datax->doc as $index => $doc):
                     //handle max links on widgets
-                    if (is_numeric($instance["upcloo_v_max_links"]) && $index > $instance["upcloo_v_max_links"]) {
+                    if (is_numeric($instance["upcloo_v_max_links"]) && $index >= $instance["upcloo_v_max_links"]) {
                         break;
                     }
             ?>
