@@ -22,6 +22,7 @@ class UpCloo_Widget_Partner
             $utmCampaign = $instance["upcloo_v_utm_campaign"];
             $utmMedia = $instance['upcloo_v_utm_media'];
             $utmSource = $instance['upcloo_v_utm_source'];
+            $maxLinks = $instance['upcloo_v_max_links'];
         } else {
         	$title = __('Related', 'wp_upcloo');
             $vsitekey = '';
@@ -29,6 +30,7 @@ class UpCloo_Widget_Partner
             $utmCampaign = '';
             $utmMedia = '';
             $utmSource = __('upcloo', 'wp_upcloo');
+            $maxLinks = '';
         }
         ?>
         
@@ -37,6 +39,10 @@ class UpCloo_Widget_Partner
 
         <label for="<?php echo $this->get_field_id('upcloo_v_sitekey'); ?>"><?php _e('Virtual Partner:', 'wp_upcloo'); ?></label> 
         <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_sitekey'); ?>" name="<?php echo $this->get_field_name('upcloo_v_sitekey'); ?>" type="text" value="<?php echo $vsitekey; ?>" />
+        
+        <label for="<?php echo $this->get_field_id('upcloo_v_max_links'); ?>"><?php _e('Number of links:', 'wp_upcloo'); ?></label> 
+        <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_max_links'); ?>" name="<?php echo $this->get_field_name('upcloo_v_max_links'); ?>" type="text" value="<?php echo $maxLinks; ?>" />
+        
         <label for="<?php echo $this->get_field_id('upcloo_v_utm_tag'); ?>"><?php _e('Enable UTM Tagging:'); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_utm_tag'); ?>" name="<?php echo $this->get_field_name('upcloo_v_utm_tag'); ?>" type="checkbox" <?php echo (($enableUtmTag) ? 'checked' : ''); ?> />
         
@@ -61,6 +67,7 @@ class UpCloo_Widget_Partner
         $instance['upcloo_v_utm_campaign'] = strip_tags($new_instance['upcloo_v_utm_campaign']);
         $instance['upcloo_v_utm_media'] = strip_tags($new_instance['upcloo_v_utm_media']);
         $instance['upcloo_v_utm_source'] = strip_tags($new_instance['upcloo_v_utm_source']);
+        $instance['upcloo_v_max_links'] = strip_tags($new_instance['upcloo_v_max_links']);
         return $instance;
     }
 
@@ -97,7 +104,11 @@ class UpCloo_Widget_Partner
         <div>
             <ul>
             <?php 
-                foreach ($datax->doc as $doc):
+                foreach ($datax->doc as $index => $doc):
+                    //handle max links on widgets
+                    if (is_numeric($instance["upcloo_v_max_links"]) && $index > $instance["upcloo_v_max_links"]) {
+                        break;
+                    }
             ?>
             	<li><a href="<?php echo $doc->url . $utmURL?>" target="_blank"><?php echo $doc->title; ?></a></li>
             <?php
