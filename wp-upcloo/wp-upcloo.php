@@ -3,9 +3,9 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 0.2
+Version: 0.3
 Author: Walter Dal Mut
-Author URI: http://corley.it
+Author URI: http://www.corley.it
 License: MIT
 */
 
@@ -466,10 +466,11 @@ function upcloo_general_option_page() {
 function upcloo_content($content) {
     global $post;
     global $current_user;
+    
     get_currentuserinfo();
     
     $original = $content;
-    
+
     $upClooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
     
     /**
@@ -523,38 +524,43 @@ function upcloo_content($content) {
                     
                         $index++;
                     }
-                    //Show if title
-                    if (get_option('upcloo_template_show_title', 'wp_upcloo')) {
-                        echo '<div class="upcloo_post_title">' . $element->title . '</div>';
+                    
+                    $content .= '<div class="upcloo_template_element">';
+
+                    //Show if featured image
+                    if (get_option('upcloo_template_show_featured_image', 'wp_upcloo') == 1) {
+                        $content .= '<div class="upcloo_post_image"><a href="'.$element->url.'"><img src="' . $element->image . '" alt="image" /></a></div>';
                     }
                     
-                    //Show if featured image
-                    if (get_option('upcloo_template_show_featured_image', 'wp_upcloo')) {
-                        echo '<div class="upcloo_post_image"><img src="' . $element->image . '" alt="image" /></div>';
+                    //Show if title
+                    if (get_option('upcloo_template_show_title', 'wp_upcloo') == 1) {
+                        $content .= '<div class="upcloo_post_title"><a href="'.$element->url.'">' . $element->title . '</a></div>';
                     }
                     
                     //Show if summary
-                    if (get_option('upcloo_template_show_summary', 'wp_upcloo')) {
-                        echo '<div class="upcloo_post_summary">' . $element->summary . '</div>';
+                    if (get_option('upcloo_template_show_summary', 'wp_upcloo') == 1) {
+                        $content .= '<div class="upcloo_post_summary">' . $element->summary . '</div>';
                     }
 
                     //Show if categories
-                    if (get_option('upcloo_template_show_categories', 'wp_upcloo')) {
-                        echo "<div class=\"upcloo_post_categories\">";
-                        foreach ($element->categories as $category) {
-                            echo '<div class="upcloo_post_categories_category">' . $category->category . '</div>';
+                    if (get_option('upcloo_template_show_categories', 'wp_upcloo') == 1) {
+                        $content .= "<div class=\"upcloo_post_categories\">";
+                        foreach ($element->categories->category as $category) {
+                            $content .= '<div class="upcloo_post_categories_category">' . $category . '</div>';
                         }
-                        echo "</div>";
+                        $content .= "</div>";
                     }
                     
                     //Show if tags
-                    if (get_option('upcloo_template_show_tags', 'wp_upcloo')) {
-                        echo "<div class=\"upcloo_post_tags\">";
-                        foreach ($element->tags as $tag) {
-                            echo '<div class="upcloo_post_tags_tag">' . $tag->tag . '</div>';
+                    if (get_option('upcloo_template_show_tags', 'wp_upcloo') == 1) {
+                        $content .= "<div class=\"upcloo_post_tags\">";
+                        foreach ($element->tags->tag as $tag) {
+                            $content .= '<div class="upcloo_post_tags_tag">' . $tag . '</div>';
                         }
-                        echo "</div>";
+                        $content .= "</div>";
                     }
+                    
+                    $content .= '</div>';
                 }
             } else {
             
