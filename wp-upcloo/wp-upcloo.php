@@ -494,15 +494,6 @@ function upcloo_content($content) {
         $content = '';
         if ($listOfModels && property_exists($listOfModels, "doc") && is_array($listOfModels->doc) && count($listOfModels->doc)) {
             
-            //Prepare link UTM
-            $utmURL = '';
-            if (get_option("upcloo_utm_tag", "wp_upcloo")) {
-                $utmURL .= 'utm_campaign=' . 
-                    get_option("upcloo_utm_campaign", "wp_upcloo") . '&utm_medium=' . 
-                    get_option("upcloo_utm_medium", "wp_upcloo") . '&utm_source=' . 
-                    get_option("upcloo_utm_source", "wp_upcloo"); 
-            }
-            
             $index = 0;
             $maxContents = get_option("upcloo_max_show_links")/1;
             $content .= "<div class=\"upcloo-related-contents\">";
@@ -525,16 +516,18 @@ function upcloo_content($content) {
                         $index++;
                     }
                     
+                    $finalURL = upcloo_get_utm_tag_url($element->url);
+                    
                     $content .= '<div class="upcloo_template_element">';
 
                     //Show if featured image
                     if (get_option('upcloo_template_show_featured_image', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_image"><a href="'.$element->url.'"><img src="' . $element->image . '" alt="image" /></a></div>';
+                        $content .= '<div class="upcloo_post_image"><a href="'. $finalURL .'"><img src="' . $element->image . '" alt="image" /></a></div>';
                     }
                     
                     //Show if title
                     if (get_option('upcloo_template_show_title', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_title"><a href="'.$element->url.'">' . $element->title . '</a></div>';
+                        $content .= '<div class="upcloo_post_title"><a href="'.$finalURL.'">' . $element->title . '</a></div>';
                     }
                     
                     //Show if summary
@@ -576,17 +569,7 @@ function upcloo_content($content) {
                         $index++;
                     }
                     
-                    $finalURL = $element->url;
-                    
-                    if (get_option("upcloo_utm_tag", "wp_upcloo")) {
-                        if (strpos($finalURL, "?")) {
-                            $finalURL .= '&';
-                        } else {
-                            $finalURL .= '?';
-                        }
-                    }
-                    
-                    $finalURL .= $utmURL;
+                    $finalURL = upcloo_get_utm_tag_url($element->url);
                     
                     $content .= "<li><a href=\"{$finalURL}\">{$element->title}</a></li>";    
                 }
@@ -599,6 +582,37 @@ function upcloo_content($content) {
     }
 
     return $content;
+}
+
+/**
+ * 
+ * Get the URL
+ * 
+ * @param string $finalURL
+ * @return string The url
+ */
+function upcloo_get_utm_tag_url($finalURL)
+{
+    //Prepare link UTM
+    $utmURL = '';
+    if (get_option("upcloo_utm_tag", "wp_upcloo")) {
+        $utmURL .= 'utm_campaign=' .
+        get_option("upcloo_utm_campaign", "wp_upcloo") . '&utm_medium=' .
+        get_option("upcloo_utm_medium", "wp_upcloo") . '&utm_source=' .
+        get_option("upcloo_utm_source", "wp_upcloo");
+    }
+    
+    if (get_option("upcloo_utm_tag", "wp_upcloo")) {
+        if (strpos($finalURL, "?")) {
+            $finalURL .= '&';
+        } else {
+            $finalURL .= '?';
+        }
+    }
+    
+    $finalURL .= $utmURL;
+    
+    return $finalURL;
 }
 
 /* Get related contents from repository  */
