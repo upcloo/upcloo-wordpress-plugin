@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-19 15:25+0100\n"
-"PO-Revision-Date: 2011-11-19 15:25+0100\n"
+"POT-Creation-Date: 2011-11-26 17:31+0100\n"
+"PO-Revision-Date: 2011-11-26 17:32+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -73,6 +73,7 @@ msgstr "(es. La tua password UpCloo [non visibile per sicurezza])"
 #: general-options.php:91
 #: general-options.php:162
 #: general-options.php:210
+#: general-options.php:273
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -89,14 +90,12 @@ msgid "Enable virtual sitekey as primary sitekey"
 msgstr "Abilita una virtual sitekey come se fosse primaria"
 
 #: general-options.php:78
-#, fuzzy
 msgid "Virtual Sitekey"
-msgstr "Inserisci la tua Chiave Sito Virtuale (Partner)"
+msgstr "Chiave Sito Virtuale"
 
 #: general-options.php:82
-#, fuzzy
 msgid "Virtual sitekey"
-msgstr "Partner Virtuale:"
+msgstr "Partner Virtuale"
 
 #: general-options.php:95
 msgid "Other features"
@@ -169,7 +168,6 @@ msgid "Consider that you have Google Analytics Tracker script activated and visi
 msgstr "Considera che devi avere il Tracker Google Analytics attivo e visibile sulle tue pagine o almeno dove viene attivato UpCloo."
 
 #: general-options.php:175
-#, fuzzy
 msgid "Enable UTM Tagging"
 msgstr "Abilita il Tagging UTM"
 
@@ -190,7 +188,6 @@ msgid "(eg. mywebsite)"
 msgstr "(es. ilmiosito)"
 
 #: general-options.php:197
-#, fuzzy
 msgid "Enter base UTM Source"
 msgstr "Sorgente UTM"
 
@@ -198,10 +195,53 @@ msgstr "Sorgente UTM"
 msgid "(eg. upcloo-base-links)"
 msgstr "(es. upcloo-base-links)"
 
+#: general-options.php:213
+msgid "Template selector"
+msgstr "Selezione template"
+
+#: general-options.php:215
+msgid "Use the advanced method only if you know or have someone that know CSS (Cascading StyleSheet)"
+msgstr "Utilizza il metodo avanzato solo se conosci o c'è qualcuno che conosce i CSS (Fogli di stile in cascata)"
+
+#: general-options.php:222
+msgid "Select you preferrered method"
+msgstr "Seleziona il tuo metodo preferito"
+
+#: general-options.php:225
+msgid "(Default)"
+msgstr "(Default)"
+
+#: general-options.php:227
+msgid "(Advanced)"
+msgstr "(Avanzato)"
+
+#: general-options.php:230
+msgid "Only if advanced is selected"
+msgstr "Solo se è selezionato il metodo avanzato"
+
+#: general-options.php:232
+msgid "Show post title"
+msgstr "Mostra il titolo del post"
+
+#: general-options.php:239
+msgid "Show post featured image"
+msgstr "Mostra l'immagine del post"
+
+#: general-options.php:246
+msgid "Show post summary"
+msgstr "Mostra il sommario del post"
+
+#: general-options.php:253
+msgid "Show post tags"
+msgstr "Mostra i tag del post"
+
+#: general-options.php:260
+msgid "Show post categories"
+msgstr "Mostra le categorie del post"
+
 #: wp-upcloo.php:80
-#, fuzzy
 msgid "Indexed"
-msgstr "Indicizza le Pagine"
+msgstr "Indicizzato"
 
 #: wp-upcloo.php:80
 msgid "Not Indexed"
@@ -212,9 +252,8 @@ msgid "ReIndex NOW"
 msgstr "Reindicizza subito"
 
 #: wp-upcloo.php:81
-#, fuzzy
 msgid "Index NOW"
-msgstr "Indicizza i Post"
+msgstr "Indicizza Subito"
 
 #: wp-upcloo.php:139
 #, fuzzy
@@ -246,7 +285,7 @@ msgstr "Opzioni UpCloo"
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:504
+#: wp-upcloo.php:506
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
@@ -258,35 +297,40 @@ msgstr "Widget Rete di UpCloo"
 msgid "The UpCloo Virtual Partner SiteKey Widget"
 msgstr "Widget UpCloo per le Chiavi Sito Partner Virtuali"
 
-#: UpCloo/Widget/Partner.php:26
+#: UpCloo/Widget/Partner.php:27
 msgid "Related"
 msgstr "Correlati"
 
-#: UpCloo/Widget/Partner.php:31
+#: UpCloo/Widget/Partner.php:32
 msgid "upcloo"
 msgstr "upcloo"
 
-#: UpCloo/Widget/Partner.php:35
+#: UpCloo/Widget/Partner.php:37
 msgid "Title:"
 msgstr "Titolo:"
 
-#: UpCloo/Widget/Partner.php:38
+#: UpCloo/Widget/Partner.php:40
 msgid "Virtual Partner:"
 msgstr "Partner Virtuale:"
 
-#: UpCloo/Widget/Partner.php:40
+#: UpCloo/Widget/Partner.php:43
+#, fuzzy
+msgid "Number of links:"
+msgstr "Massimo numero di link"
+
+#: UpCloo/Widget/Partner.php:46
 msgid "Enable UTM Tagging:"
 msgstr "Abilita il Tagging UTM"
 
-#: UpCloo/Widget/Partner.php:43
+#: UpCloo/Widget/Partner.php:49
 msgid "UTM Campaign:"
 msgstr "Campagna UTM (UTM Campaign)"
 
-#: UpCloo/Widget/Partner.php:46
+#: UpCloo/Widget/Partner.php:52
 msgid "UTM Media:"
 msgstr "Supporto UTM"
 
-#: UpCloo/Widget/Partner.php:49
+#: UpCloo/Widget/Partner.php:55
 msgid "UTM Source:"
 msgstr "Sorgente UTM"
 
