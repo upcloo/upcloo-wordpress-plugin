@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-26 17:31+0100\n"
-"PO-Revision-Date: 2011-11-26 17:32+0100\n"
+"POT-Creation-Date: 2011-11-29 19:07+0100\n"
+"PO-Revision-Date: 2011-11-29 19:07+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -285,7 +285,7 @@ msgstr "Opzioni UpCloo"
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:506
+#: wp-upcloo.php:502
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
