@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-11-29 20:33+0100\n"
-"PO-Revision-Date: 2011-11-29 20:33+0100\n"
+"POT-Creation-Date: 2011-11-29 20:37+0100\n"
+"PO-Revision-Date: 2011-11-29 20:37+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:503
+#: wp-upcloo.php:484
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -263,53 +263,57 @@ msgstr "Invia ora i miei contenuti"
 msgid "This operation takes a while depending on your posts count..."
 msgstr "Questa operazione potrebbe durare un po di tempo, dipenda dal numero di contenuti..."
 
-#: wp-upcloo.php:131
+#: general-options.php:306
+msgid "Confirm"
+msgstr "Conferma"
+
+#: wp-upcloo.php:112
 msgid "Indexed"
 msgstr "Indicizzato"
 
-#: wp-upcloo.php:131
+#: wp-upcloo.php:112
 msgid "Not Indexed"
 msgstr "Non indicizzato"
 
-#: wp-upcloo.php:132
+#: wp-upcloo.php:113
 msgid "ReIndex NOW"
 msgstr "Reindicizza subito"
 
-#: wp-upcloo.php:132
+#: wp-upcloo.php:113
 msgid "Index NOW"
 msgstr "Indicizza Subito"
 
-#: wp-upcloo.php:190
+#: wp-upcloo.php:171
 #, fuzzy
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo"
 
-#: wp-upcloo.php:202
-#: wp-upcloo.php:208
+#: wp-upcloo.php:183
+#: wp-upcloo.php:189
 msgid "UpCloo Language Definer"
 msgstr "Lingua (i18n) per UpCloo"
 
-#: wp-upcloo.php:225
+#: wp-upcloo.php:206
 msgid "Select the language of your article/page"
 msgstr "Seleziona la lingua del tuo articolo/pagina"
 
-#: wp-upcloo.php:232
+#: wp-upcloo.php:213
 msgid "Italian"
 msgstr "Italiano"
 
-#: wp-upcloo.php:233
+#: wp-upcloo.php:214
 msgid "English"
 msgstr "Inglese"
 
-#: wp-upcloo.php:503
+#: wp-upcloo.php:484
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
 
-#: wp-upcloo.php:509
+#: wp-upcloo.php:490
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:553
+#: wp-upcloo.php:534
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 

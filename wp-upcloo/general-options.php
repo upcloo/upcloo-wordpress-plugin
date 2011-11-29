@@ -303,10 +303,17 @@ jQuery(document).ready(function($) {
 		tr.find('td').append('<input style="cursor: pointer;" type="button"/>');
 		var input = tr.find('input');
 
-		input.attr('value', 'Confirm');
+		input.attr('value', '<?php _e('Confirm', 'wp_upcloo')?>');
 
 		input.bind('click', function(){
-			//Send to UpCLoo
+			var data = {
+	    		action: 'upcloo_ajax_importer'
+	    	};
+	    
+	    	// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+	    	jQuery.get(ajaxurl, data, function(response) {
+	    		console.log(response);
+	    	});
 		});
 		
 		placeholder.append(tr);
