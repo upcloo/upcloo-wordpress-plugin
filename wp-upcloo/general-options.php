@@ -275,7 +275,7 @@
     </form>
     <h3><?php _e("Massive Sender", "wp_upcloo");?></h3>
     <p class="warning">
-    	<?php _e("The massive sender function send all your contents through the UpCloo Cloud for initiate your index.", "wp_upcloo"); ?>
+    	<?php _e("The massive sender function send all your contents to the UpCloo cloud for initiate your index.", "wp_upcloo"); ?>
     </p>
     <p class="warning">
     	<?php _e('Consider that a massive send is expensive. Use this feature only if you know exactly what that means.', 'wp_upcloo') ?>
