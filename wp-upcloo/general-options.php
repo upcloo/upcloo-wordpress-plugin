@@ -273,4 +273,43 @@
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
         </p>
     </form>
+    <h3><?php _e("Massive Sender", "wp_upcloo");?></h3>
+    <p class="warning">
+    	<?php _e("The massive sender function send all your contents through the UpCloo Cloud for initiate your index.", "wp_upcloo"); ?>
+    </p>
+    <p class="warning">
+    	<?php _e('Consider that a massive send is expensive. Use this feature only if you know exactly what that means.', 'wp_upcloo') ?>
+    	<?php _e('If your confirm this operation you accept all UpCloo rules and UpCloo T.O.S..', 'wp_upcloo') ?>
+    </p>
+	<table class="form-table">
+        <tbody>
+        	<tr valign="top">
+        		<td><input style="cursor: pointer;" type="button" name="upcloo_sender_enable_button" value="<?php _e('Send now all my contents', 'wp_upcloo') ?>" /></td>
+        	</tr>
+        	<tr>
+        		<td><?php _e("This operation takes a while depending on your posts count...", "wp_upcloo")?></td>
+        	</tr>
+    	</tbody> 
+	</table>   
 </div>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$('input[name=upcloo_sender_enable_button]').bind('click', function(event){
+		var elem = $(this);
+
+		var placeholder = elem.parent().parent().parent();
+
+		var tr = $('<tr/>').append('<td/>');
+		tr.find('td').append('<input style="cursor: pointer;" type="button"/>');
+		var input = tr.find('input');
+
+		input.attr('value', 'Confirm');
+
+		input.bind('click', function(){
+			//Send to UpCLoo
+		});
+		
+		placeholder.append(tr);
+	});
+});
+</script>

@@ -56,6 +56,8 @@ add_action('manage_posts_custom_column',  'upcloo_my_show_columns');
 add_action('manage_pages_custom_column',  'upcloo_my_show_columns');
 add_action('save_post', 'upcloo_save_data');
 add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
+add_action('wp_ajax_upcloo_ajax_importer', 'upcloo_action_ajax_importer_callback');
+add_action('admin_head', 'upcloo_action_importer_javascript');
 
 add_filter( 'the_content', 'upcloo_content' );
 add_filter('admin_footer_text', "upcloo_admin_footer");
@@ -68,6 +70,55 @@ register_activation_hook(__FILE__, 'upcloo_install');
 
 /* Runs on plugin deactivation*/
 register_deactivation_hook(__FILE__, 'upcloo_remove');
+
+function upcloo_action_importer_javascript()
+{
+    ?>
+    <script type="text/javascript" >
+    jQuery(document).ready(function($) {
+    	$('#upcloo-importer-button').bind('click', function(){
+    		var data = {
+	    		action: 'upcloo_ajax_importer'
+	    	};
+	    
+	    	// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
+	    	jQuery.get(ajaxurl, data, function(response) {
+	    		console.log(response);
+	    	});
+       	});
+    });
+    </script>
+    <?php
+}
+
+/**
+ * Ajax (upcloo_ajax_importer)
+ * 
+ * Used for importer [GET call]
+ */
+function upcloo_action_ajax_importer_callback()
+{
+    $args = array(
+    	'numberposts'     => 5,
+        'offset'          => 0,    //TODO: handle this one
+//         'category'        => ,
+        'orderby'         => 'post_date',
+        'order'           => 'ASC',
+//         'include'         => ,
+//         'exclude'         => ,
+//         'meta_key'        => ,
+//         'meta_value'      => ,
+        'post_type'       => 'post', //TODO: handle this type
+//         'post_mime_type'  => ,
+//         'post_parent'     => ,
+        'post_status'     => 'publish' 
+    );
+    
+    $posts = get_posts($args);
+
+    die();
+}
+
 function upcloo_add_force_content_send_link()
 {
     global $post_ID;
