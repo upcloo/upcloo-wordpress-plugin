@@ -77,25 +77,31 @@ register_deactivation_hook(__FILE__, 'upcloo_remove');
  */
 function upcloo_action_ajax_importer_callback()
 {
-    $args = array(
-    	'numberposts'     => 5,
-        'offset'          => 0,    //TODO: handle this one
-//         'category'        => ,
-        'orderby'         => 'post_date',
-        'order'           => 'ASC',
-//         'include'         => ,
-//         'exclude'         => ,
-//         'meta_key'        => ,
-//         'meta_value'      => ,
-        'post_type'       => 'post', //TODO: handle this type
-//         'post_mime_type'  => ,
-//         'post_parent'     => ,
-        'post_status'     => 'publish' 
-    );
+    $usePages = get_option('upcloo_index_page');
     
-    $posts = get_posts($args);
+    $postsCount = wp_count_posts('post')->publish + wp_count_posts('page')->publish;
     
-    echo "Bella zi";
+    $postsPerPage = 100;
+    
+    for ($i=0; $i<ceil($postsCount/$postsPerPage); $i++) {
+        $args = array(
+        	'numberposts'     => $postsPerPage,
+            'offset'          => $i*$postsPerPage,    //TODO: handle this one
+            'orderby'         => 'post_date',
+            'order'           => 'ASC',
+            'post_status'     => 'publish' 
+        );
+        //Handle pages
+        $args = array_merge($args, $pages);
+        
+        $posts = get_posts($args);
+        
+        foreach ($posts as $post) {
+            upcloo_content_sync($post->ID);
+        }
+    }
+    
+    echo json_encode(array("completed" => 1));
 
     die();
 }

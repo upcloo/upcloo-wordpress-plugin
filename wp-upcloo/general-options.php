@@ -306,14 +306,19 @@ jQuery(document).ready(function($) {
 		input.attr('value', '<?php _e('Confirm', 'wp_upcloo')?>');
 
 		input.bind('click', function(){
+
+			placeholder.remove();
+			
 			var data = {
 	    		action: 'upcloo_ajax_importer'
 	    	};
 	    
 	    	// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
 	    	jQuery.get(ajaxurl, data, function(response) {
-	    		console.log(response);
-	    	});
+	    		if (response && response.completed) {
+		    		alert("OK");
+	    		}
+	    	}, 'json');
 		});
 		
 		placeholder.append(tr);
