@@ -95,14 +95,19 @@ function upcloo_action_ajax_importer_callback()
         $args = array_merge($args, $pages);
         
         $posts = get_posts($args);
-        
+        //Foreach post
         foreach ($posts as $post) {
-            upcloo_content_sync($post->ID);
+            //If UpCloo response OK
+            if (upcloo_content_sync($post->ID)) {
+                //Force metadata update...
+                $upClooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
+                update_post_meta($post->ID, UPCLOO_POST_META, "1", $upClooMeta);
+            } 
         }
     }
-    
-    echo json_encode(array("completed" => 1));
 
+    //Operation ends...
+    echo json_encode(array("completed" => 1));
     die();
 }
 
