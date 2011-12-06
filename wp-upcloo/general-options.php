@@ -97,6 +97,13 @@
         <?php wp_nonce_field('update-options'); ?>
 
         <table class="form-table" >
+        	<tr valign="top">
+                <th width="92" scope="row"><?php _e("Show UpCloo links", "wp_upcloo");?></th>
+                <td width="406">
+                    <?php $index_post = get_option(UPCLOO_ENABLE_MAIN_CORRELATION);?>
+                    <input type="checkbox" name="<?php echo UPCLOO_ENABLE_MAIN_CORRELATION?>" value="1" <?php checked("1" == $index_post); ?> />
+                    <strong><?php _e("If disabled only admins can see UpCloo correlation", "wp_upcloo");?></strong></td>
+            </tr>
             <tr valign="top">
                 <th width="92" scope="row"><?php _e("Index Posts", "wp_upcloo");?></th>
                 <td width="406">
@@ -156,7 +163,7 @@
         </table>
 
         <input type="hidden" name="action" value="update" />
-        <input type="hidden" name="page_options" value="upcloo_index_category,upcloo_index_tag,upcloo_index_page,upcloo_index_post,upcloo_show_on_page,upcloo_max_show_links,upcloo_default_language,upcloo_rewrite_public_label" />
+        <input type="hidden" name="page_options" value="<?php echo UPCLOO_ENABLE_MAIN_CORRELATION?>,upcloo_index_category,upcloo_index_tag,upcloo_index_page,upcloo_index_post,upcloo_show_on_page,upcloo_max_show_links,upcloo_default_language,upcloo_rewrite_public_label" />
 
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />

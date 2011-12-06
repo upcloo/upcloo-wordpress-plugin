@@ -48,6 +48,7 @@ define("UPCLOO_CLOUD_IMAGE", '<img src="'.WP_PLUGIN_URL.'/wp-upcloo/upcloo.png" 
 define("UPCLOO_NOT_CLOUD_IMAGE", '<img src="'.WP_PLUGIN_URL.'/wp-upcloo/warn.png" src="UpCloo" />');
 define("UPCLOO_DEFAULT_LANG", "upcloo_default_language");
 define('UPCLOO_META_LANG', 'upcloo_language_field');
+define('UPCLOO_ENABLE_MAIN_CORRELATION', "upcloo_enable_main_correlation");
 
 add_action("admin_init", "upcloo_init");
 add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
@@ -467,7 +468,7 @@ function upcloo_install() {
     add_option("upcloo_utm_medium", "", "", "yes");
     add_option("upcloo_utm_source", "", "", "yes");
     add_option(UPCLOO_DEFAULT_LANG, "it", "", "yes");
-    
+    add_option(UPCLOO_ENABLE_MAIN_CORRELATION, "1", "", "yes");
 }
 
 
@@ -487,6 +488,7 @@ function upcloo_remove() {
     delete_option("upcloo_utm_medium");
     delete_option("upcloo_utm_source");
     delete_option(UPCLOO_DEFAULT_LANG);
+    delete_option(UPCLOO_ENABLE_MAIN_CORRELATION);
 }
 
 add_action('admin_menu', 'upcloo_admin_menu');
@@ -504,7 +506,7 @@ function upcloo_general_option_page() {
 }
 
 /**
- * Working on contents
+ * Get content on public side
  */
 function upcloo_content($content) {
     global $post;
@@ -520,10 +522,18 @@ function upcloo_content($content) {
      * Check if the content is single
      *
      * Use a filter login to perform this kind of selection
+     * 
+     * Check if UpCloo is enabled
      */
-    if (is_single($post) || (is_page($post) && get_option("upcloo_show_on_page") == "1")) {
+    if (
+        (is_single($post) || (is_page($post) && get_option("upcloo_show_on_page") == "1"))
+        && 
+        (get_option(UPCLOO_ENABLE_MAIN_CORRELATION) || (!get_option(UPCLOO_ENABLE_MAIN_CORRELATION) && $current_user->has_cap('edit_users')))) 
+    {
         /**
          * If not sent to upcloo send it and store the result.
+         * 
+         * Only not logged in user can send to UpCloo in automode
          */
         if (!$current_user->id && $upClooMeta == '') {
             if (upcloo_content_sync($post->ID)) {
