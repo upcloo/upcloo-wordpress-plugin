@@ -585,7 +585,7 @@ function upcloo_content($content) {
                     
                     //Show if summary
                     if (get_option('upcloo_template_show_summary', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_summary">' . $element->summary . '</div>';
+                        $content .= '<div class="upcloo_post_summary">' . $element->description . '</div>';
                     }
 
                     //Show if categories
