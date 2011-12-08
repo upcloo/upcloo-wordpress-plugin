@@ -348,6 +348,25 @@ function upcloo_content_sync($pid)
 
             $publish_date = $post->post_date;
             $publish_date = str_replace(" ", "T", $publish_date) . "Z";
+            
+            $summary = $post->post_excerpt;
+            
+            //If no summary 
+            if (empty($summary)) {
+                //Cut the first part of text
+                //and use it as a summary
+                
+                $content = $post->post_content;
+                
+                //Get the first dot after 20s char...
+                $pos = strpos($content, ".", 20);
+                if ($pos === false) {
+                    //No dot... what I do?
+                    $summary = $content; // I fill the summary with content.
+                } else {
+                    $summary = substr($content, 0, $pos);
+                }
+            }
 
             $model = array(
                 "model" => array(
@@ -356,7 +375,7 @@ function upcloo_content_sync($pid)
                     "password" => get_option("upcloo_password"),
                     "title" => $post->post_title,
                     "content" => $post->post_content,
-                    "summary" => $post->post_excerpt,
+                    "summary" => $summary,
                     "publish_date" => $publish_date,
                     "type" => $post->post_type,
                     "url" => $permalink,
