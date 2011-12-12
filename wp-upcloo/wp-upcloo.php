@@ -594,7 +594,7 @@ function upcloo_content($content) {
 
                     //Show if featured image
                     if (get_option('upcloo_template_show_featured_image', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_image"><a href="'. $finalURL .'"><img src="' . $element->image . '" alt="image" /></a></div>';
+                        $content .= '<div class="upcloo_post_image"><a href="'. $finalURL .'"><img src="' . ((is_string($element->image)) ? $element->image : '') . '" alt="image" /></a></div>';
                     }
                     
                     //Show if title
