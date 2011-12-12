@@ -703,10 +703,7 @@ function upcloo_get_from_repository($name, $endPointURL = false)
 
     curl_setopt($ch, CURLOPT_URL,            $endPointURL);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POST,           1);
     curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "GET");
-    curl_setopt($ch, CURLOPT_ENCODING ,      "gzip");
 
     $result=curl_exec ($ch);
     $headers = curl_getinfo($ch);
