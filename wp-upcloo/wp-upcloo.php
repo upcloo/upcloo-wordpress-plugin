@@ -92,8 +92,6 @@ function upcloo_action_ajax_importer_callback()
             'order'           => 'ASC',
             'post_status'     => 'publish' 
         );
-        //Handle pages
-        $args = array_merge($args, $pages);
         
         $posts = get_posts($args);
         //Foreach post
