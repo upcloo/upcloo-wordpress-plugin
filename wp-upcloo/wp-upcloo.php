@@ -78,6 +78,8 @@ register_deactivation_hook(__FILE__, 'upcloo_remove');
  */
 function upcloo_action_ajax_importer_callback()
 {
+    set_time_limit(600);
+    
     $usePages = get_option('upcloo_index_page');
     
     $postsCount = wp_count_posts('post')->publish + wp_count_posts('page')->publish;
