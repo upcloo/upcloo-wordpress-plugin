@@ -297,6 +297,12 @@
     </p>
 	<table class="form-table">
         <tbody>
+        	<tr>
+        		<td>
+        			<input style="cursor: pointer;" type="checkbox" checked="checked" name="upcloo_send_only_misses" id="upcloo_send_only_misses" />
+        			<label for="upcloo_send_only_misses"><?php _e('Send only missing contents', 'wp_upcloo') ?></label>
+    			</td>
+        	</tr>
         	<tr valign="top">
         		<td><input style="cursor: pointer;" type="button" name="upcloo_sender_enable_button" value="<?php _e('Send now all my contents', 'wp_upcloo') ?>" /></td>
         	</tr>
@@ -310,6 +316,7 @@
 jQuery(document).ready(function($) {
 	$('input[name=upcloo_sender_enable_button]').bind('click', function(event){
 		var elem = $(this);
+		elem.unbind("click");
 
 		var placeholder = elem.parent().parent().parent();
 
@@ -321,10 +328,14 @@ jQuery(document).ready(function($) {
 
 		input.bind('click', function(){
 
+			var onlyMissing = (jQuery('#upcloo_send_only_misses').prop("checked")) ? "1" : "0";
+
+			//Remove the placeholder
 			placeholder.remove();
-			
+
 			var data = {
-	    		action: 'upcloo_ajax_importer'
+	    		"action": 'upcloo_ajax_importer',
+	    		"onlyMissing": onlyMissing
 	    	};
 	    
 	    	// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
@@ -336,6 +347,10 @@ jQuery(document).ready(function($) {
 		});
 		
 		placeholder.append(tr);
+
+		var infoBlock = $('<p/>');
+		infoBlock.append("<?php echo _e("Status of checkbox (only-missing) is read on confirm button click.", "wp_upcloo")?>");
+		placeholder.append(infoBlock);
 	});
 });
 </script>

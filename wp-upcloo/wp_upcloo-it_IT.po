@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-14 14:26+0100\n"
-"PO-Revision-Date: 2011-12-14 14:32+0100\n"
+"POT-Creation-Date: 2011-12-14 18:58+0100\n"
+"PO-Revision-Date: 2011-12-14 18:59+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:523
+#: wp-upcloo.php:526
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -271,65 +271,73 @@ msgstr "Considere che l'operazioni di invio massivo è molto costosa. Utilizza q
 msgid "If your confirm this operation you accept all UpCloo rules and UpCloo T.O.S.."
 msgstr "Se confermi questa operazione accetti tutte le regole di UpCloo e i termini di servizio."
 
-#: general-options.php:301
+#: general-options.php:303
+msgid "Send only missing contents"
+msgstr "Invia solo i contenuti non ancora inviati"
+
+#: general-options.php:307
 msgid "Send now all my contents"
 msgstr "Invia ora i miei contenuti"
 
-#: general-options.php:304
+#: general-options.php:310
 msgid "This operation takes a while depending on your posts count..."
 msgstr "Questa operazione potrebbe durare un po di tempo, dipende dal numero di contenuti..."
 
-#: general-options.php:320
+#: general-options.php:327
 msgid "Confirm"
 msgstr "Conferma"
 
-#: wp-upcloo.php:129
+#: general-options.php:352
+msgid "Status of checkbox (only-missing) is read on confirm button click."
+msgstr "Lo stato della checkbox (solo-non-inviati) è letto sulla pressione del tasto conferma"
+
+#: wp-upcloo.php:132
 msgid "Indexed"
 msgstr "Indicizzato"
 
-#: wp-upcloo.php:129
+#: wp-upcloo.php:132
 msgid "Not Indexed"
 msgstr "Non indicizzato"
 
-#: wp-upcloo.php:130
+#: wp-upcloo.php:133
 msgid "ReIndex NOW"
 msgstr "Reindicizza subito"
 
-#: wp-upcloo.php:130
+#: wp-upcloo.php:133
 msgid "Index NOW"
 msgstr "Indicizza Subito"
 
-#: wp-upcloo.php:188
+#: wp-upcloo.php:191
 #, fuzzy
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo"
 
-#: wp-upcloo.php:200
-#: wp-upcloo.php:206
+#: wp-upcloo.php:203
+#: wp-upcloo.php:209
 msgid "UpCloo Language Definer"
 msgstr "Lingua (i18n) per UpCloo"
 
-#: wp-upcloo.php:223
+#: wp-upcloo.php:226
 msgid "Select the language of your article/page"
 msgstr "Seleziona la lingua del tuo articolo/pagina"
 
-#: wp-upcloo.php:230
+#: wp-upcloo.php:233
 msgid "Italian"
 msgstr "Italiano"
 
-#: wp-upcloo.php:231
+#: wp-upcloo.php:234
 msgid "English"
 msgstr "Inglese"
 
-#: wp-upcloo.php:523
+#: wp-upcloo.php:526
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
 
-#: wp-upcloo.php:529
+#: wp-upcloo.php:532
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:586
+#: wp-upcloo.php:589
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 

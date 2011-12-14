@@ -83,10 +83,11 @@ register_deactivation_hook(__FILE__, 'upcloo_remove');
  */
 function upcloo_action_ajax_importer_callback()
 {
+    $onlyMissing = $_GET["onlyMissing"];
+        
     set_time_limit(600);
     
-    $usePages = get_option('upcloo_index_page');
-    
+    //Get all... [Content sync handle pages and posts]
     $postsCount = wp_count_posts('post')->publish + wp_count_posts('page')->publish;
     
     $postsPerPage = 100;
@@ -103,8 +104,10 @@ function upcloo_action_ajax_importer_callback()
         $posts = get_posts($args);
         //Foreach post
         foreach ($posts as $post) {
-            //If UpCloo response OK
-            if (upcloo_content_sync($post->ID)) {
+            $toIndex = ($onlyMissing) ? (get_post_meta($post->ID, UPCLOO_POST_META, true) ? false : true): true;
+
+            //Check if is to index
+            if ($toIndex && upcloo_content_sync($post->ID)) {
                 //Force metadata update...
                 $upClooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
                 update_post_meta($post->ID, UPCLOO_POST_META, "1", $upClooMeta);
