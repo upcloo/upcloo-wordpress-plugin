@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2011-12-14 14:26+0100\n"
-"PO-Revision-Date: 2011-12-14 14:28+0100\n"
+"PO-Revision-Date: 2011-12-14 14:32+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -277,7 +277,7 @@ msgstr "Invia ora i miei contenuti"
 
 #: general-options.php:304
 msgid "This operation takes a while depending on your posts count..."
-msgstr "Questa operazione potrebbe durare un po di tempo, dipenda dal numero di contenuti..."
+msgstr "Questa operazione potrebbe durare un po di tempo, dipende dal numero di contenuti..."
 
 #: general-options.php:320
 msgid "Confirm"
