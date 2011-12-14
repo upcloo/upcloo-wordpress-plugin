@@ -30,6 +30,10 @@ License: MIT
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+
+//ini_set('error_reporting', E_ALL);
+//ini_set('display_errors', 'On');
+
 load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)));
 
 require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
@@ -49,6 +53,7 @@ define("UPCLOO_NOT_CLOUD_IMAGE", '<img src="'.WP_PLUGIN_URL.'/wp-upcloo/warn.png
 define("UPCLOO_DEFAULT_LANG", "upcloo_default_language");
 define('UPCLOO_META_LANG', 'upcloo_language_field');
 define('UPCLOO_ENABLE_MAIN_CORRELATION', "upcloo_enable_main_correlation");
+define('UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY', "upcloo_disable_main_correlation_completely");
 
 add_action("admin_init", "upcloo_init");
 add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
@@ -488,6 +493,7 @@ function upcloo_install() {
     add_option("upcloo_utm_source", "", "", "yes");
     add_option(UPCLOO_DEFAULT_LANG, "it", "", "yes");
     add_option(UPCLOO_ENABLE_MAIN_CORRELATION, "1", "", "yes");
+    add_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, '0', '', 'yes');
 }
 
 
@@ -508,6 +514,7 @@ function upcloo_remove() {
     delete_option("upcloo_utm_source");
     delete_option(UPCLOO_DEFAULT_LANG);
     delete_option(UPCLOO_ENABLE_MAIN_CORRELATION);
+    delete_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY);
 }
 
 add_action('admin_menu', 'upcloo_admin_menu');
@@ -537,9 +544,14 @@ function upcloo_content($content) {
 
     $upClooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
     
+    if (get_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY) == "1") {
+        return $original;
+    }
+    
     /**
      * Check if the content is single
      *
+     * @todo refactor this check
      * Use a filter login to perform this kind of selection
      * 
      * Check if UpCloo is enabled
