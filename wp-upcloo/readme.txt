@@ -2,8 +2,8 @@
 Contributors: wdalmut, gmittica
 Donate link: http://www.upcloo.com/
 Tags: post, page
-Requires at least: 2.0.2
-Tested up to: 2.1
+Requires at least: 2.8
+Tested up to: 3.2
 Stable tag: 1.0
 
 UpCloo is a cloud based and fully hosted indexing engine that helps you to create incredible and automatic correlations between contents of your website.
@@ -25,6 +25,18 @@ After that you can install this plugin:
 
 == Frequently Asked Questions ==
 
+= How you can get access to UpCloo =
+
+You have to contact us, please see the main website at: www.upcloo.com
+
+= How we can send issues, requests and other problems =
+
+You can always use the GitHub Corley pages:
+ 
+ * https://github.com/corley/upcloo-wordpress-plugin/issues
+ 
+Through this section you can send problems, issues, requests and any else you want.
+
 = CURL Support =
 
 This plugin needs the CURL support, please check that your PHP installation have this feature enabled
@@ -32,9 +44,18 @@ This plugin needs the CURL support, please check that your PHP installation have
 == Screenshots ==
 
 1. The setting page
-2. Related example
+2. UpCloo public side
 
 == Changelog ==
 
 = 0.1 =
  * Base plugin structure
+ 
+= 0.2 =
+ * Added features and beginning tests
+
+= 0.3 =
+ * Added checks and continue tests
+
+= 0.4 =
+ * Simple bulk upload major bug fixing
