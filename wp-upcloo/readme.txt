@@ -4,7 +4,7 @@ Donate link: http://www.upcloo.com/
 Tags: post, page
 Requires at least: 2.0.2
 Tested up to: 2.1
-Stable tag: 0.1
+Stable tag: 1.0
 
 UpCloo is a cloud based and fully hosted indexing engine that helps you to create incredible and automatic correlations between contents of your website.
 
