@@ -185,7 +185,7 @@ function upcloo_add_dashboard_widgets() {
 
 function upcloo_admin_footer($text)
 {
-    return $text . " • <span><a target=\"_blank\" href='http://www.upcloo.com'>UpCloo Inside<a></span>";
+    return $text . " • <span><a target=\"_blank\" href='http://www.upcloo.com'>UpCloo Inside</a></span>";
 }
 
 /* Adds a box to the main column on the Post and Page edit screens */
