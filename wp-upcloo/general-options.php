@@ -163,6 +163,42 @@
         </p>
     </form>
     
+    <h3 id="upcloo-posts-types"><?php _e("Handle posts type", "wp_upcloo");?></h3>
+    <p class="warning">
+    	<?php _e("Select what kind of post you want to send to UpCloo", "wp_upcloo"); ?>
+    </p>
+    <form method="post" action="options.php#upcloo-post-types">
+        <?php wp_nonce_field('update-options'); ?>
+        <table class="form-table">
+            <tbody>
+            	<tr valign="top">
+                    <th width="92" scope="row"><?php echo _e("Select Posts Type", "wp_upcloo");?></th>
+                    <td width="406">
+                    	<?php 
+                    	    $postsType = get_post_types();
+                    	?>
+                    	<select name="<?php echo UPCLOO_POSTS_TYPE?>[]" multiple="multiple" size="10" style="width:380px">
+                    		<?php
+                    		    foreach ($postsType as $key => $type): 
+                    		?>
+                    		<option value="<?php echo $key?>"><?php echo $type?></option>
+                    		<?php 
+                    		    endforeach;
+                    		?>
+                    	</select>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            
+        <input type="hidden" name="action" value="update" />
+        <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_POSTS_TYPE))?>" />
+
+        <p class="submit">
+            <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+        </p>
+    </form>
+    
     <h3 id="upcloo-roi-monitor"><?php _e("ROI Monitor Parameters", "wp_upcloo");?></h3>
     <p class="warning">
     	<?php _e("Consider that you have Google Analytics Tracker script activated and visibile on your pages or almost where UpCloo is engaged.", "wp_upcloo"); ?>

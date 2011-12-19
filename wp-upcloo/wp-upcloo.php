@@ -1,4 +1,3 @@
-
 <?php
 /*
 Plugin Name: UpCloo WP Plugin
@@ -54,6 +53,7 @@ define('UPCLOO_META_LANG', 'upcloo_language_field');
 define('UPCLOO_ENABLE_MAIN_CORRELATION', "upcloo_enable_main_correlation");
 define('UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY', "upcloo_disable_main_correlation_completely");
 define('UPCLOO_MISSING_IMAGE_PLACEHOLDER', 'upcloo_missing_image_placeholder');
+define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
 
 add_action("admin_init", "upcloo_init");
 add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
@@ -493,6 +493,7 @@ function upcloo_install() {
     add_option(UPCLOO_ENABLE_MAIN_CORRELATION, "1", "", "yes");
     add_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, '0', '', 'yes');
     add_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER, '', '', 'yes');
+    add_option(UPCLOO_POSTS_TYPE, '', '', 'yes');
 }
 
 
@@ -512,6 +513,7 @@ function upcloo_remove() {
     delete_option(UPCLOO_ENABLE_MAIN_CORRELATION);
     delete_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY);
     delete_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER);
+    delete_option(UPCLOO_POSTS_TYPE);
 }
 
 add_action('admin_menu', 'upcloo_admin_menu');
