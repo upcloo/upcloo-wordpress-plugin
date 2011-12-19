@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-14 18:58+0100\n"
-"PO-Revision-Date: 2011-12-14 18:59+0100\n"
+"POT-Creation-Date: 2011-12-19 20:22+0100\n"
+"PO-Revision-Date: 2011-12-19 20:22+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:526
+#: wp-upcloo.php:529
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -71,9 +71,9 @@ msgstr "(es. La tua password UpCloo [non visibile per sicurezza])"
 
 #: general-options.php:61
 #: general-options.php:91
-#: general-options.php:176
-#: general-options.php:224
-#: general-options.php:287
+#: general-options.php:183
+#: general-options.php:231
+#: general-options.php:294
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -175,169 +175,177 @@ msgstr "Riscrivi l'etichetta pubblica di UpCloo"
 msgid "Let blank for use default label (May be you are interested at)"
 msgstr "Lascia in bianco per usare l'etichetta di default (Forse ti potrebbero interessare)"
 
-#: general-options.php:180
+#: general-options.php:171
+msgid "Image missing path"
+msgstr "Path immagine mancante"
+
+#: general-options.php:175
+msgid "Public path of no image [eg. /images/no-image.png] - used only for advanced templating method"
+msgstr "Path pubblica dell'immagine mancante [es. /images/no-image.png] - usata solo nel sistema di template avanzato"
+
+#: general-options.php:187
 msgid "ROI Monitor Parameters"
 msgstr "Parametri per il Monitor ROI"
 
-#: general-options.php:182
+#: general-options.php:189
 msgid "Consider that you have Google Analytics Tracker script activated and visibile on your pages or almost where UpCloo is engaged."
 msgstr "Considera che devi avere il Tracker Google Analytics attivo e visibile sulle tue pagine o almeno dove viene attivato UpCloo."
 
-#: general-options.php:189
+#: general-options.php:196
 msgid "Enable UTM Tagging"
 msgstr "Abilita il Tagging UTM"
 
-#: general-options.php:197
+#: general-options.php:204
 msgid "Enter base UTM Campaign"
 msgstr "Inserisci la campagna base UTM"
 
-#: general-options.php:200
+#: general-options.php:207
 msgid "(eg. upcloo-check)"
 msgstr "(es. upcloo-check)"
 
-#: general-options.php:204
+#: general-options.php:211
 msgid "Enter base UTM Medium"
 msgstr "Inserisci il media UTM"
 
-#: general-options.php:207
+#: general-options.php:214
 msgid "(eg. mywebsite)"
 msgstr "(es. ilmiosito)"
 
-#: general-options.php:211
+#: general-options.php:218
 msgid "Enter base UTM Source"
 msgstr "Sorgente UTM"
 
-#: general-options.php:214
+#: general-options.php:221
 msgid "(eg. upcloo-base-links)"
 msgstr "(es. upcloo-base-links)"
 
-#: general-options.php:227
+#: general-options.php:234
 msgid "Template selector"
 msgstr "Selezione template"
 
-#: general-options.php:229
+#: general-options.php:236
 msgid "Use the advanced method only if you know or have someone that know CSS (Cascading StyleSheet)"
 msgstr "Utilizza il metodo avanzato solo se conosci o c'è qualcuno che conosce i CSS (Fogli di stile in cascata)"
 
-#: general-options.php:236
+#: general-options.php:243
 msgid "Select you preferrered method"
 msgstr "Seleziona il tuo metodo preferito"
 
-#: general-options.php:239
+#: general-options.php:246
 msgid "(Default)"
 msgstr "(Default)"
 
-#: general-options.php:241
+#: general-options.php:248
 msgid "(Advanced)"
 msgstr "(Avanzato)"
 
-#: general-options.php:244
+#: general-options.php:251
 msgid "Only if advanced is selected"
 msgstr "Solo se è selezionato il metodo avanzato"
 
-#: general-options.php:246
+#: general-options.php:253
 msgid "Show post title"
 msgstr "Mostra il titolo del post"
 
-#: general-options.php:253
+#: general-options.php:260
 msgid "Show post featured image"
 msgstr "Mostra l'immagine del post"
 
-#: general-options.php:260
+#: general-options.php:267
 msgid "Show post summary"
 msgstr "Mostra il sommario del post"
 
-#: general-options.php:267
+#: general-options.php:274
 msgid "Show post tags"
 msgstr "Mostra i tag del post"
 
-#: general-options.php:274
+#: general-options.php:281
 msgid "Show post categories"
 msgstr "Mostra le categorie del post"
 
-#: general-options.php:290
+#: general-options.php:297
 msgid "Massive Sender"
 msgstr "Invio collettivo"
 
-#: general-options.php:292
+#: general-options.php:299
 msgid "The massive sender function send all your contents to the UpCloo cloud for initiate your index."
 msgstr "L'invio collettivo manderà tutti i tuoi contenuti  verso la nuvola di UpCLoo per inizializzare l'indice."
 
-#: general-options.php:295
+#: general-options.php:302
 msgid "Consider that a massive send is expensive. Use this feature only if you know exactly what that means."
 msgstr "Considere che l'operazioni di invio massivo è molto costosa. Utilizza questa funzionalità solo se sai esattamente cosa questa comporta."
 
-#: general-options.php:296
+#: general-options.php:303
 msgid "If your confirm this operation you accept all UpCloo rules and UpCloo T.O.S.."
 msgstr "Se confermi questa operazione accetti tutte le regole di UpCloo e i termini di servizio."
 
-#: general-options.php:303
+#: general-options.php:310
 msgid "Send only missing contents"
 msgstr "Invia solo i contenuti non ancora inviati"
 
-#: general-options.php:307
+#: general-options.php:314
 msgid "Send now all my contents"
 msgstr "Invia ora i miei contenuti"
 
-#: general-options.php:310
+#: general-options.php:317
 msgid "This operation takes a while depending on your posts count..."
 msgstr "Questa operazione potrebbe durare un po di tempo, dipende dal numero di contenuti..."
 
-#: general-options.php:327
+#: general-options.php:334
 msgid "Confirm"
 msgstr "Conferma"
 
-#: general-options.php:352
+#: general-options.php:359
 msgid "Status of checkbox (only-missing) is read on confirm button click."
 msgstr "Lo stato della checkbox (solo-non-inviati) è letto sulla pressione del tasto conferma"
 
-#: wp-upcloo.php:132
+#: wp-upcloo.php:133
 msgid "Indexed"
 msgstr "Indicizzato"
 
-#: wp-upcloo.php:132
+#: wp-upcloo.php:133
 msgid "Not Indexed"
 msgstr "Non indicizzato"
 
-#: wp-upcloo.php:133
+#: wp-upcloo.php:134
 msgid "ReIndex NOW"
 msgstr "Reindicizza subito"
 
-#: wp-upcloo.php:133
+#: wp-upcloo.php:134
 msgid "Index NOW"
 msgstr "Indicizza Subito"
 
-#: wp-upcloo.php:191
+#: wp-upcloo.php:192
 #, fuzzy
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo"
 
-#: wp-upcloo.php:203
-#: wp-upcloo.php:209
+#: wp-upcloo.php:204
+#: wp-upcloo.php:210
 msgid "UpCloo Language Definer"
 msgstr "Lingua (i18n) per UpCloo"
 
-#: wp-upcloo.php:226
+#: wp-upcloo.php:227
 msgid "Select the language of your article/page"
 msgstr "Seleziona la lingua del tuo articolo/pagina"
 
-#: wp-upcloo.php:233
+#: wp-upcloo.php:234
 msgid "Italian"
 msgstr "Italiano"
 
-#: wp-upcloo.php:234
+#: wp-upcloo.php:235
 msgid "English"
 msgstr "Inglese"
 
-#: wp-upcloo.php:526
+#: wp-upcloo.php:529
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
 
-#: wp-upcloo.php:532
+#: wp-upcloo.php:535
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:589
+#: wp-upcloo.php:592
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 

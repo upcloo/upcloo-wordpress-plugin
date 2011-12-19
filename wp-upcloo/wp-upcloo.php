@@ -54,6 +54,7 @@ define("UPCLOO_DEFAULT_LANG", "upcloo_default_language");
 define('UPCLOO_META_LANG', 'upcloo_language_field');
 define('UPCLOO_ENABLE_MAIN_CORRELATION', "upcloo_enable_main_correlation");
 define('UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY', "upcloo_disable_main_correlation_completely");
+define('UPCLOO_MISSING_IMAGE_PLACEHOLDER', 'upcloo_missing_image_placeholder');
 
 add_action("admin_init", "upcloo_init");
 add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
@@ -497,6 +498,7 @@ function upcloo_install() {
     add_option(UPCLOO_DEFAULT_LANG, "it", "", "yes");
     add_option(UPCLOO_ENABLE_MAIN_CORRELATION, "1", "", "yes");
     add_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, '0', '', 'yes');
+    add_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER, '', '', 'yes');
 }
 
 
@@ -518,6 +520,7 @@ function upcloo_remove() {
     delete_option(UPCLOO_DEFAULT_LANG);
     delete_option(UPCLOO_ENABLE_MAIN_CORRELATION);
     delete_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY);
+    delete_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER);
 }
 
 add_action('admin_menu', 'upcloo_admin_menu');
@@ -609,7 +612,10 @@ function upcloo_content($content) {
 
                     //Show if featured image
                     if (get_option('upcloo_template_show_featured_image', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_image"><a href="'. $finalURL .'"><img src="' . ((is_string($element->image)) ? $element->image : '') . '" alt="image" /></a></div>';
+                        //Get the image path
+                        $imagePath =  ((is_string($element->image)) ? $element->image : get_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER));
+                        //Append the image to the content
+                        $content .= '<div class="upcloo_post_image"><a href="'. $finalURL .'"><img src="' . $imagePath . '" alt="" /></a></div>';
                     }
                     
                     //Show if title
