@@ -59,3 +59,6 @@ This plugin needs the CURL support, please check that your PHP installation have
 
 = 0.4 =
  * Simple bulk upload major bug fixing
+
+= 0.5 =
+ * Custom posts support
