@@ -332,9 +332,11 @@ function upcloo_content_sync($pid)
     $post = get_post($pid); 
     $language = get_post_meta($post->ID, UPCLOO_META_LANG, true);
     
+    $postsType = get_option(UPCLOO_POSTS_TYPE);
+    
     /* Check if the content must be indexed */
     //TODO: add check condition on post type!
-    if (true) {
+    if (in_array($post->post_type, $postsType)) {
         if ($post->post_status == UPCLOO_POST_PUBLISH) {
             $categories = array();
             $tags = array();
@@ -547,6 +549,8 @@ function upcloo_content($content) {
         return $original;
     }
     
+    $postTypes = get_option(UPCLOO_POSTS_TYPE);
+    
     /**
      * Check if the content is single
      *
@@ -556,7 +560,7 @@ function upcloo_content($content) {
      * Check if UpCloo is enabled
      */
     if (
-        (is_single($post) || (is_page($post) && get_option("upcloo_show_on_page") == "1"))
+        (is_single($post) && (in_array($post->post_type, $postTypes)))
         && 
         (get_option(UPCLOO_ENABLE_MAIN_CORRELATION) || (!get_option(UPCLOO_ENABLE_MAIN_CORRELATION) && $current_user->has_cap('edit_users')))) 
     {
