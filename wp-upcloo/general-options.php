@@ -112,20 +112,6 @@
                     <strong><?php _e("If disabled only admins can see UpCloo correlation", "wp_upcloo");?></strong></td>
             </tr>
             <tr valign="top">
-                <th width="92" scope="row"><?php _e("Index Posts", "wp_upcloo");?></th>
-                <td width="406">
-                    <?php $index_post = get_option("upcloo_index_post");?>
-                    <input type="checkbox" name="upcloo_index_post" value="1" <?php checked("1" == $index_post); ?> />
-                    <strong><?php _e("Index Posts", "wp_upcloo");?></strong></td>
-            </tr>
-            <tr valign="top">
-                <th width="92" scope="row"><?php _e("Index Pages", "wp_upcloo");?></th>
-                <td width="406">
-                    <?php $index_page = get_option("upcloo_index_page");?>
-                    <input type="checkbox" name="upcloo_index_page" value="1" <?php checked("1" == $index_page); ?> />
-                    <strong><?php _e("Index Pages", "wp_upcloo");?></strong></td>
-            </tr>
-            <tr valign="top">
                 <th width="92" scope="row"><?php _e("Use Categories during Indexing", "wp_upcloo");?></th>
                 <td width="406">
                     <?php $index_category = get_option("upcloo_index_category");?>
@@ -138,13 +124,6 @@
                     <?php $index_tag = get_option("upcloo_index_tag");?>
                     <input type="checkbox" name="upcloo_index_tag" value="1" <?php checked("1" == $index_tag); ?> />
                     <strong><?php _e("Use tags during index creation", "wp_upcloo");?></strong></td>
-            </tr>
-            <tr valign="top">
-                <th width="92" scope="row"><?php _e("Show also in pages", "wp_upcloo");?></th>
-                <td width="406">
-                    <?php $show_on_page = get_option("upcloo_show_on_page");?>
-                    <input type="checkbox" name="upcloo_show_on_page" value="1" <?php checked("1" == $show_on_page); ?> />
-                    <strong><?php _e("Show related contents on pages", "wp_uplcoo");?></strong></td>
             </tr>
             <tr valign="top">
                 <th width="92" scope="row"><?php _e("Max Number of Links", "wp_upcloo");?></th>
@@ -177,7 +156,7 @@
         </table>
 
         <input type="hidden" name="action" value="update" />
-        <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, UPCLOO_ENABLE_MAIN_CORRELATION, UPCLOO_MISSING_IMAGE_PLACEHOLDER))?>,upcloo_index_category,upcloo_index_tag,upcloo_index_page,upcloo_index_post,upcloo_show_on_page,upcloo_max_show_links,upcloo_default_language,upcloo_rewrite_public_label" />
+        <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, UPCLOO_ENABLE_MAIN_CORRELATION, UPCLOO_MISSING_IMAGE_PLACEHOLDER))?>,upcloo_index_category,upcloo_index_tag,upcloo_max_show_links,upcloo_default_language,upcloo_rewrite_public_label" />
 
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />

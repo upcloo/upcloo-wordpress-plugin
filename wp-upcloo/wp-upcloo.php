@@ -1,3 +1,4 @@
+
 <?php
 /*
 Plugin Name: UpCloo WP Plugin
@@ -44,8 +45,6 @@ define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
 define("UPCLOO_POST_PUBLISH", "publish");
 define("UPCLOO_POST_TRASH", "trash");
 define("UPCLOO_USER_AGENT", "WPUpCloo/1.0");
-define("UPCLOO_PAGE", "page");
-define("UPCLOO_POST", "post");
 define("UPCLOO_RSS_FEED", "http://www.mxdesign.it/contenuti/rss/0/news.xml");
 define("UPCLOO_POST_META", "upcloo_post_sent");
 define("UPCLOO_CLOUD_IMAGE", '<img src="'.WP_PLUGIN_URL.'/wp-upcloo/upcloo.png" src="UpCloo" />');
@@ -334,10 +333,8 @@ function upcloo_content_sync($pid)
     $language = get_post_meta($post->ID, UPCLOO_META_LANG, true);
     
     /* Check if the content must be indexed */
-    if (
-        ($post->post_type == UPCLOO_POST && get_option("upcloo_index_post") == "1") ||
-        ($post->post_type == UPCLOO_PAGE && get_option("upcloo_index_page") == "1")
-       ) {
+    //TODO: add check condition on post type!
+    if (true) {
         if ($post->post_status == UPCLOO_POST_PUBLISH) {
             $categories = array();
             $tags = array();
@@ -487,9 +484,6 @@ function upcloo_install() {
     add_option("upcloo_password", "", "", "no");
     add_option("upcloo_index_category", "1", "", "no");
     add_option("upcloo_index_tag", "1", "", "no");
-    add_option("upcloo_index_page", "1", "", "no");
-    add_option("upcloo_index_post", "1", "", "no");
-    add_option("upcloo_show_on_page", "1", "", "yes");
     add_option("upcloo_max_show_links", "10", "", "yes");
     add_option("upcloo_utm_tag", "0", "", "yes");
     add_option("upcloo_utm_campaign", "", "", "yes");
@@ -509,9 +503,6 @@ function upcloo_remove() {
     delete_option('upcloo_password');
     delete_option('upcloo_index_category');
     delete_option('upcloo_index_tag');
-    delete_option('upcloo_index_page');
-    delete_option('upcloo_index_post');
-    delete_option('upcloo_show_on_page');
     delete_option('upcloo_max_show_links');
     delete_option("upcloo_utm_tag");
     delete_option("upcloo_utm_campaign");
