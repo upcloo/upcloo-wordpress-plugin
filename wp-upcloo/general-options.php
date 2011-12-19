@@ -177,6 +177,10 @@
                     	<?php 
                     	    $postsType = get_post_types();
                     	    $selected = get_option(UPCLOO_POSTS_TYPE);
+                    	    
+                    	    if (!is_array($selected)) {
+                    	        $selected = array();
+                    	    }
                     	?>
                     	<select name="<?php echo UPCLOO_POSTS_TYPE?>[]" multiple="multiple" size="10" style="width:380px">
                     		<?php
