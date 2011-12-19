@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-12-19 20:22+0100\n"
-"PO-Revision-Date: 2011-12-19 20:22+0100\n"
+"POT-Creation-Date: 2011-12-19 20:25+0100\n"
+"PO-Revision-Date: 2011-12-19 20:26+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -194,6 +194,10 @@ msgstr "Considera che devi avere il Tracker Google Analytics attivo e visibile s
 #: general-options.php:196
 msgid "Enable UTM Tagging"
 msgstr "Abilita il Tagging UTM"
+
+#: general-options.php:200
+msgid "(Enable Google UTM Tag Feature)"
+msgstr "(Abilita la funzionalità Google UTM Tag)"
 
 #: general-options.php:204
 msgid "Enter base UTM Campaign"

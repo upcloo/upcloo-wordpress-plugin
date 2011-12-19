@@ -197,7 +197,7 @@
                     <td width="406">
                     	<input name="upcloo_utm_tag" type="hidden" value="0" />
                         <input name="upcloo_utm_tag" type="checkbox" <?php echo ((get_option('upcloo_utm_tag', "wp_upcloo")) ? 'checked' : ''); ?> />
-                        <strong>(Enable Google UTM Tag Feature)</strong>
+                        <strong><?php _e("(Enable Google UTM Tag Feature)");?></strong>
                     </td>
                 </tr>
                 <tr valign="top">
