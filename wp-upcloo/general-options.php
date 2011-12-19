@@ -176,12 +176,13 @@
                     <td width="406">
                     	<?php 
                     	    $postsType = get_post_types();
+                    	    $selected = get_option(UPCLOO_POSTS_TYPE);
                     	?>
                     	<select name="<?php echo UPCLOO_POSTS_TYPE?>[]" multiple="multiple" size="10" style="width:380px">
                     		<?php
-                    		    foreach ($postsType as $key => $type): 
+                    		    foreach ($postsType as $key => $type):
                     		?>
-                    		<option value="<?php echo $key?>"><?php echo $type?></option>
+                    		<option <?php echo ((in_array($key, $selected)) ? 'selected="selected"' : '')?> value="<?php echo $key?>"><?php echo $type?></option>
                     		<?php 
                     		    endforeach;
                     		?>
