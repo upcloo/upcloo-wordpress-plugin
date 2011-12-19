@@ -87,31 +87,36 @@ function upcloo_action_ajax_importer_callback()
         
     set_time_limit(600);
     
-    //Get all... [Content sync handle pages and posts]
-    $postsCount = wp_count_posts('post')->publish + wp_count_posts('page')->publish;
+    $userSelected = get_option(UPCLOO_POSTS_TYPE);
     
-    $postsPerPage = 100;
-    
-    for ($i=0; $i<ceil($postsCount/$postsPerPage); $i++) {
-        $args = array(
-        	'numberposts'     => $postsPerPage,
-            'offset'          => $i*$postsPerPage,    //TODO: handle this one
-            'orderby'         => 'post_date',
-            'order'           => 'ASC',
-            'post_status'     => 'publish' 
-        );
+    foreach ($userSelected as $key => $postType) {
+        //Get all... [Content sync handle pages and posts]
+        $postsCount = wp_count_posts($key)->publish;
         
-        $posts = get_posts($args);
-        //Foreach post
-        foreach ($posts as $post) {
-            $toIndex = ($onlyMissing) ? (get_post_meta($post->ID, UPCLOO_POST_META, true) ? false : true): true;
-
-            //Check if is to index
-            if ($toIndex && upcloo_content_sync($post->ID)) {
-                //Force metadata update...
-                $upClooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
-                update_post_meta($post->ID, UPCLOO_POST_META, "1", $upClooMeta);
-            } 
+        $postsPerPage = 100;
+        
+        for ($i=0; $i<ceil($postsCount/$postsPerPage); $i++) {
+            $args = array(
+            	'numberposts'     => $postsPerPage,
+                'offset'          => $i*$postsPerPage,    //TODO: handle this one
+                'orderby'         => 'post_date',
+                'order'           => 'ASC',
+                'post_status'     => 'publish',
+                'post_type'		  => $key
+            );
+            
+            $posts = get_posts($args);
+            //Foreach post
+            foreach ($posts as $post) {
+                $toIndex = ($onlyMissing) ? (get_post_meta($post->ID, UPCLOO_POST_META, true) ? false : true): true;
+    
+                //Check if is to index
+                if ($toIndex && upcloo_content_sync($post->ID)) {
+                    //Force metadata update...
+                    $upClooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
+                    update_post_meta($post->ID, UPCLOO_POST_META, "1", $upClooMeta);
+                } 
+            }
         }
     }
 
