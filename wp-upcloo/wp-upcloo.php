@@ -91,7 +91,7 @@ function upcloo_action_ajax_importer_callback()
     
     foreach ($userSelected as $key => $postType) {
         //Get all... [Content sync handle pages and posts]
-        $postsCount = wp_count_posts($key)->publish;
+        $postsCount = wp_count_posts($postType)->publish;
         
         $postsPerPage = 100;
         
@@ -102,7 +102,7 @@ function upcloo_action_ajax_importer_callback()
                 'orderby'         => 'post_date',
                 'order'           => 'ASC',
                 'post_status'     => 'publish',
-                'post_type'		  => $key
+                'post_type'		  => $postType
             );
             
             $posts = get_posts($args);
