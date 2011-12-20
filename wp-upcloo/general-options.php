@@ -182,7 +182,7 @@
                     	        $selected = array();
                     	    }
                     	?>
-                    	<select name="<?php echo UPCLOO_POSTS_TYPE?>[]" multiple="multiple" size="10" style="width:380px; height: 240px;">
+                    	<select name="<?php echo UPCLOO_POSTS_TYPE?>[]" multiple="multiple" size="10" style="width:380px; height: 200px;">
                     		<?php
                     		    foreach ($postsType as $key => $type):
                     		?>
