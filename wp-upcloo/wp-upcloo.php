@@ -54,6 +54,7 @@ define('UPCLOO_ENABLE_MAIN_CORRELATION', "upcloo_enable_main_correlation");
 define('UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY', "upcloo_disable_main_correlation_completely");
 define('UPCLOO_MISSING_IMAGE_PLACEHOLDER', 'upcloo_missing_image_placeholder');
 define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
+define('UPCLOO_SUMMARY_LEN', 'upcloo_summary_len');
 
 add_action("admin_init", "upcloo_init");
 add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
@@ -385,11 +386,10 @@ function upcloo_content_sync($pid)
             if (empty($summary)) {
                 //Cut the first part of text
                 //and use it as a summary
-                
                 $content = $post->post_content;
-                
-                //Get the first dot after 40s char...
-                $len = 120;
+
+                //Get the max summary len
+                $len = upcloo_get_max_summary_len();
                 if (strlen($content) > $len) {
                     $pos = strpos($content, ".", $len);
                     if ($pos === false) {
@@ -402,7 +402,7 @@ function upcloo_content_sync($pid)
                     $summary = $content;
                 }
             }
-
+            
             $model = array(
                 "model" => array(
                     "id" => $post->post_type . "_" . $pid,
@@ -448,6 +448,29 @@ function upcloo_content_sync($pid)
             return upcloo_send_content($model);
         }
     }
+}
+
+/**
+ * 
+ * Get the max summary len
+ * 
+ * @return int The max summary len
+ */
+function upcloo_get_max_summary_len()
+{
+    $len = get_option(UPCLOO_SUMMARY_LEN);
+    
+    if (is_numeric($len)) {
+        $len = (int)$len;
+    
+        if ($len <= 0) {
+            $len = 120;
+        }
+    } else {
+        $len = 120;
+    }
+    
+    return $len;
 }
 
 /**
@@ -527,6 +550,7 @@ function upcloo_install() {
     add_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, '0', '', 'yes');
     add_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER, '', '', 'yes');
     add_option(UPCLOO_POSTS_TYPE, '', '', 'yes');
+    add_option(UPCLOO_SUMMARY_LEN, '', '', 'no');
 }
 
 
@@ -547,6 +571,7 @@ function upcloo_remove() {
     delete_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY);
     delete_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER);
     delete_option(UPCLOO_POSTS_TYPE);
+    delete_option(UPCLOO_SUMMARY_LEN);
 }
 
 add_action('admin_menu', 'upcloo_admin_menu');

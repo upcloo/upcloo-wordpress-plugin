@@ -153,10 +153,17 @@
                     <input name="<?php echo UPCLOO_MISSING_IMAGE_PLACEHOLDER?>" type="text" value="<?php echo get_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER, ""); ?>" />
                     <strong><a href="#upcloo-templating"><?php _e("Public path of no image [eg. /images/no-image.png] - used only for advanced templating method", "wp_uplcoo");?></a></strong></td>
 			</tr>
+			<tr valign="top">
+                <th width="92" scope="row"><?php _e("Summary Length", "wp_upcloo");?></th>
+                <td width="406">
+                    <?php $show_on_page = get_option(UPCLOO_SUMMARY_LEN);?>
+                    <input name="<?php echo UPCLOO_SUMMARY_LEN?>" type="text" value="<?php echo get_option(UPCLOO_SUMMARY_LEN, "120"); ?>" />
+                    <strong><?php _e("Maximum length for summary. If you set blank this field UpCloo use 120 characters by default.", "wp_uplcoo");?></strong></td>
+			</tr>
         </table>
 
         <input type="hidden" name="action" value="update" />
-        <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, UPCLOO_ENABLE_MAIN_CORRELATION, UPCLOO_MISSING_IMAGE_PLACEHOLDER))?>,upcloo_index_category,upcloo_index_tag,upcloo_max_show_links,upcloo_default_language,upcloo_rewrite_public_label" />
+        <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_SUMMARY_LEN, UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, UPCLOO_ENABLE_MAIN_CORRELATION, UPCLOO_MISSING_IMAGE_PLACEHOLDER))?>,upcloo_index_category,upcloo_index_tag,upcloo_max_show_links,upcloo_default_language,upcloo_rewrite_public_label" />
 
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
