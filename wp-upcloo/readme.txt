@@ -63,3 +63,6 @@ This plugin needs the CURL support, please check that your PHP installation have
 
 = 0.5 =
  * Custom posts support
+ 
+= 0.6 =
+ * Dynamic taxonomies handler
