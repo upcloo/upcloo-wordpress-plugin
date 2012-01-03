@@ -355,7 +355,24 @@ function upcloo_content_sync($pid)
             if (get_option("upcloo_index_tag") == "1") {
                 $tags = get_the_tags($pid);
             }
-
+            
+            //For taxonomies remove builtin and elements must public
+            $taxonomies_data = array();
+            
+            $args=array(
+				'public'   => true,
+              	'_builtin' => false
+            );
+            $taxonomies = get_taxonomies($args,'names', 'and');
+            foreach ($taxonomies as $taxonomy) {
+                $terms = wp_get_post_terms($pid, $taxonomy);
+                
+                $taxonomies_data[$taxonomy] = array();
+                foreach ($terms as $term) {
+                    $taxonomies_data[$taxonomy][] = $term->name;
+                }
+            }
+            
             $firstname = get_user_meta($post->post_author, "first_name", true);
             $lastname = get_user_meta($post->post_author, "last_name", true);
 
@@ -418,7 +435,11 @@ function upcloo_content_sync($pid)
                     $model["model"]["tags"][] = $tag->name;
                 }
             }
-
+            
+            if (is_array($taxonomies_data) && count($taxonomies_data)) {
+                $model["model"]["dynamics_tags"] = $taxonomies_data;                
+            }
+            
             return upcloo_send_content($model);
         }
     }
@@ -427,7 +448,7 @@ function upcloo_content_sync($pid)
 /**
  * Send the content to indexer
  *
- * @param string $model The data model.
+ * @param array $model The data model.
  * @return boolean Result of operation
  */
 function upcloo_send_content($model)
