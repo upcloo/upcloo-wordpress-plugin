@@ -388,13 +388,18 @@ function upcloo_content_sync($pid)
                 
                 $content = $post->post_content;
                 
-                //Get the first dot after 20s char...
-                $pos = strpos($content, ".", 20);
-                if ($pos === false) {
-                    //No dot... what I do?
-                    $summary = $content; // I fill the summary with content.
+                //Get the first dot after 40s char...
+                $len = 120;
+                if (strlen($content) > $len) {
+                    $pos = strpos($content, ".", $len);
+                    if ($pos === false) {
+                        //No dot... what I do?
+                        $summary = substr($content, 0 , $len); // I fill the summary with content.
+                    } else {
+                        $summary = substr($content, 0, $pos+1);
+                    }
                 } else {
-                    $summary = substr($content, 0, $pos);
+                    $summary = $content;
                 }
             }
 
