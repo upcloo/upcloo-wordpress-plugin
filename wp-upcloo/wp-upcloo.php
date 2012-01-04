@@ -644,7 +644,7 @@ function upcloo_content($content) {
             if (function_exists(UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION)) {
                 $content = call_user_func(UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION, $listOfModels);
                 
-                return $content;  //SELF TEMPLATE!
+                return $original . $content;  //SELF TEMPLATE!
             }
             
             $index = 0;
