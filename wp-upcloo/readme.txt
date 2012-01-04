@@ -4,7 +4,7 @@ Donate link: http://www.upcloo.com/
 Tags: post, page
 Requires at least: 2.8
 Tested up to: 3.3
-Stable tag: 1.0
+Stable tag: 1.0.1
 
 UpCloo is a cloud based and fully hosted indexing engine that helps you to create incredible and automatic correlations between contents of your website.
 
@@ -66,3 +66,7 @@ This plugin needs the CURL support, please check that your PHP installation have
  
 = 0.6 =
  * Dynamic taxonomies handler
+ * Added callback for templating results
+= 1.0.0 =
+ * Added widget callback for templating sidebar results
+ * Minor changes
