@@ -391,12 +391,12 @@ function upcloo_content_sync($pid)
                 $content = $post->post_content;
 
                 //Get the max summary len
-                $len = upcloo_get_max_summary_len();
+                $len = upcloo_get_min_summary_len();
                 if (strlen($content) > $len) {
                     $pos = strpos($content, ".", $len);
                     if ($pos === false) {
                         //No dot... what I do?
-                        $summary = substr($content, 0 , $len); // I fill the summary with content.
+                        $summary = substr($content, 0, $len); // I fill the summary with content.
                     } else {
                         $summary = substr($content, 0, $pos+1);
                     }
@@ -458,7 +458,7 @@ function upcloo_content_sync($pid)
  * 
  * @return int The max summary len
  */
-function upcloo_get_max_summary_len()
+function upcloo_get_min_summary_len()
 {
     $len = get_option(UPCLOO_SUMMARY_LEN);
     
@@ -643,7 +643,7 @@ function upcloo_content($content) {
             if (function_exists(UPCLOO_USER_DEFINED_TEMPLATE_FUCTION)) {
                 $content = call_user_func(UPCLOO_USER_DEFINED_TEMPLATE_FUCTION, $listOfModels);
                 
-                return $original . $content;  //SELF TEMPLATE!
+                return $content;  //SELF TEMPLATE!
             }
             
             $index = 0;
