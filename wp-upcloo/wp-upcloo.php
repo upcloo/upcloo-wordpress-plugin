@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 0.6
+Version: 1.0.0-Macbeth
 Author: Walter Dal Mut, Gabriele Mittica
 Author URI: http://www.corley.it
 License: MIT
@@ -55,6 +55,8 @@ define('UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY', "upcloo_disable_main_correl
 define('UPCLOO_MISSING_IMAGE_PLACEHOLDER', 'upcloo_missing_image_placeholder');
 define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
 define('UPCLOO_SUMMARY_LEN', 'upcloo_summary_len');
+
+define('UPCLOO_USER_DEFINED_TEMPLATE_FUCTION', "upcloo_user_template_callback");
 
 add_action("admin_init", "upcloo_init");
 add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
@@ -636,6 +638,13 @@ function upcloo_content($content) {
         
         $content = '';
         if ($listOfModels && property_exists($listOfModels, "doc") && is_array($listOfModels->doc) && count($listOfModels->doc)) {
+            
+            //Check if exists user template system (functions.php of template?)
+            if (function_exists(UPCLOO_USER_DEFINED_TEMPLATE_FUCTION)) {
+                $content = call_user_func(UPCLOO_USER_DEFINED_TEMPLATE_FUCTION, $listOfModels);
+                
+                return $original . $content;  //SELF TEMPLATE!
+            }
             
             $index = 0;
             $maxContents = get_option("upcloo_max_show_links")/1;
