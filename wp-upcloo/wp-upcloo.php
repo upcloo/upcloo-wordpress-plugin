@@ -56,7 +56,8 @@ define('UPCLOO_MISSING_IMAGE_PLACEHOLDER', 'upcloo_missing_image_placeholder');
 define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
 define('UPCLOO_SUMMARY_LEN', 'upcloo_summary_len');
 
-define('UPCLOO_USER_DEFINED_TEMPLATE_FUCTION', "upcloo_user_template_callback");
+define('UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION', "upcloo_user_template_callback");
+define('UPCLOO_USER_WIDGET_CALLBACK', 'upcloo_user_widget_callback');
 
 add_action("admin_init", "upcloo_init");
 add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
@@ -640,8 +641,8 @@ function upcloo_content($content) {
         if ($listOfModels && property_exists($listOfModels, "doc") && is_array($listOfModels->doc) && count($listOfModels->doc)) {
             
             //Check if exists user template system (functions.php of template?)
-            if (function_exists(UPCLOO_USER_DEFINED_TEMPLATE_FUCTION)) {
-                $content = call_user_func(UPCLOO_USER_DEFINED_TEMPLATE_FUCTION, $listOfModels);
+            if (function_exists(UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION)) {
+                $content = call_user_func(UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION, $listOfModels);
                 
                 return $content;  //SELF TEMPLATE!
             }

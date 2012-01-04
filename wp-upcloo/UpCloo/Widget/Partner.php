@@ -98,6 +98,9 @@ class UpCloo_Widget_Partner
 			}
 
 			if ($datax->doc) :
+    			if (function_exists(UPCLOO_USER_WIDGET_CALLBACK)) :
+    			    echo call_user_func(UPCLOO_USER_WIDGET_CALLBACK, $datax);
+    			else :
 ?>
     <li class="widget-container widget_upcloo">
         <h3 class="widget-title"><?php echo $instance["upcloo_v_title"]?></h3>
@@ -118,6 +121,7 @@ class UpCloo_Widget_Partner
         </div>
     </li>
 <?php
+                endif;
             endif;
             echo $after_widget;
         }
