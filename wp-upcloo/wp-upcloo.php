@@ -642,8 +642,15 @@ function upcloo_content($content) {
             
             //Shrink number of contents
             $maxContents = (int)get_option("upcloo_max_show_links");
-            if (is_int($maxContents) && $maxContents > 0) {
-                $listOfModels = array_chunk($listOfModels, $maxContents);
+            if ($maxContents > 0) {
+                $r = array();
+                //TODO: change
+                foreach ($listOfModels as $i => $model) {
+                    $r[] = $model;
+                    if ($maxContents >= $i) {
+                        break;
+                    }
+                }
             }
             
             //Check if exists user template system (functions.php of template?)
