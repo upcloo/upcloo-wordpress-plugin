@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.0.1-Macbeth
+Version: 1.0.2-Macbeth
 Author: Walter Dal Mut, Gabriele Mittica
 Author URI: http://www.corley.it
 License: MIT
@@ -640,6 +640,12 @@ function upcloo_content($content) {
         $content = '';
         if ($listOfModels && property_exists($listOfModels, "doc") && is_array($listOfModels->doc) && count($listOfModels->doc)) {
             
+            //Shrink number of contents
+            $maxContents = (int)get_option("upcloo_max_show_links");
+            if (is_int($maxContents) && $maxContents > 0) {
+                $listOfModels = array_chunk($listOfModels, $maxContents);
+            }
+            
             //Check if exists user template system (functions.php of template?)
             if (function_exists(UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION)) {
                 $content = call_user_func(UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION, $listOfModels);
@@ -647,8 +653,6 @@ function upcloo_content($content) {
                 return $original . $content;  //SELF TEMPLATE!
             }
             
-            $index = 0;
-            $maxContents = get_option("upcloo_max_show_links")/1;
             $content .= "<div class=\"upcloo-related-contents\">";
             //User override the default label
             if (!(get_option('upcloo_rewrite_public_label')) || trim(get_option('upcloo_rewrite_public_label')) == '') {
@@ -659,15 +663,6 @@ function upcloo_content($content) {
             
             if (get_option("upcloo_template_base", "wp_upcloo") == 1) {
                 foreach ($listOfModels->doc as $element) {
-                    //max links cutter
-                    if (is_int($maxContents) && $maxContents > 0) {
-                        if ($index >= $maxContents) {
-                            break;
-                            $index=0;
-                        }
-                    
-                        $index++;
-                    }
                     
                     $finalURL = upcloo_get_utm_tag_url($element->url);
                     
