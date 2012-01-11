@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.0.2-Macbeth
+Version: 1.0.4-Macbeth
 Author: Walter Dal Mut, Gabriele Mittica
 Author URI: http://www.corley.it
 License: MIT
@@ -641,17 +641,15 @@ function upcloo_content($content) {
         if ($listOfModels && property_exists($listOfModels, "doc") && is_array($listOfModels->doc) && count($listOfModels->doc)) {
             
             //Shrink number of contents
-            $maxContents = (int)get_option("upcloo_max_show_links");
-            if ($maxContents > 0) {
-                $r = array();
-                //TODO: change
-                foreach ($listOfModels as $i => $model) {
-                    $r[] = $model;
-                    if ($maxContents >= $i) {
-                        break;
-                    }
+            $maxContents = (((int)get_option("upcloo_max_show_links")) > 0) ? (int)get_option("upcloo_max_show_links") : 0;
+            
+            for ($i=0; $i<count($listOfModels->doc); $i++) {
+                if ($maxContents > 0 && $i >= $maxContents) {
+                    unset($listOfModels->doc[$i]);
+                    continue;
                 }
-                $listOfModels = $r;
+                
+                $listOfModels->doc[$i]->url = upcloo_get_utm_tag_url($model->url);
             }
             
             //Check if exists user template system (functions.php of template?)
@@ -672,8 +670,6 @@ function upcloo_content($content) {
             if (get_option("upcloo_template_base", "wp_upcloo") == 1) {
                 foreach ($listOfModels->doc as $element) {
                     
-                    $finalURL = upcloo_get_utm_tag_url($element->url);
-                    
                     $content .= '<div class="upcloo_template_element">';
 
                     //Show if featured image
@@ -681,12 +677,12 @@ function upcloo_content($content) {
                         //Get the image path
                         $imagePath =  ((is_string($element->image)) ? $element->image : get_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER));
                         //Append the image to the content
-                        $content .= '<div class="upcloo_post_image"><a href="'. $finalURL .'"><img src="' . $imagePath . '" alt="" /></a></div>';
+                        $content .= '<div class="upcloo_post_image"><a href="'. $element->url .'"><img src="' . $imagePath . '" alt="" /></a></div>';
                     }
                     
                     //Show if title
                     if (get_option('upcloo_template_show_title', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_title"><a href="'.$finalURL.'">' . $element->title . '</a></div>';
+                        $content .= '<div class="upcloo_post_title"><a href="'.$element->url.'">' . $element->title . '</a></div>';
                     }
                     
                     //Show if summary
@@ -728,9 +724,7 @@ function upcloo_content($content) {
                         $index++;
                     }
                     
-                    $finalURL = upcloo_get_utm_tag_url($element->url);
-                    
-                    $content .= "<li><a href=\"{$finalURL}\">{$element->title}</a></li>";    
+                    $content .= "<li><a href=\"{$element->url}\">{$element->title}</a></li>";    
                 }
     
                 $content .= "</ul>";
