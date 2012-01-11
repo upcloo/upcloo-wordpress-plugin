@@ -70,3 +70,12 @@ This plugin needs the CURL support, please check that your PHP installation have
 = 1.0.0 =
  * Added widget callback for templating sidebar results
  * Minor changes
+ 
+= 1.0.2 =
+ * Bug fix
+ 
+= 1.0.3 = 
+ * Bug fix
+ 
+= 1.0.4 =
+ * Improvements on self templating procedure.
