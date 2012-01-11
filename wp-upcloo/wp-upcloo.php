@@ -651,6 +651,7 @@ function upcloo_content($content) {
                         break;
                     }
                 }
+                $listOfModels = $r;
             }
             
             //Check if exists user template system (functions.php of template?)
