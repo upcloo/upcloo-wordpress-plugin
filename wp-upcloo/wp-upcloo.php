@@ -643,7 +643,8 @@ function upcloo_content($content) {
             //Shrink number of contents
             $maxContents = (((int)get_option("upcloo_max_show_links")) > 0) ? (int)get_option("upcloo_max_show_links") : 0;
             
-            for ($i=0; $i<count($listOfModels->doc); $i++) {
+            $numOfDocs = count($listOfModels->doc);
+            for ($i=0; $i<$numOfDocs; $i++) {
                 if ($maxContents > 0 && $i >= $maxContents) {
                     unset($listOfModels->doc[$i]);
                     continue;
