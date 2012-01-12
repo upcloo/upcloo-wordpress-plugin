@@ -4,7 +4,7 @@ Donate link: http://www.upcloo.com/
 Tags: post, page
 Requires at least: 2.8
 Tested up to: 3.3
-Stable tag: 1.0.4-Macbeth
+Stable tag: 1.0.5-Macbeth
 
 UpCloo is a cloud based and fully hosted indexing engine that helps you to create incredible and automatic correlations between contents of your website.
 
@@ -79,3 +79,6 @@ This plugin needs the CURL support, please check that your PHP installation have
  
 = 1.0.4 =
  * Improvements on self templating procedure.
+
+= 1.0.5 =
+ * Improvements on widget self templating procedure.
