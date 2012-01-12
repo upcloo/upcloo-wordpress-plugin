@@ -650,7 +650,7 @@ function upcloo_content($content) {
                     continue;
                 }
                 
-                $listOfModels->doc[$i]->url = upcloo_get_utm_tag_url($model->url);
+                $listOfModels->doc[$i]->url = upcloo_get_utm_tag_url($listOfModels->doc[$i]->url);
             }
             
             //Check if exists user template system (functions.php of template?)
