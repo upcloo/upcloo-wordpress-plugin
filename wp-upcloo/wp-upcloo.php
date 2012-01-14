@@ -678,12 +678,12 @@ function upcloo_content($content) {
                         //Get the image path
                         $imagePath =  ((is_string($element->image)) ? $element->image : get_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER));
                         //Append the image to the content
-                        $content .= '<div class="upcloo_post_image"><a href="'. $element->url .'"><img src="' . $imagePath . '" alt="" /></a></div>';
+                        $content .= '<div class="upcloo_post_image"><a href="'. $element->url .'" '.((upcloo_is_external_site($element->url)) ? 'target="_blank"' : '').'><img src="' . $imagePath . '" alt="" /></a></div>';
                     }
                     
                     //Show if title
                     if (get_option('upcloo_template_show_title', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_title"><a href="'.$element->url.'">' . $element->title . '</a></div>';
+                        $content .= '<div class="upcloo_post_title"><a href="'.$element->url.'" '.((upcloo_is_external_site($element->url)) ? 'target="_blank"' : '').'>' . $element->title . '</a></div>';
                     }
                     
                     //Show if summary
@@ -725,7 +725,7 @@ function upcloo_content($content) {
                         $index++;
                     }
                     
-                    $content .= "<li><a href=\"{$element->url}\">{$element->title}</a></li>";    
+                    $content .= "<li><a href='{$element->url}' ".((upcloo_is_external_site($element->url)) ? 'target="_blank"' : '').">{$element->title}</a></li>";    
                 }
     
                 $content .= "</ul>";
@@ -794,4 +794,24 @@ function upcloo_get_from_repository($name, $endPointURL = false)
     if (is_array($headers) && $headers["http_code"] == 200) {
         return json_decode(json_encode(simplexml_load_string($result)));
     }
+}
+
+/**
+ * Get base domain path of an url
+ * 
+ * @param string $url
+ * @return boolean The base url in case of success, false otherwise.
+ */
+function upcloo_is_external_site($url)
+{
+    $urlSchema = @parse_url($url);
+    if ($urlSchema) {
+        if ($urlSchema["host"] == $_SERVER["SERVER_NAME"]) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    return true;
 }

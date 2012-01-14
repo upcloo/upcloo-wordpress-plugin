@@ -133,7 +133,7 @@ class UpCloo_Widget_Partner
 			        continue;
 			    }
 			    
-			    $datax->doc[$index]->url = $datax->doc[$index]->url . $utmURL;
+			    $datax->doc[$index]->url = trim((string)$datax->doc[$index]->url) . $utmURL;
 			}
 
 			if ($datax->doc) :
@@ -148,7 +148,11 @@ class UpCloo_Widget_Partner
             <?php 
                 foreach ($datax->doc as $index => $doc):
             ?>
-            	<li><a href="<?php echo $doc->url?>" target="_blank"><?php echo $doc->title; ?></a></li>
+            	<li>
+            		<a href="<?php echo $doc->url?>" <?php echo ((upcloo_is_external_site($doc->url)) ? 'target="_blank"': "")?>>
+            		    <?php echo $doc->title; ?>
+        		    </a>
+    		    </li>
             <?php
                 endforeach;
             ?>
