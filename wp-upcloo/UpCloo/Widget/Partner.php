@@ -126,20 +126,22 @@ class UpCloo_Widget_Partner
 					$utmURL = "&{$utmURL}";
 				}
 			}
-			
-			foreach ($datax->doc as $index => $doc) {
-			    if (is_numeric($instance["upcloo_v_max_links"]) && $index >= $instance["upcloo_v_max_links"]) {
-			        unset($datax->doc[$index]);
-			        continue;
-			    }
-			    
-			    $datax->doc[$index]->url = trim((string)$datax->doc[$index]->url) . $utmURL;
-			}
 
-			if ($datax->doc) :
-    			if (function_exists(UPCLOO_USER_WIDGET_CALLBACK)) :
-    			    echo call_user_func(UPCLOO_USER_WIDGET_CALLBACK, $datax);
-    			else :
+			if (is_array($datax->doc)) {
+    			foreach ($datax->doc as $index => $doc) {
+    			    if (is_numeric($instance["upcloo_v_max_links"]) && $index >= $instance["upcloo_v_max_links"]) {
+    			        unset($datax->doc[$index]);
+    			        continue;
+    			    }
+    			    
+    			    $datax->doc[$index]->url = trim((string)$datax->doc[$index]->url) . $utmURL;
+    			}
+    			
+    
+    			if ($datax->doc) :
+        			if (function_exists(UPCLOO_USER_WIDGET_CALLBACK)) :
+        			    echo call_user_func(UPCLOO_USER_WIDGET_CALLBACK, $datax);
+        			else :
 ?>
     <li class="widget-container widget_upcloo">
         <h3 class="widget-title"><?php echo $instance["upcloo_v_title"]?></h3>
@@ -160,8 +162,9 @@ class UpCloo_Widget_Partner
         </div>
     </li>
 <?php
+                    endif;
                 endif;
-            endif;
+			}
             echo $after_widget;
         }
     }
