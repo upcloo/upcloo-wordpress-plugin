@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-11 14:17+0100\n"
-"PO-Revision-Date: 2012-01-11 14:17+0100\n"
+"POT-Creation-Date: 2012-01-14 18:10+0100\n"
+"PO-Revision-Date: 2012-01-14 18:10+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -171,8 +171,8 @@ msgid "Summary Length"
 msgstr "Lunghezza sommario"
 
 #: general-options.php:161
-msgid "Maximum length for summary. If you set blank this field UpCloo use 120 characters by default."
-msgstr ""
+msgid "Minimum length for summary. If you set blank this field UpCloo use 120 characters by default."
+msgstr "Lunghezza minima del sommario. Se viene lasciato in biano questo campo, UpCloo utilizzerà 120 caratteri di default"
 
 #: general-options.php:173
 msgid "Handle posts type"
@@ -323,9 +323,8 @@ msgid "Index NOW"
 msgstr "Indicizza Subito"
 
 #: wp-upcloo.php:200
-#, fuzzy
 msgid "UpCloo News Widget"
-msgstr "Widget Rete di UpCloo"
+msgstr "Widget Rete di UpCloo."
 
 #: wp-upcloo.php:212
 #: wp-upcloo.php:218
@@ -352,52 +351,51 @@ msgstr "Opzioni UpCloo"
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:665
+#: wp-upcloo.php:666
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
-#: UpCloo/Widget/Partner.php:9
+#: UpCloo/Widget/Partner.php:39
 msgid "UpCloo Network Widget"
 msgstr "Widget Rete di UpCloo"
 
-#: UpCloo/Widget/Partner.php:11
+#: UpCloo/Widget/Partner.php:41
 msgid "The UpCloo Virtual Partner SiteKey Widget"
 msgstr "Widget UpCloo per le Chiavi Sito Partner Virtuali"
 
-#: UpCloo/Widget/Partner.php:27
+#: UpCloo/Widget/Partner.php:57
 msgid "Related"
 msgstr "Correlati"
 
-#: UpCloo/Widget/Partner.php:32
+#: UpCloo/Widget/Partner.php:62
 msgid "upcloo"
 msgstr "upcloo"
 
-#: UpCloo/Widget/Partner.php:37
+#: UpCloo/Widget/Partner.php:67
 msgid "Title:"
 msgstr "Titolo:"
 
-#: UpCloo/Widget/Partner.php:40
+#: UpCloo/Widget/Partner.php:70
 msgid "Virtual Partner:"
 msgstr "Partner Virtuale:"
 
-#: UpCloo/Widget/Partner.php:43
-#, fuzzy
+#: UpCloo/Widget/Partner.php:73
 msgid "Number of links:"
-msgstr "Massimo numero di link"
+msgstr "Massimo numero di link."
 
-#: UpCloo/Widget/Partner.php:46
+#: UpCloo/Widget/Partner.php:76
 msgid "Enable UTM Tagging:"
 msgstr "Abilita il Tagging UTM"
 
-#: UpCloo/Widget/Partner.php:49
+#: UpCloo/Widget/Partner.php:79
 msgid "UTM Campaign:"
 msgstr "Campagna UTM (UTM Campaign)"
 
-#: UpCloo/Widget/Partner.php:52
+#: UpCloo/Widget/Partner.php:82
 msgid "UTM Media:"
 msgstr "Supporto UTM"
 
-#: UpCloo/Widget/Partner.php:55
+#: UpCloo/Widget/Partner.php:85
 msgid "UTM Source:"
 msgstr "Sorgente UTM"
 

@@ -39,6 +39,13 @@ load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)));
 require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
 
 //Only secure protocol on post/page publishing (now is beta test... no https)
+define("UPCLOO_USERKEY", "upcloo_userkey");
+define("UPCLOO_SITEKEY", "upcloo_sitekey");
+define("UPCLOO_PASSWORD", 'upcloo_password');
+define("UPCLOO_INDEX_CATEGORY", 'upcloo_index_category');
+define("UPCLOO_INDEX_TAG", "upcloo_index_tag");
+define('UPCLOO_REWRITE_PUBLIC_LABEL', 'upcloo_rewrite_public_label');
+define('UPCLOO_MAX_SHOW_LINKS', "upcloo_max_show_links");
 define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.com");
 define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
 define("UPCLOO_POST_PUBLISH", "publish");
@@ -55,6 +62,11 @@ define('UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY', "upcloo_disable_main_correl
 define('UPCLOO_MISSING_IMAGE_PLACEHOLDER', 'upcloo_missing_image_placeholder');
 define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
 define('UPCLOO_SUMMARY_LEN', 'upcloo_summary_len');
+
+define('UPCLOO_UTM_TAG', 'upcloo_utm_tag');
+define('UPCLOO_UTM_CAMPAIGN', 'upcloo_utm_campaign');
+define('UPCLOO_UTM_MEDIUM', 'upcloo_utm_medium');
+define('UPCLOO_UTM_SOURCE', 'upcloo_utm_source');
 
 define('UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION', "upcloo_user_template_callback");
 define('UPCLOO_USER_WIDGET_CALLBACK', 'upcloo_user_widget_callback');
@@ -538,41 +550,43 @@ function upcloo_model_to_xml($model)
 
 function upcloo_install() {
     /* Creates new database field */
-    add_option("upcloo_userkey", "", "", "yes");
-    add_option("upcloo_sitekey", "", "", "yes");
-    add_option("upcloo_password", "", "", "no");
-    add_option("upcloo_index_category", "1", "", "no");
-    add_option("upcloo_index_tag", "1", "", "no");
-    add_option("upcloo_max_show_links", "10", "", "yes");
-    add_option("upcloo_utm_tag", "0", "", "yes");
-    add_option("upcloo_utm_campaign", "", "", "yes");
-    add_option("upcloo_utm_medium", "", "", "yes");
-    add_option("upcloo_utm_source", "", "", "yes");
+    add_option(UPCLOO_USERKEY, "", "", "yes");
+    add_option(UPCLOO_SITEKEY, "", "", "yes");
+    add_option(UPCLOO_PASSWORD, "", "", "no");
+    add_option(UPCLOO_INDEX_CATEGORY, "1", "", "no");
+    add_option(UPCLOO_INDEX_TAG, "1", "", "no");
+    add_option(UPCLOO_MAX_SHOW_LINKS, "10", "", "yes");
+    add_option(UPCLOO_UTM_TAG, "0", "", "yes");
+    add_option(UPCLOO_UTM_CAMPAING, "", "", "yes");
+    add_option(UPCLOO_UTM_MEDIUM, "", "", "yes");
+    add_option(UPCLOO_UTM_SOURCE, "", "", "yes");
     add_option(UPCLOO_DEFAULT_LANG, "it", "", "yes");
     add_option(UPCLOO_ENABLE_MAIN_CORRELATION, "1", "", "yes");
     add_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, '0', '', 'yes');
     add_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER, '', '', 'yes');
     add_option(UPCLOO_POSTS_TYPE, '', '', 'yes');
     add_option(UPCLOO_SUMMARY_LEN, '', '', 'no');
+    add_option(UPCLOO_REWRITE_PUBLIC_LABEL, '','', 'yes');
 }
 
 
 function upcloo_remove() {
     /* Deletes the database field */
-    delete_option('upcloo_userkey');
-    delete_option('upcloo_sitekey');
-    delete_option('upcloo_password');
-    delete_option('upcloo_index_category');
-    delete_option('upcloo_index_tag');
-    delete_option('upcloo_max_show_links');
-    delete_option("upcloo_utm_tag");
-    delete_option("upcloo_utm_campaign");
-    delete_option("upcloo_utm_medium");
-    delete_option("upcloo_utm_source");
+    delete_option(UPCLOO_USERKEY);
+    delete_option(UPCLOO_SITEKEY);
+    delete_option(UPCLOO_PASSWORD);
+    delete_option(UPCLOO_INDEX_CATEGORY);
+    delete_option(UPCLOO_INDEX_TAG);
+    delete_option(UPCLOO_MAX_SHOW_LINKS);
+    delete_option(UPCLOO_UTM_TAG);
+    delete_option(UPCLOO_UTM_CAMPAIGN);
+    delete_option(UPCLOO_UTM_MEDIUM);
+    delete_option(UPCLOO_UTM_SOURCE);
     delete_option(UPCLOO_DEFAULT_LANG);
     delete_option(UPCLOO_ENABLE_MAIN_CORRELATION);
     delete_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY);
     delete_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER);
+    delete_option(UPCLOO_REWRITE_PUBLIC_LABEL);
     delete_option(UPCLOO_POSTS_TYPE);
     delete_option(UPCLOO_SUMMARY_LEN);
 }
@@ -662,10 +676,10 @@ function upcloo_content($content) {
             
             $content .= "<div class=\"upcloo-related-contents\">";
             //User override the default label
-            if (!(get_option('upcloo_rewrite_public_label')) || trim(get_option('upcloo_rewrite_public_label')) == '') {
+            if (!(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) || trim(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) == '') {
                 $content .= "<h2>" . __("Maybe you are interested at", "wp_upcloo") . ":</h2>";
             } else {
-                $content .= '<h2>' . get_option('upcloo_rewrite_public_label') . '</h2>';
+                $content .= '<h2>' . get_option(UPCLOO_REWRITE_PUBLIC_LABEL) . '</h2>';
             }
             
             if (get_option("upcloo_template_base", "wp_upcloo") == 1) {

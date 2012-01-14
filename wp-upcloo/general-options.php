@@ -27,19 +27,19 @@
             <tr valign="top">
                 <th width="92" scope="row"><?php echo _e("Enter your User Key", "wp_upcloo");?></th>
                 <td width="406">
-                    <input name="upcloo_userkey" type="text" value="<?php echo get_option('upcloo_userkey', "wp_upcloo"); ?>" />
-                    <strong>(eg. your-business-name)</strong></td>
+                    <input name="<?php echo UPCLOO_USERKEY?>" type="text" value="<?php echo get_option(UPCLOO_USERKEY, "wp_upcloo"); ?>" />
+                    <strong><?php echo __("(eg. your-business-name)")?></strong></td>
             </tr>
             <tr valign="top">
                 <th width="92" scope="row"><?php _e("Enter your Site Key", "wp_upcloo");?></th>
                 <td width="406">
-                    <input name="upcloo_sitekey" type="text" value="<?php echo get_option('upcloo_sitekey', "wp_upcloo"); ?>" />
-                    <strong>(eg. your-site-name)</strong></td>
+                    <input name="<?php echo UPCLOO_SITEKEY?>" type="text" value="<?php echo get_option(UPCLOO_SITEKEY, "wp_upcloo"); ?>" />
+                    <strong><?php echo __("(eg. your-site-name)")?></strong></td>
             </tr>
             <tr valign="top">
                 <th width="92" scope="row"><?php echo _e("Enter your Password", "wp_upcloo");?></th>
                 <td width="406">
-                    <input name="upcloo_password" type="password" value="" />
+                    <input name="<?php echo UPCLOO_PASSWORD?>" type="password" value="" />
                     <strong>
                         <?php _e("(eg. You account password [blank for security reasons])", "wp_upcloo");?>
                     </strong>
@@ -47,7 +47,7 @@
             </tr>
 
             <input type="hidden" name="action" value="update" />
-            <input type="hidden" name="page_options" value="upcloo_userkey,upcloo_sitekey,upcloo_password" />
+            <input type="hidden" name="page_options" value="<?php echo implode(UPCLOO_USERKEY, UPCLOO_SITEKEY, UPCLOO_PASSWORD)?>" />
             </tbody>
         </table>
         <p class="submit">
@@ -114,22 +114,22 @@
             <tr valign="top">
                 <th width="92" scope="row"><?php _e("Use Categories during Indexing", "wp_upcloo");?></th>
                 <td width="406">
-                    <?php $index_category = get_option("upcloo_index_category");?>
-                    <input type="checkbox" name="upcloo_index_category" value="1" <?php checked("1" == $index_category); ?> />
+                    <?php $index_category = get_option(UPCLOO_INDEX_CATEGORY);?>
+                    <input type="checkbox" name="<?php echo UPCLOO_INDEX_CATEGORY?>" value="1" <?php checked("1" == $index_category); ?> />
                     <strong><?php _e("Use categories during index creation", "wp_upcloo");?></strong></td>
             </tr>
             <tr valign="top">
                 <th width="92" scope="row"><?php _e("Use Tags during Indexing", "wp_upcloo");?></th>
                 <td width="406">
-                    <?php $index_tag = get_option("upcloo_index_tag");?>
-                    <input type="checkbox" name="upcloo_index_tag" value="1" <?php checked("1" == $index_tag); ?> />
+                    <?php $index_tag = get_option(UPCLOO_INDEX_TAG);?>
+                    <input type="checkbox" name="<?php echo UPCLOO_INDEX_TAG?>" value="1" <?php checked("1" == $index_tag); ?> />
                     <strong><?php _e("Use tags during index creation", "wp_upcloo");?></strong></td>
             </tr>
             <tr valign="top">
                 <th width="92" scope="row"><?php _e("Max Number of Links", "wp_upcloo");?></th>
                 <td width="406">
-                    <?php $show_on_page = get_option("upcloo_max_show_link");?>
-                    <input name="upcloo_max_show_links" type="text" value="<?php echo get_option('upcloo_max_show_links', ""); ?>" />
+                    <?php $show_on_page = get_option(UPCLOO_MAX_SHOW_LINKS);?>
+                    <input name="<?php echo UPCLOO_MAX_SHOW_LINKS?>" type="text" value="<?php echo get_option(UPCLOO_MAX_SHOW_LINKS, ""); ?>" />
                     <strong><?php _e("Let blank for all", "wp_uplcoo");?></strong></td>
 			</tr>
 			<tr valign="top">
@@ -142,8 +142,8 @@
 			<tr valign="top">
                 <th width="92" scope="row"><?php _e("Rewrite public UpCloo label", "wp_upcloo");?></th>
                 <td width="406">
-                    <?php $show_on_page = get_option("upcloo_rewrite_public_label");?>
-                    <input name="upcloo_rewrite_public_label" type="text" value="<?php echo get_option('upcloo_rewrite_public_label', ""); ?>" />
+                    <?php $show_on_page = get_option(UPCLOO_REWRITE_PUBLIC_LABEL);?>
+                    <input name="<?php echo UPCLOO_REWRITE_PUBLIC_LABEL?>" type="text" value="<?php echo get_option(UPCLOO_REWRITE_PUBLIC_LABEL, ""); ?>" />
                     <strong><?php _e("Let blank for use default label (May be you are interested at)", "wp_uplcoo");?></strong></td>
 			</tr>
 			<tr valign="top">
@@ -158,12 +158,12 @@
                 <td width="406">
                     <?php $show_on_page = get_option(UPCLOO_SUMMARY_LEN);?>
                     <input name="<?php echo UPCLOO_SUMMARY_LEN?>" type="text" value="<?php echo get_option(UPCLOO_SUMMARY_LEN, "120"); ?>" />
-                    <strong><?php _e("Maximum length for summary. If you set blank this field UpCloo use 120 characters by default.", "wp_uplcoo");?></strong></td>
+                    <strong><?php _e("Minimum length for summary. If you set blank this field UpCloo use 120 characters by default.", "wp_uplcoo");?></strong></td>
 			</tr>
         </table>
 
         <input type="hidden" name="action" value="update" />
-        <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_SUMMARY_LEN, UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, UPCLOO_ENABLE_MAIN_CORRELATION, UPCLOO_MISSING_IMAGE_PLACEHOLDER))?>,upcloo_index_category,upcloo_index_tag,upcloo_max_show_links,upcloo_default_language,upcloo_rewrite_public_label" />
+        <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_SUMMARY_LEN, UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, UPCLOO_ENABLE_MAIN_CORRELATION, UPCLOO_MISSING_IMAGE_PLACEHOLDER, UPCLOO_INDEX_TAG, UPCLOO_INDEX_CATEGORY, UPCLOO_MAX_SHOW_LINKS, UPCLOO_DEFAULT_LANGUAGE, UPCLOO_REWRITE_PUBLIC_LABEL))?>" />
 
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
@@ -222,29 +222,29 @@
             	<tr valign="top">
                     <th width="92" scope="row"><?php echo _e("Enable UTM Tagging", "wp_upcloo");?></th>
                     <td width="406">
-                    	<input name="upcloo_utm_tag" type="hidden" value="0" />
-                        <input name="upcloo_utm_tag" type="checkbox" <?php echo ((get_option('upcloo_utm_tag', "wp_upcloo")) ? 'checked' : ''); ?> />
+                    	<input name="<?php echo UPCLOO_UTM_TAG?>" type="hidden" value="0" />
+                        <input name="<?php echo UPCLOO_UTM_TAG?>" type="checkbox" <?php echo ((get_option(UPCLOO_UTM_TAG, "wp_upcloo")) ? 'checked' : ''); ?> />
                         <strong><?php _e("(Enable Google UTM Tag Feature)");?></strong>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th width="92" scope="row"><?php echo _e("Enter base UTM Campaign", "wp_upcloo");?></th>
                     <td width="406">
-                        <input name="upcloo_utm_campaign" type="text" value="<?php echo get_option('upcloo_utm_campaign', "wp_upcloo"); ?>" />
+                        <input name="<?php echo UPCLOO_UTM_CAMPAIGN?>" type="text" value="<?php echo get_option(UPCLOO_UTM_CAMPAIGN, "wp_upcloo"); ?>" />
                         <strong><?php echo _e("(eg. upcloo-check)");?></strong>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th width="92" scope="row"><?php echo _e("Enter base UTM Medium", "wp_upcloo");?></th>
                     <td width="406">
-                        <input name="upcloo_utm_medium" type="text" value="<?php echo get_option('upcloo_utm_medium', "wp_upcloo"); ?>" />
+                        <input name="<?php echo UPCLOO_UTM_MEDIUM?>" type="text" value="<?php echo get_option(UPCLOO_UTM_MEDIUM, "wp_upcloo"); ?>" />
                         <strong><?php echo _e("(eg. mywebsite)");?></strong>
                     </td>
                 </tr>
                 <tr valign="top">
                     <th width="92" scope="row"><?php echo _e("Enter base UTM Source", "wp_upcloo");?></th>
                     <td width="406">
-                        <input name="upcloo_utm_source" type="text" value="<?php echo get_option('upcloo_utm_source', "wp_upcloo"); ?>" />
+                        <input name="<?php echo UPCLOO_UTM_SOURCE?>" type="text" value="<?php echo get_option(UPCLOO_UTM_SOURCE, "wp_upcloo"); ?>" />
                         <strong><?php echo _e("(eg. upcloo-base-links)");?></strong>
                     </td>
                 </tr>
@@ -252,7 +252,7 @@
         </table>
             
         <input type="hidden" name="action" value="update" />
-        <input type="hidden" name="page_options" value="upcloo_utm_campaign,upcloo_utm_tag, upcloo_utm_source, upcloo_utm_medium" />
+        <input type="hidden" name="page_options" value="<?php echo implode(",", UPCLOO_UTM_CAMPAIGN, UPCLOO_UTM_TAG, UPCLOO_UTM_MEDIUM, UPCLOO_UTM_SOURCE)?>" />
 
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
