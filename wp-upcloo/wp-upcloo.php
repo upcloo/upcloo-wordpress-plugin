@@ -644,8 +644,21 @@ function upcloo_general_option_page() {
 
 /**
  * Get content on public side
+ * 
+ * Get the content on public side with UpCloo
+ * related posts or other contents.
+ * 
+ * You can disable the post body using the $noPostBody
+ * parameter. This parameter is used only if you
+ * call the UpCloo call back by hand.
+ * 
+ * @param string $content The original post content
+ * @param boolean $noPostBody disable original post content into response
+ *
+ * @return string The content rewritten using UpCloo
  */
-function upcloo_content($content) {
+function upcloo_content($content, $noPostBody = false) 
+{
     global $post;
     global $current_user;
     
@@ -708,7 +721,11 @@ function upcloo_content($content) {
             if (function_exists(UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION)) {
                 $content = call_user_func(UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION, $listOfModels);
                 
-                return $original . $content;  //SELF TEMPLATE!
+                if ($noPostBody) {
+                    return $content; //Only UpCloo user rewritten contents.
+                } else {
+                    return $original . $content;  //SELF TEMPLATE!
+                }
             }
             
             $content .= "<div class=\"upcloo-related-contents\">";
@@ -783,6 +800,9 @@ function upcloo_content($content) {
             }
             $content .= "</div>";
         }
+    }
+    
+    if (!$noPostBody) {
         $content = $original . $content;
     }
 
