@@ -68,6 +68,9 @@ define('UPCLOO_UTM_CAMPAIGN', 'upcloo_utm_campaign');
 define('UPCLOO_UTM_MEDIUM', 'upcloo_utm_medium');
 define('UPCLOO_UTM_SOURCE', 'upcloo_utm_source');
 
+define('UPCLOO_ENABLE_VSITEKEY_AS_PRIMARY', "upcloo_enable_vsitekey_as_primary");
+defien('UPCLOO_VSITEKEY_AS_PRIMARY', "upcloo_vsitekey_as_primary");
+
 define('UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION', "upcloo_user_template_callback");
 define('UPCLOO_USER_WIDGET_CALLBACK', 'upcloo_user_widget_callback');
 
