@@ -800,11 +800,12 @@ function upcloo_content($content, $noPostBody = false)
             }
             $content .= "</div>";
         }
+        
+        if (!$noPostBody) {
+            $content = $original . $content;
+        }
     }
     
-    if (!$noPostBody) {
-        $content = $original . $content;
-    }
 
     return $content;
 }
