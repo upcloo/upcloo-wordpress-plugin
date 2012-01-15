@@ -69,7 +69,14 @@ define('UPCLOO_UTM_MEDIUM', 'upcloo_utm_medium');
 define('UPCLOO_UTM_SOURCE', 'upcloo_utm_source');
 
 define('UPCLOO_ENABLE_VSITEKEY_AS_PRIMARY', "upcloo_enable_vsitekey_as_primary");
-defien('UPCLOO_VSITEKEY_AS_PRIMARY', "upcloo_vsitekey_as_primary");
+define('UPCLOO_VSITEKEY_AS_PRIMARY', "upcloo_vsitekey_as_primary");
+
+define('UPCLOO_TEMPLATE_BASE', 'upcloo_template_base');
+define('UPCLOO_TEMPLATE_SHOW_TITLE', 'upcloo_template_show_title');
+define('UPCLOO_TEMPLATE_SHOW_FEATURED_IMAGE', 'upcloo_template_show_featured_image');
+define('UPCLOO_TEMPLATE_SHOW_SUMMARY','upcloo_template_show_summary');
+define('UPCLOO_TEMPLATE_SHOW_TAGS', 'upcloo_template_show_tags');
+define('UPCLOO_TEMPLATE_SHOW_CATEGORIES', 'upcloo_template_show_categories');
 
 define('UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION', "upcloo_user_template_callback");
 define('UPCLOO_USER_WIDGET_CALLBACK', 'upcloo_user_widget_callback');
@@ -82,6 +89,8 @@ add_action('manage_pages_custom_column',  'upcloo_my_show_columns');
 add_action('save_post', 'upcloo_save_data');
 add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
 add_action('wp_ajax_upcloo_ajax_importer', 'upcloo_action_ajax_importer_callback');
+add_action('admin_menu', 'upcloo_admin_menu');
+add_action( 'post_submitbox_misc_actions', 'upcloo_add_force_content_send_link' );
 
 add_filter( 'the_content', 'upcloo_content' );
 add_filter('admin_footer_text', "upcloo_admin_footer");
@@ -159,7 +168,7 @@ function upcloo_add_force_content_send_link()
     <?php 
     endif;
 }
-add_action( 'post_submitbox_misc_actions', 'upcloo_add_force_content_send_link' );
+
 function upcloo_my_columns($columns) 
 {
     $columns['upcloo'] = "UpCloo";
@@ -551,6 +560,12 @@ function upcloo_model_to_xml($model)
     }
 }
 
+/**
+ * Configure options
+ * 
+ * This method configure options for UpCLoo
+ * it is called during UpCloo plugin activation
+ */
 function upcloo_install() {
     /* Creates new database field */
     add_option(UPCLOO_USERKEY, "", "", "yes");
@@ -570,9 +585,22 @@ function upcloo_install() {
     add_option(UPCLOO_POSTS_TYPE, '', '', 'yes');
     add_option(UPCLOO_SUMMARY_LEN, '', '', 'no');
     add_option(UPCLOO_REWRITE_PUBLIC_LABEL, '','', 'yes');
+    add_option(UPCLOO_ENABLE_VSITEKEY_AS_PRIMARY,'','','no');
+    add_option(UPCLOO_VSITEKEY_AS_PRIMARY,'','','no');
+    add_option(UPCLOO_TEMPLATE_BASE,'','','yes');
+    add_option(UPCLOO_TEMPLATE_SHOW_TITLE,'','','yes');
+    add_option(UPCLOO_TEMPLATE_SHOW_FEATURED_IMAGE,'','','yes');
+    add_option(UPCLOO_TEMPLATE_SHOW_SUMMARY,'','','yes');
+    add_option(UPCLOO_TEMPLATE_SHOW_TAGS,'','','yes');
+    add_option(UPCLOO_TEMPLATE_SHOW_CATEGORIES,'','','yes');
 }
 
-
+/**
+ * Remove all options
+ * 
+ * This method remove all UpCloo option
+ * it is called by disable plugin action.
+ */
 function upcloo_remove() {
     /* Deletes the database field */
     delete_option(UPCLOO_USERKEY);
@@ -592,9 +620,15 @@ function upcloo_remove() {
     delete_option(UPCLOO_REWRITE_PUBLIC_LABEL);
     delete_option(UPCLOO_POSTS_TYPE);
     delete_option(UPCLOO_SUMMARY_LEN);
+    delete_option(UPCLOO_ENABLE_VSITEKEY_AS_PRIMARY);
+    delete_option(UPCLOO_VSITEKEY_AS_PRIMARY);
+    delete_option(UPCLOO_TEMPLATE_BASE);
+    delete_option(UPCLOO_TEMPLATE_SHOW_TITLE);
+    delete_option(UPCLOO_TEMPLATE_SHOW_FEATURED_IMAGE);
+    delete_option(UPCLOO_TEMPLATE_SHOW_SUMMARY);
+    delete_option(UPCLOO_TEMPLATE_SHOW_TAGS);
+    delete_option(UPCLOO_TEMPLATE_SHOW_CATEGORIES);
 }
-
-add_action('admin_menu', 'upcloo_admin_menu');
 
 function upcloo_admin_menu() {
     add_options_page(__('UpCloo General Options', "wp_upcloo"), __('UpCloo Options', "wp_upcloo"), 'manage_options',
