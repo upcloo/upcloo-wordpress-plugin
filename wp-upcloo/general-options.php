@@ -47,7 +47,7 @@
             </tr>
 
             <input type="hidden" name="action" value="update" />
-            <input type="hidden" name="page_options" value="<?php echo implode(UPCLOO_USERKEY, UPCLOO_SITEKEY, UPCLOO_PASSWORD)?>" />
+            <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_USERKEY, UPCLOO_SITEKEY, UPCLOO_PASSWORD))?>" />
             </tbody>
         </table>
         <p class="submit">
@@ -252,7 +252,7 @@
         </table>
             
         <input type="hidden" name="action" value="update" />
-        <input type="hidden" name="page_options" value="<?php echo implode(",", UPCLOO_UTM_CAMPAIGN, UPCLOO_UTM_TAG, UPCLOO_UTM_MEDIUM, UPCLOO_UTM_SOURCE)?>" />
+        <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_UTM_CAMPAIGN, UPCLOO_UTM_TAG, UPCLOO_UTM_MEDIUM, UPCLOO_UTM_SOURCE))?>" />
 
         <p class="submit">
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
