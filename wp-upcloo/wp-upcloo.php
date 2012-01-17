@@ -231,18 +231,23 @@ function upcloo_admin_footer($text)
 
 /* Adds a box to the main column on the Post and Page edit screens */
 function upcloo_add_custom_box() {
-   add_meta_box( 
-       'upcloo_language_metabox',
-       __( 'UpCloo Language Definer', 'wp_upcloo' ),
-       'upcloo_inner_custom_box',
-      'post' 
-   );
-  add_meta_box(
-       'upcloo_language_metabox',
-      __( 'UpCloo Language Definer', 'wp_upcloo' ), 
-       'upcloo_inner_custom_box',
-       'page'
-   );
+    
+    $selected = get_option(UPCLOO_POSTS_TYPE);
+    
+    if (!$selected) {
+        $selected = array();
+    }
+    
+    if (is_array($selected)) {
+        foreach ($selected as $key => $value) {
+            add_meta_box(
+                'upcloo_language_metabox',
+                __( 'UpCloo Language Definer', 'wp_upcloo' ),
+                'upcloo_inner_custom_box',
+                $key 
+            );
+        }
+    }
 }
 
 function upcloo_inner_custom_box()
