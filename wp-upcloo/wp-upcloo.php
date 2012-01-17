@@ -213,7 +213,7 @@ function upcloo_dashboard_widget_function() {
     
     echo "<ul>";
     foreach ($xml->channel->item as $item) {
-        echo "<li><a href='{$item->link}?utm_campaign=wp_dashboardwidget&utm_medium=wordpress&utm_source={$blogTitle}' target='_blank'>{$item->title}</a></li>";
+        echo "<li><a href='{$item->link}?utm_campaign=upcloo_rss&utm_medium=wordpress_dashboard&utm_source={$blogTitle}' target='_blank'>{$item->title}</a></li>";
     }
     echo "</ul>";
 }
