@@ -146,14 +146,26 @@ function upcloo_wp_head()
     $metas = '';
     
     if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
+        $postTypes = get_option(UPCLOO_POSTS_TYPE);
+        if (!is_array($postTypes)) {
+            $postTypes = array();
+        }
+        
+        
         if (is_single()) {
             $m = array();
             
             global $post;
             
+            //TODO: refactor...
+            if (!in_array($post->post_type, $postTypes)) {
+                return;
+            }
+            
             $publish_date = $post->post_date;
             $publish_date = str_replace(" ", "T", $publish_date) . "Z";
             
+            $m[] = '<meta name="post_type" content="'.$post->post_type.'" />';
             $m[] = '<meta name="id" content="'.$post->ID.'" />';
             $m[] = '<meta name="title" content="'.$post->post_title.'" />';
             $m[] = '<meta name="pubDate" content="'.$publish_date.'" />';
@@ -705,6 +717,11 @@ function upcloo_content($content, $noPostBody = false)
     
     get_currentuserinfo();
     
+    $postTypes = get_option(UPCLOO_POSTS_TYPE);
+    if (!is_array($postTypes)) {
+        $postTypes = array();
+    }
+    
     if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
         $content = "<!-- UPCLOO BEGIN CONTENT -->{$content}<!-- UPCLOO END CONTENT -->";
     }
@@ -715,11 +732,6 @@ function upcloo_content($content, $noPostBody = false)
     
     if (get_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY) == "1") {
         return $content;
-    }
-    
-    $postTypes = get_option(UPCLOO_POSTS_TYPE);
-    if (!is_array($postTypes)) {
-        $postTypes = array();
     }
     
     /**
