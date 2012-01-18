@@ -321,70 +321,33 @@
             <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
         </p>
     </form>
-    <h3><?php _e("Massive Sender", "wp_upcloo");?></h3>
+    
+    <h3 id="upcloo-remote-import"><?php _e("Remote Import System", "wp_upcloo");?></h3>
     <p class="warning">
-    	<?php _e("The massive sender function send all your contents to the UpCloo cloud for initiate your index.", "wp_upcloo"); ?>
+    	<?php _e("Consider that you have to request remote indexing using UpCloo remote control panel.", "wp_upcloo"); ?>
+    	<?php _e("See this link for more information about this procedure:") ?> 
+    		<a href="https://github.com/corley/upcloo-wordpress-plugin/wiki/Enable-Template-MetaTags-for-Remote-Importer">UpCloo Remote Importer Wiki Page</a>
     </p>
-    <p class="warning">
-    	<?php _e('Consider that a massive send is expensive. Use this feature only if you know exactly what that means.', 'wp_upcloo') ?>
-    	<?php _e('If your confirm this operation you accept all UpCloo rules and UpCloo T.O.S..', 'wp_upcloo') ?>
-    </p>
-	<table class="form-table">
-        <tbody>
-        	<tr>
-        		<td>
-        			<input style="cursor: pointer;" type="checkbox" checked="checked" name="upcloo_send_only_misses" id="upcloo_send_only_misses" />
-        			<label for="upcloo_send_only_misses"><?php _e('Send only missing contents', 'wp_upcloo') ?></label>
-    			</td>
-        	</tr>
-        	<tr valign="top">
-        		<td><input style="cursor: pointer;" type="button" name="upcloo_sender_enable_button" value="<?php _e('Send now all my contents', 'wp_upcloo') ?>" /></td>
-        	</tr>
-        	<tr>
-        		<td><?php _e("This operation takes a while depending on your posts count...", "wp_upcloo")?></td>
-        	</tr>
-    	</tbody> 
-	</table>   
+    <form method="post" action="options.php#upcloo-remote-import">
+        <?php wp_nonce_field('update-options'); ?>
+        <table class="form-table">
+            <tbody>
+            	<tr valign="top">
+                    <th width="92" scope="row"><?php echo _e("Enable MetaTags for Remote UpCloo Importer", "wp_upcloo");?></th>
+                    <td width="406">
+                    	<input name="<?php echo UPCLOO_ENABLE_TEMPLATE_REMOTE_META?>" type="hidden" value="0" />
+                        <input name="<?php echo UPCLOO_ENABLE_TEMPLATE_REMOTE_META?>" type="checkbox" <?php echo ((get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) ? 'checked' : ''); ?> />
+                        <strong><?php _e("(Enable only for one-time remote import after that turn if off.)");?></strong>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            
+        <input type="hidden" name="action" value="update" />
+        <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_ENABLE_TEMPLATE_REMOTE_META))?>" />
+
+        <p class="submit">
+            <input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" />
+        </p>
+    </form>
 </div>
-<script type="text/javascript">
-jQuery(document).ready(function($) {
-	$('input[name=upcloo_sender_enable_button]').bind('click', function(event){
-		var elem = $(this);
-		elem.unbind("click");
-
-		var placeholder = elem.parent().parent().parent();
-
-		var tr = $('<tr/>').append('<td/>');
-		tr.find('td').append('<input style="cursor: pointer;" type="button"/>');
-		var input = tr.find('input');
-
-		input.attr('value', '<?php _e('Confirm', 'wp_upcloo')?>');
-
-		input.bind('click', function(){
-
-			var onlyMissing = (jQuery('#upcloo_send_only_misses').prop("checked")) ? "1" : "0";
-
-			//Remove the placeholder
-			placeholder.remove();
-
-			var data = {
-	    		"action": 'upcloo_ajax_importer',
-	    		"onlyMissing": onlyMissing
-	    	};
-	    
-	    	// since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
-	    	jQuery.get(ajaxurl, data, function(response) {
-	    		if (response && response.completed) {
-		    		alert("OK");
-	    		}
-	    	}, 'json');
-		});
-		
-		placeholder.append(tr);
-
-		var infoBlock = $('<p/>');
-		infoBlock.append("<?php echo _e("Status of checkbox (only-missing) is read on confirm button click.", "wp_upcloo")?>");
-		placeholder.append(infoBlock);
-	});
-});
-</script>
