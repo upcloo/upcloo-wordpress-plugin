@@ -178,13 +178,17 @@ function upcloo_wp_head()
             }
             
             $tags = get_the_tags($post->ID);
-            foreach ($tags as $element) {
-                $m[] = '<meta name="tag[]" content="'.$element->name.'" />';
+            if (is_array($tags)) {
+                foreach ($tags as $element) {
+                    $m[] = '<meta name="tag[]" content="'.$element->name.'" />';
+                }
             }
             
             $categories = get_the_category($post->ID);
-            foreach ($categories as $element) {
-                $m[] = '<meta name="category[]" content="'.$element->name.'" />';
+            if (is_array($categories)) {
+                foreach ($categories as $element) {
+                    $m[] = '<meta name="category[]" content="'.$element->name.'" />';
+                }
             }
             
             
