@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-14 18:10+0100\n"
-"PO-Revision-Date: 2012-01-14 18:10+0100\n"
+"POT-Creation-Date: 2012-01-18 19:51+0100\n"
+"PO-Revision-Date: 2012-01-18 19:54+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:583
+#: wp-upcloo.php:643
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -57,9 +57,17 @@ msgstr "Parametri di Accesso"
 msgid "Enter your User Key"
 msgstr "Inserisci la tua Chiave Utente"
 
+#: general-options.php:31
+msgid "(eg. your-business-name)"
+msgstr "(es. il-nome-gruppo)"
+
 #: general-options.php:34
 msgid "Enter your Site Key"
 msgstr "Inserisci la tua Chiave Sito"
+
+#: general-options.php:37
+msgid "(eg. your-site-name)"
+msgstr "(es. il-mio-sito)"
 
 #: general-options.php:40
 msgid "Enter your Password"
@@ -75,6 +83,7 @@ msgstr "(es. La tua password UpCloo [non visibile per sicurezza])"
 #: general-options.php:210
 #: general-options.php:258
 #: general-options.php:321
+#: general-options.php:350
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -270,88 +279,71 @@ msgstr "Mostra i tag del post"
 msgid "Show post categories"
 msgstr "Mostra le categorie del post"
 
-#: general-options.php:324
-msgid "Massive Sender"
-msgstr "Invio collettivo"
+#: general-options.php:325
+msgid "Remote Import System"
+msgstr "Sistema di importazione remota"
 
-#: general-options.php:326
-msgid "The massive sender function send all your contents to the UpCloo cloud for initiate your index."
-msgstr "L'invio collettivo manderà tutti i tuoi contenuti  verso la nuvola di UpCLoo per inizializzare l'indice."
+#: general-options.php:327
+msgid "Consider that you have to request remote indexing using UpCloo remote control panel."
+msgstr "Considera che devi aver richiesto l'indicizzazione remota utilizzando il pannello remoto di UpCloo"
 
-#: general-options.php:329
-msgid "Consider that a massive send is expensive. Use this feature only if you know exactly what that means."
-msgstr "Considere che l'operazioni di invio massivo è molto costosa. Utilizza questa funzionalità solo se sai esattamente cosa questa comporta."
+#: general-options.php:328
+msgid "See this link for more information about this procedure:"
+msgstr "Guarda questo link per maggiori informazioni su questa procedura:"
 
-#: general-options.php:330
-msgid "If your confirm this operation you accept all UpCloo rules and UpCloo T.O.S.."
-msgstr "Se confermi questa operazione accetti tutte le regole di UpCloo e i termini di servizio."
+#: general-options.php:336
+msgid "Enable MetaTags for Remote UpCloo Importer"
+msgstr "Abilita i MetaTags per l'importazione remota di UpCloo"
 
-#: general-options.php:337
-msgid "Send only missing contents"
-msgstr "Invia solo i contenuti non ancora inviati"
+#: general-options.php:340
+msgid "(Enable only for one-time remote import after that turn if off.)"
+msgstr "(Abilita solo una volta per l'importazione remota e dopo spegnilo)."
 
-#: general-options.php:341
-msgid "Send now all my contents"
-msgstr "Invia ora i miei contenuti"
-
-#: general-options.php:344
-msgid "This operation takes a while depending on your posts count..."
-msgstr "Questa operazione potrebbe durare un po di tempo, dipende dal numero di contenuti..."
-
-#: general-options.php:361
-msgid "Confirm"
-msgstr "Conferma"
-
-#: general-options.php:386
-msgid "Status of checkbox (only-missing) is read on confirm button click."
-msgstr "Lo stato della checkbox (solo-non-inviati) è letto sulla pressione del tasto conferma"
-
-#: wp-upcloo.php:141
+#: wp-upcloo.php:167
 msgid "Indexed"
 msgstr "Indicizzato"
 
-#: wp-upcloo.php:141
+#: wp-upcloo.php:167
 msgid "Not Indexed"
 msgstr "Non indicizzato"
 
-#: wp-upcloo.php:142
+#: wp-upcloo.php:168
 msgid "ReIndex NOW"
 msgstr "Reindicizza subito"
 
-#: wp-upcloo.php:142
+#: wp-upcloo.php:168
 msgid "Index NOW"
 msgstr "Indicizza Subito"
 
-#: wp-upcloo.php:200
+#: wp-upcloo.php:226
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
-#: wp-upcloo.php:212
-#: wp-upcloo.php:218
+#: wp-upcloo.php:247
 msgid "UpCloo Language Definer"
 msgstr "Lingua (i18n) per UpCloo"
 
-#: wp-upcloo.php:235
+#: wp-upcloo.php:266
 msgid "Select the language of your article/page"
 msgstr "Seleziona la lingua del tuo articolo/pagina"
 
-#: wp-upcloo.php:242
+#: wp-upcloo.php:273
 msgid "Italian"
 msgstr "Italiano"
 
-#: wp-upcloo.php:243
+#: wp-upcloo.php:274
 msgid "English"
 msgstr "Inglese"
 
-#: wp-upcloo.php:583
+#: wp-upcloo.php:643
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
 
-#: wp-upcloo.php:589
+#: wp-upcloo.php:649
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:666
+#: wp-upcloo.php:746
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
@@ -398,6 +390,49 @@ msgstr "Supporto UTM"
 #: UpCloo/Widget/Partner.php:85
 msgid "UTM Source:"
 msgstr "Sorgente UTM"
+
+#~ msgid "Massive Sender"
+#~ msgstr "Invio collettivo"
+
+#~ msgid ""
+#~ "The massive sender function send all your contents to the UpCloo cloud "
+#~ "for initiate your index."
+#~ msgstr ""
+#~ "L'invio collettivo manderà tutti i tuoi contenuti  verso la nuvola di "
+#~ "UpCLoo per inizializzare l'indice."
+
+#~ msgid ""
+#~ "Consider that a massive send is expensive. Use this feature only if you "
+#~ "know exactly what that means."
+#~ msgstr ""
+#~ "Considere che l'operazioni di invio massivo è molto costosa. Utilizza "
+#~ "questa funzionalità solo se sai esattamente cosa questa comporta."
+
+#~ msgid ""
+#~ "If your confirm this operation you accept all UpCloo rules and UpCloo T.O."
+#~ "S.."
+#~ msgstr ""
+#~ "Se confermi questa operazione accetti tutte le regole di UpCloo e i "
+#~ "termini di servizio."
+
+#~ msgid "Send only missing contents"
+#~ msgstr "Invia solo i contenuti non ancora inviati"
+
+#~ msgid "Send now all my contents"
+#~ msgstr "Invia ora i miei contenuti"
+
+#~ msgid "This operation takes a while depending on your posts count..."
+#~ msgstr ""
+#~ "Questa operazione potrebbe durare un po di tempo, dipende dal numero di "
+#~ "contenuti..."
+
+#~ msgid "Confirm"
+#~ msgstr "Conferma"
+
+#~ msgid "Status of checkbox (only-missing) is read on confirm button click."
+#~ msgstr ""
+#~ "Lo stato della checkbox (solo-non-inviati) è letto sulla pressione del "
+#~ "tasto conferma"
 
 #~ msgid "Index Posts"
 #~ msgstr "Indicizza i Post"

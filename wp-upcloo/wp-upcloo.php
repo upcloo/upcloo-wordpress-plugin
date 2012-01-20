@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.1.2-Gertrude
+Version: 1.1.4-Gertrude
 Author: Walter Dal Mut, Gabriele Mittica
 Author URI: http://www.corley.it
 License: MIT
@@ -81,6 +81,8 @@ define('UPCLOO_TEMPLATE_SHOW_CATEGORIES', 'upcloo_template_show_categories');
 define('UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION', "upcloo_user_template_callback");
 define('UPCLOO_USER_WIDGET_CALLBACK', 'upcloo_user_widget_callback');
 
+define('UPCLOO_ENABLE_TEMPLATE_REMOTE_META', 'upcloo_enable_template_remote_meta');
+
 add_action("admin_init", "upcloo_init");
 add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
 add_action( 'widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");' ) );
@@ -88,9 +90,10 @@ add_action('manage_posts_custom_column',  'upcloo_my_show_columns');
 add_action('manage_pages_custom_column',  'upcloo_my_show_columns');
 add_action('save_post', 'upcloo_save_data');
 add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
-add_action('wp_ajax_upcloo_ajax_importer', 'upcloo_action_ajax_importer_callback');
 add_action('admin_menu', 'upcloo_admin_menu');
-add_action( 'post_submitbox_misc_actions', 'upcloo_add_force_content_send_link' );
+add_action('post_submitbox_misc_actions', 'upcloo_add_force_content_send_link');
+
+add_action('wp_head', 'upcloo_wp_head');
 
 add_filter( 'the_content', 'upcloo_content' );
 add_filter('admin_footer_text', "upcloo_admin_footer");
@@ -105,54 +108,101 @@ register_activation_hook(__FILE__, 'upcloo_install');
 register_deactivation_hook(__FILE__, 'upcloo_remove');
 
 /**
- * Ajax (upcloo_ajax_importer)
+ * Get Taxonomies
  * 
- * Used for importer [GET call]
+ * @param int $pid The post ID
+ * @return array Taxonomies custom
  */
-function upcloo_action_ajax_importer_callback()
+function upcloo_get_taxonomies($pid)
 {
-    $onlyMissing = $_GET["onlyMissing"];
-        
-    set_time_limit(600);
+    //For taxonomies remove builtin and elements must public
+    $taxonomies_data = array();
     
-    $userSelected = get_option(UPCLOO_POSTS_TYPE);
-    
-    foreach ($userSelected as $key => $postType) {
-        //Get all... [Content sync handle pages and posts]
-        $postsCount = wp_count_posts($postType)->publish;
-        
-        $postsPerPage = 100;
-        
-        for ($i=0; $i<ceil($postsCount/$postsPerPage); $i++) {
-            $args = array(
-            	'numberposts'     => $postsPerPage,
-                'offset'          => $i*$postsPerPage,    //TODO: handle this one
-                'orderby'         => 'post_date',
-                'order'           => 'ASC',
-                'post_status'     => 'publish',
-                'post_type'		  => $postType
-            );
-            
-            $posts = get_posts($args);
-            //Foreach post
-            foreach ($posts as $post) {
-                $toIndex = ($onlyMissing) ? (get_post_meta($post->ID, UPCLOO_POST_META, true) ? false : true): true;
-    
-                //Check if is to index
-                if ($toIndex && upcloo_content_sync($post->ID)) {
-                    //Force metadata update...
-                    $upClooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
-                    update_post_meta($post->ID, UPCLOO_POST_META, "1", $upClooMeta);
-                } 
-            }
+    $args = array(
+		'public'   => true,
+      	'_builtin' => false
+    );
+    $taxonomies = get_taxonomies($args,'names', 'and');
+    foreach ($taxonomies as $taxonomy) {
+        $terms = wp_get_post_terms($pid, $taxonomy);
+        $taxonomies_data[$taxonomy] = array();
+        foreach ($terms as $term) {
+            $taxonomies_data[$taxonomy][] = $term->name;
         }
     }
-
-    //Operation ends...
-    echo json_encode(array("completed" => 1));
-    die();
+    
+    return $taxonomies_data;
 }
 
+/**
+ * Use only in single.php
+ * 
+ * Call this function only in single.php theme file
+ * 
+ * @return string The content to attach into head.
+ */
+function upcloo_wp_head()
+{
+    $metas = '';
+    
+    if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
+        $postTypes = get_option(UPCLOO_POSTS_TYPE);
+        if (!is_array($postTypes)) {
+            $postTypes = array();
+        }
+        
+        
+        if (is_single()) {
+            $m = array();
+            
+            global $post;
+            
+            //TODO: refactor...
+            if (!in_array($post->post_type, $postTypes)) {
+                return;
+            }
+            
+            $publish_date = $post->post_date;
+            $publish_date = str_replace(" ", "T", $publish_date) . "Z";
+            
+            $m[] = '<meta name="post_type" content="'.$post->post_type.'" />';
+            $m[] = '<meta name="id" content="'.$post->ID.'" />';
+            $m[] = '<meta name="title" content="'.$post->post_title.'" />';
+            $m[] = '<meta name="pubDate" content="'.$publish_date.'" />';
+            
+            $taxonomies = upcloo_get_taxonomies($post->ID);
+            foreach ($taxonomies as $slug => $taxonomy) {
+                foreach ($taxonomy as $element) {
+                    $m[] = '<meta name="'.$slug.'[]" content="'.$element.'" />';
+                }
+            }
+            
+            $tags = get_the_tags($post->ID);
+            if (is_array($tags)) {
+                foreach ($tags as $element) {
+                    $m[] = '<meta name="tag[]" content="'.$element->name.'" />';
+                }
+            }
+            
+            $categories = get_the_category($post->ID);
+            if (is_array($categories)) {
+                foreach ($categories as $element) {
+                    $m[] = '<meta name="category[]" content="'.$element->name.'" />';
+                }
+            }
+            
+            
+            $metas = implode(PHP_EOL, $m) . PHP_EOL;
+        }
+    }
+        
+    echo $metas;
+}
+
+/**
+ * During post update you can resend the content 
+ * to the UpCloo cloud system.
+ */
 function upcloo_add_force_content_send_link()
 {
     global $post_ID;
@@ -598,6 +648,7 @@ function upcloo_install() {
     add_option(UPCLOO_TEMPLATE_SHOW_SUMMARY,'','','yes');
     add_option(UPCLOO_TEMPLATE_SHOW_TAGS,'','','yes');
     add_option(UPCLOO_TEMPLATE_SHOW_CATEGORIES,'','','yes');
+    add_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, '0', '', 'yes');
 }
 
 /**
@@ -633,6 +684,7 @@ function upcloo_remove() {
     delete_option(UPCLOO_TEMPLATE_SHOW_SUMMARY);
     delete_option(UPCLOO_TEMPLATE_SHOW_TAGS);
     delete_option(UPCLOO_TEMPLATE_SHOW_CATEGORIES);
+    delete_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META);
 }
 
 function upcloo_admin_menu() {
@@ -669,17 +721,21 @@ function upcloo_content($content, $noPostBody = false)
     
     get_currentuserinfo();
     
-    $original = $content;
-
-    $upClooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
-    
-    if (get_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY) == "1") {
-        return $original;
-    }
-    
     $postTypes = get_option(UPCLOO_POSTS_TYPE);
     if (!is_array($postTypes)) {
         $postTypes = array();
+    }
+    
+    if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
+        $content = "<!-- UPCLOO BEGIN CONTENT -->{$content}<!-- UPCLOO END CONTENT -->";
+    }
+    
+    $original = $content;
+    
+    $upClooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
+    
+    if (get_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY) == "1") {
+        return $content;
     }
     
     /**
