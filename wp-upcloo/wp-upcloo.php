@@ -740,7 +740,10 @@ function upcloo_content($content, $noPostBody = false)
     }
     
     if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
-        $content = "<!-- UPCLOO POST CONTENT -->{$content}<!-- UPCLOO POST CONTENT -->";
+        //TODO: this part is written twice... clear...
+        if ((is_single($post) && (in_array($post->post_type, $postTypes)))) {
+            $content = "<!-- UPCLOO POST CONTENT -->{$content}<!-- UPCLOO POST CONTENT -->";
+        }
     }
     
     $original = $content;
