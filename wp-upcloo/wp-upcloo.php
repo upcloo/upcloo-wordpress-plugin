@@ -164,9 +164,9 @@ function upcloo_wp_head()
             
             $publish_date = $post->post_date;
             $publish_date = str_replace(" ", "T", $publish_date) . "Z";
-            
+
+            $m[] = '<meta name="id" content="'.$post->post_type . "_" . $post->ID.'" />';
             $m[] = '<meta name="post_type" content="'.$post->post_type.'" />';
-            $m[] = '<meta name="id" content="'.$post->ID.'" />';
             $m[] = '<meta name="title" content="'.$post->post_title.'" />';
             $m[] = '<meta name="pubDate" content="'.$publish_date.'" />';
             
