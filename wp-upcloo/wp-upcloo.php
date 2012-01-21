@@ -168,27 +168,40 @@ function upcloo_wp_head()
             $m[] = '<meta name="id" content="'.$post->post_type . "_" . $post->ID.'" />';
             $m[] = '<meta name="post_type" content="'.$post->post_type.'" />';
             $m[] = '<meta name="title" content="'.$post->post_title.'" />';
-            $m[] = '<meta name="pubDate" content="'.$publish_date.'" />';
+            $m[] = '<meta name="publish_date" content="'.$publish_date.'" />';
+            
+            $firstname = get_user_meta($post->post_author, "first_name", true);
+            $lastname = get_user_meta($post->post_author, "last_name", true);
+            
+            $m[] = '<meta name="author" content="'.$first_name . " " . $last_name .'" />';
             
             $taxonomies = upcloo_get_taxonomies($post->ID);
-            foreach ($taxonomies as $slug => $taxonomy) {
-                foreach ($taxonomy as $element) {
-                    $m[] = '<meta name="'.$slug.'[]" content="'.$element.'" />';
+            if (is_array($taxonomies)) {
+                $taxonomiesArray = array();
+                foreach ($taxonomies as $slug => $taxonomy) {
+                    foreach ($taxonomy as $element) {
+                        $taxonomiesArray[] = $element;
+                    }
                 }
+                $m[] = '<meta name="'.$slug.'" content="'.implode(",", $taxonomiesArray).'" />';
             }
             
             $tags = get_the_tags($post->ID);
             if (is_array($tags)) {
+                $elements = array();
                 foreach ($tags as $element) {
-                    $m[] = '<meta name="tag[]" content="'.$element->name.'" />';
+                    $elements[] = $element->name
                 }
+                $m[] = '<meta name="tag" content="'.implode(",", $elements).'" />';
             }
             
             $categories = get_the_category($post->ID);
             if (is_array($categories)) {
+                $elements = array();
                 foreach ($categories as $element) {
-                    $m[] = '<meta name="category[]" content="'.$element->name.'" />';
+                    $elements[] = $element->name;
                 }
+                $m[] = '<meta name="category" content="'.implode(",", $elements).'" />';
             }
             
             
