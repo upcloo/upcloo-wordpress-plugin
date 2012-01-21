@@ -165,15 +165,15 @@ function upcloo_wp_head()
             $publish_date = $post->post_date;
             $publish_date = str_replace(" ", "T", $publish_date) . "Z";
 
-            $m[] = '<meta name="id" content="'.$post->post_type . "_" . $post->ID.'" />';
-            $m[] = '<meta name="post_type" content="'.$post->post_type.'" />';
-            $m[] = '<meta name="title" content="'.$post->post_title.'" />';
-            $m[] = '<meta name="publish_date" content="'.$publish_date.'" />';
+            $m[] = '<!-- UPCLOO_POST_ID '.$post->post_type . "_" . $post->ID.' UPCLOO_POST_ID -->';
+            $m[] = '<!-- UPCLOO_POST_TYPE '.$post->post_type.' UPCLOO_POST_TYPE -->';
+            $m[] = '<!-- UPCLOO_POST_TITLE '.$post->post_title.' UPCLOO_POST_TITLE -->';
+            $m[] = '<!-- UPCLOO_POST_PUBLISH_DATE '.$publish_date.' UPCLOO_POST_PUBLISH_DATE -->';
             
             $firstname = get_user_meta($post->post_author, "first_name", true);
             $lastname = get_user_meta($post->post_author, "last_name", true);
             
-            $m[] = '<meta name="author" content="'.$firstname . " " . $lastname .'" />';
+            $m[] = '<!-- UPCLOO_POST_AUTHOR '.$firstname . " " . $lastname .' UPCLOO_POST_AUTHOR -->';
             
             $taxonomies = upcloo_get_taxonomies($post->ID);
             if (is_array($taxonomies)) {
@@ -182,7 +182,7 @@ function upcloo_wp_head()
                     foreach ($taxonomy as $element) {
                         $taxonomiesArray[] = $element;
                     }
-                    $m[] = '<meta name="'.$slug.'" type="dynamic_tag" content="'.implode(",", $taxonomiesArray).'" />';
+                    $m[] = '<!-- UPCLOO_POST_DYNAMIC_TAG_'.strtoupper($slug).' '.implode(",", $taxonomiesArray).' UPCLOO_POST_DYNAMIC_TAG_'.strtoupper($slug).' -->';
                 }
             }
             
@@ -192,7 +192,7 @@ function upcloo_wp_head()
                 foreach ($tags as $element) {
                     $elements[] = $element->name;
                 }
-                $m[] = '<meta name="tag" content="'.implode(",", $elements).'" />';
+                $m[] = '<!-- UPCLOO_POST_TAGS '.implode(",", $elements).' UPCLOO_POST_TAGS -->';
             }
             
             $categories = get_the_category($post->ID);
@@ -201,7 +201,7 @@ function upcloo_wp_head()
                 foreach ($categories as $element) {
                     $elements[] = $element->name;
                 }
-                $m[] = '<meta name="category" content="'.implode(",", $elements).'" />';
+                $m[] = '<!-- UPCLOO_POST_CATEGORIES '.implode(",", $elements).' UPCLOO_POST_CATEGORIES -->';
             }
             
             
