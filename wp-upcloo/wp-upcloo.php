@@ -170,6 +170,11 @@ function upcloo_wp_head()
             $m[] = '<!-- UPCLOO_POST_TITLE '.$post->post_title.' UPCLOO_POST_TITLE -->';
             $m[] = '<!-- UPCLOO_POST_PUBLISH_DATE '.$publish_date.' UPCLOO_POST_PUBLISH_DATE -->';
             
+            $image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
+            if ($image) {
+                $m[] = '<!-- UPCLOO_POST_IMAGE '.$image.' UPCLOO_POST_IMAGE -->';
+            }
+            
             $firstname = get_user_meta($post->post_author, "first_name", true);
             $lastname = get_user_meta($post->post_author, "last_name", true);
             
