@@ -173,7 +173,7 @@ function upcloo_wp_head()
             $firstname = get_user_meta($post->post_author, "first_name", true);
             $lastname = get_user_meta($post->post_author, "last_name", true);
             
-            $m[] = '<meta name="author" content="'.$first_name . " " . $last_name .'" />';
+            $m[] = '<meta name="author" content="'.$firstname . " " . $lastname .'" />';
             
             $taxonomies = upcloo_get_taxonomies($post->ID);
             if (is_array($taxonomies)) {
@@ -182,15 +182,15 @@ function upcloo_wp_head()
                     foreach ($taxonomy as $element) {
                         $taxonomiesArray[] = $element;
                     }
+                    $m[] = '<meta name="'.$slug.'" type="dynamic_tag" content="'.implode(",", $taxonomiesArray).'" />';
                 }
-                $m[] = '<meta name="'.$slug.'" content="'.implode(",", $taxonomiesArray).'" />';
             }
             
             $tags = get_the_tags($post->ID);
             if (is_array($tags)) {
                 $elements = array();
                 foreach ($tags as $element) {
-                    $elements[] = $element->name
+                    $elements[] = $element->name;
                 }
                 $m[] = '<meta name="tag" content="'.implode(",", $elements).'" />';
             }
