@@ -740,7 +740,7 @@ function upcloo_content($content, $noPostBody = false)
     }
     
     if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
-        $content = "<!-- UPCLOO BEGIN CONTENT -->{$content}<!-- UPCLOO END CONTENT -->";
+        $content = "<!-- UPCLOO POST CONTENT -->{$content}<!-- UPCLOO POST CONTENT -->";
     }
     
     $original = $content;
