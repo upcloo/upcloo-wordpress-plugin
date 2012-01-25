@@ -117,6 +117,9 @@ if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
     }
 }
 
+/**
+ * Generate a sitemap for UpCloo Remote Importer 
+ */
 function upcloo_sitemap_page()
 {
     header ("content-type: text/xml");
