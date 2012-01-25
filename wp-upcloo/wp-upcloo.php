@@ -83,6 +83,8 @@ define('UPCLOO_USER_WIDGET_CALLBACK', 'upcloo_user_widget_callback');
 
 define('UPCLOO_ENABLE_TEMPLATE_REMOTE_META', 'upcloo_enable_template_remote_meta');
 
+define('UPCLOO_SITEMAP_PAGE', 'upcloo_sitemap');
+
 add_action("admin_init", "upcloo_init");
 add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
 add_action( 'widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");' ) );
@@ -106,6 +108,43 @@ register_activation_hook(__FILE__, 'upcloo_install');
 
 /* Runs on plugin deactivation*/
 register_deactivation_hook(__FILE__, 'upcloo_remove');
+
+//If have to show meta values
+if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
+    //Add sitemap page
+    if ($_GET['plugin_page'] == UPCLOO_SITEMAP_PAGE) {
+        add_action('template_redirect', 'upcloo_sitemap_page');
+    }
+}
+
+function upcloo_sitemap_page()
+{
+    header ("content-type: text/xml");
+    
+    $userSelected = get_option(UPCLOO_POSTS_TYPE);
+    
+    echo '<?xml version="1.0" encoding="utf-8"?>';
+    echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+    foreach ($userSelected as $key => $postType) {
+        $args = array(
+    		'numberposts'     => 50000,
+    		'offset'          => 0,
+    		'orderby'         => 'post_date',
+    		'order'           => 'DESC',
+    		'post_type'       => $postType,
+    		'post_status'     => 'publish' 
+        );
+        
+        $posts = get_posts( $args );
+        foreach ($posts as $post) {
+            $permalink = get_permalink($post->ID);
+            echo "<url><loc>{$permalink}</loc></url>";
+        }
+    } 
+    echo '</urlset>';
+    exit;
+}
+
 
 /**
  * Get Taxonomies
@@ -146,6 +185,7 @@ function upcloo_wp_head()
     $metas = '';
     
     if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
+        
         $postTypes = get_option(UPCLOO_POSTS_TYPE);
         if (!is_array($postTypes)) {
             $postTypes = array();
