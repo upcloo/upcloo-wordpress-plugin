@@ -37,6 +37,7 @@ License: MIT
 load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)));
 
 require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
+require_once dirname(__FILE__) . '/vendor/upcloo-sdk/src/UpCloo/Autoloader.php';
 
 //Only secure protocol on post/page publishing (now is beta test... no https)
 define("UPCLOO_USERKEY", "upcloo_userkey");
@@ -484,7 +485,6 @@ function upcloo_content_sync($pid)
     $postsType = get_option(UPCLOO_POSTS_TYPE);
     
     /* Check if the content must be indexed */
-    //TODO: add check condition on post type!
     if (in_array($post->post_type, $postsType)) {
         if ($post->post_status == UPCLOO_POST_PUBLISH) {
             $categories = array();
@@ -547,48 +547,49 @@ function upcloo_content_sync($pid)
             }
             
             $model = array(
-                "model" => array(
-                    "id" => $post->post_type . "_" . $pid,
-                    "sitekey" => get_option("upcloo_sitekey"),
-                    "password" => get_option("upcloo_password"),
-                    "title" => $post->post_title,
-                    "content" => $post->post_content,
-                    "summary" => $summary,
-                    "publish_date" => $publish_date,
-                    "type" => $post->post_type,
-                    "url" => $permalink,
-                    "author" => $firstname . " " . $lastname,
-                    "categories" => array(),
-                    "tags" => array()
-                )
+                "id" => $post->post_type . "_" . $pid,
+                "sitekey" => get_option("upcloo_sitekey"),
+                "password" => get_option("upcloo_password"),
+                "title" => $post->post_title,
+                "content" => $post->post_content,
+                "summary" => $summary,
+                "publish_date" => $publish_date,
+                "type" => $post->post_type,
+                "url" => $permalink,
+                "author" => $firstname . " " . $lastname,
+                "categories" => array(),
+                "tags" => array()
             );
             
-            $image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
+            $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'thumbnail');
             if ($image) {
-                $model["model"]['image'] = $image[0];
+                $model['image'] = $image[0];
             }
             
             if ($language != '') {
-                $model["model"]["lang"] = $language;
+                $model["lang"] = $language;
             }
  
             if ($categories) {
                 foreach ($categories as $category) {
-                    $model["model"]["categories"][] = $category->name;
+                    $model["categories"][] = $category->name;
                 }
             }
 
             if ($tags) {
                 foreach ($tags as $tag) {
-                    $model["model"]["tags"][] = $tag->name;
+                    $model["tags"][] = $tag->name;
                 }
             }
             
             if (is_array($taxonomies_data) && count($taxonomies_data)) {
-                $model["model"]["dynamics_tags"] = $taxonomies_data;                
+                $model["dynamics_tags"] = $taxonomies_data;                
             }
             
-            return upcloo_send_content($model);
+            $manager = UpCloo_Manager::getInstance();
+            $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
+            
+            return $manager->index($model);
         }
     }
 }
@@ -614,66 +615,6 @@ function upcloo_get_min_summary_len()
     }
     
     return $len;
-}
-
-/**
- * Send the content to indexer
- *
- * @param array $model The data model.
- * @return boolean Result of operation
- */
-function upcloo_send_content($model)
-{
-    $userKey = trim(get_option("upcloo_userkey"));
-
-    //If the user key is empty
-    if (empty($userKey)) {
-        return false;
-    }
-
-    $endPointURL = sprintf(UPCLOO_UPDATE_END_POINT, $userKey);
-
-    $xml = upcloo_model_to_xml($model);
-    
-    /* raw post on curl module */
-    $ch = curl_init();
-
-    curl_setopt($ch, CURLOPT_URL,            $endPointURL);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_POST,           1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,     $xml); 
-    curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
-    curl_setopt($ch, CURLOPT_USERAGENT,      UPCLOO_USER_AGENT);
-
-    $result=curl_exec ($ch);
-    $headers = curl_getinfo($ch);
-    curl_close($ch);
-
-    if (is_array($headers) && $headers["http_code"] == 200) {
-        return true;
-    } else {
-        return false;
-    } 
-}
-
-function upcloo_model_to_xml($model)
-{
-    if (is_string($model)) {
-        return "<![CDATA[" . strip_tags($model) . "]]>";        
-    } else {
-        $xml = "";
-        if ($model && is_array($model)) {
-            foreach ($model as $key => $value) {
-                if (is_int($key)) {
-                    $key = "element";
-                }
-                $xml .= "<{$key}>" . upcloo_model_to_xml($value) . "</{$key}>";
-            }   
-        }
-        
-        return $xml;
-    }
 }
 
 /**
@@ -827,10 +768,12 @@ function upcloo_content($content, $noPostBody = false)
         }
         
         //Get it 
-        $listOfModels = upcloo_get_from_repository($post->post_type . "_" . $post->ID);
+        $manager = UpCloo_Manager::getInstance();
+        $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
+        $listOfModels = $manager->get($post->post_type . "_" . $post->ID);
         
         $content = '';
-        if ($listOfModels && property_exists($listOfModels, "doc") && is_array($listOfModels->doc) && count($listOfModels->doc)) {
+        if ($listOfModels && count($listOfModels)) {
             
             //Shrink number of contents
             $maxContents = (((int)get_option("upcloo_max_show_links")) > 0) ? (int)get_option("upcloo_max_show_links") : 0;
@@ -838,11 +781,11 @@ function upcloo_content($content, $noPostBody = false)
             $numOfDocs = count($listOfModels->doc);
             for ($i=0; $i<$numOfDocs; $i++) {
                 if ($maxContents > 0 && $i >= $maxContents) {
-                    unset($listOfModels->doc[$i]);
+                    unset($listOfModels[$i]);
                     continue;
                 }
                 
-                $listOfModels->doc[$i]->url = upcloo_get_utm_tag_url($listOfModels->doc[$i]->url);
+                $listOfModels[$i]["url"] = upcloo_get_utm_tag_url($listOfModels[$i]["url"]);
             }
             
             //Check if exists user template system (functions.php of template?)
@@ -865,32 +808,32 @@ function upcloo_content($content, $noPostBody = false)
             }
             
             if (get_option("upcloo_template_base", "wp_upcloo") == 1) {
-                foreach ($listOfModels->doc as $element) {
+                foreach ($listOfModels as $element) {
                     
                     $content .= '<div class="upcloo_template_element">';
 
                     //Show if featured image
                     if (get_option('upcloo_template_show_featured_image', 'wp_upcloo') == 1) {
                         //Get the image path
-                        $imagePath =  ((is_string($element->image)) ? $element->image : get_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER));
+                        $imagePath =  ((is_string($element["image"])) ? $element["image"] : get_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER));
                         //Append the image to the content
-                        $content .= '<div class="upcloo_post_image"><a href="'. $element->url .'" '.((upcloo_is_external_site($element->url)) ? 'target="_blank"' : '').'><img src="' . $imagePath . '" alt="" /></a></div>';
+                        $content .= '<div class="upcloo_post_image"><a href="'. $element["url"] .'" '.((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').'><img src="' . $imagePath . '" alt="" /></a></div>';
                     }
                     
                     //Show if title
                     if (get_option('upcloo_template_show_title', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_title"><a href="'.$element->url.'" '.((upcloo_is_external_site($element->url)) ? 'target="_blank"' : '').'>' . $element->title . '</a></div>';
+                        $content .= '<div class="upcloo_post_title"><a href="'.$element["url"].'" '.((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').'>' . $element["title"] . '</a></div>';
                     }
                     
                     //Show if summary
                     if (get_option('upcloo_template_show_summary', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_summary">' . $element->description . '</div>';
+                        $content .= '<div class="upcloo_post_summary">' . $element["description"] . '</div>';
                     }
 
                     //Show if categories
                     if (get_option('upcloo_template_show_categories', 'wp_upcloo') == 1) {
                         $content .= "<div class=\"upcloo_post_categories\">";
-                        foreach ($element->categories->category as $category) {
+                        foreach ($element["categories"] as $category) {
                             $content .= '<div class="upcloo_post_categories_category">' . $category . '</div>';
                         }
                         $content .= "</div>";
@@ -899,7 +842,7 @@ function upcloo_content($content, $noPostBody = false)
                     //Show if tags
                     if (get_option('upcloo_template_show_tags', 'wp_upcloo') == 1) {
                         $content .= "<div class=\"upcloo_post_tags\">";
-                        foreach ($element->tags->tag as $tag) {
+                        foreach ($element["tags"] as $tag) {
                             $content .= '<div class="upcloo_post_tags_tag">' . $tag . '</div>';
                         }
                         $content .= "</div>";
@@ -910,7 +853,7 @@ function upcloo_content($content, $noPostBody = false)
             } else {
             
                 $content .= "<ul>";
-                foreach ($listOfModels->doc as $element) {
+                foreach ($listOfModels as $element) {
                     //max links cutter
                     if (is_int($maxContents) && $maxContents > 0) {
                         if ($index >= $maxContents) {
@@ -921,7 +864,7 @@ function upcloo_content($content, $noPostBody = false)
                         $index++;
                     }
                     
-                    $content .= "<li><a href='{$element->url}' ".((upcloo_is_external_site($element->url)) ? 'target="_blank"' : '').">{$element->title}</a></li>";    
+                    $content .= "<li><a href='{$element["url"]}' ".((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').">{$element["title"]}</a></li>";    
                 }
     
                 $content .= "</ul>";

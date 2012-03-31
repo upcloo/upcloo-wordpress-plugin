@@ -110,10 +110,14 @@ class UpCloo_Widget_Partner
             $virtualSiteKey = $instance["upcloo_v_sitekey"];
             
             echo $before_widget;
+            $datax = array();
+            
             if ($virtualSiteKey) {
-                $url = sprintf(UPCLOO_REPOSITORY_END_POINT, $sitekey) . '/' . $virtualSiteKey . "/{$post->post_type}_{$post->ID}.xml";
                 
-                $datax = upcloo_get_from_repository("", $url);
+                $manager = UpCloo_Manager::getInstance();
+                $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
+                
+                $datax = $manager->get("{$post->post_type}_{$post->ID}.xml", $virtualSiteKey);
             }
             
             $utmURL = '';
@@ -127,18 +131,18 @@ class UpCloo_Widget_Partner
 				}
 			}
 
-			if (is_array($datax->doc)) {
-    			foreach ($datax->doc as $index => $doc) {
+			if (is_array($datax)) {
+    			foreach ($datax as $index => $doc) {
     			    if (is_numeric($instance["upcloo_v_max_links"]) && $index >= $instance["upcloo_v_max_links"]) {
-    			        unset($datax->doc[$index]);
+    			        unset($datax[$index]);
     			        continue;
     			    }
     			    
-    			    $datax->doc[$index]->url = trim((string)$datax->doc[$index]->url) . $utmURL;
+    			    $datax[$index]["url"] = trim((string)$datax[$index]["url"]) . $utmURL;
     			}
     			
     
-    			if ($datax->doc) :
+    			if ($datax) :
         			if (function_exists(UPCLOO_USER_WIDGET_CALLBACK)) :
         			    echo call_user_func(UPCLOO_USER_WIDGET_CALLBACK, $datax);
         			else :
@@ -148,11 +152,11 @@ class UpCloo_Widget_Partner
         <div>
             <ul>
             <?php 
-                foreach ($datax->doc as $index => $doc):
+                foreach ($datax as $index => $doc):
             ?>
             	<li>
-            		<a href="<?php echo $doc->url?>" <?php echo ((upcloo_is_external_site($doc->url)) ? 'target="_blank"': "")?>>
-            		    <?php echo $doc->title; ?>
+            		<a href="<?php echo $doc["url"]?>" <?php echo ((upcloo_is_external_site($doc["url"])) ? 'target="_blank"': "")?>>
+            		    <?php echo $doc["title"]; ?>
         		    </a>
     		    </li>
             <?php
