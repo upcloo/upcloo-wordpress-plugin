@@ -87,8 +87,8 @@ define('UPCLOO_ENABLE_TEMPLATE_REMOTE_META', 'upcloo_enable_template_remote_meta
 define('UPCLOO_SITEMAP_PAGE', 'upcloo_sitemap');
 
 add_action("admin_init", "upcloo_init");
-add_action( 'add_meta_boxes', 'upcloo_add_custom_box' );
-add_action( 'widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");' ) );
+add_action('add_meta_boxes', 'upcloo_add_custom_box');
+add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");'));
 add_action('manage_posts_custom_column',  'upcloo_my_show_columns');
 add_action('manage_pages_custom_column',  'upcloo_my_show_columns');
 add_action('save_post', 'upcloo_save_data');
@@ -98,7 +98,7 @@ add_action('post_submitbox_misc_actions', 'upcloo_add_force_content_send_link');
 
 add_action('wp_head', 'upcloo_wp_head');
 
-add_filter( 'the_content', 'upcloo_content' );
+add_filter('the_content', 'upcloo_content');
 add_filter('admin_footer_text', "upcloo_admin_footer");
 add_filter('manage_pages_columns', 'upcloo_my_columns');
 add_filter('manage_posts_columns', 'upcloo_my_columns');
