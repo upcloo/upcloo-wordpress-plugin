@@ -47,8 +47,6 @@ define("UPCLOO_INDEX_CATEGORY", 'upcloo_index_category');
 define("UPCLOO_INDEX_TAG", "upcloo_index_tag");
 define('UPCLOO_REWRITE_PUBLIC_LABEL', 'upcloo_rewrite_public_label');
 define('UPCLOO_MAX_SHOW_LINKS', "upcloo_max_show_links");
-define("UPCLOO_UPDATE_END_POINT", "http://%s.update.upcloo.com");
-define("UPCLOO_REPOSITORY_END_POINT", "http://repository.upcloo.com/%s");
 define("UPCLOO_POST_PUBLISH", "publish");
 define("UPCLOO_POST_TRASH", "trash");
 define("UPCLOO_USER_AGENT", "WPUpCloo/1.0");
@@ -430,47 +428,6 @@ function upcloo_save_data($post_id)
     }
 }
 
-/* Handle the remove operation */
-function upcloo_remove_post_sync($pid)
-{
-    $endPointURL = sprintf(UPCLOO_UPDATE_END_POINT, get_option("upcloo_userkey"));
-
-    $post = get_post($pid);
-
-    if ($post->post_status == UPCLOO_POST_TRASH) {
-
-        $xml = upcloo_model_to_xml(
-            array(
-                "model" => array(
-                    "id" => $post->post_type . "_" . $post->ID,
-                    "sitekey" => get_option("upcloo_sitekey"),
-                    "password" => get_option("upcloo_password")
-                )
-            )
-        );
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL,            $endPointURL);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POST,           1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS,     $xml); 
-        curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "DELETE");
-        curl_setopt($ch, CURLOPT_USERAGENT,      UPCLOO_USER_AGENT);
-
-        $result=curl_exec ($ch);
-        $headers = curl_getinfo($ch);
-        curl_close($ch);
-
-        if (is_array($headers) && $headers["http_code"] != 200) {
-            return false;
-        }
-        
-        return true;
-    }
-}
- 
 /**
  * Mantain updated the contents
  * 
@@ -910,33 +867,6 @@ function upcloo_get_utm_tag_url($finalURL)
     $finalURL .= $utmURL;
     
     return $finalURL;
-}
-
-/* Get related contents from repository  */
-function upcloo_get_from_repository($name, $endPointURL = false)
-{
-    if ($endPointURL === false) {
-        $endPointURL = sprintf(UPCLOO_REPOSITORY_END_POINT, get_option("upcloo_sitekey"));
-        if (get_option('upcloo_enable_vsitekey_as_primary') && get_option('upcloo_enable_vsitekey_as_primary') == 1) {
-            $endPointURL = sprintf(UPCLOO_REPOSITORY_END_POINT, get_option("upcloo_sitekey"));
-            $endPointURL  .= "/" . get_option("upcloo_vsitekey_as_primary");
-        } 
-        $endPointURL .= "/{$name}.xml";
-    }
-    
-    $ch = curl_init();
-
-    curl_setopt($ch, CURLOPT_URL,            $endPointURL);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($ch, CURLOPT_HTTPHEADER,     array('Content-Type: text/xml')); 
-
-    $result=curl_exec ($ch);
-    $headers = curl_getinfo($ch);
-    curl_close($ch);
-
-    if (is_array($headers) && $headers["http_code"] == 200) {
-        return json_decode(json_encode(simplexml_load_string($result)));
-    }
 }
 
 /**
