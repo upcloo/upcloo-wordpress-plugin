@@ -13,9 +13,11 @@
 		<fileset dir="wp-upcloo" id="upcloo-base">
             <include name="*"/>
             <exclude name="vendor"/>
+			<exclude name="**/*.md"/>
         </fileset>
 		<fileset dir="wp-upcloo/vendor/upcloo-sdk/src" id="upcloo-sdk">
-		  <include name="*/**" />
+            <include name="*/**" />
+		    <exclude name="**/*.md"/>
 		</fileset>
 		
 		<copy todir="${dist}/wp-upcloo" verbose="true">
@@ -28,6 +30,6 @@
 	</target>
 	
     <target name="clean">
-        <delete dir="${dist}" />
+        <delete dir="${dist}" verbose="true" />
     </target>
 </project>
