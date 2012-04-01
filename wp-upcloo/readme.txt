@@ -82,3 +82,6 @@ This plugin needs the CURL support, please check that your PHP installation have
 
 = 1.0.5 =
  * Improvements on widget self templating procedure.
+ 
+= 1.0.8 =
+ * Using UpCloo PHP SDK for all UpCloo interactions.
