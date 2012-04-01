@@ -17,7 +17,7 @@ You can use follow links:
 
 For distribuite this WordPress plugin you have three options:
 
- * use an already compiled tree
+ * use an already compiled tree [Download area](/corley/upcloo-wordpress-plugin/downloads)
  * build the package by your self for generate a valid tree
  * copy ```wp-upcloo`` folder into your production env
  
