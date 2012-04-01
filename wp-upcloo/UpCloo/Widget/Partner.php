@@ -113,11 +113,9 @@ class UpCloo_Widget_Partner
             $datax = array();
             
             if ($virtualSiteKey) {
-                
                 $manager = UpCloo_Manager::getInstance();
                 $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
-                
-                $datax = $manager->get("{$post->post_type}_{$post->ID}.xml", $virtualSiteKey);
+                $datax = $manager->get("{$post->post_type}_{$post->ID}", $virtualSiteKey);
             }
             
             $utmURL = '';
