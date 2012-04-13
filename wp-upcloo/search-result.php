@@ -3,20 +3,11 @@
     <div id="primary">
         <div id="content" role="main">
             <h1 class="page-title">Result for search: <strong><?php echo $_GET["s"]?></strong></h1>
-            
-            <?php 
-                if (count($results->getSuggestions()) > 0) :
-                    $s = $results->getSuggestions();
-                    $q = explode(" ", $_GET["s"]);
-                    
-                    foreach ($q as $i => $t) {
-                        if (array_key_exists($t, $s)) {
-                            $q[$i] = $s[$t][0];
-                        }
-                    }
-            ?>
-            <?php echo __("Did you mean") . ": <strong>" . implode(" ", $q) . "</strong>"?>
-            <?php endif; ?>
+
+            <!-- suggests -->
+            <?php $suggested = upcloo_suggests($results, $_GET["s"]);?>
+            <?php echo ((!empty($suggested)) ? __("Did you mean") . ": <strong>" . $suggested . "</strong>" : ""); ?>
+            <!-- end suggests -->
 
             <?php if (count($results->getDocs()) <= 0) : ?>
                 <h3><?php echo __("Your search did not match any entries.", "wp_upcloo") ?></h3>
@@ -43,8 +34,10 @@
                 for ($i=1; $i<=$pages; $i++) { $p[] = "<a href=\"?s={$_GET["s"]}&page={$i}\">{$i}</a>"; }
                 $pages = implode(" ", $p);
             ?>
+            <?php if (count($results->getDocs())) : ?>
             <span><?php echo __("Pages", "wp_upcloo")?>: </span><span><?php echo $pages ?></span>
             <hr />
+            <?php endif; ?>
         </div><!-- #content -->
     </div><!-- #container -->
 <?php get_sidebar(); ?>

@@ -937,3 +937,21 @@ function upcloo_search_result_template()
         exit;
     }
 }
+
+function upcloo_suggests($results, $search)
+{
+    if (count($results->getSuggestions()) > 0) {
+        $s = $results->getSuggestions();
+        $q = explode(" ", $search);
+    
+        foreach ($q as $i => $t) {
+            if (array_key_exists($t, $s)) {
+                $q[$i] = $s[$t][0];
+            }
+        }
+
+        return implode(" ", $q);
+    } else {
+        return "";
+    }
+}
