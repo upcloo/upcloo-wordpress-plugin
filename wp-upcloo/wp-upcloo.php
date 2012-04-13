@@ -88,7 +88,7 @@ define('UPCLOO_SITEMAP_PAGE', 'upcloo_sitemap');
 
 define('UPCLOO_SEARCH_WIDGET_ID', 'upcloo_search_widget');
 
-define('UPCLOO_SEARCH_THEME', 'upcloo-search.php');
+define('UPCLOO_SEARCH_THEME', 'search-result.php');
 define("UPCLOO_SEARCH_RESULTS", 10);
 
 add_action("admin_init", "upcloo_init");

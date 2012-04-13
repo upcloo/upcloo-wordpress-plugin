@@ -68,9 +68,9 @@ class UpCloo_Widget_Search
     public function widget($args, $instance)
     {
 ?>
-    <div class="widget-container widget_search">
+    <div class="widget widget_search">
         <h3 class="widget-title"><?php echo $instance["upcloo_search_title"]?></h3>
-        <form method="get" id="upcloo-search-form" action="/">
+        <form method="get" id="searchform" action="/">
             <div>
                 <input type="text" name="s" value="" id="s" />
                 <input type="submit" id="searchsubmit" value="<?php echo __("Search")?>" />
