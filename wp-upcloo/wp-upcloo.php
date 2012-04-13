@@ -31,12 +31,14 @@ License: MIT
  * THE SOFTWARE.
  */
 
-//ini_set('error_reporting', E_ALL);
-//ini_set('display_errors', 'On');
+ini_set('error_reporting', E_ALL);
+ini_set('display_errors', 'On');
 
 load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)));
 
 require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
+require_once dirname(__FILE__) . '/UpCloo/Widget/Search.php';
+require_once dirname(__FILE__) . '/UpCloo/Registry.php';
 require_once dirname(__FILE__) . '/vendor/upcloo-sdk/src/UpCloo/Autoloader.php';
 
 //Only secure protocol on post/page publishing (now is beta test... no https)
@@ -84,9 +86,12 @@ define('UPCLOO_ENABLE_TEMPLATE_REMOTE_META', 'upcloo_enable_template_remote_meta
 
 define('UPCLOO_SITEMAP_PAGE', 'upcloo_sitemap');
 
+define('UPCLOO_SEARCH_WIDGET_ID', 'upcloo_search_widget');
+
 add_action("admin_init", "upcloo_init");
 add_action('add_meta_boxes', 'upcloo_add_custom_box');
 add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");'));
+add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Search");'));
 add_action('manage_posts_custom_column',  'upcloo_my_show_columns');
 add_action('manage_pages_custom_column',  'upcloo_my_show_columns');
 add_action('save_post', 'upcloo_save_data');
@@ -101,6 +106,7 @@ add_filter('admin_footer_text', "upcloo_admin_footer");
 add_filter('manage_pages_columns', 'upcloo_my_columns');
 add_filter('manage_posts_columns', 'upcloo_my_columns');
 
+add_action("template_redirect", "upcloo_search_result_template");
 
 /* Runs when plugin is activated */
 register_activation_hook(__FILE__, 'upcloo_install');
@@ -111,7 +117,7 @@ register_deactivation_hook(__FILE__, 'upcloo_remove');
 //If have to show meta values
 if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
     //Add sitemap page
-    if ($_GET['plugin_page'] == UPCLOO_SITEMAP_PAGE) {
+    if (array_key_exists("plugin_page", $_GET) && $_GET['plugin_page'] == UPCLOO_SITEMAP_PAGE) {
         add_action('template_redirect', 'upcloo_sitemap_page');
     }
 }
@@ -887,4 +893,28 @@ function upcloo_is_external_site($url)
     }
     
     return true;
+}
+
+function upcloo_search_result_template()
+{
+    if (!empty($_GET["s"]) && is_active_widget(false, false, UPCLOO_SEARCH_WIDGET_ID, true)) {
+        
+        $manager = UpCloo_Manager::getInstance();
+        $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
+        
+        $query = $_GET["s"];
+        
+        $query = $manager->search()->query($query)->relevancy("date")->range();
+        
+        if (get_option("UPCLOO_INDEX_CATEGORY") == "1") {
+            $query->facet("category");
+        }
+        
+        $results = $manager->get($query);
+        
+        UpCloo_Registry::getInstance()->set("results", $results);
+        
+        include dirname(__FILE__) . '/search-result.php';
+        exit;
+    }
 }

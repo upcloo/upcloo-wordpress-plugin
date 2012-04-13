@@ -35,7 +35,7 @@ class UpCloo_Widget_Search
     public function __construct()
     {
         parent::__construct(
-            "upcloo_search_widget", 
+            UPCLOO_SEARCH_WIDGET_ID, 
             __("UpCloo Search Widget", 'wp_upcloo'), 
             array(
                 'description' => __('The UpCloo Search (in the cloud) Widget', 'wp_upcloo')
@@ -67,11 +67,10 @@ class UpCloo_Widget_Search
 
     public function widget($args, $instance)
     {
-        echo $before_widget;
 ?>
     <div class="widget-container widget_search">
         <h3 class="widget-title"><?php echo $instance["upcloo_search_title"]?></h3>
-        <form method="get" id="upcloo-search-form" action="/upcloo-search">
+        <form method="get" id="upcloo-search-form" action="/">
             <div>
                 <input type="text" name="s" value="" id="s" />
                 <input type="submit" id="searchsubmit" value="<?php echo __("Search")?>" />
@@ -79,7 +78,6 @@ class UpCloo_Widget_Search
         </form>
     </div>
 <?php
-        echo $after_widget;
     }
 }
 
