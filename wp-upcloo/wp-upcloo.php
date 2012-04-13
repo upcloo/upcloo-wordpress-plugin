@@ -955,3 +955,29 @@ function upcloo_suggests($results, $search)
         return "";
     }
 }
+
+function upcloo_search_have_pages($results)
+{
+    $elements = $results->getCount();
+    
+    $pages = ceil($elements / UPCLOO_SEARCH_RESULTS);
+    
+    return $pages;
+}
+
+function upcloo_search_paginator($results)
+{
+    $pages = upcloo_search_have_pages($results);
+    
+    if ($pages) {
+        $p = array();
+        for ($i=1; $i<=$pages; $i++) {
+            $p[] = "<a href=\"/?s={$_GET["s"]}&page={$i}\">{$i}</a>";
+        }
+        $pages = implode(" ", $p);
+    } else {
+        $pages = '';
+    }
+    
+    return $pages;
+}
