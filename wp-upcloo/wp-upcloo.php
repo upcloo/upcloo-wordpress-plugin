@@ -31,8 +31,8 @@ License: MIT
  * THE SOFTWARE.
  */
 
-ini_set('error_reporting', E_ALL);
-ini_set('display_errors', 'On');
+//ini_set('error_reporting', E_ALL);
+//ini_set('display_errors', 'On');
 
 load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)));
 
