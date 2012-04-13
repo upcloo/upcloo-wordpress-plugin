@@ -517,7 +517,7 @@ function upcloo_content_sync($pid)
                 "sitekey" => get_option("upcloo_sitekey"),
                 "password" => get_option("upcloo_password"),
                 "title" => $post->post_title,
-                "content" => $post->post_content,
+                "content" => strip_tags($post->post_content),
                 "summary" => $summary,
                 "publish_date" => $publish_date,
                 "type" => $post->post_type,
