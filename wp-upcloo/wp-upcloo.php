@@ -904,11 +904,12 @@ function upcloo_search_result_template()
         
         $query = $_GET["s"];
         
-        $query = $manager->search()->query($query)->relevancy("date")->range();
+        $query = $manager->search()->query($query)->relevancy("date");
         
-        if (get_option("UPCLOO_INDEX_CATEGORY") == "1") {
-            $query->facet("category");
-        }
+        //TODO: handle facets and ranges
+//         if (get_option("UPCLOO_INDEX_CATEGORY") == "1") {
+//             $query->facet("category");
+//         }
         
         $results = $manager->get($query);
         

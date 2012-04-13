@@ -22,6 +22,7 @@
                 <h3><?php echo __("Your search did not match any entries.", "wp_upcloo") ?></h3>
             <?php else : ?>
                 <div class="main">
+                <hr />
                 <?php foreach ($results->getDocs() as $doc) : ?>
                     <h2><a href="<?php echo $doc["url"];?>" title="<?php echo $doc["title"]?>"><?php echo $doc["title"]?></a></h2>
                     <p class="meta"><?php echo __("Written by")?> <?php $doc["author"] ?></p>
