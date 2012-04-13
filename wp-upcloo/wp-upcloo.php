@@ -88,6 +88,9 @@ define('UPCLOO_SITEMAP_PAGE', 'upcloo_sitemap');
 
 define('UPCLOO_SEARCH_WIDGET_ID', 'upcloo_search_widget');
 
+define('UPCLOO_SEARCH_THEME', 'upcloo-search.php');
+define("UPCLOO_SEARCH_RESULTS", 10);
+
 add_action("admin_init", "upcloo_init");
 add_action('add_meta_boxes', 'upcloo_add_custom_box');
 add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");'));
@@ -899,12 +902,22 @@ function upcloo_search_result_template()
 {
     if (!empty($_GET["s"]) && is_active_widget(false, false, UPCLOO_SEARCH_WIDGET_ID, true)) {
         
+        //Base direcetory name
+        $themeFile = get_theme_root() . DIRECTORY_SEPARATOR . basename(get_bloginfo('template_directory')) . DIRECTORY_SEPARATOR . UPCLOO_SEARCH_THEME;
+
+        
         $manager = UpCloo_Manager::getInstance();
         $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
         
         $query = $_GET["s"];
         
-        $query = $manager->search()->query($query)->relevancy("date");
+        $page = (array_key_exists("page", $_GET) ? $_GET["page"] : 1);        
+        
+        $query = $manager->search()
+            ->query($query)
+            ->relevancy("date")
+            ->numPerPage(UPCLOO_SEARCH_RESULTS)
+            ->page($page);
         
         //TODO: handle facets and ranges
 //         if (get_option("UPCLOO_INDEX_CATEGORY") == "1") {
@@ -915,7 +928,12 @@ function upcloo_search_result_template()
         
         UpCloo_Registry::getInstance()->set("results", $results);
         
-        include dirname(__FILE__) . '/search-result.php';
+        //If user rewrite the search template load it.
+        if (file_exists($themeFile)) {
+            include $themeFile;   
+        } else {
+            include dirname(__FILE__) . '/search-result.php';
+        }
         exit;
     }
 }

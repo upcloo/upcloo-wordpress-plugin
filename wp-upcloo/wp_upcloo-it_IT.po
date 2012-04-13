@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-01-18 19:51+0100\n"
-"PO-Revision-Date: 2012-01-18 19:54+0100\n"
+"POT-Creation-Date: 2012-04-13 14:24+0100\n"
+"PO-Revision-Date: 2012-04-13 14:26+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 
 #: general-options.php:2
-#: wp-upcloo.php:643
+#: wp-upcloo.php:659
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
@@ -299,51 +299,71 @@ msgstr "Abilita i MetaTags per l'importazione remota di UpCloo"
 msgid "(Enable only for one-time remote import after that turn if off.)"
 msgstr "(Abilita solo una volta per l'importazione remota e dopo spegnilo)."
 
-#: wp-upcloo.php:167
+#: search-result.php:18
+msgid "Did you mean"
+msgstr "Forse cercavi"
+
+#: search-result.php:22
+msgid "Your search did not match any entries."
+msgstr "La tua ricerca non ha prodotto risultati"
+
+#: search-result.php:28
+msgid "Written by"
+msgstr "Scritto da"
+
+#: search-result.php:30
+msgid "Read more"
+msgstr "Leggi ancora"
+
+#: search-result.php:46
+msgid "Pages"
+msgstr "Pagine"
+
+#: wp-upcloo.php:284
 msgid "Indexed"
 msgstr "Indicizzato"
 
-#: wp-upcloo.php:167
+#: wp-upcloo.php:284
 msgid "Not Indexed"
 msgstr "Non indicizzato"
 
-#: wp-upcloo.php:168
+#: wp-upcloo.php:285
 msgid "ReIndex NOW"
 msgstr "Reindicizza subito"
 
-#: wp-upcloo.php:168
+#: wp-upcloo.php:285
 msgid "Index NOW"
 msgstr "Indicizza Subito"
 
-#: wp-upcloo.php:226
+#: wp-upcloo.php:343
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
-#: wp-upcloo.php:247
+#: wp-upcloo.php:364
 msgid "UpCloo Language Definer"
 msgstr "Lingua (i18n) per UpCloo"
 
-#: wp-upcloo.php:266
+#: wp-upcloo.php:383
 msgid "Select the language of your article/page"
 msgstr "Seleziona la lingua del tuo articolo/pagina"
 
-#: wp-upcloo.php:273
+#: wp-upcloo.php:390
 msgid "Italian"
 msgstr "Italiano"
 
-#: wp-upcloo.php:274
+#: wp-upcloo.php:391
 msgid "English"
 msgstr "Inglese"
 
-#: wp-upcloo.php:643
+#: wp-upcloo.php:659
 msgid "UpCloo Options"
 msgstr "Opzioni UpCloo"
 
-#: wp-upcloo.php:649
+#: wp-upcloo.php:665
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:746
+#: wp-upcloo.php:771
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
@@ -364,6 +384,7 @@ msgid "upcloo"
 msgstr "upcloo"
 
 #: UpCloo/Widget/Partner.php:67
+#: UpCloo/Widget/Search.php:55
 msgid "Title:"
 msgstr "Titolo:"
 
@@ -390,6 +411,22 @@ msgstr "Supporto UTM"
 #: UpCloo/Widget/Partner.php:85
 msgid "UTM Source:"
 msgstr "Sorgente UTM"
+
+#: UpCloo/Widget/Search.php:39
+msgid "UpCloo Search Widget"
+msgstr "Widget di Ricerca UpCloo"
+
+#: UpCloo/Widget/Search.php:41
+msgid "The UpCloo Search (in the cloud) Widget"
+msgstr "Widget UpCloo Search (Cerca nella nuvola)"
+
+#: UpCloo/Widget/Search.php:51
+msgid "Search in the Cloud"
+msgstr "Cerca nella nuvola"
+
+#: UpCloo/Widget/Search.php:76
+msgid "Search"
+msgstr "Cerca"
 
 #~ msgid "Massive Sender"
 #~ msgstr "Invio collettivo"
@@ -436,9 +473,6 @@ msgstr "Sorgente UTM"
 
 #~ msgid "Index Posts"
 #~ msgstr "Indicizza i Post"
-
-#~ msgid "Index Pages"
-#~ msgstr "Indicizza le Pagine"
 
 #~ msgid "Show also in pages"
 #~ msgstr "Mostra anche nelle Pagine"
