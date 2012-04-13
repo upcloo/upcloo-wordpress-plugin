@@ -495,7 +495,7 @@ function upcloo_content_sync($pid)
             if (empty($summary)) {
                 //Cut the first part of text
                 //and use it as a summary
-                $content = $post->post_content;
+                $content = strip_tags($post->post_content);
 
                 //Get the max summary len
                 $len = upcloo_get_min_summary_len();
