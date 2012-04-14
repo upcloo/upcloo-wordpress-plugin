@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-13 14:24+0100\n"
-"PO-Revision-Date: 2012-04-13 14:26+0100\n"
+"POT-Creation-Date: 2012-04-14 09:07+0100\n"
+"PO-Revision-Date: 2012-04-14 09:07+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -16,354 +16,353 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: general-options.php:2
-#: wp-upcloo.php:659
+#: app-config-options.php:2
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
-#: general-options.php:4
+#: app-config-options.php:4
 msgid "UpCloo is a new service created for web site with a lot of contents (from 10.000 to milions)."
 msgstr "UpCloo è un nuovo servizio creato per siti web con milioni di contenuti (da 10.000 a milioni)"
 
-#: general-options.php:7
+#: app-config-options.php:7
 msgid "If you manage contents on your web site (news, pages, reviews, products, comments...) then you're likely to spend a lot of time (and money!) to create correlations between different contents."
 msgstr "Se gestisci contenuti sul tuo sito web (news, pagine, revisioni, prodotti, commenti...) allora probabilmente spenderai un sacco di tempo (e soldi!) per creare correlazioni tra i tuoi diversi contenuti."
 
-#: general-options.php:10
+#: app-config-options.php:10
 msgid "UpCloo can index your pages and send, whenever a visitor goes on you web site, the best correlations at the moment through a simple xml feed, so you can show links and correlations inside or outside the text of your page."
 msgstr "UpCloo può indicizzare le tue pagine ed richiedere, quando un visitatore arriva sul tuo sito, le migliori correlazioni attualmente disponibili tramite una semplice e flessibile interfaccia XML. Puoi visualizzare link e correlazioni dentro e fuori dalla tua pagina."
 
-#: general-options.php:14
+#: app-config-options.php:14
 msgid "Don't worry anymore about \"more like this\" and \"maybe you're interested at\": UpCloo manages all your correlations with a cloudy, smart and brilliant semantic engine."
 msgstr "Non preoccuparti più di problemi come: \"altri come questi\" e \"Magari ti interessa anche\": UpCloo gestisce tutte le tue correlazioni direttamente nella nuvola. E' un efficace, veloce e brillante motore di correlazione."
 
-#: general-options.php:18
+#: app-config-options.php:18
 msgid "UpCloo Security"
 msgstr "Sicurezza di UpCloo"
 
-#: general-options.php:19
+#: app-config-options.php:19
 msgid "All information that you send to UpCloo Cloud System are secured using RSA 1024 bit."
 msgstr "Tutte le informazioni che sono inviate verso la nuvola di servizi UpCloo è messa in sicurezza tramite RSA a 1024 bit (il programma Beta-Test può subire variazioni)"
 
-#: general-options.php:21
+#: app-config-options.php:21
 msgid "UpCloo Application Configuration"
 msgstr "Configurazione Applicativa di UpCloo"
 
-#: general-options.php:22
+#: app-config-options.php:22
 msgid "Login parmeters"
 msgstr "Parametri di Accesso"
 
-#: general-options.php:28
+#: app-config-options.php:28
 msgid "Enter your User Key"
 msgstr "Inserisci la tua Chiave Utente"
 
-#: general-options.php:31
+#: app-config-options.php:31
 msgid "(eg. your-business-name)"
 msgstr "(es. il-nome-gruppo)"
 
-#: general-options.php:34
+#: app-config-options.php:34
 msgid "Enter your Site Key"
 msgstr "Inserisci la tua Chiave Sito"
 
-#: general-options.php:37
+#: app-config-options.php:37
 msgid "(eg. your-site-name)"
 msgstr "(es. il-mio-sito)"
 
-#: general-options.php:40
+#: app-config-options.php:40
 msgid "Enter your Password"
 msgstr "La tua password"
 
-#: general-options.php:44
+#: app-config-options.php:44
 msgid "(eg. You account password [blank for security reasons])"
 msgstr "(es. La tua password UpCloo [non visibile per sicurezza])"
 
-#: general-options.php:61
-#: general-options.php:91
-#: general-options.php:169
-#: general-options.php:210
-#: general-options.php:258
-#: general-options.php:321
-#: general-options.php:350
+#: app-config-options.php:61
+#: app-feature-options.php:76
+#: app-key-switch-options.php:28
+#: app-post-type-options.php:39
+#: app-remote-options.php:27
+#: app-roi-options.php:46
+#: app-theme-options.php:62
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
-#: general-options.php:65
-msgid "Use virtual sitekey as main"
-msgstr "Usa un virtual sitekey come primaria"
-
-#: general-options.php:70
-msgid "Switch keys"
-msgstr "Scambia le chiavi"
-
-#: general-options.php:74
-msgid "Enable virtual sitekey as primary sitekey"
-msgstr "Abilita una virtual sitekey come se fosse primaria"
-
-#: general-options.php:78
-msgid "Virtual Sitekey"
-msgstr "Chiave Sito Virtuale"
-
-#: general-options.php:82
-msgid "Virtual sitekey"
-msgstr "Partner Virtuale"
-
-#: general-options.php:95
+#: app-feature-options.php:2
 msgid "Other features"
 msgstr "Altre Funzionalità"
 
-#: general-options.php:101
+#: app-feature-options.php:8
 msgid "Disable Main UpCloo Results"
 msgstr "Disabilita i risultati principali di UpCloo"
 
-#: general-options.php:105
+#: app-feature-options.php:12
 msgid "If enabled no one can see UpCloo main correlation (widgets still works)"
 msgstr "Se abilitato nessuno può vedere le correlazioni di UpCloo principali (I widgets continueranno a funzionare)"
 
-#: general-options.php:108
+#: app-feature-options.php:15
 msgid "Show UpCloo links"
 msgstr "Visualizza i links principali (SiteKey) di UpCloo"
 
-#: general-options.php:112
+#: app-feature-options.php:19
 msgid "If disabled only admins can see UpCloo correlation"
 msgstr "Se non abilitato solo gli amministratori possono vedere le correlazioni di UpCloo"
 
-#: general-options.php:115
+#: app-feature-options.php:22
 msgid "Use Categories during Indexing"
 msgstr "Use le categorie durante l'indicizzazione"
 
-#: general-options.php:119
+#: app-feature-options.php:26
 msgid "Use categories during index creation"
 msgstr "Usa le categorie durante l'indicizzazione"
 
-#: general-options.php:122
+#: app-feature-options.php:29
 msgid "Use Tags during Indexing"
 msgstr "Usa i Tag durante l'indicizzazione"
 
-#: general-options.php:126
+#: app-feature-options.php:33
 msgid "Use tags during index creation"
 msgstr "Usa i Tag durante la creazione dell'indice"
 
-#: general-options.php:129
+#: app-feature-options.php:36
 msgid "Max Number of Links"
 msgstr "Massimo numero di link"
 
-#: general-options.php:133
+#: app-feature-options.php:40
 msgid "Let blank for all"
 msgstr "Lascia in bianco per tutti"
 
-#: general-options.php:136
+#: app-feature-options.php:43
 msgid "Default Language"
 msgstr "Lingua di default"
 
-#: general-options.php:140
+#: app-feature-options.php:47
 msgid "it (italian), en (english), etc..."
 msgstr "it (italiano), en (inglese), etc..."
 
-#: general-options.php:143
+#: app-feature-options.php:50
 msgid "Rewrite public UpCloo label"
 msgstr "Riscrivi l'etichetta pubblica di UpCloo"
 
-#: general-options.php:147
+#: app-feature-options.php:54
 msgid "Let blank for use default label (May be you are interested at)"
 msgstr "Lascia in bianco per usare l'etichetta di default (Forse ti potrebbero interessare)"
 
-#: general-options.php:150
+#: app-feature-options.php:57
 msgid "Image missing path"
 msgstr "Path immagine mancante"
 
-#: general-options.php:154
+#: app-feature-options.php:61
 msgid "Public path of no image [eg. /images/no-image.png] - used only for advanced templating method"
 msgstr "Path pubblica dell'immagine mancante [es. /images/no-image.png] - usata solo nel sistema di template avanzato"
 
-#: general-options.php:157
+#: app-feature-options.php:64
 msgid "Summary Length"
 msgstr "Lunghezza sommario"
 
-#: general-options.php:161
+#: app-feature-options.php:68
 msgid "Minimum length for summary. If you set blank this field UpCloo use 120 characters by default."
 msgstr "Lunghezza minima del sommario. Se viene lasciato in biano questo campo, UpCloo utilizzerà 120 caratteri di default"
 
-#: general-options.php:173
+#: app-key-switch-options.php:2
+msgid "Use virtual sitekey as main"
+msgstr "Usa un virtual sitekey come primaria"
+
+#: app-key-switch-options.php:7
+msgid "Switch keys"
+msgstr "Scambia le chiavi"
+
+#: app-key-switch-options.php:11
+msgid "Enable virtual sitekey as primary sitekey"
+msgstr "Abilita una virtual sitekey come se fosse primaria"
+
+#: app-key-switch-options.php:15
+msgid "Virtual Sitekey"
+msgstr "Chiave Sito Virtuale"
+
+#: app-key-switch-options.php:19
+msgid "Virtual sitekey"
+msgstr "Partner Virtuale"
+
+#: app-post-type-options.php:2
 msgid "Handle posts type"
 msgstr "Gestisci i tipi di post"
 
-#: general-options.php:175
+#: app-post-type-options.php:4
 msgid "Select what kind of post you want to send to UpCloo"
 msgstr "Scegli il tipo di post che vuoi inviare ad UpCloo"
 
-#: general-options.php:182
+#: app-post-type-options.php:11
 msgid "Select Posts Type"
 msgstr "Scegli il tipo di post"
 
-#: general-options.php:214
-msgid "ROI Monitor Parameters"
-msgstr "Parametri per il Monitor ROI"
-
-#: general-options.php:216
-msgid "Consider that you have Google Analytics Tracker script activated and visibile on your pages or almost where UpCloo is engaged."
-msgstr "Considera che devi avere il Tracker Google Analytics attivo e visibile sulle tue pagine o almeno dove viene attivato UpCloo."
-
-#: general-options.php:223
-msgid "Enable UTM Tagging"
-msgstr "Abilita il Tagging UTM"
-
-#: general-options.php:227
-msgid "(Enable Google UTM Tag Feature)"
-msgstr "(Abilita la funzionalità Google UTM Tag)"
-
-#: general-options.php:231
-msgid "Enter base UTM Campaign"
-msgstr "Inserisci la campagna base UTM"
-
-#: general-options.php:234
-msgid "(eg. upcloo-check)"
-msgstr "(es. upcloo-check)"
-
-#: general-options.php:238
-msgid "Enter base UTM Medium"
-msgstr "Inserisci il media UTM"
-
-#: general-options.php:241
-msgid "(eg. mywebsite)"
-msgstr "(es. ilmiosito)"
-
-#: general-options.php:245
-msgid "Enter base UTM Source"
-msgstr "Sorgente UTM"
-
-#: general-options.php:248
-msgid "(eg. upcloo-base-links)"
-msgstr "(es. upcloo-base-links)"
-
-#: general-options.php:261
-msgid "Template selector"
-msgstr "Selezione template"
-
-#: general-options.php:263
-msgid "Use the advanced method only if you know or have someone that know CSS (Cascading StyleSheet)"
-msgstr "Utilizza il metodo avanzato solo se conosci o c'è qualcuno che conosce i CSS (Fogli di stile in cascata)"
-
-#: general-options.php:270
-msgid "Select you preferrered method"
-msgstr "Seleziona il tuo metodo preferito"
-
-#: general-options.php:273
-msgid "(Default)"
-msgstr "(Default)"
-
-#: general-options.php:275
-msgid "(Advanced)"
-msgstr "(Avanzato)"
-
-#: general-options.php:278
-msgid "Only if advanced is selected"
-msgstr "Solo se è selezionato il metodo avanzato"
-
-#: general-options.php:280
-msgid "Show post title"
-msgstr "Mostra il titolo del post"
-
-#: general-options.php:287
-msgid "Show post featured image"
-msgstr "Mostra l'immagine del post"
-
-#: general-options.php:294
-msgid "Show post summary"
-msgstr "Mostra il sommario del post"
-
-#: general-options.php:301
-msgid "Show post tags"
-msgstr "Mostra i tag del post"
-
-#: general-options.php:308
-msgid "Show post categories"
-msgstr "Mostra le categorie del post"
-
-#: general-options.php:325
+#: app-remote-options.php:2
 msgid "Remote Import System"
 msgstr "Sistema di importazione remota"
 
-#: general-options.php:327
+#: app-remote-options.php:4
 msgid "Consider that you have to request remote indexing using UpCloo remote control panel."
 msgstr "Considera che devi aver richiesto l'indicizzazione remota utilizzando il pannello remoto di UpCloo"
 
-#: general-options.php:328
+#: app-remote-options.php:5
 msgid "See this link for more information about this procedure:"
 msgstr "Guarda questo link per maggiori informazioni su questa procedura:"
 
-#: general-options.php:336
+#: app-remote-options.php:13
 msgid "Enable MetaTags for Remote UpCloo Importer"
 msgstr "Abilita i MetaTags per l'importazione remota di UpCloo"
 
-#: general-options.php:340
+#: app-remote-options.php:17
 msgid "(Enable only for one-time remote import after that turn if off.)"
 msgstr "(Abilita solo una volta per l'importazione remota e dopo spegnilo)."
 
-#: search-result.php:18
+#: app-roi-options.php:2
+msgid "ROI Monitor Parameters"
+msgstr "Parametri per il Monitor ROI"
+
+#: app-roi-options.php:4
+msgid "Consider that you have Google Analytics Tracker script activated and visibile on your pages or almost where UpCloo is engaged."
+msgstr "Considera che devi avere il Tracker Google Analytics attivo e visibile sulle tue pagine o almeno dove viene attivato UpCloo."
+
+#: app-roi-options.php:11
+msgid "Enable UTM Tagging"
+msgstr "Abilita il Tagging UTM"
+
+#: app-roi-options.php:15
+msgid "(Enable Google UTM Tag Feature)"
+msgstr "(Abilita la funzionalità Google UTM Tag)"
+
+#: app-roi-options.php:19
+msgid "Enter base UTM Campaign"
+msgstr "Inserisci la campagna base UTM"
+
+#: app-roi-options.php:22
+msgid "(eg. upcloo-check)"
+msgstr "(es. upcloo-check)"
+
+#: app-roi-options.php:26
+msgid "Enter base UTM Medium"
+msgstr "Inserisci il media UTM"
+
+#: app-roi-options.php:29
+msgid "(eg. mywebsite)"
+msgstr "(es. ilmiosito)"
+
+#: app-roi-options.php:33
+msgid "Enter base UTM Source"
+msgstr "Sorgente UTM"
+
+#: app-roi-options.php:36
+msgid "(eg. upcloo-base-links)"
+msgstr "(es. upcloo-base-links)"
+
+#: app-theme-options.php:2
+msgid "Template selector"
+msgstr "Selezione template"
+
+#: app-theme-options.php:4
+msgid "Use the advanced method only if you know or have someone that know CSS (Cascading StyleSheet)"
+msgstr "Utilizza il metodo avanzato solo se conosci o c'è qualcuno che conosce i CSS (Fogli di stile in cascata)"
+
+#: app-theme-options.php:11
+msgid "Select you preferrered method"
+msgstr "Seleziona il tuo metodo preferito"
+
+#: app-theme-options.php:14
+msgid "(Default)"
+msgstr "(Default)"
+
+#: app-theme-options.php:16
+msgid "(Advanced)"
+msgstr "(Avanzato)"
+
+#: app-theme-options.php:19
+msgid "Only if advanced is selected"
+msgstr "Solo se è selezionato il metodo avanzato"
+
+#: app-theme-options.php:21
+msgid "Show post title"
+msgstr "Mostra il titolo del post"
+
+#: app-theme-options.php:28
+msgid "Show post featured image"
+msgstr "Mostra l'immagine del post"
+
+#: app-theme-options.php:35
+msgid "Show post summary"
+msgstr "Mostra il sommario del post"
+
+#: app-theme-options.php:42
+msgid "Show post tags"
+msgstr "Mostra i tag del post"
+
+#: app-theme-options.php:49
+msgid "Show post categories"
+msgstr "Mostra le categorie del post"
+
+#: search-result.php:9
 msgid "Did you mean"
 msgstr "Forse cercavi"
 
-#: search-result.php:22
+#: search-result.php:9
+msgid "Search this occurrence"
+msgstr "Cerca questa occorrenza"
+
+#: search-result.php:13
 msgid "Your search did not match any entries."
 msgstr "La tua ricerca non ha prodotto risultati"
 
-#: search-result.php:28
+#: search-result.php:21
 msgid "Written by"
 msgstr "Scritto da"
 
-#: search-result.php:30
+#: search-result.php:24
 msgid "Read more"
 msgstr "Leggi ancora"
 
-#: search-result.php:46
+#: search-result.php:32
 msgid "Pages"
 msgstr "Pagine"
 
-#: wp-upcloo.php:284
-msgid "Indexed"
-msgstr "Indicizzato"
-
-#: wp-upcloo.php:284
-msgid "Not Indexed"
-msgstr "Non indicizzato"
-
-#: wp-upcloo.php:285
-msgid "ReIndex NOW"
-msgstr "Reindicizza subito"
-
-#: wp-upcloo.php:285
-msgid "Index NOW"
-msgstr "Indicizza Subito"
-
-#: wp-upcloo.php:343
-msgid "UpCloo News Widget"
-msgstr "Widget Rete di UpCloo."
-
-#: wp-upcloo.php:364
-msgid "UpCloo Language Definer"
-msgstr "Lingua (i18n) per UpCloo"
-
-#: wp-upcloo.php:383
-msgid "Select the language of your article/page"
-msgstr "Seleziona la lingua del tuo articolo/pagina"
-
-#: wp-upcloo.php:390
-msgid "Italian"
-msgstr "Italiano"
-
-#: wp-upcloo.php:391
-msgid "English"
-msgstr "Inglese"
-
-#: wp-upcloo.php:659
-msgid "UpCloo Options"
-msgstr "Opzioni UpCloo"
-
-#: wp-upcloo.php:665
+#: wp-upcloo.php:141
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:771
+#: wp-upcloo.php:356
+msgid "Indexed"
+msgstr "Indicizzato"
+
+#: wp-upcloo.php:356
+msgid "Not Indexed"
+msgstr "Non indicizzato"
+
+#: wp-upcloo.php:357
+msgid "ReIndex NOW"
+msgstr "Reindicizza subito"
+
+#: wp-upcloo.php:357
+msgid "Index NOW"
+msgstr "Indicizza Subito"
+
+#: wp-upcloo.php:415
+msgid "UpCloo News Widget"
+msgstr "Widget Rete di UpCloo."
+
+#: wp-upcloo.php:436
+msgid "UpCloo Language Definer"
+msgstr "Lingua (i18n) per UpCloo"
+
+#: wp-upcloo.php:455
+msgid "Select the language of your article/page"
+msgstr "Seleziona la lingua del tuo articolo/pagina"
+
+#: wp-upcloo.php:462
+msgid "Italian"
+msgstr "Italiano"
+
+#: wp-upcloo.php:463
+msgid "English"
+msgstr "Inglese"
+
+#: wp-upcloo.php:831
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
@@ -424,9 +423,11 @@ msgstr "Widget UpCloo Search (Cerca nella nuvola)"
 msgid "Search in the Cloud"
 msgstr "Cerca nella nuvola"
 
-#: UpCloo/Widget/Search.php:76
-msgid "Search"
-msgstr "Cerca"
+#~ msgid "UpCloo Options"
+#~ msgstr "Opzioni UpCloo"
+
+#~ msgid "Search"
+#~ msgstr "Cerca"
 
 #~ msgid "Massive Sender"
 #~ msgstr "Invio collettivo"

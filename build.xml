@@ -7,15 +7,15 @@
 	
 	<!-- set global properties for this build -->
     <property name="src" location="wp-upcloo"/>
-    <property name="dist"  location="dist"/>
 	<property name="version" value="1.1.11-gertrude" />
+    <property name="dist"  location="dist/${version}"/>
 	
 	<target name="dist" depends="copy-resources, zip-resources">
 	   
 	</target>
 	
 	<target name="zip-resources">
-		<zipfileset dir="${dist}/wp-upcloo" id="zip-upcloo"></zipfileset>
+        <zipfileset dir="${dist}" id="zip-upcloo"></zipfileset>
 		<zip destfile="${dist}/wp-upcloo-${version}.zip">
 		    <zipfileset refid="zip-upcloo"></zipfileset>
 		</zip>

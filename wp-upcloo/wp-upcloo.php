@@ -843,12 +843,12 @@ function upcloo_content($content, $noPostBody = false)
                         //Get the image path
                         $imagePath =  ((is_string($element["image"])) ? $element["image"] : get_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER));
                         //Append the image to the content
-                        $content .= '<div class="upcloo_post_image"><a href="'. $element["url"] .'" '.((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').'><img src="' . $imagePath . '" alt="" /></a></div>';
+                        $content .= '<div class="upcloo_post_image"><a href="'. upcloo_get_utm_tag_url($element["url"]) .'" '.((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').'><img src="' . $imagePath . '" alt="" /></a></div>';
                     }
                     
                     //Show if title
                     if (get_option('upcloo_template_show_title', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_title"><a href="'.$element["url"].'" '.((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').'>' . $element["title"] . '</a></div>';
+                        $content .= '<div class="upcloo_post_title"><a href="'. upcloo_get_utm_tag_url($element["url"]) . '" '.((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').'>' . $element["title"] . '</a></div>';
                     }
                     
                     //Show if summary
@@ -890,7 +890,7 @@ function upcloo_content($content, $noPostBody = false)
                         $index++;
                     }
                     
-                    $content .= "<li><a href='{$element["url"]}' ".((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').">{$element["title"]}</a></li>";    
+                    $content .= "<li><a href='" . upcloo_get_utm_tag_url($element["url"]) . "' ".((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').">{$element["title"]}</a></li>";    
                 }
     
                 $content .= "</ul>";
