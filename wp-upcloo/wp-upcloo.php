@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.1.9-Gertrude
+Version: 1.1.11-Gertrude
 Author: Walter Dal Mut, Gabriele Mittica
 Author URI: http://www.corley.it
 License: MIT
@@ -91,6 +91,16 @@ define('UPCLOO_SEARCH_WIDGET_ID', 'upcloo_search_widget');
 define('UPCLOO_SEARCH_THEME', 'search-result.php');
 define("UPCLOO_SEARCH_RESULTS", 10);
 
+define('UPCLOO_MENU_SLUG', 'upcloo_options_menu');
+define('UPCLOO_MENU_KSWITCH_SLUG', 'upcloo_options_menu_kswitch');
+define('UPCLOO_MENU_FEATURE_SLUG', 'upcloo_options_menu_feature');
+define('UPCLOO_MENU_POST_TYPE_SLUG', 'upcloo_options_menu_post_type');
+define('UPCLOO_MENU_ROI_SLUG', 'upcloo_options_menu_roi');
+define('UPCLOO_MENU_THEME_SLUG', 'upcloo_options_menu_slug');
+define('UPCLOO_MENU_REMOTE', 'upcloo_options_menu_remote');
+
+define('UPCLOO_OPTION_CAPABILITY', 'manage_options');
+
 add_action("admin_init", "upcloo_init");
 add_action('add_meta_boxes', 'upcloo_add_custom_box');
 add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");'));
@@ -99,8 +109,6 @@ add_action('manage_posts_custom_column',  'upcloo_my_show_columns');
 add_action('manage_pages_custom_column',  'upcloo_my_show_columns');
 add_action('save_post', 'upcloo_save_data');
 add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
-add_action('admin_menu', 'upcloo_admin_menu');
-add_action('post_submitbox_misc_actions', 'upcloo_add_force_content_send_link');
 
 add_action('wp_head', 'upcloo_wp_head');
 
@@ -110,6 +118,8 @@ add_filter('manage_pages_columns', 'upcloo_my_columns');
 add_filter('manage_posts_columns', 'upcloo_my_columns');
 
 add_action("template_redirect", "upcloo_search_result_template");
+
+add_action( 'admin_menu', 'upcloo_plugin_menu' );
 
 /* Runs when plugin is activated */
 register_activation_hook(__FILE__, 'upcloo_install');
@@ -124,6 +134,68 @@ if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
         add_action('template_redirect', 'upcloo_sitemap_page');
     }
 }
+
+function upcloo_check_menu_capability()
+{
+    if ( !current_user_can(UPCLOO_OPTION_CAPABILITY) )  {
+        wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+    } 
+}
+
+//Start menu
+function upcloo_plugin_menu()
+{
+    add_menu_page('UpCloo Options', 'UpCloo Options', UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Key Switch", "Key Switch", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_KSWITCH_SLUG, 'upcloo_plugin_menu_kswitch');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Indexing Feature", "Indexing Feature", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_FEATURE_SLUG, 'upcloo_plugin_menu_feature');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Post Type", "Post Type Indexing", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_POST_TYPE_SLUG, 'upcloo_plugin_menu_post_type');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo ROI Monitor", "ROI Monitor", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_ROI_SLUG, 'upcloo_plugin_menu_roi');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Templating", "Templating System", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_THEME_SLUG, 'upcloo_plugin_menu_theme');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Remote Importer", "Remote Importer", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_REMOTE_SLUG, 'upcloo_plugin_menu_remote');
+}
+
+function upcloo_plugin_menu_remote()
+{
+    upcloo_check_menu_capability();
+    include realpath(dirname(__FILE__)) . "/app-remote-options.php";
+}
+
+function upcloo_plugin_menu_theme()
+{
+    upcloo_check_menu_capability();
+    include realpath(dirname(__FILE__)) . "/app-theme-options.php";
+}
+
+function upcloo_plugin_menu_roi()
+{
+    upcloo_check_menu_capability();
+    include realpath(dirname(__FILE__)) . "/app-roi-options.php";
+}
+
+function upcloo_plugin_menu_post_type()
+{
+    upcloo_check_menu_capability();
+    include realpath(dirname(__FILE__)) . "/app-post-type-options.php";
+}
+
+function upcloo_plugin_menu_feature()
+{
+    upcloo_check_menu_capability();
+    include realpath(dirname(__FILE__)) . "/app-feature-options.php";
+}
+
+function upcloo_plugin_menu_kswitch()
+{
+    upcloo_check_menu_capability();
+    include realpath(dirname(__FILE__)) . "/app-key-switch-options.php";
+}
+
+function upcloo_plugin_options()
+{
+    upcloo_check_menu_capability();
+    include realpath(dirname(__FILE__)) . "/app-config-options.php";
+}
+//End menu
 
 /**
  * Generate a sitemap for UpCloo Remote Importer 
@@ -653,18 +725,6 @@ function upcloo_remove() {
     delete_option(UPCLOO_TEMPLATE_SHOW_TAGS);
     delete_option(UPCLOO_TEMPLATE_SHOW_CATEGORIES);
     delete_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META);
-}
-
-function upcloo_admin_menu() {
-    add_options_page(__('UpCloo General Options', "wp_upcloo"), __('UpCloo Options', "wp_upcloo"), 'manage_options',
-        'upcloo-general-option', 'upcloo_general_option_page') ;
-}
-
-function upcloo_general_option_page() {
-    if (!current_user_can('manage_options'))  {
-        wp_die( __('You do not have sufficient permissions to access this page.') );
-    }
-    include realpath(dirname(__FILE__)) . "/general-options.php";
 }
 
 /**
