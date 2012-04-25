@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.1.11-Gertrude
+Version: 1.1.12-Gertrude
 Author: Walter Dal Mut, Gabriele Mittica
 Author URI: http://www.corley.it
 License: MIT
@@ -105,6 +105,7 @@ add_action("admin_init", "upcloo_init");
 add_action('add_meta_boxes', 'upcloo_add_custom_box');
 add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");'));
 add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Search");'));
+add_action('post_submitbox_misc_actions', 'upcloo_add_force_content_send_link');
 add_action('manage_posts_custom_column',  'upcloo_my_show_columns');
 add_action('manage_pages_custom_column',  'upcloo_my_show_columns');
 add_action('save_post', 'upcloo_save_data');
@@ -354,7 +355,10 @@ function upcloo_add_force_content_send_link()
     ?>
     <div id="upcloo-box-publish" class="misc-pub-section" style="border-top-style:solid; border-top-width:1px; border-bottom-width:0px;">
     	UpCloo: <strong><?php echo (($upclooMeta != '') ? _e("Indexed", "wp_upcloo") : _e("Not Indexed", "wp_upcloo"));?></strong> 
-    		<a class="submitdelete deletion" href="/wp-admin/edit.php?post=<?php echo $post->ID; ?>&upcloo=reindex"><?php (($upclooMeta != '') ? _e("ReIndex NOW", "wp_upcloo") : _e("Index NOW", "wp_upcloo"));?></a>
+    		<a class="submitdelete deletion" 
+    		    href="/wp-admin/edit.php?post=<?php echo $post->ID; ?>&upcloo=reindex">
+    		        <?php (($upclooMeta != '') ? _e("ReIndex NOW", "wp_upcloo") : _e("Index NOW", "wp_upcloo"));?>
+	        </a>
     </div>
     <?php 
     endif;
