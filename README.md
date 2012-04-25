@@ -35,6 +35,5 @@ project use ```ant clean```.
 
 After compile process you have a new directory named ```dist``` that
 have only necessary stuffs for WordPress. Now open this one and
-you can copy the ```wp-upcloo``` folder directly into your 
-```wp-content/plugins```.
+you can copy the ```wp-upcloo``` folder directly into your ```wp-content/plugins``` .
 
