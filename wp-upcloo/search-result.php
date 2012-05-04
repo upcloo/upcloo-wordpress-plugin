@@ -15,7 +15,7 @@
                 <div class="main">
                 <hr />
                 <?php foreach ($results->getDocs() as $doc) : ?>
-                    <h3 class="entry-title"><a href="<?php echo $doc["url"];?>" title="<?php echo $doc["title"]?>"><?php echo $doc["title"]?></a></h3>
+                    <h3 class="entry-title"><a href="<?php echo $doc["url"];?>" title="<?php echo strip_tags($doc["title"])?>"><?php echo $doc["title"]?></a></h3>
                     <span>Posted on: </span> <?php echo $doc["publish_date"] ?>
                     <hr />
                     <?php if (!empty($doc["author"])) : ?><p class="meta"><?php echo __("Written by")?> <?php $doc["author"] ?></p><?php endif; ?>
