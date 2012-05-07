@@ -296,6 +296,9 @@ function upcloo_wp_head()
             
             $image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
             if ($image) {
+            	if (is_array($image)) {
+            		$image = $image[0];
+            	}
                 $m[] = '<!-- UPCLOO_POST_IMAGE '.$image.' UPCLOO_POST_IMAGE -->';
             }
             
