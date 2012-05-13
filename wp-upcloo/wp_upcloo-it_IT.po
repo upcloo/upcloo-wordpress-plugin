@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-04-14 09:07+0100\n"
-"PO-Revision-Date: 2012-04-14 09:07+0100\n"
+"POT-Creation-Date: 2012-05-13 20:37+0100\n"
+"PO-Revision-Date: 2012-05-13 20:38+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -322,47 +322,75 @@ msgstr "Leggi ancora"
 msgid "Pages"
 msgstr "Pagine"
 
-#: wp-upcloo.php:141
+#: wp-upcloo.php:142
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:356
+#: wp-upcloo.php:149
+msgid "UpCloo Options"
+msgstr "Opzioni UpCloo"
+
+#: wp-upcloo.php:150
+msgid "Key Switch"
+msgstr "Scambio Chiavi"
+
+#: wp-upcloo.php:151
+msgid "Indexing Feature"
+msgstr "Indicizzazione"
+
+#: wp-upcloo.php:152
+msgid "Post Type Indexing"
+msgstr "Tipo di post da indicizzare"
+
+#: wp-upcloo.php:153
+msgid "ROI Monitor"
+msgstr "Monitor ROI"
+
+#: wp-upcloo.php:154
+msgid "Templating System"
+msgstr "Sistema di Template"
+
+#: wp-upcloo.php:155
+msgid "Remote Importer"
+msgstr "Importazione remota"
+
+#: wp-upcloo.php:360
 msgid "Indexed"
 msgstr "Indicizzato"
 
-#: wp-upcloo.php:356
+#: wp-upcloo.php:360
 msgid "Not Indexed"
 msgstr "Non indicizzato"
 
-#: wp-upcloo.php:357
+#: wp-upcloo.php:363
 msgid "ReIndex NOW"
 msgstr "Reindicizza subito"
 
-#: wp-upcloo.php:357
+#: wp-upcloo.php:363
 msgid "Index NOW"
 msgstr "Indicizza Subito"
 
-#: wp-upcloo.php:415
+#: wp-upcloo.php:422
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
-#: wp-upcloo.php:436
+#: wp-upcloo.php:443
 msgid "UpCloo Language Definer"
 msgstr "Lingua (i18n) per UpCloo"
 
-#: wp-upcloo.php:455
+#: wp-upcloo.php:462
 msgid "Select the language of your article/page"
 msgstr "Seleziona la lingua del tuo articolo/pagina"
 
-#: wp-upcloo.php:462
+#: wp-upcloo.php:469
 msgid "Italian"
 msgstr "Italiano"
 
-#: wp-upcloo.php:463
+#: wp-upcloo.php:470
 msgid "English"
 msgstr "Inglese"
 
-#: wp-upcloo.php:831
+#: wp-upcloo.php:838
 msgid "Maybe you are interested at"
 msgstr "Forse ti potrebbero interessare"
 
@@ -422,9 +450,6 @@ msgstr "Widget UpCloo Search (Cerca nella nuvola)"
 #: UpCloo/Widget/Search.php:51
 msgid "Search in the Cloud"
 msgstr "Cerca nella nuvola"
-
-#~ msgid "UpCloo Options"
-#~ msgstr "Opzioni UpCloo"
 
 #~ msgid "Search"
 #~ msgstr "Cerca"
