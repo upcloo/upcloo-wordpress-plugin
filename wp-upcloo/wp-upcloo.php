@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.1.14-Gertrude
+Version: 1.1.15-Gertrude
 Author: Walter Dal Mut, Gabriele Mittica
 Author URI: http://www.corley.it
 License: MIT
@@ -146,13 +146,13 @@ function upcloo_check_menu_capability()
 //Start menu
 function upcloo_plugin_menu()
 {
-    add_menu_page('UpCloo Options', 'UpCloo Options', UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options');
-    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Key Switch", "Key Switch", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_KSWITCH_SLUG, 'upcloo_plugin_menu_kswitch');
-    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Indexing Feature", "Indexing Feature", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_FEATURE_SLUG, 'upcloo_plugin_menu_feature');
-    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Post Type", "Post Type Indexing", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_POST_TYPE_SLUG, 'upcloo_plugin_menu_post_type');
-    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo ROI Monitor", "ROI Monitor", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_ROI_SLUG, 'upcloo_plugin_menu_roi');
-    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Templating", "Templating System", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_THEME_SLUG, 'upcloo_plugin_menu_theme');
-    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Remote Importer", "Remote Importer", UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_REMOTE_SLUG, 'upcloo_plugin_menu_remote');
+    add_menu_page('UpCloo Options', __('UpCloo Options', "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Key Switch", __("Key Switch", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_KSWITCH_SLUG, 'upcloo_plugin_menu_kswitch');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Indexing Feature", __("Indexing Feature", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_FEATURE_SLUG, 'upcloo_plugin_menu_feature');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Post Type", __("Post Type Indexing", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_POST_TYPE_SLUG, 'upcloo_plugin_menu_post_type');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo ROI Monitor", __("ROI Monitor", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_ROI_SLUG, 'upcloo_plugin_menu_roi');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Templating", __("Templating System", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_THEME_SLUG, 'upcloo_plugin_menu_theme');
+    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Remote Importer", __("Remote Importer", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_REMOTE_SLUG, 'upcloo_plugin_menu_remote');
 }
 
 function upcloo_plugin_menu_remote()

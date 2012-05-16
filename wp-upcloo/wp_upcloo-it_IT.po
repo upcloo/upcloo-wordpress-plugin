@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-05-16 11:14+0100\n"
-"PO-Revision-Date: 2012-05-16 11:14+0100\n"
+"POT-Creation-Date: 2012-05-16 11:21+0100\n"
+"PO-Revision-Date: 2012-05-16 11:21+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -326,6 +326,34 @@ msgstr "Pagine"
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
+#: wp-upcloo.php:149
+msgid "UpCloo Options"
+msgstr "Opzioni UpCloo"
+
+#: wp-upcloo.php:150
+msgid "Key Switch"
+msgstr "Scambio Chiavi"
+
+#: wp-upcloo.php:151
+msgid "Indexing Feature"
+msgstr "Indicizzazione"
+
+#: wp-upcloo.php:152
+msgid "Post Type Indexing"
+msgstr "Tipo di post da indicizzare"
+
+#: wp-upcloo.php:153
+msgid "ROI Monitor"
+msgstr "Monitor ROI"
+
+#: wp-upcloo.php:154
+msgid "Templating System"
+msgstr "Sistema di Template"
+
+#: wp-upcloo.php:155
+msgid "Remote Importer"
+msgstr "Importazione remota"
+
 #: wp-upcloo.php:360
 msgid "Indexed"
 msgstr "Indicizzato"
@@ -422,9 +450,6 @@ msgstr "Widget UpCloo Search (Cerca nella nuvola)"
 #: UpCloo/Widget/Search.php:51
 msgid "Search in the Cloud"
 msgstr "Cerca nella nuvola"
-
-#~ msgid "UpCloo Options"
-#~ msgstr "Opzioni UpCloo"
 
 #~ msgid "Search"
 #~ msgstr "Cerca"
