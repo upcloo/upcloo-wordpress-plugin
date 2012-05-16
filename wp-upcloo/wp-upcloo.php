@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.1.15-Gertrude
+Version: 1.1.16-Gertrude
 Author: Walter Dal Mut, Gabriele Mittica
 Author URI: http://www.corley.it
 License: MIT
@@ -51,7 +51,6 @@ define('UPCLOO_REWRITE_PUBLIC_LABEL', 'upcloo_rewrite_public_label');
 define('UPCLOO_MAX_SHOW_LINKS', "upcloo_max_show_links");
 define("UPCLOO_POST_PUBLISH", "publish");
 define("UPCLOO_POST_TRASH", "trash");
-define("UPCLOO_USER_AGENT", "WPUpCloo/1.0");
 define("UPCLOO_RSS_FEED", "http://www.mxdesign.it/contenuti/rss/0/news.xml");
 define("UPCLOO_POST_META", "upcloo_post_sent");
 define("UPCLOO_CLOUD_IMAGE", '<img src="'.WP_PLUGIN_URL.'/wp-upcloo/upcloo.png" src="UpCloo-OK" />');
@@ -496,10 +495,31 @@ function upcloo_init() {
 //     }
 
     /* Engaged on delete post */
-//     if (current_user_can('delete_posts')) {
-//         //add_action('delete_post', 'upcloo_remove_post_sync');
-//         add_action('trash_post', 'upcloo_remove_post_sync');
-//     }
+    if (current_user_can('delete_posts')) {
+        add_action('trash_post', 'upcloo_remove_post');
+    }
+}
+
+function upcloo_remove_post()
+{
+    $post = get_post($pid);
+    
+    $postsType = get_option(UPCLOO_POSTS_TYPE);
+    
+    if (in_array($post->post_type, $postsType)) {
+        if ($post->post_status == UPCLOO_POST_PUBLISH) {
+            $manager = UpCloo_Manager::getInstance();
+            $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
+            
+            $pid = $post->post_type . "_" . $post->ID;
+            $result = $manager->delete($pid);
+            if ($result) {
+                update_post_meta($post->ID, UPCLOO_POST_META, "0");
+            }
+            
+            //TODO: handle result display
+        }
+    }
 }
 
 function upcloo_save_data($post_id)
@@ -566,7 +586,7 @@ function upcloo_content_sync($pid)
             $lastname = get_user_meta($post->post_author, "last_name", true);
 
             $publish_date = $post->post_date;
-            $publish_date = str_replace(" ", "T", $publish_date) . "Z";
+            $publish_date = str_replace(" ", "T", $publish_date) . "Z";//TODO: add right date support
             
             $summary = $post->post_excerpt;
             
