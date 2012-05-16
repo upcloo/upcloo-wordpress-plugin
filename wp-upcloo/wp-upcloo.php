@@ -306,6 +306,10 @@ function upcloo_wp_head()
             
             $m[] = '<!-- UPCLOO_POST_AUTHOR '.$firstname . " " . $lastname .' UPCLOO_POST_AUTHOR -->';
             
+            //LANG!
+            $lang = get_post_meta($post->ID, UPCLOO_META_LANG, true);
+            $m[] = '<!-- UPCLOO_POST_LANG ' . $lang . ' UPCLOO_POST_LANG -->';
+            
             $taxonomies = upcloo_get_taxonomies($post->ID);
             if (is_array($taxonomies)) {
                 $taxonomiesArray = array();
