@@ -308,7 +308,9 @@ function upcloo_wp_head()
             
             //LANG!
             $lang = get_post_meta($post->ID, UPCLOO_META_LANG, true);
-            $m[] = '<!-- UPCLOO_POST_LANG ' . $lang . ' UPCLOO_POST_LANG -->';
+            if ($lang && !empty($lang)) {
+                $m[] = '<!-- UPCLOO_POST_LANG ' . $lang . ' UPCLOO_POST_LANG -->';
+            }
             
             $taxonomies = upcloo_get_taxonomies($post->ID);
             if (is_array($taxonomies)) {
