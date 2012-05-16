@@ -145,7 +145,7 @@ function upcloo_check_menu_capability()
 //Start menu
 function upcloo_plugin_menu()
 {
-    add_menu_page('UpCloo Options', __('UpCloo Options', "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options');
+    add_menu_page('UpCloo', __('UpCloo', "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options');
     add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Key Switch", __("Key Switch", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_KSWITCH_SLUG, 'upcloo_plugin_menu_kswitch');
     add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Indexing Feature", __("Indexing Feature", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_FEATURE_SLUG, 'upcloo_plugin_menu_feature');
     add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Post Type", __("Post Type Indexing", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_POST_TYPE_SLUG, 'upcloo_plugin_menu_post_type');
@@ -509,6 +509,7 @@ function upcloo_remove_post()
     if (in_array($post->post_type, $postsType)) {
         if ($post->post_status == UPCLOO_POST_PUBLISH) {
             $manager = UpCloo_Manager::getInstance();
+            
             $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
             
             $pid = $post->post_type . "_" . $post->ID;
