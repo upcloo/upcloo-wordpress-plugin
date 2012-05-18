@@ -324,7 +324,7 @@ function upcloo_wp_head()
                     $dynTags[] = $slug;
                 }
             }
-            $m[] = '<!-- UPCLOO_POST_DYNAMIC_TAG_LIST' . implode(",", $dynTags) . ' UPCLOO_POST_DYNAMIC_TAG_LIST -->';
+            $m[] = '<!-- UPCLOO_POST_DYNAMIC_TAG_LIST ' . implode(",", $dynTags) . ' UPCLOO_POST_DYNAMIC_TAG_LIST -->';
             
             $tags = get_the_tags($post->ID);
             if (is_array($tags)) {
