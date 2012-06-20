@@ -458,28 +458,13 @@ function upcloo_inner_custom_box()
     
     // Use nonce for verification
     wp_nonce_field( plugin_basename( __FILE__ ), 'upcloo_language_metabox_nonce' );
-
-    //The actual fields for data entry
-    echo '<label for="'.UPCLOO_META_LANG.'">';
-    _e("Select the language of your article/page", 'wp_upcloo' );
-    echo '</label> ';
-    $selectBoxHTML = '<select name="'.UPCLOO_META_LANG.'">%s</select>';
-   
-    $defaultLang = ($metadataLang != '') ? $metadataLang : get_option(UPCLOO_DEFAULT_LANG);
-   
-    $languages = array(
-    	'it' => __('Italian', 'wp_upcloo'),
-    	'en' => __('English', 'wp_upcloo')
-    );
-   
-    $options = '';
-    foreach ($languages as $code => $language) {
-        $options .= '<option value="'.$code.'" '.(($code == $defaultLang) ? 'selected="selected"' : '').'>' .__($language, 'wp_upcloo') . '</option>';
-    }
-   
-    $selectBoxHTML = sprintf($selectBoxHTML, $options);
-   
-    echo $selectBoxHTML;
+    
+    $view = new SView();
+    $view->setViewPath(UPCLOO_VIEW_PATH);
+    
+    $view->metadataLang = $metadataLang;
+    
+    echo $view->render("inner-custom-box.phtml");
 }
 
 /**
@@ -949,7 +934,7 @@ function upcloo_search_result_template()
         
         //If user rewrite the search template load it.
         if (file_exists($themeFile)) {
-            include $themeFile;   
+            include $themeFile;
         } else {
             include dirname(__FILE__) . '/search-result.php';
         }
