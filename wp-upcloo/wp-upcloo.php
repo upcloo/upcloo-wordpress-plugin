@@ -836,9 +836,9 @@ function upcloo_content($content, $noPostBody = false)
             
             $view->listOfModels = $listOfModels;
             if (get_option("upcloo_template_base", "wp_upcloo") == 1) {
-                echo $view->render("upcloo-content-advanced.phtml");
+                $content .= $view->render("upcloo-content-advanced.phtml");
             } else {
-                echo $view->render("upcloo-content-default.phtml");
+                $content .= $view->render("upcloo-content-default.phtml");
             }
         }
         
