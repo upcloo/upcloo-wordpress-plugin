@@ -564,7 +564,7 @@ function upcloo_content_sync($pid)
             $lastname = get_user_meta($post->post_author, "last_name", true);
 
             $publish_date = $post->post_date;
-            $publish_date = str_replace(" ", "T", $publish_date) . "Z";//TODO: add right date support
+            $publish_date = str_replace(" ", "T", $publish_date) . "Z";//TODO: add real date support
             
             $summary = $post->post_excerpt;
             
