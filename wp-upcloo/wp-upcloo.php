@@ -161,43 +161,43 @@ function upcloo_plugin_menu()
 function upcloo_plugin_menu_remote()
 {
     upcloo_check_menu_capability();
-    include realpath(dirname(__FILE__)) . "/app-remote-options.php";
+    include realpath(dirname(__FILE__)) . "/options/app-remote-options.php";
 }
 
 function upcloo_plugin_menu_theme()
 {
     upcloo_check_menu_capability();
-    include realpath(dirname(__FILE__)) . "/app-theme-options.php";
+    include realpath(dirname(__FILE__)) . "/options/app-theme-options.php";
 }
 
 function upcloo_plugin_menu_roi()
 {
     upcloo_check_menu_capability();
-    include realpath(dirname(__FILE__)) . "/app-roi-options.php";
+    include realpath(dirname(__FILE__)) . "/options/app-roi-options.php";
 }
 
 function upcloo_plugin_menu_post_type()
 {
     upcloo_check_menu_capability();
-    include realpath(dirname(__FILE__)) . "/app-post-type-options.php";
+    include realpath(dirname(__FILE__)) . "/options/app-post-type-options.php";
 }
 
 function upcloo_plugin_menu_feature()
 {
     upcloo_check_menu_capability();
-    include realpath(dirname(__FILE__)) . "/app-feature-options.php";
+    include realpath(dirname(__FILE__)) . "/options/app-feature-options.php";
 }
 
 function upcloo_plugin_menu_kswitch()
 {
     upcloo_check_menu_capability();
-    include realpath(dirname(__FILE__)) . "/app-key-switch-options.php";
+    include realpath(dirname(__FILE__)) . "/options/app-key-switch-options.php";
 }
 
 function upcloo_plugin_options()
 {
     upcloo_check_menu_capability();
-    include realpath(dirname(__FILE__)) . "/app-config-options.php";
+    include realpath(dirname(__FILE__)) . "/options/app-config-options.php";
 }
 //End menu
 
