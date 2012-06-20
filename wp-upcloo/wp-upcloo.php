@@ -405,11 +405,14 @@ function upcloo_dashboard_widget_function() {
     $blogInfo = get_bloginfo();
     $blogTitle = urlencode(strtolower($blogInfo));    
     
-    echo "<ul>";
-    foreach ($xml->channel->item as $item) {
-        echo "<li><a href='{$item->link}?utm_campaign=upcloo_rss&utm_medium=wordpress_dashboard&utm_source={$blogTitle}' target='_blank'>{$item->title}</a></li>";
-    }
-    echo "</ul>";
+    $view = new SView();
+    $view->setViewPath(UPCLOO_VIEW_PATH);
+    
+    $view->xml = $xml;
+    $view->blogTitle = $blogTitle;
+    $view->blogInfo = $blogInfo;
+    
+    echo $view->render("dashboard-widget.phtml");
 }
 
 // Create the function use in the action hook
@@ -444,6 +447,9 @@ function upcloo_add_custom_box() {
     }
 }
 
+/**
+ * @todo remove custom box feature.
+ */
 function upcloo_inner_custom_box()
 {
     global $post;
@@ -480,17 +486,6 @@ function upcloo_inner_custom_box()
  * Intialize the plugin
  */
 function upcloo_init() {
-    
-//     if (current_user_can("edit_posts") || current_user_can('publish_posts')) {
-//         //add_action('publish_post', 'upcloo_content_sync');
-//         add_action('edit_post', 'upcloo_content_sync');
-//     }
-
-    /* When a page is published */
-//     if (current_user_can('publish_pages')) {
-//         add_action('publish_page', 'upcloo_content_sync');
-//     }
-
     /* Engaged on delete post */
     if (current_user_can('delete_posts')) {
         add_action('trash_post', 'upcloo_remove_post');
@@ -818,6 +813,9 @@ function upcloo_content($content, $noPostBody = false)
             }
         }
         
+        $view = new SView();
+        $view->setViewPath(UPCLOO_VIEW_PATH);
+        
         //Get it 
         $manager = UpCloo_Manager::getInstance();
         $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
@@ -828,6 +826,7 @@ function upcloo_content($content, $noPostBody = false)
             
             //Shrink number of contents
             $maxContents = (((int)get_option("upcloo_max_show_links")) > 0) ? (int)get_option("upcloo_max_show_links") : 0;
+            $view->maxContents = $maxContents;
             
             $numOfDocs = count($listOfModels->doc);
             for ($i=0; $i<$numOfDocs; $i++) {
@@ -850,77 +849,12 @@ function upcloo_content($content, $noPostBody = false)
                 }
             }
             
-            $content .= "<div class=\"upcloo-related-contents\">";
-            //User override the default label
-            if (!(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) || trim(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) == '') {
-                $content .= "<h2>" . __("Maybe you are interested at", "wp_upcloo") . ":</h2>";
-            } else {
-                $content .= '<h2>' . get_option(UPCLOO_REWRITE_PUBLIC_LABEL) . '</h2>';
-            }
-            
+            $view->listOfModels = $listOfModels;
             if (get_option("upcloo_template_base", "wp_upcloo") == 1) {
-                foreach ($listOfModels as $element) {
-                    
-                    $content .= '<div class="upcloo_template_element">';
-
-                    //Show if featured image
-                    if (get_option('upcloo_template_show_featured_image', 'wp_upcloo') == 1) {
-                        //Get the image path
-                        $imagePath =  ((is_string($element["image"])) ? $element["image"] : get_option(UPCLOO_MISSING_IMAGE_PLACEHOLDER));
-                        //Append the image to the content
-                        $content .= '<div class="upcloo_post_image"><a href="'. upcloo_get_utm_tag_url($element["url"]) .'" '.((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').'><img src="' . $imagePath . '" alt="" /></a></div>';
-                    }
-                    
-                    //Show if title
-                    if (get_option('upcloo_template_show_title', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_title"><a href="'. upcloo_get_utm_tag_url($element["url"]) . '" '.((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').'>' . $element["title"] . '</a></div>';
-                    }
-                    
-                    //Show if summary
-                    if (get_option('upcloo_template_show_summary', 'wp_upcloo') == 1) {
-                        $content .= '<div class="upcloo_post_summary">' . $element["description"] . '</div>';
-                    }
-
-                    //Show if categories
-                    if (get_option('upcloo_template_show_categories', 'wp_upcloo') == 1) {
-                        $content .= "<div class=\"upcloo_post_categories\">";
-                        foreach ($element["categories"] as $category) {
-                            $content .= '<div class="upcloo_post_categories_category">' . $category . '</div>';
-                        }
-                        $content .= "</div>";
-                    }
-                    
-                    //Show if tags
-                    if (get_option('upcloo_template_show_tags', 'wp_upcloo') == 1) {
-                        $content .= "<div class=\"upcloo_post_tags\">";
-                        foreach ($element["tags"] as $tag) {
-                            $content .= '<div class="upcloo_post_tags_tag">' . $tag . '</div>';
-                        }
-                        $content .= "</div>";
-                    }
-                    
-                    $content .= '</div>';
-                }
+                echo $view->render("upcloo-content-advanced.phtml");
             } else {
-            
-                $content .= "<ul>";
-                foreach ($listOfModels as $element) {
-                    //max links cutter
-                    if (is_int($maxContents) && $maxContents > 0) {
-                        if ($index >= $maxContents) {
-                            break;
-                            $index=0;
-                        }
-    
-                        $index++;
-                    }
-                    
-                    $content .= "<li><a href='" . upcloo_get_utm_tag_url($element["url"]) . "' ".((upcloo_is_external_site($element["url"])) ? 'target="_blank"' : '').">{$element["title"]}</a></li>";    
-                }
-    
-                $content .= "</ul>";
+                echo $view->render("upcloo-content-default.phtml");
             }
-            $content .= "</div>";
         }
         
         if (!$noPostBody) {
