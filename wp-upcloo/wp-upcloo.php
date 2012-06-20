@@ -41,6 +41,8 @@ require_once dirname(__FILE__) . '/UpCloo/Widget/Search.php';
 require_once dirname(__FILE__) . '/UpCloo/Registry.php';
 require_once dirname(__FILE__) . '/vendor/upcloo-sdk/src/UpCloo/Autoloader.php';
 
+require_once dirname(__FILE__) . '/SView.php';
+
 //Only secure protocol on post/page publishing (now is beta test... no https)
 define("UPCLOO_USERKEY", "upcloo_userkey");
 define("UPCLOO_SITEKEY", "upcloo_sitekey");
@@ -97,6 +99,8 @@ define('UPCLOO_MENU_POST_TYPE_SLUG', 'upcloo_options_menu_post_type');
 define('UPCLOO_MENU_ROI_SLUG', 'upcloo_options_menu_roi');
 define('UPCLOO_MENU_THEME_SLUG', 'upcloo_options_menu_slug');
 define('UPCLOO_MENU_REMOTE', 'upcloo_options_menu_remote');
+
+define('UPCLOO_VIEW_PATH', dirname(__FILE__) . '/views');
 
 define('UPCLOO_OPTION_CAPABILITY', 'manage_options');
 
@@ -204,27 +208,12 @@ function upcloo_sitemap_page()
 {
     header ("content-type: text/xml");
     
-    $userSelected = get_option(UPCLOO_POSTS_TYPE);
+    $view = new SView();
+    $view->setViewPath(UPCLOO_VIEW_PATH);
+
+    $view->userSelected = get_option(UPCLOO_POSTS_TYPE);
     
-    echo '<?xml version="1.0" encoding="utf-8"?>';
-    echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
-    foreach ($userSelected as $key => $postType) {
-        $args = array(
-    		'numberposts'     => 50000,
-    		'offset'          => 0,
-    		'orderby'         => 'post_date',
-    		'order'           => 'DESC',
-    		'post_type'       => $postType,
-    		'post_status'     => 'publish' 
-        );
-        
-        $posts = get_posts( $args );
-        foreach ($posts as $post) {
-            $permalink = get_permalink($post->ID);
-            echo "<url><loc>{$permalink}</loc></url>";
-        }
-    } 
-    echo '</urlset>';
+    echo $view->render("sitemap.phtml");
     exit;
 }
 
@@ -361,18 +350,17 @@ function upcloo_add_force_content_send_link()
     global $post_ID;
     $post = get_post( $post_ID );
     
-    if ($post->post_status == 'publish') :
+    if ($post->post_status == 'publish') {
         $upclooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
-    ?>
-    <div id="upcloo-box-publish" class="misc-pub-section" style="border-top-style:solid; border-top-width:1px; border-bottom-width:0px;">
-    	UpCloo: <strong><?php echo (($upclooMeta != '') ? _e("Indexed", "wp_upcloo") : _e("Not Indexed", "wp_upcloo"));?></strong> 
-    		<a class="submitdelete deletion" 
-    		    href="/wp-admin/edit.php?post=<?php echo $post->ID; ?>&upcloo=reindex">
-    		        <?php (($upclooMeta != '') ? _e("ReIndex NOW", "wp_upcloo") : _e("Index NOW", "wp_upcloo"));?>
-	        </a>
-    </div>
-    <?php 
-    endif;
+        
+        $view = new SView();
+        $view->setViewPath(UPCLOO_VIEW_PATH);
+
+        $view->upclooMeta = $upclooMeta;
+        $view->post = $post;
+        
+        echo $view->render('add-force-content-send-link.phtml');
+    }
 }
 
 function upcloo_my_columns($columns) 

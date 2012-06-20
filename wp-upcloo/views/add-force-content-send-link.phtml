@@ -1,0 +1,6 @@
+<div id="upcloo-box-publish" class="misc-pub-section" style="border-top-style:solid; border-top-width:1px; border-bottom-width:0px;">
+	UpCloo: <strong><?php echo (($this->upclooMeta != '') ? _e("Indexed", "wp_upcloo") : _e("Not Indexed", "wp_upcloo"));?></strong> 
+	<a class="submitdelete deletion" href="/wp-admin/edit.php?post=<?php echo $this->post->ID; ?>&upcloo=reindex">
+        <?php (($this->upclooMeta != '') ? _e("ReIndex NOW", "wp_upcloo") : _e("Index NOW", "wp_upcloo"));?>
+    </a>
+</div>
