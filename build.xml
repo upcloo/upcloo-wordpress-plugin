@@ -25,6 +25,8 @@
 		<fileset dir="wp-upcloo" id="upcloo-base">
             <include name="*"/>
 			<include name="UpCloo/**"/>
+			<include name="views/**"/>
+			<include name="options/**"/>
             <exclude name="vendor"/>
         </fileset>
 		<fileset dir="wp-upcloo/vendor/upcloo-sdk/src" id="upcloo-sdk">
