@@ -163,7 +163,7 @@ function upcloo_show_needs_attention()
 {
     if (!upcloo_is_configured()) {
         echo '<div class="updated">
-        <p>' . __("Remember that your have to configure UpCloo Plugin: ") . ' <a href="admin.php?page=upcloo_options_menu">'.__("Base Config Page") . '</a> - <a href="admin.php?page=upcloo_options_menu_post_type">'. __("Content Types Selection") . '</a></p>
+        <p>' . __("Remember that your have to configure UpCloo Plugin: ", "wp_upcloo") . ' <a href="admin.php?page=upcloo_options_menu">'.__("Base Config Page", "wp_upcloo") . '</a> - <a href="admin.php?page=upcloo_options_menu_post_type">'. __("Content Types Selection", "wp_upcloo") . '</a></p>
         </div>';
     }
 }
@@ -171,7 +171,7 @@ function upcloo_show_needs_attention()
 function upcloo_check_menu_capability()
 {
     if ( !current_user_can(UPCLOO_OPTION_CAPABILITY) )  {
-        wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+        wp_die(__( 'You do not have sufficient permissions to access this page.', "wp_upcloo"));
     } 
 }
 
@@ -401,6 +401,9 @@ function upcloo_my_columns($columns)
         
         if (upcloo_content_sync($_GET["post"])) {
             update_post_meta($_GET["post"], UPCLOO_POST_META, "1", $upClooMeta);
+            echo "<div class='updated fade'><p>" . __("Content correctly sent to UpCloo.", "wp_upcloo") . "</p></div>";
+        } else {
+            echo "<div class='error fade'><p>" . __("Unable to send this content to UpCloo.", "wp_upcloo") . "</p></div>";
         }
     }
     
@@ -447,7 +450,7 @@ function upcloo_dashboard_widget_function() {
 // Create the function use in the action hook
 
 function upcloo_add_dashboard_widgets() {
-    wp_add_dashboard_widget('upcloo_dashboard_widget', __('UpCloo News Widget'), 'upcloo_dashboard_widget_function');
+    wp_add_dashboard_widget('upcloo_dashboard_widget', __('UpCloo News Widget', "wp_upcloo"), 'upcloo_dashboard_widget_function');
 }
 
 function upcloo_admin_footer($text)

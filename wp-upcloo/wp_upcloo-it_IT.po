@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-07-26 14:52+0100\n"
-"PO-Revision-Date: 2012-07-26 14:52+0100\n"
+"POT-Creation-Date: 2012-07-26 14:59+0100\n"
+"PO-Revision-Date: 2012-07-26 15:00+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: Corley s.r.l. <walter.dalmut@corley.it>\n"
 "MIME-Version: 1.0\n"
@@ -84,11 +84,19 @@ msgstr "Sistema di Template"
 msgid "Remote Importer"
 msgstr "Importazione remota"
 
-#: wp-upcloo.php:450
+#: wp-upcloo.php:404
+msgid "Content correctly sent to UpCloo."
+msgstr "Contenuto correttamente inviato ad UpCloo."
+
+#: wp-upcloo.php:406
+msgid "Unable to send this content to UpCloo."
+msgstr "Non sono riuscito ad inviare questo contenuto ad UpCloo."
+
+#: wp-upcloo.php:453
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
-#: wp-upcloo.php:471
+#: wp-upcloo.php:474
 msgid "UpCloo Language Definer"
 msgstr "Lingua (i18n) per UpCloo"
 
