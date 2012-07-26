@@ -37,3 +37,14 @@ After compile process you have a new directory named ```dist``` that
 have only necessary stuffs for WordPress. Now open this one and
 you can copy the ```wp-upcloo``` folder directly into your ```wp-content/plugins``` .
 
+### Contributors
+
+In this section we want to list all people that help us to maintain and fix problems with this
+plugin.
+
+Thanks to:
+
+ * @miziomon ([Mavida s.n.c.](http://www.mavida.com/))
+  * WP messages and notifications improvement.
+   * Contribution on release: 1.1.19
+ 
