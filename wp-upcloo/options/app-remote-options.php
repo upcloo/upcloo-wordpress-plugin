@@ -1,5 +1,6 @@
 <div class="wrap">
-    <h3 id="upcloo-remote-import"><?php _e("Remote Import System", "wp_upcloo");?></h3>
+    <?php screen_icon("options-general")?>
+    <h2 id="upcloo-remote-import"><?php _e("Remote Import System", "wp_upcloo");?></h2>
     <p class="warning">
     	<?php _e("Consider that you have to request remote indexing using UpCloo remote control panel.", "wp_upcloo"); ?>
     	<?php _e("See this link for more information about this procedure:") ?> 

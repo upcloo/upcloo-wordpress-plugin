@@ -115,6 +115,7 @@ add_action('save_post', 'upcloo_save_data');
 add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
 
 add_action('wp_head', 'upcloo_wp_head');
+add_action('admin_notices', 'upcloo_show_needs_attention');
 
 add_filter('the_content', 'upcloo_content');
 add_filter('admin_footer_text', "upcloo_admin_footer");
@@ -136,6 +137,34 @@ if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
     //Add sitemap page
     if (array_key_exists("plugin_page", $_GET) && $_GET['plugin_page'] == UPCLOO_SITEMAP_PAGE) {
         add_action('template_redirect', 'upcloo_sitemap_page');
+    }
+}
+
+function upcloo_is_configured()
+{
+    $postTypes = get_option(UPCLOO_POSTS_TYPE);
+    if (!is_array($postTypes)) {
+        $postTypes = array();
+    }
+    
+    if (
+        trim(get_option(UPCLOO_USERKEY)) != '' &&
+        trim(get_option(UPCLOO_PASSWORD)) != '' &&
+        trim(get_option(UPCLOO_SITEKEY)) != '' &&
+        count($postTypes) > 0
+    ) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function upcloo_show_needs_attention() 
+{
+    if (!upcloo_is_configured()) {
+        echo '<div class="updated">
+        <p>' . __("Remember that your have to configure UpCloo Plugin: ") . ' <a href="admin.php?page=upcloo_options_menu">'.__("Base Config Page") . '</a> - <a href="admin.php?page=upcloo_options_menu_post_type">'. __("Content Types Selection") . '</a></p>
+        </div>';
     }
 }
 

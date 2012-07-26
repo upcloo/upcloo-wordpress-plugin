@@ -1,5 +1,6 @@
 <div class="wrap">
-    <h3 if="upcloo-enable-vsitekey"><?php _e("Use virtual sitekey as main", "wp_upcloo"); ?></h3>
+    <?php screen_icon("options-general")?>
+    <h2 if="upcloo-enable-vsitekey"><?php _e("Use virtual sitekey as main", "wp_upcloo"); ?></h2>
     <form method="post" action="options.php#upcloo-enable-vsitekey">
     	<?php wp_nonce_field('update-options'); ?>
     	<table class="form-table" >

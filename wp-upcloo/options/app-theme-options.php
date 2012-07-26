@@ -1,5 +1,6 @@
 <div class="wrap">
-    <h3 id="upcloo-templating"><?php _e("Template selector", "wp_upcloo");?></h3>
+    <?php screen_icon("options-general")?>
+    <h2 id="upcloo-templating"><?php _e("Template selector", "wp_upcloo");?></h2>
     <p class="warning">
     	<?php _e("Use the advanced method only if you know or have someone that know CSS (Cascading StyleSheet)", "wp_upcloo"); ?>
     </p>

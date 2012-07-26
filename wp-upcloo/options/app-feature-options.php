@@ -1,5 +1,6 @@
 <div class="wrap">
-    <h3 id="upcloo-other-features"><?php _e("Other features", "wp_upcloo");?></h3>
+    <?php screen_icon("options-general")?>
+    <h2 id="upcloo-other-features"><?php _e("Other features", "wp_upcloo");?></h2>
     <form method="post" action="options.php#upcloo-other-features">
         <?php wp_nonce_field('update-options'); ?>
 

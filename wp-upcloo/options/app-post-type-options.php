@@ -1,5 +1,6 @@
 <div class="wrap">
-    <h3 id="upcloo-posts-types"><?php _e("Handle posts type", "wp_upcloo");?></h3>
+    <?php screen_icon("options-general")?>
+    <h2 id="upcloo-posts-types"><?php _e("Handle posts type", "wp_upcloo");?></h2>
     <p class="warning">
     	<?php _e("Select what kind of post you want to send to UpCloo", "wp_upcloo"); ?>
     </p>

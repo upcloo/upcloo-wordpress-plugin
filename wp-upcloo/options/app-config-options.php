@@ -1,4 +1,5 @@
 <div class="wrap">
+<?php screen_icon("options-general")?>
 <h2><?php _e("UpCloo General Options", "wp_upcloo");?></h2>
     <p>
 <?php _e("UpCloo is a new service created for web site with a lot of contents (from 10.000 to milions).", "wp_upcloo");?>

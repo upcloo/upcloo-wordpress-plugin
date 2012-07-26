@@ -1,5 +1,6 @@
 <div class="wrap">
-    <h3 id="upcloo-roi-monitor"><?php _e("ROI Monitor Parameters", "wp_upcloo");?></h3>
+    <?php screen_icon("options-general")?>
+    <h2 id="upcloo-roi-monitor"><?php _e("ROI Monitor Parameters", "wp_upcloo");?></h2>
     <p class="warning">
     	<?php _e("Consider that you have Google Analytics Tracker script activated and visibile on your pages or almost where UpCloo is engaged.", "wp_upcloo"); ?>
     </p>
