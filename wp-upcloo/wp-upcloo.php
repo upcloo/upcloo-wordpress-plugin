@@ -65,11 +65,6 @@ define('UPCLOO_MISSING_IMAGE_PLACEHOLDER', 'upcloo_missing_image_placeholder');
 define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
 define('UPCLOO_SUMMARY_LEN', 'upcloo_summary_len');
 
-define('UPCLOO_UTM_TAG', 'upcloo_utm_tag');
-define('UPCLOO_UTM_CAMPAIGN', 'upcloo_utm_campaign');
-define('UPCLOO_UTM_MEDIUM', 'upcloo_utm_medium');
-define('UPCLOO_UTM_SOURCE', 'upcloo_utm_source');
-
 define('UPCLOO_ENABLE_VSITEKEY_AS_PRIMARY', "upcloo_enable_vsitekey_as_primary");
 define('UPCLOO_VSITEKEY_AS_PRIMARY', "upcloo_vsitekey_as_primary");
 
@@ -710,10 +705,6 @@ function upcloo_install() {
     add_option(UPCLOO_INDEX_CATEGORY, "1", "", "no");
     add_option(UPCLOO_INDEX_TAG, "1", "", "no");
     add_option(UPCLOO_MAX_SHOW_LINKS, "10", "", "yes");
-    add_option(UPCLOO_UTM_TAG, "0", "", "yes");
-    add_option(UPCLOO_UTM_CAMPAING, "", "", "yes");
-    add_option(UPCLOO_UTM_MEDIUM, "", "", "yes");
-    add_option(UPCLOO_UTM_SOURCE, "", "", "yes");
     add_option(UPCLOO_DEFAULT_LANG, "it", "", "yes");
     add_option(UPCLOO_ENABLE_MAIN_CORRELATION, "1", "", "yes");
     add_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY, '0', '', 'yes');
@@ -746,10 +737,6 @@ function upcloo_remove() {
     delete_option(UPCLOO_INDEX_CATEGORY);
     delete_option(UPCLOO_INDEX_TAG);
     delete_option(UPCLOO_MAX_SHOW_LINKS);
-    delete_option(UPCLOO_UTM_TAG);
-    delete_option(UPCLOO_UTM_CAMPAIGN);
-    delete_option(UPCLOO_UTM_MEDIUM);
-    delete_option(UPCLOO_UTM_SOURCE);
     delete_option(UPCLOO_DEFAULT_LANG);
     delete_option(UPCLOO_ENABLE_MAIN_CORRELATION);
     delete_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY);
@@ -849,37 +836,6 @@ function upcloo_content($content, $noPostBody = false)
 
 
     return $content;
-}
-
-/**
- *
- * Get the URL
- *
- * @param string $finalURL
- * @return string The url
- */
-function upcloo_get_utm_tag_url($finalURL)
-{
-    //Prepare link UTM
-    $utmURL = '';
-    if (get_option("upcloo_utm_tag", "wp_upcloo")) {
-        $utmURL .= 'utm_campaign=' .
-        get_option("upcloo_utm_campaign", "wp_upcloo") . '&utm_medium=' .
-        get_option("upcloo_utm_medium", "wp_upcloo") . '&utm_source=' .
-        get_option("upcloo_utm_source", "wp_upcloo");
-    }
-
-    if (get_option("upcloo_utm_tag", "wp_upcloo")) {
-        if (strpos($finalURL, "?")) {
-            $finalURL .= '&';
-        } else {
-            $finalURL .= '?';
-        }
-    }
-
-    $finalURL .= $utmURL;
-
-    return $finalURL;
 }
 
 /**
