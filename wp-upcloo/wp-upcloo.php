@@ -175,29 +175,14 @@ function upcloo_plugin_menu()
 {
     add_menu_page('UpCloo', __('UpCloo', "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options');
     add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Post Type", __("Post Type Indexing", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_POST_TYPE_SLUG, 'upcloo_plugin_menu_post_type');
-    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Templating", __("Templating System", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_THEME_SLUG, 'upcloo_plugin_menu_theme');
-    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo ROI Monitor", __("ROI Monitor", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_ROI_SLUG, 'upcloo_plugin_menu_roi');
     add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Indexing Feature", __("Indexing Feature", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_FEATURE_SLUG, 'upcloo_plugin_menu_feature');
     add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Remote Importer", __("Remote Importer", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_REMOTE_SLUG, 'upcloo_plugin_menu_remote');
-    add_submenu_page(UPCLOO_MENU_SLUG, "UpCloo Key Switch", __("Key Switch", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_KSWITCH_SLUG, 'upcloo_plugin_menu_kswitch');
 }
 
 function upcloo_plugin_menu_remote()
 {
     upcloo_check_menu_capability();
     include realpath(dirname(__FILE__)) . "/options/app-remote-options.php";
-}
-
-function upcloo_plugin_menu_theme()
-{
-    upcloo_check_menu_capability();
-    include realpath(dirname(__FILE__)) . "/options/app-theme-options.php";
-}
-
-function upcloo_plugin_menu_roi()
-{
-    upcloo_check_menu_capability();
-    include realpath(dirname(__FILE__)) . "/options/app-roi-options.php";
 }
 
 function upcloo_plugin_menu_post_type()
@@ -210,12 +195,6 @@ function upcloo_plugin_menu_feature()
 {
     upcloo_check_menu_capability();
     include realpath(dirname(__FILE__)) . "/options/app-feature-options.php";
-}
-
-function upcloo_plugin_menu_kswitch()
-{
-    upcloo_check_menu_capability();
-    include realpath(dirname(__FILE__)) . "/options/app-key-switch-options.php";
 }
 
 function upcloo_plugin_options()
