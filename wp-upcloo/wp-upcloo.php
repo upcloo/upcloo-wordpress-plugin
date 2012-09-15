@@ -3,8 +3,8 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.1.19-Gertrude
-Author: Walter Dal Mut, Gabriele Mittica
+Version: 1.2.0-Gertrude
+Author: Corley S.r.l.
 Author URI: http://www.corley.it/
 License: MIT
 */
@@ -146,7 +146,7 @@ function upcloo_is_configured()
     if (!is_array($postTypes)) {
         $postTypes = array();
     }
-    
+
     if (
         trim(get_option(UPCLOO_USERKEY)) != '' &&
         trim(get_option(UPCLOO_PASSWORD)) != '' &&
@@ -159,7 +159,7 @@ function upcloo_is_configured()
     }
 }
 
-function upcloo_show_needs_attention() 
+function upcloo_show_needs_attention()
 {
     if (!upcloo_is_configured()) {
         echo '<div class="updated">
@@ -172,7 +172,7 @@ function upcloo_check_menu_capability()
 {
     if ( !current_user_can(UPCLOO_OPTION_CAPABILITY) )  {
         wp_die(__( 'You do not have sufficient permissions to access this page.', "wp_upcloo"));
-    } 
+    }
 }
 
 //Start menu
@@ -231,17 +231,17 @@ function upcloo_plugin_options()
 //End menu
 
 /**
- * Generate a sitemap for UpCloo Remote Importer 
+ * Generate a sitemap for UpCloo Remote Importer
  */
 function upcloo_sitemap_page()
 {
     header ("content-type: text/xml");
-    
+
     $view = new SView();
     $view->setViewPath(UPCLOO_VIEW_PATH);
 
     $view->userSelected = get_option(UPCLOO_POSTS_TYPE);
-    
+
     echo $view->render("sitemap.phtml");
     exit;
 }
@@ -249,7 +249,7 @@ function upcloo_sitemap_page()
 
 /**
  * Get Taxonomies
- * 
+ *
  * @param int $pid The post ID
  * @return array Taxonomies custom
  */
@@ -257,7 +257,7 @@ function upcloo_get_taxonomies($pid)
 {
     //For taxonomies remove builtin and elements must public
     $taxonomies_data = array();
-    
+
     $args = array(
 		'public'   => true,
       	'_builtin' => false
@@ -270,39 +270,39 @@ function upcloo_get_taxonomies($pid)
             $taxonomies_data[$taxonomy][] = $term->name;
         }
     }
-    
+
     return $taxonomies_data;
 }
 
 /**
  * Use only in single.php
- * 
+ *
  * Call this function only in single.php theme file
- * 
+ *
  * @return string The content to attach into head.
  */
 function upcloo_wp_head()
 {
     $metas = '';
-    
+
     if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
-        
+
         $postTypes = get_option(UPCLOO_POSTS_TYPE);
         if (!is_array($postTypes)) {
             $postTypes = array();
         }
-        
-        
+
+
         if (is_single()) {
             $m = array();
-            
+
             global $post;
-            
+
             //TODO: refactor...
             if (!in_array($post->post_type, $postTypes)) {
                 return;
             }
-            
+
             $publish_date = $post->post_date;
             $publish_date = str_replace(" ", "T", $publish_date) . "Z";
 
@@ -310,7 +310,7 @@ function upcloo_wp_head()
             $m[] = '<!-- UPCLOO_POST_TYPE '.$post->post_type.' UPCLOO_POST_TYPE -->';
             $m[] = '<!-- UPCLOO_POST_TITLE '.$post->post_title.' UPCLOO_POST_TITLE -->';
             $m[] = '<!-- UPCLOO_POST_PUBLISH_DATE '.$publish_date.' UPCLOO_POST_PUBLISH_DATE -->';
-            
+
             $image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
             if ($image) {
             	if (is_array($image)) {
@@ -318,18 +318,18 @@ function upcloo_wp_head()
             	}
                 $m[] = '<!-- UPCLOO_POST_IMAGE '.$image.' UPCLOO_POST_IMAGE -->';
             }
-            
+
             $firstname = get_user_meta($post->post_author, "first_name", true);
             $lastname = get_user_meta($post->post_author, "last_name", true);
-            
+
             $m[] = '<!-- UPCLOO_POST_AUTHOR '.$firstname . " " . $lastname .' UPCLOO_POST_AUTHOR -->';
-            
+
             //LANG!
             $lang = get_post_meta($post->ID, UPCLOO_META_LANG, true);
             if ($lang && !empty($lang)) {
                 $m[] = '<!-- UPCLOO_POST_LANG ' . $lang . ' UPCLOO_POST_LANG -->';
             }
-            
+
             $dynTags = array();
             $taxonomies = upcloo_get_taxonomies($post->ID);
             if (is_array($taxonomies)) {
@@ -343,7 +343,7 @@ function upcloo_wp_head()
                 }
             }
             $m[] = '<!-- UPCLOO_POST_DYNAMIC_TAG_LIST ' . implode(",", $dynTags) . ' UPCLOO_POST_DYNAMIC_TAG_LIST -->';
-            
+
             $tags = get_the_tags($post->ID);
             if (is_array($tags)) {
                 $elements = array();
@@ -352,7 +352,7 @@ function upcloo_wp_head()
                 }
                 $m[] = '<!-- UPCLOO_POST_TAGS '.implode(",", $elements).' UPCLOO_POST_TAGS -->';
             }
-            
+
             $categories = get_the_category($post->ID);
             if (is_array($categories)) {
                 $elements = array();
@@ -361,44 +361,44 @@ function upcloo_wp_head()
                 }
                 $m[] = '<!-- UPCLOO_POST_CATEGORIES '.implode(",", $elements).' UPCLOO_POST_CATEGORIES -->';
             }
-            
-            
+
+
             $metas = implode(PHP_EOL, $m) . PHP_EOL;
         }
     }
-        
+
     echo $metas;
 }
 
 /**
- * During post update you can resend the content 
+ * During post update you can resend the content
  * to the UpCloo cloud system.
  */
 function upcloo_add_force_content_send_link()
 {
     global $post_ID;
     $post = get_post( $post_ID );
-    
+
     if ($post->post_status == 'publish') {
         $upclooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
-        
+
         $view = new SView();
         $view->setViewPath(UPCLOO_VIEW_PATH);
 
         $view->upclooMeta = $upclooMeta;
         $view->post = $post;
-        
+
         echo $view->render('add-force-content-send-link.phtml');
     }
 }
 
-function upcloo_my_columns($columns) 
+function upcloo_my_columns($columns)
 {
     $columns['upcloo'] = "UpCloo";
-    
+
     if ($_GET["upcloo"] == 'reindex') {
         $upClooMeta = get_post_meta($_GET["post"], UPCLOO_POST_META, true);
-        
+
         if (upcloo_content_sync($_GET["post"])) {
             update_post_meta($_GET["post"], UPCLOO_POST_META, "1", $upClooMeta);
             echo "<div class='updated fade'><p>" . __("Content correctly sent to UpCloo.", "wp_upcloo") . "</p></div>";
@@ -406,50 +406,53 @@ function upcloo_my_columns($columns)
             echo "<div class='error fade'><p>" . __("Unable to send this content to UpCloo.", "wp_upcloo") . "</p></div>";
         }
     }
-    
+
     return $columns;
 }
 
-function upcloo_my_show_columns($name) {
+function upcloo_my_show_columns($name)
+{
     global $post;
-    
+
     switch ($name) {
         case 'upcloo':
             $upclooSent = get_post_meta($post->ID, UPCLOO_POST_META, true);
             $image = (($upclooSent == '1') ? UPCLOO_CLOUD_IMAGE : UPCLOO_NOT_CLOUD_IMAGE);
-            
+
             //Only how can edit pages can send to upcloo...
             if (current_user_can("edit_posts") || current_user_can('edit_pages')) {
                 echo "<a href='?post={$post->ID}&upcloo=reindex'>" . $image . '</a>';
             } else {
                 echo $image;
             }
-            
+
             break;
     }
 }
 
 // Create the function to output the contents of our Dashboard Widget
-function upcloo_dashboard_widget_function() {
+function upcloo_dashboard_widget_function()
+{
     // Display whatever it is you want to show
     $xml = simplexml_load_file(UPCLOO_RSS_FEED);
-    
+
     $blogInfo = get_bloginfo();
-    $blogTitle = urlencode(strtolower($blogInfo));    
-    
+    $blogTitle = urlencode(strtolower($blogInfo));
+
     $view = new SView();
     $view->setViewPath(UPCLOO_VIEW_PATH);
-    
+
     $view->xml = $xml;
     $view->blogTitle = $blogTitle;
     $view->blogInfo = $blogInfo;
-    
+
     echo $view->render("dashboard-widget.phtml");
 }
 
 // Create the function use in the action hook
 
-function upcloo_add_dashboard_widgets() {
+function upcloo_add_dashboard_widgets()
+{
     wp_add_dashboard_widget('upcloo_dashboard_widget', __('UpCloo News Widget', "wp_upcloo"), 'upcloo_dashboard_widget_function');
 }
 
@@ -460,20 +463,20 @@ function upcloo_admin_footer($text)
 
 /* Adds a box to the main column on the Post and Page edit screens */
 function upcloo_add_custom_box() {
-    
+
     $selected = get_option(UPCLOO_POSTS_TYPE);
-    
+
     if (!$selected) {
         $selected = array();
     }
-    
+
     if (is_array($selected)) {
         foreach ($selected as $key => $value) {
             add_meta_box(
                 'upcloo_language_metabox',
                 __( 'UpCloo Language Definer', 'wp_upcloo' ),
                 'upcloo_inner_custom_box',
-                $key 
+                $key
             );
         }
     }
@@ -487,22 +490,23 @@ function upcloo_inner_custom_box()
     global $post;
 
     $metadataLang = get_post_meta($post->ID, UPCLOO_META_LANG, true);
-    
+
     // Use nonce for verification
     wp_nonce_field( plugin_basename( __FILE__ ), 'upcloo_language_metabox_nonce' );
-    
+
     $view = new SView();
     $view->setViewPath(UPCLOO_VIEW_PATH);
-    
+
     $view->metadataLang = $metadataLang;
-    
+
     echo $view->render("inner-custom-box.phtml");
 }
 
 /**
  * Intialize the plugin
  */
-function upcloo_init() {
+function upcloo_init()
+{
     /* Engaged on delete post */
     if (current_user_can('delete_posts')) {
         add_action('trash_post', 'upcloo_remove_post');
@@ -512,21 +516,21 @@ function upcloo_init() {
 function upcloo_remove_post()
 {
     $post = get_post($pid);
-    
+
     $postsType = get_option(UPCLOO_POSTS_TYPE);
-    
+
     if (in_array($post->post_type, $postsType)) {
         if ($post->post_status == UPCLOO_POST_PUBLISH) {
             $manager = UpCloo_Manager::getInstance();
-            
+
             $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
-            
+
             $pid = $post->post_type . "_" . $post->ID;
             $result = $manager->delete($pid);
             if ($result) {
                 update_post_meta($post->ID, UPCLOO_POST_META, "0");
             }
-            
+
             //TODO: handle result display
         }
     }
@@ -538,7 +542,7 @@ function upcloo_save_data($post_id)
 
     $new = $_POST[UPCLOO_META_LANG];
     $old = get_post_meta($post_id, UPCLOO_META_LANG, true);
-    
+
     if ('' == $new && $old) {
         delete_post_meta($post_id, $new, $old);
     } else {
@@ -548,17 +552,17 @@ function upcloo_save_data($post_id)
 
 /**
  * Mantain updated the contents
- * 
+ *
  * @param int $pid The content PID
  * @return boolean if the content is indexed.
  */
 function upcloo_content_sync($pid)
 {
-    $post = get_post($pid); 
+    $post = get_post($pid);
     $language = get_post_meta($post->ID, UPCLOO_META_LANG, true);
-    
+
     $postsType = get_option(UPCLOO_POSTS_TYPE);
-    
+
     /* Check if the content must be indexed */
     if (in_array($post->post_type, $postsType)) {
         if ($post->post_status == UPCLOO_POST_PUBLISH) {
@@ -574,10 +578,10 @@ function upcloo_content_sync($pid)
             if (get_option("upcloo_index_tag") == "1") {
                 $tags = get_the_tags($pid);
             }
-            
+
             //For taxonomies remove builtin and elements must public
             $taxonomies_data = array();
-            
+
             $args=array(
 				'public'   => true,
               	'_builtin' => false
@@ -585,22 +589,22 @@ function upcloo_content_sync($pid)
             $taxonomies = get_taxonomies($args,'names', 'and');
             foreach ($taxonomies as $taxonomy) {
                 $terms = wp_get_post_terms($pid, $taxonomy);
-                
+
                 $taxonomies_data[$taxonomy] = array();
                 foreach ($terms as $term) {
                     $taxonomies_data[$taxonomy][] = $term->name;
                 }
             }
-            
+
             $firstname = get_user_meta($post->post_author, "first_name", true);
             $lastname = get_user_meta($post->post_author, "last_name", true);
 
             $publish_date = $post->post_date;
             $publish_date = str_replace(" ", "T", $publish_date) . "Z";//TODO: add real date support
-            
+
             $summary = $post->post_excerpt;
-            
-            //If no summary 
+
+            //If no summary
             if (empty($summary)) {
                 //Cut the first part of text
                 //and use it as a summary
@@ -620,9 +624,9 @@ function upcloo_content_sync($pid)
                     $summary = $content;
                 }
             }
-            
+
             $model = array(
-                "id" => $post->post_type . "_" . $pid,
+                "id" => base64_encode($permalink),
                 "sitekey" => get_option("upcloo_sitekey"),
                 "password" => get_option("upcloo_password"),
                 "title" => $post->post_title,
@@ -635,16 +639,16 @@ function upcloo_content_sync($pid)
                 "categories" => array(),
                 "tags" => array()
             );
-            
+
             $image = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'thumbnail');
             if ($image) {
                 $model['image'] = $image[0];
             }
-            
+
             if ($language != '') {
                 $model["lang"] = $language;
             }
- 
+
             if ($categories) {
                 foreach ($categories as $category) {
                     $model["categories"][] = $category->name;
@@ -656,45 +660,45 @@ function upcloo_content_sync($pid)
                     $model["tags"][] = $tag->name;
                 }
             }
-            
+
             if (is_array($taxonomies_data) && count($taxonomies_data)) {
-                $model["dynamics_tags"] = $taxonomies_data;                
+                $model["dynamics_tags"] = $taxonomies_data;
             }
-            
+
             $manager = UpCloo_Manager::getInstance();
             $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
-            
+
             return $manager->index($model);
         }
     }
 }
 
 /**
- * 
+ *
  * Get the max summary len
- * 
+ *
  * @return int The max summary len
  */
 function upcloo_get_min_summary_len()
 {
     $len = get_option(UPCLOO_SUMMARY_LEN);
-    
+
     if (is_numeric($len)) {
         $len = (int)$len;
-    
+
         if ($len <= 0) {
             $len = 120;
         }
     } else {
         $len = 120;
     }
-    
+
     return $len;
 }
 
 /**
  * Configure options
- * 
+ *
  * This method configure options for UpCLoo
  * it is called during UpCloo plugin activation
  */
@@ -730,7 +734,7 @@ function upcloo_install() {
 
 /**
  * Remove all options
- * 
+ *
  * This method remove all UpCloo option
  * it is called by disable plugin action.
  */
@@ -766,62 +770,62 @@ function upcloo_remove() {
 
 /**
  * Get content on public side
- * 
+ *
  * Get the content on public side with UpCloo
  * related posts or other contents.
- * 
+ *
  * You can disable the post body using the $noPostBody
  * parameter. This parameter is used only if you
  * call the UpCloo call back by hand.
- * 
+ *
  * @param string $content The original post content
  * @param boolean $noPostBody disable original post content into response
  *
  * @return string The content rewritten using UpCloo
  */
-function upcloo_content($content, $noPostBody = false) 
+function upcloo_content($content, $noPostBody = false)
 {
     global $post;
     global $current_user;
-    
+
     get_currentuserinfo();
-    
+
     $postTypes = get_option(UPCLOO_POSTS_TYPE);
     if (!is_array($postTypes)) {
         $postTypes = array();
     }
-    
+
     if (get_option(UPCLOO_ENABLE_TEMPLATE_REMOTE_META, "wp_upcloo")) {
         //TODO: this part is written twice... clear...
         if ((is_single($post) && (in_array($post->post_type, $postTypes)))) {
             $content = "<!-- UPCLOO_POST_CONTENT -->{$content}<!-- UPCLOO_POST_CONTENT -->";
         }
     }
-    
+
     $original = $content;
-    
+
     $upClooMeta = get_post_meta($post->ID, UPCLOO_POST_META, true);
-    
+
     if (get_option(UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY) == "1") {
         return $content;
     }
-    
+
     /**
      * Check if the content is single
      *
      * @todo refactor this check
      * Use a filter login to perform this kind of selection
-     * 
+     *
      * Check if UpCloo is enabled
      */
     if (
         (is_single($post) && (in_array($post->post_type, $postTypes)))
-        && 
-        (get_option(UPCLOO_ENABLE_MAIN_CORRELATION) || (!get_option(UPCLOO_ENABLE_MAIN_CORRELATION) && $current_user->has_cap('edit_users')))) 
+        &&
+        (get_option(UPCLOO_ENABLE_MAIN_CORRELATION) || (!get_option(UPCLOO_ENABLE_MAIN_CORRELATION) && $current_user->has_cap('edit_users'))))
     {
         /**
          * If not sent to upcloo send it and store the result.
-         * 
+         *
          * Only not logged in user can send to UpCloo in automode
          */
         if (!$current_user->id && $upClooMeta == '') {
@@ -829,64 +833,28 @@ function upcloo_content($content, $noPostBody = false)
                 update_post_meta($post->ID, UPCLOO_POST_META, "1", $upClooMeta);
             }
         }
-        
+
         $view = new SView();
         $view->setViewPath(UPCLOO_VIEW_PATH);
-        
-        //Get it 
-        $manager = UpCloo_Manager::getInstance();
-        $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
-        $listOfModels = $manager->get($post->post_type . "_" . $post->ID);
-        
-        $content = '';
-        if ($listOfModels && count($listOfModels)) {
-            
-            //Shrink number of contents
-            $maxContents = (((int)get_option("upcloo_max_show_links")) > 0) ? (int)get_option("upcloo_max_show_links") : 0;
-            $view->maxContents = $maxContents;
-            
-            $numOfDocs = count($listOfModels->doc);
-            for ($i=0; $i<$numOfDocs; $i++) {
-                if ($maxContents > 0 && $i >= $maxContents) {
-                    unset($listOfModels[$i]);
-                    continue;
-                }
-                
-                $listOfModels[$i]["url"] = upcloo_get_utm_tag_url($listOfModels[$i]["url"]);
-            }
-            
-            //Check if exists user template system (functions.php of template?)
-            if (function_exists(UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION)) {
-                $content = call_user_func(UPCLOO_USER_DEFINED_TEMPLATE_FUNCTION, $listOfModels);
-                
-                if ($noPostBody) {
-                    return $content; //Only UpCloo user rewritten contents.
-                } else {
-                    return $original . $content;  //SELF TEMPLATE!
-                }
-            }
-            
-            $view->listOfModels = $listOfModels;
-            if (get_option("upcloo_template_base", "wp_upcloo") == 1) {
-                $content .= $view->render("upcloo-content-advanced.phtml");
-            } else {
-                $content .= $view->render("upcloo-content-default.phtml");
-            }
-        }
-        
-        if (!$noPostBody) {
-            $content = $original . $content;
-        }
+
+        $view->permalink = get_permalink($post->ID);
+        $view->sitekey = get_option(UPCLOO_SITEKEY);
+        $view->headline = (!(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) || trim(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) == '')
+            ? __("Maybe you are interested at", "wp_upcloo")
+            :  get_option(UPCLOO_REWRITE_PUBLIC_LABEL);
+
+
+        $content .= $view->render("upcloo-js-sdk.phtml");
     }
-    
+
 
     return $content;
 }
 
 /**
- * 
+ *
  * Get the URL
- * 
+ *
  * @param string $finalURL
  * @return string The url
  */
@@ -900,7 +868,7 @@ function upcloo_get_utm_tag_url($finalURL)
         get_option("upcloo_utm_medium", "wp_upcloo") . '&utm_source=' .
         get_option("upcloo_utm_source", "wp_upcloo");
     }
-    
+
     if (get_option("upcloo_utm_tag", "wp_upcloo")) {
         if (strpos($finalURL, "?")) {
             $finalURL .= '&';
@@ -908,15 +876,15 @@ function upcloo_get_utm_tag_url($finalURL)
             $finalURL .= '?';
         }
     }
-    
+
     $finalURL .= $utmURL;
-    
+
     return $finalURL;
 }
 
 /**
  * Get base domain path of an url
- * 
+ *
  * @param string $url
  * @return boolean The base url in case of success, false otherwise.
  */
@@ -930,40 +898,40 @@ function upcloo_is_external_site($url)
             return true;
         }
     }
-    
+
     return true;
 }
 
 function upcloo_search_result_template()
 {
     if (!empty($_GET["s"]) && is_active_widget(false, false, UPCLOO_SEARCH_WIDGET_ID, true)) {
-        
+
         //Base direcetory name
         $themeFile = get_theme_root() . DIRECTORY_SEPARATOR . basename(get_bloginfo('template_directory')) . DIRECTORY_SEPARATOR . UPCLOO_SEARCH_THEME;
 
-        
+
         $manager = UpCloo_Manager::getInstance();
         $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
-        
+
         $query = $_GET["s"];
-        
-        $page = (array_key_exists("page", $_GET) ? $_GET["page"] : 1);        
-        
+
+        $page = (array_key_exists("page", $_GET) ? $_GET["page"] : 1);
+
         $query = $manager->search()
             ->query($query)
             ->relevancy("date")
             ->numPerPage(UPCLOO_SEARCH_RESULTS)
             ->page($page);
-        
+
         //TODO: handle facets and ranges
 //         if (get_option("UPCLOO_INDEX_CATEGORY") == "1") {
 //             $query->facet("category");
 //         }
-        
+
         $results = $manager->get($query);
-        
+
         UpCloo_Registry::getInstance()->set("results", $results);
-        
+
         //If user rewrite the search template load it.
         if (file_exists($themeFile)) {
             include $themeFile;
@@ -979,7 +947,7 @@ function upcloo_suggests($results, $search)
     if (count($results->getSuggestions()) > 0) {
         $s = $results->getSuggestions();
         $q = explode(" ", $search);
-    
+
         foreach ($q as $i => $t) {
             if (array_key_exists($t, $s)) {
                 $q[$i] = $s[$t][0];
@@ -995,16 +963,16 @@ function upcloo_suggests($results, $search)
 function upcloo_search_have_pages($results)
 {
     $elements = $results->getCount();
-    
+
     $pages = ceil($elements / UPCLOO_SEARCH_RESULTS);
-    
+
     return $pages;
 }
 
 function upcloo_search_paginator($results)
 {
     $pages = upcloo_search_have_pages($results);
-    
+
     if ($pages) {
         $p = array();
         for ($i=1; $i<=$pages; $i++) {
@@ -1014,6 +982,6 @@ function upcloo_search_paginator($results)
     } else {
         $pages = '';
     }
-    
+
     return $pages;
 }

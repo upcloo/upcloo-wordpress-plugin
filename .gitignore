@@ -2,3 +2,5 @@
 .buildpath
 dist
 dist/*
+*.swp
+*.swo

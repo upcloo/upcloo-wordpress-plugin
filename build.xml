@@ -4,23 +4,23 @@
     	indexing engine that helps you to create incredible
     	and automatic correlations between contents of your website.
     </description>
-	
+
 	<!-- set global properties for this build -->
     <property name="src" location="wp-upcloo"/>
-	<property name="version" value="1.1.19-gertrude" />
+	<property name="version" value="1.2.0-gertrude" />
     <property name="dist"  location="dist/${version}"/>
-	
+
 	<target name="dist" depends="copy-resources, zip-resources">
-	   
+
 	</target>
-	
+
 	<target name="zip-resources">
         <zipfileset dir="${dist}" id="zip-upcloo"></zipfileset>
 		<zip destfile="${dist}/wp-upcloo-${version}.zip">
 		    <zipfileset refid="zip-upcloo"></zipfileset>
 		</zip>
 	</target>
-	
+
 	<target name="copy-resources">
 		<fileset dir="wp-upcloo" id="upcloo-base">
             <include name="*"/>
@@ -33,7 +33,7 @@
             <include name="*/**" />
 		    <exclude name="**/*.md"/>
 		</fileset>
-		
+
 		<copy todir="${dist}/wp-upcloo" verbose="true">
 			<fileset refid="upcloo-base" />
 		</copy>
@@ -42,7 +42,7 @@
 		  <fileset refid="upcloo-sdk" />
 		</copy>
 	</target>
-	
+
     <target name="clean">
         <delete dir="${dist}" verbose="true" />
     </target>
