@@ -1,3 +1,0 @@
-[submodule "wp-upcloo/vendor/upcloo-sdk"]
-	path = wp-upcloo/vendor/upcloo-sdk
-	url = git@github.com:upcloo/upcloo-php-sdk.git
