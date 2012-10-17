@@ -1,7 +1,7 @@
 <?php
 /**
  * UpCloo Search
- * 
+ *
  * This class enable the UpCloo Search widget for
  * searches on UpCloo distribuited index.
  *
@@ -9,7 +9,7 @@
  * @package UpCloo_Widget
  * @license MIT
  *
- * Copyright (C) 2012 Corley SRL
+ * Copyright (C) 2012 UpCloo Ltd.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in
@@ -17,7 +17,7 @@
  * use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
  * of the Software, and to permit persons to whom the Software is furnished to do
  * so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
  *
@@ -35,12 +35,12 @@ class UpCloo_Widget_Search
     public function __construct()
     {
         parent::__construct(
-            UPCLOO_SEARCH_WIDGET_ID, 
-            __("UpCloo Search Widget", 'wp_upcloo'), 
+            UPCLOO_SEARCH_WIDGET_ID,
+            __("UpCloo Search Widget", 'wp_upcloo'),
             array(
                 'description' => __('The UpCloo Search (in the cloud) Widget', 'wp_upcloo')
             )
-        ); 
+        );
     }
 
     public function form($instance)
@@ -51,8 +51,8 @@ class UpCloo_Widget_Search
         	$title = __('Search in the Cloud', 'wp_upcloo');
         }
         ?>
-        
-        <label for="<?php echo $this->get_field_id('upcloo_search_title'); ?>"><?php _e('Title:', 'wp_upcloo'); ?></label> 
+
+        <label for="<?php echo $this->get_field_id('upcloo_search_title'); ?>"><?php _e('Title:', 'wp_upcloo'); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('upcloo_search_title'); ?>" name="<?php echo $this->get_field_name('upcloo_search_title'); ?>" type="text" value="<?php echo $title; ?>" />
         <?php
     }

@@ -4,13 +4,13 @@ Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
 Version: 1.2.0-Gertrude
-Author: Corley S.r.l.
-Author URI: http://www.corley.it/
+Author: UpCloo Ltd.
+Author URI: http://www.upcloo.com/
 License: MIT
 */
 
 /*
- * Copyright (C) 2012 by Corley SRL
+ * Copyright (C) 2012 by UpCloo Ltd.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
