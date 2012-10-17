@@ -272,19 +272,21 @@ function upcloo_wp_head()
 function upcloo_dashboard_widget_function()
 {
     // Display whatever it is you want to show
-    $xml = simplexml_load_file(UPCLOO_RSS_FEED);
+    $xml = @simplexml_load_file(UPCLOO_RSS_FEED);
 
-    $blogInfo = get_bloginfo();
-    $blogTitle = urlencode(strtolower($blogInfo));
+    if ($xml !== false) {
+        $blogInfo = get_bloginfo();
+        $blogTitle = urlencode(strtolower($blogInfo));
 
-    $view = new SView();
-    $view->setViewPath(UPCLOO_VIEW_PATH);
+        $view = new SView();
+        $view->setViewPath(UPCLOO_VIEW_PATH);
 
-    $view->xml = $xml;
-    $view->blogTitle = $blogTitle;
-    $view->blogInfo = $blogInfo;
+        $view->xml = $xml;
+        $view->blogTitle = $blogTitle;
+        $view->blogInfo = $blogInfo;
 
-    echo $view->render("dashboard-widget.phtml");
+        echo $view->render("dashboard-widget.phtml");
+    }
 }
 
 // Create the function use in the action hook
