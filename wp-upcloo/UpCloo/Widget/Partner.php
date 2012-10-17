@@ -79,58 +79,28 @@ class UpCloo_Widget_Partner
 
     public function widget($args, $instance)
     {
-        if (is_single($post)) {
+        $postTypes = get_option(UPCLOO_POSTS_TYPE);
+        if (!is_array($postTypes)) {
+            $postTypes = array();
+        }
+
+        if (is_single($post) && (in_array($post->post_type, $postTypes))) {
             global $post;
             $sitekey = get_option("upcloo_sitekey");
 
             $virtualSiteKey = $instance["upcloo_v_sitekey"];
+            $title = $instance["upcloo_v_title"];
+            $permalink = get_permalink($post->ID);
 
             echo $before_widget;
-            $datax = array();
 
-            if ($virtualSiteKey) {
-                $manager = UpCloo_Manager::getInstance();
-                $manager->setCredential(get_option(UPCLOO_USERKEY), get_option(UPCLOO_SITEKEY), get_option(UPCLOO_PASSWORD));
-                $datax = $manager->get("{$post->post_type}_{$post->ID}", $virtualSiteKey);
-            }
+            $view = new SView();
+            $view->sitekey = $sitekey;
+            $view->permalink = $permalink;
+            $view->vsitekey = $virtualSiteKey;
+            $view->headline = $title;
 
-			if (is_array($datax)) {
-    			foreach ($datax as $index => $doc) {
-    			    if (is_numeric($instance["upcloo_v_max_links"]) && $index >= $instance["upcloo_v_max_links"]) {
-    			        unset($datax[$index]);
-    			        continue;
-    			    }
-
-    			    $datax[$index]["url"] = trim((string)$datax[$index]["url"]);
-    			}
-
-    			if ($datax) :
-        			if (function_exists(UPCLOO_USER_WIDGET_CALLBACK)) :
-        			    echo call_user_func(UPCLOO_USER_WIDGET_CALLBACK, $datax);
-        			else :
-?>
-    <li class="widget-container widget_upcloo">
-        <h3 class="widget-title"><?php echo $instance["upcloo_v_title"]?></h3>
-        <div>
-            <ul>
-            <?php
-                foreach ($datax as $index => $doc):
-            ?>
-            	<li>
-            		<a href="<?php echo $doc["url"]?>" <?php echo ((upcloo_is_external_site($doc["url"])) ? 'target="_blank"': "")?>>
-            		    <?php echo $doc["title"]; ?>
-        		    </a>
-    		    </li>
-            <?php
-                endforeach;
-            ?>
-            </ul>
-        </div>
-    </li>
-<?php
-                    endif;
-                endif;
-			}
+            echo $view->render("upcloo-js-sdk.phtml");
             echo $after_widget;
         }
     }

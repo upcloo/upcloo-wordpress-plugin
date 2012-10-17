@@ -6,7 +6,10 @@
         s.src = '//repository.upcloo.com/a/u.js'
     var n = document.getElementsByTagName('script')[0];
         n.parentNode.insertBefore(s,n);
-})(this,{"pageId" : "<?php echo $this->permalink; ?>","siteKey" : "<?php echo $this->sitekey; ?>",
+})(this,{
+    "pageId" : "<?php echo $this->permalink; ?>",
+    "siteKey" : "<?php echo $this->sitekey; ?>",
+    <?php echo (($this->vsitekey) ? "\"vsitekey\":\"{$this->vsitekey}\"" : ""); ?>
     "opts":{
         "sendBeacon":true,
         "widget":{"opts":{"headline":"<?php echo $this->headline; ?>"}}
