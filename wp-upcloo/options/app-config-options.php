@@ -2,7 +2,7 @@
 <?php screen_icon("options-general")?>
 <h2><?php _e("UpCloo General Options", "wp_upcloo");?></h2>
     <p>
-<?php _e("UpCloo is a new service created for web site with a lot of contents (from 10.000 to milions).", "wp_upcloo");?>
+<?php _e("UpCloo is a new service created for web site with a lot of contents (from 10 to millions).", "wp_upcloo");?>
     </p>
     <p>
 <?php _e("If you manage contents on your web site (news, pages, reviews, products, comments...) then you're likely to spend a lot of time (and money!) to create correlations between different contents.", "wp_upcloo");?>
@@ -26,35 +26,20 @@
         <table class="form-table">
             <tbody>
             <tr valign="top">
-                <th width="92" scope="row"><?php echo _e("Enter your User Key", "wp_upcloo");?></th>
-                <td width="406">
-                    <input name="<?php echo UPCLOO_USERKEY?>" type="text" value="<?php echo get_option(UPCLOO_USERKEY, "wp_upcloo"); ?>" />
-                    <strong><?php echo __("(eg. your-business-name)")?></strong></td>
-            </tr>
-            <tr valign="top">
                 <th width="92" scope="row"><?php _e("Enter your Site Key", "wp_upcloo");?></th>
                 <td width="406">
                     <input name="<?php echo UPCLOO_SITEKEY?>" type="text" value="<?php echo get_option(UPCLOO_SITEKEY, "wp_upcloo"); ?>" />
-                    <strong><?php echo __("(eg. your-site-name)")?></strong></td>
-            </tr>
-            <tr valign="top">
-                <th width="92" scope="row"><?php echo _e("Enter your Password", "wp_upcloo");?></th>
-                <td width="406">
-                    <input name="<?php echo UPCLOO_PASSWORD?>" type="password" value="" />
-                    <strong>
-                        <?php _e("(eg. You account password [blank for security reasons])", "wp_upcloo");?>
-                    </strong>
-                </td>
+                    <strong><?php echo __("(Your signup info)")?></strong></td>
             </tr>
 
             <input type="hidden" name="action" value="update" />
-            <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_USERKEY, UPCLOO_SITEKEY, UPCLOO_PASSWORD))?>" />
+            <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_SITEKEY))?>" />
             </tbody>
         </table>
         <p class="submit">
             <script type="text/javascript">
                 ;var confirmThat = function() {
-                    if (!confirm("Do you want to set this password?")) {
+                    if (!confirm("Do you want to set this Sitekey?")) {
                         return false;
                     }
                 };
