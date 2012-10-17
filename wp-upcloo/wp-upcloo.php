@@ -44,33 +44,18 @@ require_once dirname(__FILE__) . '/SView.php';
 define("UPCLOO_SITEKEY", "upcloo_sitekey");
 define('UPCLOO_REWRITE_PUBLIC_LABEL', 'upcloo_rewrite_public_label');
 define('UPCLOO_MAX_SHOW_LINKS', "upcloo_max_show_links");
-define("UPCLOO_POST_PUBLISH", "publish");
-define("UPCLOO_POST_TRASH", "trash");
 define("UPCLOO_RSS_FEED", "http://www.mxdesign.it/contenuti/rss/0/news.xml");
-define("UPCLOO_POST_META", "upcloo_post_sent");
-define("UPCLOO_DEFAULT_LANG", "upcloo_default_language");
 define('UPCLOO_ENABLE_MAIN_CORRELATION', "upcloo_enable_main_correlation");
 define('UPCLOO_DISABLE_MAIN_CORRELATION_COMPLETELY', "upcloo_disable_main_correlation_completely");
-define('UPCLOO_MISSING_IMAGE_PLACEHOLDER', 'upcloo_missing_image_placeholder');
 define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
-
-define('UPCLOO_TEMPLATE_BASE', 'upcloo_template_base');
-define('UPCLOO_TEMPLATE_SHOW_TITLE', 'upcloo_template_show_title');
-define('UPCLOO_TEMPLATE_SHOW_FEATURED_IMAGE', 'upcloo_template_show_featured_image');
-define('UPCLOO_TEMPLATE_SHOW_SUMMARY','upcloo_template_show_summary');
-define('UPCLOO_TEMPLATE_SHOW_TAGS', 'upcloo_template_show_tags');
-define('UPCLOO_TEMPLATE_SHOW_CATEGORIES', 'upcloo_template_show_categories');
 
 define('UPCLOO_ENABLE_TEMPLATE_REMOTE_META', 'upcloo_enable_template_remote_meta');
 
 define('UPCLOO_SITEMAP_PAGE', 'upcloo_sitemap');
 
 define('UPCLOO_MENU_SLUG', 'upcloo_options_menu');
-define('UPCLOO_MENU_KSWITCH_SLUG', 'upcloo_options_menu_kswitch');
 define('UPCLOO_MENU_FEATURE_SLUG', 'upcloo_options_menu_feature');
 define('UPCLOO_MENU_POST_TYPE_SLUG', 'upcloo_options_menu_post_type');
-define('UPCLOO_MENU_ROI_SLUG', 'upcloo_options_menu_roi');
-define('UPCLOO_MENU_THEME_SLUG', 'upcloo_options_menu_slug');
 define('UPCLOO_MENU_REMOTE', 'upcloo_options_menu_remote');
 
 define('UPCLOO_VIEW_PATH', dirname(__FILE__) . '/views');
@@ -422,18 +407,5 @@ function upcloo_is_external_site($url)
     }
 
     return true;
-}
-
-function upcloo_explode_sitekey($sitekey)
-{
-    $chunks = array();
-    if (strpos($sitekey, "-") !== false) {
-        $chunks = explode("-", $sitekey);
-    } else {
-        $chunks[0] = false;
-        $chunks[1] = $sitekey;
-    }
-
-    return $chunks;
 }
 
