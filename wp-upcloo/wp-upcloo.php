@@ -242,20 +242,6 @@ function upcloo_wp_head()
                 $m[] = '<!-- UPCLOO_POST_LANG ' . $lang . ' UPCLOO_POST_LANG -->';
             }
 
-            $dynTags = array();
-            $taxonomies = upcloo_get_taxonomies($post->ID);
-            if (is_array($taxonomies)) {
-                $taxonomiesArray = array();
-                foreach ($taxonomies as $slug => $taxonomy) {
-                    foreach ($taxonomy as $element) {
-                        $taxonomiesArray[] = $element;
-                    }
-                    $m[] = '<!-- UPCLOO_POST_DYNAMIC_TAG_'.strtoupper($slug).' '.implode(",", $taxonomiesArray).' UPCLOO_POST_DYNAMIC_TAG_'.strtoupper($slug).' -->';
-                    $dynTags[] = $slug;
-                }
-            }
-            $m[] = '<!-- UPCLOO_POST_DYNAMIC_TAG_LIST ' . implode(",", $dynTags) . ' UPCLOO_POST_DYNAMIC_TAG_LIST -->';
-
             $tags = get_the_tags($post->ID);
             if (is_array($tags)) {
                 $elements = array();
