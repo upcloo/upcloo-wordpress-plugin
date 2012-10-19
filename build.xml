@@ -29,17 +29,9 @@
 			<include name="options/**"/>
             <exclude name="vendor"/>
         </fileset>
-		<fileset dir="wp-upcloo/vendor/upcloo-sdk/src" id="upcloo-sdk">
-            <include name="*/**" />
-		    <exclude name="**/*.md"/>
-		</fileset>
 
 		<copy todir="${dist}/wp-upcloo" verbose="true">
 			<fileset refid="upcloo-base" />
-		</copy>
-
-		<copy todir="${dist}/wp-upcloo/vendor/upcloo-sdk/src" verbose="true">
-		  <fileset refid="upcloo-sdk" />
 		</copy>
 	</target>
 
