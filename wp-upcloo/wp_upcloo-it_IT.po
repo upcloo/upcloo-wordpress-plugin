@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-17 18:40+0100\n"
-"PO-Revision-Date: 2012-10-17 18:40+0100\n"
+"POT-Creation-Date: 2012-10-23 18:29+0100\n"
+"PO-Revision-Date: 2012-10-23 18:30+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -17,45 +17,33 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: wp-upcloo.php:126
+#: wp-upcloo.php:89
 msgid "Remember that your have to configure UpCloo Plugin: "
 msgstr "Ricordati che devi configurare il plugin di UpCloo"
 
-#: wp-upcloo.php:126
+#: wp-upcloo.php:89
 msgid "Base Config Page"
 msgstr "Pagina di Configurazione di Base"
 
-#: wp-upcloo.php:126
+#: wp-upcloo.php:89
 msgid "Content Types Selection"
 msgstr "Selezione dei Tipi di Contenuto"
 
-#: wp-upcloo.php:134
+#: wp-upcloo.php:96
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:141
+#: wp-upcloo.php:103
 msgid "UpCloo"
 msgstr "UpCloo"
 
-#: wp-upcloo.php:142
-msgid "Post Type Indexing"
-msgstr "Tipo di post da indicizzare"
-
-#: wp-upcloo.php:143
-msgid "Indexing Feature"
-msgstr "Indicizzazione"
-
-#: wp-upcloo.php:144
-msgid "Remote Importer"
-msgstr "Importazione remota"
-
-#: wp-upcloo.php:308
+#: wp-upcloo.php:138
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
-#: wp-upcloo.php:408
-msgid "Maybe you are interested at"
-msgstr "Forse ti potrebbero interessare"
+#: wp-upcloo.php:207
+msgid "Maybe you are also interested in"
+msgstr "Forse potrebbero interessarti"
 
 #: search-result.php:9
 msgid "Did you mean"
@@ -106,163 +94,48 @@ msgid "Number of links:"
 msgstr "Massimo numero di link."
 
 #: options/app-config-options.php:3
+msgid "Your configuration is saved correctly!"
+msgstr "Ricordati che devi ancora configurare il plugin di UpCloo:"
+
+#: options/app-config-options.php:10
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
-#: options/app-config-options.php:5
-msgid "UpCloo is a new service created for web site with a lot of contents (from 10 to millions)."
-msgstr "UpCloo è un nuovo servizio creato per siti web con milioni di contenuti (da 10 a milioni)"
-
-#: options/app-config-options.php:8
-msgid "If you manage contents on your web site (news, pages, reviews, products, comments...) then you're likely to spend a lot of time (and money!) to create correlations between different contents."
-msgstr "Se gestisci contenuti sul tuo sito web (news, pagine, revisioni, prodotti, commenti...) allora probabilmente spenderai un sacco di tempo (e soldi!) per creare correlazioni tra i tuoi diversi contenuti."
-
 #: options/app-config-options.php:11
-msgid "UpCloo can index your pages and send, whenever a visitor goes on you web site, the best correlations at the moment through a simple xml feed, so you can show links and correlations inside or outside the text of your page."
-msgstr "UpCloo può indicizzare le tue pagine ed richiedere, quando un visitatore arriva sul tuo sito, le migliori correlazioni attualmente disponibili tramite una semplice e flessibile interfaccia XML. Puoi visualizzare link e correlazioni dentro e fuori dalla tua pagina."
+msgid "Welcome To UpCloo"
+msgstr "Benvenuto in UpCloo"
 
-#: options/app-config-options.php:15
-msgid "Don't worry anymore about \"more like this\" and \"maybe you're interested at\": UpCloo manages all your correlations with a cloudy, smart and brilliant semantic engine."
-msgstr "Non preoccuparti più di problemi come: \"altri come questi\" e \"Magari ti interessa anche\": UpCloo gestisce tutte le tue correlazioni direttamente nella nuvola. E' un efficace, veloce e brillante motore di correlazione."
-
-#: options/app-config-options.php:19
-msgid "UpCloo Security"
-msgstr "Sicurezza di UpCloo"
-
-#: options/app-config-options.php:20
-msgid "All information that you send to UpCloo Cloud System are secured using RSA 1024 bit."
-msgstr "Tutte le informazioni che sono inviate verso la nuvola di servizi UpCloo è messa in sicurezza tramite RSA a 1024 bit (il programma Beta-Test può subire variazioni)"
-
-#: options/app-config-options.php:22
-msgid "UpCloo Application Configuration"
-msgstr "Configurazione Applicativa di UpCloo"
-
-#: options/app-config-options.php:23
-msgid "Login parmeters"
-msgstr "Parametri di Accesso"
-
-#: options/app-config-options.php:29
+#: options/app-config-options.php:17
 msgid "Enter your Site Key"
 msgstr "Inserisci la tua Chiave Sito"
 
-#: options/app-config-options.php:32
+#: options/app-config-options.php:20
 msgid "(Your signup info)"
 msgstr "(La tua registrazione)"
 
-#: options/app-config-options.php:47
-#: options/app-post-type-options.php:40
-#: options/app-remote-options.php:28
-#: options/app-feature-options.php:77
-msgid "Save Changes"
-msgstr "Salva le Modifiche"
-
-#: options/app-post-type-options.php:3
-msgid "Handle posts type"
-msgstr "Gestisci i tipi di post"
-
-#: options/app-post-type-options.php:5
-msgid "Select what kind of post you want to send to UpCloo"
-msgstr "Scegli il tipo di post che vuoi inviare ad UpCloo"
-
-#: options/app-post-type-options.php:12
+#: options/app-config-options.php:23
 msgid "Select Posts Type"
 msgstr "Scegli il tipo di post"
 
-#: options/app-remote-options.php:3
-msgid "Remote Import System"
-msgstr "Sistema di importazione remota"
-
-#: options/app-remote-options.php:5
-msgid "Consider that you have to request remote indexing using UpCloo remote control panel."
-msgstr "Considera che devi aver richiesto l'indicizzazione remota utilizzando il pannello remoto di UpCloo"
-
-#: options/app-remote-options.php:6
-msgid "See this link for more information about this procedure:"
-msgstr "Guarda questo link per maggiori informazioni su questa procedura:"
-
-#: options/app-remote-options.php:14
-msgid "Enable MetaTags for Remote UpCloo Importer"
-msgstr "Abilita i MetaTags per l'importazione remota di UpCloo"
-
-#: options/app-remote-options.php:18
-msgid "(Enable only for one-time remote import after that turn if off.)"
-msgstr "(Abilita solo una volta per l'importazione remota e dopo spegnilo)."
-
-#: options/app-feature-options.php:3
-msgid "Other features"
-msgstr "Altre Funzionalità"
-
-#: options/app-feature-options.php:9
-msgid "Disable Main UpCloo Results"
-msgstr "Disabilita i risultati principali di UpCloo"
-
-#: options/app-feature-options.php:13
-msgid "If enabled no one can see UpCloo main correlation (widgets still works)"
-msgstr "Se abilitato nessuno può vedere le correlazioni di UpCloo principali (I widgets continueranno a funzionare)"
-
-#: options/app-feature-options.php:16
-msgid "Show UpCloo links"
-msgstr "Visualizza i links principali (SiteKey) di UpCloo"
-
-#: options/app-feature-options.php:20
-msgid "If disabled only admins can see UpCloo correlation"
-msgstr "Se non abilitato solo gli amministratori possono vedere le correlazioni di UpCloo"
-
-#: options/app-feature-options.php:23
-msgid "Use Categories during Indexing"
-msgstr "Use le categorie durante l'indicizzazione"
-
-#: options/app-feature-options.php:27
-msgid "Use categories during index creation"
-msgstr "Usa le categorie durante l'indicizzazione"
-
-#: options/app-feature-options.php:30
-msgid "Use Tags during Indexing"
-msgstr "Usa i Tag durante l'indicizzazione"
-
-#: options/app-feature-options.php:34
-msgid "Use tags during index creation"
-msgstr "Usa i Tag durante la creazione dell'indice"
-
-#: options/app-feature-options.php:37
+#: options/app-config-options.php:41
 msgid "Max Number of Links"
 msgstr "Massimo numero di link"
 
-#: options/app-feature-options.php:41
+#: options/app-config-options.php:49
 msgid "Let blank for all"
 msgstr "Lascia in bianco per tutti"
 
-#: options/app-feature-options.php:44
-msgid "Default Language"
-msgstr "Lingua di default"
-
-#: options/app-feature-options.php:48
-msgid "it (italian), en (english), etc..."
-msgstr "it (italiano), en (inglese), etc..."
-
-#: options/app-feature-options.php:51
+#: options/app-config-options.php:52
 msgid "Rewrite public UpCloo label"
 msgstr "Riscrivi l'etichetta pubblica di UpCloo"
 
-#: options/app-feature-options.php:55
-msgid "Let blank for use default label (May be you are interested at)"
-msgstr "Lascia in bianco per usare l'etichetta di default (Forse ti potrebbero interessare)"
+#: options/app-config-options.php:56
+msgid "Let blank for use default label (May be you are also interested in)"
+msgstr "Lascia in bianco per usare l'etichetta di default (Forse potrebbero interessarti)"
 
-#: options/app-feature-options.php:58
-msgid "Image missing path"
-msgstr "Path immagine mancante"
-
-#: options/app-feature-options.php:62
-msgid "Public path of no image [eg. /images/no-image.png] - used only for advanced templating method"
-msgstr "Path pubblica dell'immagine mancante [es. /images/no-image.png] - usata solo nel sistema di template avanzato"
-
-#: options/app-feature-options.php:65
-msgid "Summary Length"
-msgstr "Lunghezza sommario"
-
-#: options/app-feature-options.php:69
-msgid "Minimum length for summary. If you set blank this field UpCloo use 120 characters by default."
-msgstr "Lunghezza minima del sommario. Se viene lasciato in biano questo campo, UpCloo utilizzerà 120 caratteri di default"
+#: options/app-config-options.php:64
+msgid "Save Changes"
+msgstr "Salva le Modifiche"
 
 #: views/add-force-content-send-link.phtml:2
 msgid "Indexed"
@@ -280,17 +153,160 @@ msgstr "Reindicizza subito"
 msgid "Index NOW"
 msgstr "Indicizza Subito"
 
-#: views/inner-custom-box.phtml:4
-msgid "Italian"
-msgstr "Italiano"
+#~ msgid "Post Type Indexing"
+#~ msgstr "Tipo di post da indicizzare"
 
-#: views/inner-custom-box.phtml:5
-msgid "English"
-msgstr "Inglese"
+#~ msgid "Indexing Feature"
+#~ msgstr "Indicizzazione"
 
-#: views/inner-custom-box.phtml:9
-msgid "Select the language of your article/page"
-msgstr "Seleziona la lingua del tuo articolo/pagina"
+#~ msgid "Remote Importer"
+#~ msgstr "Importazione remota"
+
+#~ msgid ""
+#~ "UpCloo is a new service created for web site with a lot of contents (from "
+#~ "10 to millions)."
+#~ msgstr ""
+#~ "UpCloo è un nuovo servizio creato per siti web con milioni di contenuti "
+#~ "(da 10 a milioni)"
+
+#~ msgid ""
+#~ "If you manage contents on your web site (news, pages, reviews, products, "
+#~ "comments...) then you're likely to spend a lot of time (and money!) to "
+#~ "create correlations between different contents."
+#~ msgstr ""
+#~ "Se gestisci contenuti sul tuo sito web (news, pagine, revisioni, "
+#~ "prodotti, commenti...) allora probabilmente spenderai un sacco di tempo "
+#~ "(e soldi!) per creare correlazioni tra i tuoi diversi contenuti."
+
+#~ msgid ""
+#~ "UpCloo can index your pages and send, whenever a visitor goes on you web "
+#~ "site, the best correlations at the moment through a simple xml feed, so "
+#~ "you can show links and correlations inside or outside the text of your "
+#~ "page."
+#~ msgstr ""
+#~ "UpCloo può indicizzare le tue pagine ed richiedere, quando un visitatore "
+#~ "arriva sul tuo sito, le migliori correlazioni attualmente disponibili "
+#~ "tramite una semplice e flessibile interfaccia XML. Puoi visualizzare link "
+#~ "e correlazioni dentro e fuori dalla tua pagina."
+
+#~ msgid ""
+#~ "Don't worry anymore about \"more like this\" and \"maybe you're "
+#~ "interested at\": UpCloo manages all your correlations with a cloudy, "
+#~ "smart and brilliant semantic engine."
+#~ msgstr ""
+#~ "Non preoccuparti più di problemi come: \"altri come questi\" e \"Magari "
+#~ "ti interessa anche\": UpCloo gestisce tutte le tue correlazioni "
+#~ "direttamente nella nuvola. E' un efficace, veloce e brillante motore di "
+#~ "correlazione."
+
+#~ msgid "UpCloo Security"
+#~ msgstr "Sicurezza di UpCloo"
+
+#~ msgid ""
+#~ "All information that you send to UpCloo Cloud System are secured using "
+#~ "RSA 1024 bit."
+#~ msgstr ""
+#~ "Tutte le informazioni che sono inviate verso la nuvola di servizi UpCloo "
+#~ "è messa in sicurezza tramite RSA a 1024 bit (il programma Beta-Test può "
+#~ "subire variazioni)"
+
+#~ msgid "UpCloo Application Configuration"
+#~ msgstr "Configurazione Applicativa di UpCloo"
+
+#~ msgid "Login parmeters"
+#~ msgstr "Parametri di Accesso"
+
+#~ msgid "Handle posts type"
+#~ msgstr "Gestisci i tipi di post"
+
+#~ msgid "Select what kind of post you want to send to UpCloo"
+#~ msgstr "Scegli il tipo di post che vuoi inviare ad UpCloo"
+
+#~ msgid "Remote Import System"
+#~ msgstr "Sistema di importazione remota"
+
+#~ msgid ""
+#~ "Consider that you have to request remote indexing using UpCloo remote "
+#~ "control panel."
+#~ msgstr ""
+#~ "Considera che devi aver richiesto l'indicizzazione remota utilizzando il "
+#~ "pannello remoto di UpCloo"
+
+#~ msgid "See this link for more information about this procedure:"
+#~ msgstr "Guarda questo link per maggiori informazioni su questa procedura:"
+
+#~ msgid "Enable MetaTags for Remote UpCloo Importer"
+#~ msgstr "Abilita i MetaTags per l'importazione remota di UpCloo"
+
+#~ msgid "(Enable only for one-time remote import after that turn if off.)"
+#~ msgstr "(Abilita solo una volta per l'importazione remota e dopo spegnilo)."
+
+#~ msgid "Other features"
+#~ msgstr "Altre Funzionalità"
+
+#~ msgid "Disable Main UpCloo Results"
+#~ msgstr "Disabilita i risultati principali di UpCloo"
+
+#~ msgid ""
+#~ "If enabled no one can see UpCloo main correlation (widgets still works)"
+#~ msgstr ""
+#~ "Se abilitato nessuno può vedere le correlazioni di UpCloo principali (I "
+#~ "widgets continueranno a funzionare)"
+
+#~ msgid "Show UpCloo links"
+#~ msgstr "Visualizza i links principali (SiteKey) di UpCloo"
+
+#~ msgid "If disabled only admins can see UpCloo correlation"
+#~ msgstr ""
+#~ "Se non abilitato solo gli amministratori possono vedere le correlazioni "
+#~ "di UpCloo"
+
+#~ msgid "Use Categories during Indexing"
+#~ msgstr "Use le categorie durante l'indicizzazione"
+
+#~ msgid "Use categories during index creation"
+#~ msgstr "Usa le categorie durante l'indicizzazione"
+
+#~ msgid "Use Tags during Indexing"
+#~ msgstr "Usa i Tag durante l'indicizzazione"
+
+#~ msgid "Use tags during index creation"
+#~ msgstr "Usa i Tag durante la creazione dell'indice"
+
+#~ msgid "Default Language"
+#~ msgstr "Lingua di default"
+
+#~ msgid "it (italian), en (english), etc..."
+#~ msgstr "it (italiano), en (inglese), etc..."
+
+#~ msgid "Image missing path"
+#~ msgstr "Path immagine mancante"
+
+#~ msgid ""
+#~ "Public path of no image [eg. /images/no-image.png] - used only for "
+#~ "advanced templating method"
+#~ msgstr ""
+#~ "Path pubblica dell'immagine mancante [es. /images/no-image.png] - usata "
+#~ "solo nel sistema di template avanzato"
+
+#~ msgid "Summary Length"
+#~ msgstr "Lunghezza sommario"
+
+#~ msgid ""
+#~ "Minimum length for summary. If you set blank this field UpCloo use 120 "
+#~ "characters by default."
+#~ msgstr ""
+#~ "Lunghezza minima del sommario. Se viene lasciato in biano questo campo, "
+#~ "UpCloo utilizzerà 120 caratteri di default"
+
+#~ msgid "Italian"
+#~ msgstr "Italiano"
+
+#~ msgid "English"
+#~ msgstr "Inglese"
+
+#~ msgid "Select the language of your article/page"
+#~ msgstr "Seleziona la lingua del tuo articolo/pagina"
 
 #~ msgid "Key Switch"
 #~ msgstr "Scambio Chiavi"
