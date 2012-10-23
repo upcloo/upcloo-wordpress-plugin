@@ -22,23 +22,23 @@
                     	    if (!is_array($selected)) {
                     	        $selected = array();
                     	    }
-                    	?>
-                    	<select name="<?php echo UPCLOO_POSTS_TYPE?>[]" multiple="multiple" size="6" style="width:380px;">
-                    		<?php
-                    		    foreach ($postsType as $key => $type):
-                    		?>
-                    		<option <?php echo ((in_array($key, $selected)) ? 'selected="selected"' : '')?> value="<?php echo $key?>"><?php echo $type?></option>
-                    		<?php
-                    		    endforeach;
-                    		?>
-                    	</select>
+                            foreach ($postsType as $key => $type):
+                        ?>
+                        <input id="upcloo-checkbox-posttype-<?php echo $key;?>" <?php echo ((in_array($key, $selected)) ? 'checked="checked"' : '')?> type="checkbox" name="<?php echo UPCLOO_POSTS_TYPE?>[]" value="<?php echo $key?>" /> <label for="upcloo-checkbox-posttype-<?php echo $key;?>"><?php echo $type;?></label><br />
+                        <?php
+                            endforeach;
+                        ?>
                     </td>
                 </tr>
             <tr valign="top">
                 <th width="92" scope="row"><?php _e("Max Number of Links", "wp_upcloo");?></th>
                 <td width="406">
                     <?php $show_on_page = get_option(UPCLOO_MAX_SHOW_LINKS);?>
-                    <input name="<?php echo UPCLOO_MAX_SHOW_LINKS?>" type="text" value="<?php echo get_option(UPCLOO_MAX_SHOW_LINKS, ""); ?>" />
+                    <select name="<?php echo UPCLOO_MAX_SHOW_LINKS?>">
+                        <?php for ($i=1; $i<6; $i++) : ?>
+                        <option <?php echo ((get_option(UPCLOO_MAX_SHOW_LINKS, "") == $i) ? "selected='selected'" : '')?> value="<?php echo $i?>"><?php echo $i?></option>
+                        <?php endfor; ?>
+                    </select>
                     <strong><?php _e("Let blank for all", "wp_uplcoo");?></strong></td>
 			</tr>
 			<tr valign="top">
@@ -46,7 +46,7 @@
                 <td width="406">
                     <?php $show_on_page = get_option(UPCLOO_REWRITE_PUBLIC_LABEL);?>
                     <input name="<?php echo UPCLOO_REWRITE_PUBLIC_LABEL?>" type="text" value="<?php echo get_option(UPCLOO_REWRITE_PUBLIC_LABEL, ""); ?>" />
-                    <strong><?php _e("Let blank for use default label (May be you are interested at)", "wp_uplcoo");?></strong></td>
+                    <strong><?php _e("Let blank for use default label (May be you are also interested in)", "wp_uplcoo");?></strong></td>
 			</tr>
 
             <input type="hidden" name="action" value="update" />

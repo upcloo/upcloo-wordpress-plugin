@@ -1,10 +1,10 @@
 === Wordpress UpCloo Plugin ===
 Contributors: wdalmut, gmittica
 Donate link: http://www.upcloo.com/
-Tags: post, page
+Tags: correlate, correlation, upcloo, related, links, adv
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 1.2.0-getrude
+Stable tag: 1.2.0
 
 UpCloo is a cloud based and fully hosted indexing engine that helps you to create incredible and automatic correlations between contents of your website.
 
