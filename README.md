@@ -11,13 +11,13 @@ This plugin is designed for provide a full access to UpCloo technology
 You can use follow links:
 
  * [Developer pages](http://developer.upcloo.com/application/wordpress.html)
- * [Issues](https://github.com/corley/upcloo-wordpress-plugin/issues)
+ * [Issues](https://github.com/upcloo/upcloo-wordpress-plugin/issues)
 
 ## Build and distribuite
 
 For distribuite this WordPress plugin you have three options:
 
- * use an already compiled tree [Download area](/corley/upcloo-wordpress-plugin/downloads)
+ * use an already compiled tree [Download area](/upcloo/upcloo-wordpress-plugin/downloads)
  * build the package by your self for generate a valid tree
  * copy ```wp-upcloo`` folder into your production env
 
