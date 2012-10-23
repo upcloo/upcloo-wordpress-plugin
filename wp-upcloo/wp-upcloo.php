@@ -52,7 +52,6 @@ define('UPCLOO_OPTION_CAPABILITY', 'manage_options');
 add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");'));
 add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
 
-add_action('wp_head', 'upcloo_wp_head');
 add_action('admin_notices', 'upcloo_show_needs_attention');
 
 add_filter('the_content', 'upcloo_content');
