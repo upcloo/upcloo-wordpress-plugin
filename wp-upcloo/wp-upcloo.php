@@ -42,6 +42,8 @@ define('UPCLOO_REWRITE_PUBLIC_LABEL', 'upcloo_rewrite_public_label');
 define('UPCLOO_MAX_SHOW_LINKS', "upcloo_max_show_links");
 define("UPCLOO_RSS_FEED", "http://www.mxdesign.it/contenuti/rss/0/news.xml");
 define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
+define('UPCLOO_THEME', "upcloo_theme");
+define('UPCLOO_IMAGE', "upcloo_image");
 
 define('UPCLOO_MENU_SLUG', 'upcloo_options_menu');
 
@@ -86,7 +88,7 @@ function upcloo_show_needs_attention()
 {
     if (!upcloo_is_configured()) {
         echo '<div class="updated">
-        <p>' . __("Remember that your have to configure UpCloo Plugin: ", "wp_upcloo") . ' <a href="admin.php?page=upcloo_options_menu">'.__("Base Config Page", "wp_upcloo") . '</a> - <a href="admin.php?page=upcloo_options_menu_post_type">'. __("Content Types Selection", "wp_upcloo") . '</a></p></div>';
+        <p>' . __("Remember that your have to configure UpCloo Plugin: ", "wp_upcloo") . ' <a href="admin.php?page=upcloo_options_menu">'.__("Config Page", "wp_upcloo") . '</a></p></div>';
     }
 }
 
@@ -100,7 +102,7 @@ function upcloo_check_menu_capability()
 //Start menu
 function upcloo_plugin_menu()
 {
-    add_menu_page('UpCloo', __('UpCloo', "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options');
+    add_menu_page('UpCloo', __('UpCloo', "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options', plugins_url()."/wp-upcloo/u.png");
 }
 
 function upcloo_plugin_options()
@@ -154,7 +156,9 @@ function upcloo_install() {
     add_option(UPCLOO_SITEKEY, "", "", "yes");
     add_option(UPCLOO_MAX_SHOW_LINKS, "3", "", "yes");
     add_option(UPCLOO_POSTS_TYPE, array("post"), '', 'yes');
-    add_option(UPCLOO_REWRITE_PUBLIC_LABEL, '','', 'yes');
+    add_option(UPCLOO_REWRITE_PUBLIC_LABEL, "Maybe you're also interested in:",'', 'yes');
+    add_option(UPCLOO_THEME, 'light','', 'yes');
+    add_option(UPCLOO_IMAGE, '0','', 'yes');
 }
 
 /**
@@ -168,6 +172,8 @@ function upcloo_remove() {
     delete_option(UPCLOO_MAX_SHOW_LINKS);
     delete_option(UPCLOO_REWRITE_PUBLIC_LABEL);
     delete_option(UPCLOO_POSTS_TYPE);
+    delete_option(UPCLOO_THEME);
+    delete_option(UPCLOO_IMAGE);
 }
 
 /**
