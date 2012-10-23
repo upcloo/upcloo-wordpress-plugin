@@ -31,9 +31,9 @@ You have to contact us, please see the main website at: www.upcloo.com
 
 = How we can send issues, requests and other problems =
 
-You can always use the GitHub Corley pages:
+You can always use the GitHub UpCloo pages:
  
- * https://github.com/corley/upcloo-wordpress-plugin/issues
+ * https://github.com/upcloo/upcloo-wordpress-plugin/issues
  
 Through this section you can send problems, issues, requests and any else you want.
 
