@@ -4,7 +4,7 @@ Donate link: http://www.upcloo.com/
 Tags: correlate, correlation, upcloo, related, links, adv
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 
 UpCloo is a cloud based and fully hosted indexing engine that helps you to create incredible and automatic correlations between contents of your website.
 
