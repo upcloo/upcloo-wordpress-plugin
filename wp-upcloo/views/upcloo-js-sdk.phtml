@@ -6,7 +6,7 @@
     {
         "pageId" : "<?php echo $this->permalink; ?>",
         "siteKey" : "<?php echo $this->sitekey; ?>",
-        <?php echo (($this->vsitekey) ? "\"vsitekey\":\"{$this->vsitekey}\"" : ""); ?>,
+        <?php echo (($this->vsitekey) ? "\"vsitekey\":\"{$this->vsitekey}\"," : ""); ?>
         "opts": {
             "sendBeacon":true,
             "widget":{
@@ -14,7 +14,7 @@
                     "headline":"<?php echo $this->headline; ?>",
                     "limit":<?php echo $this->limit; ?>,
                     "theme":"<?php echo $this->theme; ?>",
-                    "type":"<?php echo $this->type"; ?>",
+                    "type":"<?php echo $this->type; ?>",
                     "showImage": <?php echo $this->image; ?>
                 }
             }
