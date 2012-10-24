@@ -7,7 +7,7 @@
 
 	<!-- set global properties for this build -->
     <property name="src" location="wp-upcloo"/>
-	<property name="version" value="1.2.1" />
+	<property name="version" value="1.2.2" />
     <property name="dist"  location="dist/${version}"/>
 
 	<target name="dist" depends="copy-resources, zip-resources">
@@ -28,6 +28,8 @@
 			<include name="views/**"/>
 			<include name="options/**"/>
             <exclude name="vendor"/>
+            <exclude name="**/*.swp"/>
+            <exclude name="**/*.swo"/>
         </fileset>
 
 		<copy todir="${dist}/wp-upcloo" verbose="true">

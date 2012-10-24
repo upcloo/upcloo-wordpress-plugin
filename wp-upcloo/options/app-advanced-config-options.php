@@ -47,9 +47,9 @@ if (array_key_exists("settings-updated", $_GET)) {
                 <td width="406">
                     <select name="<?php echo UPCLOO_POPOVER_POSITION;?>">
                         <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'br') ? "selected='selected'" : "")?> value="br">Bottom Right</option>
-                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'br') ? "selected='selected'" : "")?> value="bl">Bottom Left</option>
-                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'br') ? "selected='selected'" : "")?> value="tr">Top Right</option>
-                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'br') ? "selected='selected'" : "")?> value="tl">Top Left</option>
+                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'bl') ? "selected='selected'" : "")?> value="bl">Bottom Left</option>
+                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'tr') ? "selected='selected'" : "")?> value="tr">Top Right</option>
+                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'tl') ? "selected='selected'" : "")?> value="tl">Top Left</option>
                     </select>
                 </td>
             </tr>
