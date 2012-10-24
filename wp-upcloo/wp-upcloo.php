@@ -45,8 +45,10 @@ define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
 define('UPCLOO_THEME', "upcloo_theme");
 define('UPCLOO_IMAGE', "upcloo_image");
 define('UPCLOO_TYPE', "upcloo_type");
+define('UPCLOO_POPOVER_POSITION', 'upcloo_popover_position');
 
 define('UPCLOO_MENU_SLUG', 'upcloo_options_menu');
+define('UPCLOO_MENU_ADVANCED_SLUG', 'upcloo_menu_advanced');
 
 define('UPCLOO_VIEW_PATH', dirname(__FILE__) . '/views');
 
@@ -89,7 +91,7 @@ function upcloo_show_needs_attention()
 {
     if (!upcloo_is_configured()) {
         echo '<div class="updated">
-        <p>' . __("Remember that your have to configure UpCloo Plugin: ", "wp_upcloo") . ' <a href="admin.php?page=upcloo_options_menu">'.__("Config Page", "wp_upcloo") . '</a></p></div>';
+        <p>' . __("Remember that your have to configure UpCloo Plugin: ", "wp_upcloo") . ' <a href="admin.php?page=upcloo_options_menu">'.__("Config Page", "wp_upcloo") . '</a> - <a href="admin.php?page=upcloo_menu_advanced">'.__("Advanced Config Page", "wp_upcloo").'</a></p></div>';
     }
 }
 
@@ -104,12 +106,19 @@ function upcloo_check_menu_capability()
 function upcloo_plugin_menu()
 {
     add_menu_page('UpCloo', __('UpCloo', "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options', plugins_url()."/wp-upcloo/u.png");
+    add_submenu_page(UPCLOO_MENU_SLUG, "Advanced Configs", __("Advanced Configurations", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_ADVANCED_SLUG, UPCLOO_MENU_ADVANCED_SLUG);
 }
 
 function upcloo_plugin_options()
 {
     upcloo_check_menu_capability();
     include realpath(dirname(__FILE__)) . "/options/app-config-options.php";
+}
+
+function upcloo_menu_advanced()
+{
+    upcloo_check_menu_capability();
+    include realpath(dirname(__FILE__)) . '/options/app-advanced-config-options.php';
 }
 //End menu
 
@@ -161,6 +170,7 @@ function upcloo_install() {
     add_option(UPCLOO_THEME, 'light','', 'yes');
     add_option(UPCLOO_IMAGE, '0','', 'yes');
     add_option(UPCLOO_TYPE, 'popover','', 'yes');
+    add_option(UPCLOO_POPOVER_POSITION, 'br','', 'yes');
 }
 
 /**
@@ -177,6 +187,7 @@ function upcloo_remove() {
     delete_option(UPCLOO_THEME);
     delete_option(UPCLOO_IMAGE);
     delete_option(UPCLOO_TYPE);
+    delete_option(UPCLOO_POPOVER_POSITION);
 }
 
 /**

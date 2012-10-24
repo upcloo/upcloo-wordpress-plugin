@@ -30,25 +30,6 @@ if (array_key_exists("settings-updated", $_GET)) {
                     <input name="<?php echo UPCLOO_SITEKEY?>" type="text" value="<?php echo get_option(UPCLOO_SITEKEY, "wp_upcloo"); ?>" />
                 </td>
             </tr>
-            <tr valign="top">
-                    <th width="92" scope="row"><?php echo _e("Select Posts Type", "wp_upcloo");?></th>
-                    <td width="406">
-                    	<?php
-                    	    $postsType = get_post_types();
-                    	    $selected = get_option(UPCLOO_POSTS_TYPE);
-
-                    	    if (!is_array($selected)) {
-                    	        $selected = array();
-                    	    }
-                            foreach ($postsType as $key => $type):
-                        ?>
-                        <input id="upcloo-checkbox-posttype-<?php echo $key;?>" <?php echo ((in_array($key, $selected)) ? 'checked="checked"' : '')?> type="checkbox" name="<?php echo UPCLOO_POSTS_TYPE?>[]" value="<?php echo $key?>" /> <label for="upcloo-checkbox-posttype-<?php echo $key;?>"><?php echo $type;?></label><br />
-                        <?php
-                            endforeach;
-                        ?>
-                    </td>
-                </tr>
-
 
             <tr valign="top">
                 <th width="92" scope="row"><?php _e("Max Number of Links", "wp_upcloo");?></th>
@@ -74,7 +55,6 @@ if (array_key_exists("settings-updated", $_GET)) {
                         <option <?php echo (!get_option(UPCLOO_IMAGE, "") ? "selected='selected'" : '')?> value="0">Show only links&nbsp;</option>
                         <option <?php echo (get_option(UPCLOO_IMAGE, "") ? "selected='selected'" : '')?> value="1">Show links + images&nbsp;</option>
                     </select>
-                    <?php _e("Show images only if you use images in all your contents", "wp_uplcoo");?>
                     </td>
                 </tr>
 			<tr valign="top">
