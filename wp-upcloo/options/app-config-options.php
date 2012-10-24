@@ -84,7 +84,7 @@ if (array_key_exists("settings-updated", $_GET)) {
                 	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" onclick="javascript:confirmThat()" />
 
                 	<input type="hidden" name="action" value="update" />
-            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_SITEKEY, UPCLOO_POSTS_TYPE, UPCLOO_MAX_SHOW_LINKS, UPCLOO_REWRITE_PUBLIC_LABEL, UPCLOO_THEME, UPCLOO_IMAGE, UPCLOO_TYPE))?>" />
+            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_SITEKEY, UPCLOO_MAX_SHOW_LINKS, UPCLOO_REWRITE_PUBLIC_LABEL, UPCLOO_THEME, UPCLOO_IMAGE, UPCLOO_TYPE))?>" />
                 </td>
 			</tr>
 
