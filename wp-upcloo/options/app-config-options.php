@@ -13,17 +13,17 @@ if (array_key_exists("settings-updated", $_GET)) {
         <?php wp_nonce_field('update-options'); ?>
         <table class="form-table">
             <tbody>
-            
-            		
+
+
 			<tr valign="top">
                 <th width="92" scope="row"></th>
-                <td width="406" align='right'>   
+                <td width="406" align='right'>
                 	<a class="button-secondary" href='http://www.upcloo.com/index/integration/wordpress.html' target='_blank' ><?php _e("Plugin Doc", 'wp_upcloo') ?></a>
-                	
+
                 	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" onclick="javascript:confirmThat()" />
                 </td>
 			</tr>
-            
+
             <tr valign="top">
                 <th width="92" scope="row"><?php _e("Your sitekey", "wp_upcloo");?> (<a href='http://www.upcloo.com/newsletter/iscrizione.html' target='_blank'>signup for free</a>)</th>
                 <td width="406">
@@ -48,8 +48,8 @@ if (array_key_exists("settings-updated", $_GET)) {
                         ?>
                     </td>
                 </tr>
-                
-                
+
+
             <tr valign="top">
                 <th width="92" scope="row"><?php _e("Max Number of Links", "wp_upcloo");?></th>
                 <td width="406">
@@ -77,7 +77,16 @@ if (array_key_exists("settings-updated", $_GET)) {
                     <?php _e("Show images only if you use images in all your contents", "wp_uplcoo");?>
                     </td>
                 </tr>
-			
+			<tr valign="top">
+                   <th width="92" scope="row"><?php echo _e("Select your type", "wp_upcloo");?></th>
+                    <td width="406">
+                    	 <select name="<?php echo UPCLOO_TYPE; ?>">
+                        <option <?php echo ((get_option(UPCLOO_TYPE) == "popover") ? "selected='selected'" : '')?> value="popover">Popover</option>
+                        <option <?php echo ((get_option(UPCLOO_TYPE) == "inline") ? "selected='selected'" : '')?> value="inline">Inline</option>
+                    </select>
+                    </td>
+                </tr>
+
 			<tr valign="top">
                 <th width="92" scope="row"><?php _e("Choose the theme", "wp_upcloo");?></th>
                 <td width="406">
@@ -87,18 +96,18 @@ if (array_key_exists("settings-updated", $_GET)) {
                 <?php endforeach;?>
                 </td>
 			</tr>
-			
-				
+
+
 			<tr valign="top">
                 <th width="92" scope="row"></th>
-                <td width="406" align='right'>   
+                <td width="406" align='right'>
                 	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" onclick="javascript:confirmThat()" />
-        
+
                 	<input type="hidden" name="action" value="update" />
-            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_SITEKEY, UPCLOO_POSTS_TYPE, UPCLOO_MAX_SHOW_LINKS, UPCLOO_REWRITE_PUBLIC_LABEL, UPCLOO_THEME, UPCLOO_IMAGE))?>" />
+            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_SITEKEY, UPCLOO_POSTS_TYPE, UPCLOO_MAX_SHOW_LINKS, UPCLOO_REWRITE_PUBLIC_LABEL, UPCLOO_THEME, UPCLOO_IMAGE, UPCLOO_TYPE))?>" />
                 </td>
 			</tr>
-			
+
 
           </tbody>
         </table>

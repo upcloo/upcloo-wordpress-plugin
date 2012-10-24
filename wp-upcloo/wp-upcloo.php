@@ -44,6 +44,7 @@ define("UPCLOO_RSS_FEED", "http://www.mxdesign.it/contenuti/rss/0/news.xml");
 define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
 define('UPCLOO_THEME', "upcloo_theme");
 define('UPCLOO_IMAGE', "upcloo_image");
+define('UPCLOO_TYPE', "upcloo_type");
 
 define('UPCLOO_MENU_SLUG', 'upcloo_options_menu');
 
@@ -159,6 +160,7 @@ function upcloo_install() {
     add_option(UPCLOO_REWRITE_PUBLIC_LABEL, "Maybe you're also interested in:",'', 'yes');
     add_option(UPCLOO_THEME, 'light','', 'yes');
     add_option(UPCLOO_IMAGE, '0','', 'yes');
+    add_option(UPCLOO_TYPE, 'popover','', 'yes');
 }
 
 /**
@@ -174,6 +176,7 @@ function upcloo_remove() {
     delete_option(UPCLOO_POSTS_TYPE);
     delete_option(UPCLOO_THEME);
     delete_option(UPCLOO_IMAGE);
+    delete_option(UPCLOO_TYPE);
 }
 
 /**
@@ -213,6 +216,10 @@ function upcloo_content($content, $noPostBody = false)
             ? __("Maybe you are also interested in", "wp_upcloo")
             :  get_option(UPCLOO_REWRITE_PUBLIC_LABEL);
 
+        $view->limit = get_option(UPCLOO_MAX_SHOW_LINKS, "3");
+        $view->theme = get_option(UPCLOO_THEME);
+        $view->image = get_option(UPCLOO_IMAGE);
+        $view->type = get_option(UPCLOO_TYPE);
 
         $content .= $view->render("upcloo-js-sdk.phtml");
     }
