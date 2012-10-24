@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted indexing engine that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.2.2
+Version: 1.2.3
 Author: UpCloo Ltd.
 Author URI: http://www.corley.it/
 License: MIT
@@ -231,6 +231,7 @@ function upcloo_content($content, $noPostBody = false)
         $view->theme = get_option(UPCLOO_THEME);
         $view->image = get_option(UPCLOO_IMAGE);
         $view->type = get_option(UPCLOO_TYPE);
+        $view->position = get_option(UPCLOO_POPOVER_POSITION);
 
         $content .= $view->render("upcloo-js-sdk.phtml");
     }
