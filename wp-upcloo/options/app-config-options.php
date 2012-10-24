@@ -81,7 +81,7 @@ if (array_key_exists("settings-updated", $_GET)) {
                    <th width="92" scope="row"><?php echo _e("Select your type", "wp_upcloo");?></th>
                     <td width="406">
                     	 <select name="<?php echo UPCLOO_TYPE; ?>">
-                        <option <?php echo ((get_option(UPCLOO_TYPE) == "popover") ? "selected='selected'" : '')?> value="popover">Popover</option>
+                        <option <?php echo ((get_option(UPCLOO_TYPE) == "popOver") ? "selected='selected'" : '')?> value="popOver">Popover</option>
                         <option <?php echo ((get_option(UPCLOO_TYPE) == "inline") ? "selected='selected'" : '')?> value="inline">Inline</option>
                     </select>
                     </td>

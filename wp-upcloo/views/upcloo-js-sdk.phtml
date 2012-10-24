@@ -9,22 +9,18 @@
         <?php echo (($this->vsitekey) ? "\"vsitekey\":\"{$this->vsitekey}\"," : ""); ?>
         "opts": {
             "sendBeacon":true,
-            "widget":{
-                "opts":{
-                    "headline":"<?php echo $this->headline; ?>",
-                    "limit":<?php echo $this->limit; ?>,
-                    "theme":"<?php echo $this->theme; ?>",
-                    "type":"<?php echo $this->type; ?>",
-                    "showImage": <?php echo $this->image; ?>
-                }
-            }
+            "headline":"<?php echo $this->headline; ?>",
+            "limit":<?php echo $this->limit; ?>,
+            "theme":"<?php echo $this->theme; ?>",
+            "type":"<?php echo $this->type; ?>",
+            "showImage": <?php echo $this->image; ?>
         }
     }
   );
   var s = d.createElement('script') , n = d.getElementsByTagName('script')[0]; 
   s.type = 'text/javascript';
   s.async = true;s.id = id;
-  s.src = '//repository.upcloo.com/a/u2.js';
+  s.src = '//repository.upcloo.com/a/u.js';
   !d.getElementById(id) ? n.parentNode.insertBefore(s,n) :false;
 })(this,document,'upcloo_js_sdk')
 </script>
