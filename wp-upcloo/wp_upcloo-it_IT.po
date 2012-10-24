@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-23 18:29+0100\n"
-"PO-Revision-Date: 2012-10-23 18:30+0100\n"
+"POT-Creation-Date: 2012-10-24 17:43+0100\n"
+"PO-Revision-Date: 2012-10-24 17:45+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -17,31 +17,35 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: wp-upcloo.php:89
+#: wp-upcloo.php:94
 msgid "Remember that your have to configure UpCloo Plugin: "
 msgstr "Ricordati che devi configurare il plugin di UpCloo"
 
-#: wp-upcloo.php:89
-msgid "Base Config Page"
-msgstr "Pagina di Configurazione di Base"
+#: wp-upcloo.php:94
+msgid "Config Page"
+msgstr "Pagina di Configurazione"
 
-#: wp-upcloo.php:89
-msgid "Content Types Selection"
-msgstr "Selezione dei Tipi di Contenuto"
+#: wp-upcloo.php:94
+msgid "Advanced Config Page"
+msgstr "Pagina di Configurazione Avanzata"
 
-#: wp-upcloo.php:96
+#: wp-upcloo.php:101
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:103
+#: wp-upcloo.php:108
 msgid "UpCloo"
 msgstr "UpCloo"
 
-#: wp-upcloo.php:138
+#: wp-upcloo.php:109
+msgid "Advanced Configurations"
+msgstr "Configurazione Avanzata"
+
+#: wp-upcloo.php:150
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
-#: wp-upcloo.php:207
+#: wp-upcloo.php:227
 msgid "Maybe you are also interested in"
 msgstr "Forse potrebbero interessarti"
 
@@ -94,6 +98,7 @@ msgid "Number of links:"
 msgstr "Massimo numero di link."
 
 #: options/app-config-options.php:3
+#: options/app-advanced-config-options.php:3
 msgid "Your configuration is saved correctly!"
 msgstr "Ricordati che devi ancora configurare il plugin di UpCloo:"
 
@@ -105,37 +110,53 @@ msgstr "UpCloo Opzioni Generali"
 msgid "Welcome To UpCloo"
 msgstr "Benvenuto in UpCloo"
 
-#: options/app-config-options.php:17
-msgid "Enter your Site Key"
-msgstr "Inserisci la tua Chiave Sito"
-
-#: options/app-config-options.php:20
-msgid "(Your signup info)"
-msgstr "(La tua registrazione)"
+#: options/app-config-options.php:21
+#: options/app-advanced-config-options.php:20
+msgid "Plugin Doc"
+msgstr "Documentazione Plugin"
 
 #: options/app-config-options.php:23
-msgid "Select Posts Type"
-msgstr "Scegli il tipo di post"
+#: options/app-config-options.php:84
+#: options/app-advanced-config-options.php:22
+#: options/app-advanced-config-options.php:60
+msgid "Save Changes"
+msgstr "Salva le Modifiche"
 
-#: options/app-config-options.php:41
+#: options/app-config-options.php:28
+msgid "Your sitekey"
+msgstr "La tua Sitekey"
+
+#: options/app-config-options.php:35
 msgid "Max Number of Links"
 msgstr "Massimo numero di link"
 
-#: options/app-config-options.php:49
-msgid "Let blank for all"
-msgstr "Lascia in bianco per tutti"
+#: options/app-config-options.php:46
+msgid "Box title (let blank to hide title)"
+msgstr "Titolo del Box (lascia in bianco per nascondere)"
 
 #: options/app-config-options.php:52
-msgid "Rewrite public UpCloo label"
-msgstr "Riscrivi l'etichetta pubblica di UpCloo"
+msgid "Do you want to show images?"
+msgstr "Vuoi visualizzare le immagini?"
 
-#: options/app-config-options.php:56
-msgid "Let blank for use default label (May be you are also interested in)"
-msgstr "Lascia in bianco per usare l'etichetta di default (Forse potrebbero interessarti)"
+#: options/app-config-options.php:61
+msgid "Select your type"
+msgstr "Seleziona il tuo tipo"
 
-#: options/app-config-options.php:64
-msgid "Save Changes"
-msgstr "Salva le Modifiche"
+#: options/app-config-options.php:71
+msgid "Choose the theme"
+msgstr "Scegli un tema"
+
+#: options/app-advanced-config-options.php:10
+msgid "UpCloo Advanced Options"
+msgstr "Opzioni UpCloo Avanzate"
+
+#: options/app-advanced-config-options.php:27
+msgid "Type of content where show related links"
+msgstr "Tipo di contenuti dove visualizzare i correlati"
+
+#: options/app-advanced-config-options.php:46
+msgid "Position of the PopOver"
+msgstr "Posizionamento del PopOver"
 
 #: views/add-force-content-send-link.phtml:2
 msgid "Indexed"
@@ -152,6 +173,26 @@ msgstr "Reindicizza subito"
 #: views/add-force-content-send-link.phtml:4
 msgid "Index NOW"
 msgstr "Indicizza Subito"
+
+#~ msgid "Content Types Selection"
+#~ msgstr "Selezione dei Tipi di Contenuto"
+
+#~ msgid "Enter your Site Key"
+#~ msgstr "Inserisci la tua Chiave Sito"
+
+#~ msgid "(Your signup info)"
+#~ msgstr "(La tua registrazione)"
+
+#~ msgid "Let blank for all"
+#~ msgstr "Lascia in bianco per tutti"
+
+#~ msgid "Rewrite public UpCloo label"
+#~ msgstr "Riscrivi l'etichetta pubblica di UpCloo"
+
+#~ msgid "Let blank for use default label (May be you are also interested in)"
+#~ msgstr ""
+#~ "Lascia in bianco per usare l'etichetta di default (Forse potrebbero "
+#~ "interessarti)"
 
 #~ msgid "Post Type Indexing"
 #~ msgstr "Tipo di post da indicizzare"
@@ -209,9 +250,6 @@ msgstr "Indicizza Subito"
 #~ "Tutte le informazioni che sono inviate verso la nuvola di servizi UpCloo "
 #~ "è messa in sicurezza tramite RSA a 1024 bit (il programma Beta-Test può "
 #~ "subire variazioni)"
-
-#~ msgid "UpCloo Application Configuration"
-#~ msgstr "Configurazione Applicativa di UpCloo"
 
 #~ msgid "Login parmeters"
 #~ msgstr "Parametri di Accesso"
@@ -353,9 +391,6 @@ msgstr "Indicizza Subito"
 #~ msgid "Virtual Sitekey"
 #~ msgstr "Chiave Sito Virtuale"
 
-#~ msgid "Virtual sitekey"
-#~ msgstr "Partner Virtuale"
-
 #~ msgid "ROI Monitor Parameters"
 #~ msgstr "Parametri per il Monitor ROI"
 
@@ -450,9 +485,6 @@ msgstr "Indicizza Subito"
 
 #~ msgid "Search in the Cloud"
 #~ msgstr "Cerca nella nuvola"
-
-#~ msgid "UpCloo Options"
-#~ msgstr "Opzioni UpCloo"
 
 #~ msgid "Search"
 #~ msgstr "Cerca"
