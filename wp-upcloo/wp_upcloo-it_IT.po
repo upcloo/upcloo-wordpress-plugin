@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-24 17:43+0100\n"
-"PO-Revision-Date: 2012-10-24 17:45+0100\n"
+"PO-Revision-Date: 2012-10-24 17:52+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -100,7 +100,7 @@ msgstr "Massimo numero di link."
 #: options/app-config-options.php:3
 #: options/app-advanced-config-options.php:3
 msgid "Your configuration is saved correctly!"
-msgstr "Ricordati che devi ancora configurare il plugin di UpCloo:"
+msgstr "La tua configurazione è salvata correttamente!"
 
 #: options/app-config-options.php:10
 msgid "UpCloo General Options"
