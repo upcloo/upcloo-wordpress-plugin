@@ -70,10 +70,16 @@ if (array_key_exists("settings-updated", $_GET)) {
 			<tr valign="top">
                 <th width="92" scope="row"><?php _e("Choose the theme", "wp_upcloo");?></th>
                 <td width="406">
-                <?php foreach(array("light", "grey", "dark") AS $theme) :?>
-                	<input <?php echo (get_option(UPCLOO_THEME, "light") == $theme ? "checked='checked'" : '')?> type='radio' name='<?php echo UPCLOO_THEME?>' id='<?php echo UPCLOO_THEME?>-<?php echo $theme?>' value='<?php echo $theme?>' style='vertical-align:top; margin-top:70px;'/>
-                	<label for='<?php echo UPCLOO_THEME?>-<?php echo $theme?>'><img src='<?php echo plugins_url()?>/wp-upcloo/theme-<?php echo $theme?>.png' alt='' border='0'  /></label><br/><br/>
-                <?php endforeach;?>
+                <?php
+                    $themes = array(
+                        "light" => __("Elegant floating box with tiny shadow"),
+                        "basic" => __("Simple and clear floating box"),
+                        "strip" => __("Horizontal and high impressive strip")
+                    );
+                    foreach($themes AS $theme => $description) :?>
+                        <input <?php echo (get_option(UPCLOO_THEME, "light") == $theme ? "checked='checked'" : '')?> type='radio' name='<?php echo UPCLOO_THEME?>' id='<?php echo UPCLOO_THEME?>-<?php echo $theme?>' value='<?php echo $theme?>' style='vertical-align:top;'/>
+                        <label for='<?php echo UPCLOO_THEME?>-<?php echo $theme?>'><?php echo $description; ?></label><br/><br/>
+                    <?php endforeach;?>
                 </td>
 			</tr>
 
