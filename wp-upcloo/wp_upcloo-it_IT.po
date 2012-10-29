@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-29 18:17+0100\n"
-"PO-Revision-Date: 2012-10-29 18:18+0100\n"
+"POT-Creation-Date: 2012-10-29 18:28+0100\n"
+"PO-Revision-Date: 2012-10-29 18:28+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -141,6 +141,14 @@ msgstr "Titolo del Box (lascia in bianco per nascondere)"
 #: options/app-config-options.php:52
 msgid "Do you want to show images?"
 msgstr "Vuoi visualizzare le immagini?"
+
+#: options/app-config-options.php:55
+msgid "Show only links"
+msgstr "Visualizza solo i link"
+
+#: options/app-config-options.php:56
+msgid "Show links + images"
+msgstr "Visualizza link + immagini"
 
 #: options/app-config-options.php:61
 msgid "Select your type"
@@ -318,9 +326,6 @@ msgstr "In alto a sinistra"
 #~ msgstr ""
 #~ "Se abilitato nessuno può vedere le correlazioni di UpCloo principali (I "
 #~ "widgets continueranno a funzionare)"
-
-#~ msgid "Show UpCloo links"
-#~ msgstr "Visualizza i links principali (SiteKey) di UpCloo"
 
 #~ msgid "If disabled only admins can see UpCloo correlation"
 #~ msgstr ""
@@ -562,9 +567,6 @@ msgstr "In alto a sinistra"
 
 #~ msgid "Index Posts"
 #~ msgstr "Indicizza i Post"
-
-#~ msgid "Show also in pages"
-#~ msgstr "Mostra anche nelle Pagine"
 
 #~ msgid "Show related contents on pages"
 #~ msgstr "Mostra i correlati nelle Pagine"

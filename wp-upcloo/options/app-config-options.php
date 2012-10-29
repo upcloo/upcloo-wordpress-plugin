@@ -25,7 +25,7 @@ if (array_key_exists("settings-updated", $_GET)) {
 			</tr>
 
             <tr valign="top">
-            <th width="92" scope="row"><?php _e("Your sitekey", "wp_upcloo");?> (<a href='http://www.upcloo.com/newsletter/iscrizione.html' target='_blank'><?php _e("signup for free");?></a>)</th>
+            <th width="92" scope="row"><?php _e("Your sitekey", "wp_upcloo");?> (<a href='http://www.upcloo.com/newsletter/iscrizione.html' target='_blank'><?php _e("signup for free", "wp_upcloo");?></a>)</th>
                 <td width="406">
                     <input name="<?php echo UPCLOO_SITEKEY?>" type="text" value="<?php echo get_option(UPCLOO_SITEKEY, "wp_upcloo"); ?>" />
                 </td>
@@ -52,8 +52,8 @@ if (array_key_exists("settings-updated", $_GET)) {
                     <th width="92" scope="row"><?php echo _e("Do you want to show images?", "wp_upcloo");?></th>
                     <td width="406">
                     	 <select name="<?php echo UPCLOO_IMAGE?>">
-                        <option <?php echo (!get_option(UPCLOO_IMAGE, "") ? "selected='selected'" : '')?> value="0">Show only links&nbsp;</option>
-                        <option <?php echo (get_option(UPCLOO_IMAGE, "") ? "selected='selected'" : '')?> value="1">Show links + images&nbsp;</option>
+                         <option <?php echo (!get_option(UPCLOO_IMAGE, "") ? "selected='selected'" : '')?> value="0"><?php _e("Show only links", "wp_upcloo");?>&nbsp;</option>
+                         <option <?php echo (get_option(UPCLOO_IMAGE, "") ? "selected='selected'" : '')?> value="1"><?php _e("Show links + images", "wp_upcloo");?>&nbsp;</option>
                     </select>
                     </td>
                 </tr>
@@ -72,9 +72,9 @@ if (array_key_exists("settings-updated", $_GET)) {
                 <td width="406">
                 <?php
                     $themes = array(
-                        "light" => __("Elegant floating box with tiny shadow"),
-                        "basic" => __("Simple and clear floating box"),
-                        "strip" => __("Horizontal and high impressive strip")
+                        "light" => __("Elegant floating box with tiny shadow", "wp_upcloo"),
+                        "basic" => __("Simple and clear floating box", "wp_upcloo"),
+                        "strip" => __("Horizontal and high impressive strip", "wp_upcloo")
                     );
                     foreach($themes AS $theme => $description) :?>
                         <input <?php echo (get_option(UPCLOO_THEME, "light") == $theme ? "checked='checked'" : '')?> type='radio' name='<?php echo UPCLOO_THEME?>' id='<?php echo UPCLOO_THEME?>-<?php echo $theme?>' value='<?php echo $theme?>' style='vertical-align:top;'/>
