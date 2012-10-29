@@ -67,9 +67,6 @@ add_action( 'admin_menu', 'upcloo_plugin_menu' );
 /* Runs when plugin is activated */
 register_activation_hook(__FILE__, 'upcloo_install');
 
-/* Runs on plugin deactivation*/
-register_deactivation_hook(__FILE__, 'upcloo_remove');
-
 function upcloo_is_configured()
 {
     $postTypes = get_option(UPCLOO_POSTS_TYPE);
@@ -171,23 +168,6 @@ function upcloo_install() {
     add_option(UPCLOO_IMAGE, '0','', 'yes');
     add_option(UPCLOO_TYPE, 'popover','', 'yes');
     add_option(UPCLOO_POPOVER_POSITION, 'br','', 'yes');
-}
-
-/**
- * Remove all options
- *
- * This method remove all UpCloo option
- * it is called by disable plugin action.
- */
-function upcloo_remove() {
-    /* Deletes the database field */
-    delete_option(UPCLOO_MAX_SHOW_LINKS);
-    delete_option(UPCLOO_REWRITE_PUBLIC_LABEL);
-    delete_option(UPCLOO_POSTS_TYPE);
-    delete_option(UPCLOO_THEME);
-    delete_option(UPCLOO_IMAGE);
-    delete_option(UPCLOO_TYPE);
-    delete_option(UPCLOO_POPOVER_POSITION);
 }
 
 /**
