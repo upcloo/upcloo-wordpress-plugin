@@ -25,7 +25,7 @@ if (array_key_exists("settings-updated", $_GET)) {
 			</tr>
 
             <tr valign="top">
-                <th width="92" scope="row"><?php _e("Your sitekey", "wp_upcloo");?> (<a href='http://www.upcloo.com/newsletter/iscrizione.html' target='_blank'>signup for free</a>)</th>
+            <th width="92" scope="row"><?php _e("Your sitekey", "wp_upcloo");?> (<a href='http://www.upcloo.com/newsletter/iscrizione.html' target='_blank'><?php _e("signup for free");?></a>)</th>
                 <td width="406">
                     <input name="<?php echo UPCLOO_SITEKEY?>" type="text" value="<?php echo get_option(UPCLOO_SITEKEY, "wp_upcloo"); ?>" />
                 </td>
