@@ -24,7 +24,7 @@ if (array_key_exists("settings-updated", $_GET)) {
 			</tr>
 
             <tr valign="top">
-                <th width="92" scope="row"><?php echo _e("Type of content where show related links", "wp_upcloo");?></th>
+                <th width="92" scope="row"><?php echo __("Type of content where show related links", "wp_upcloo");?></th>
                 <td width="406">
                     <?php
                         $postsType = get_post_types();
@@ -43,7 +43,7 @@ if (array_key_exists("settings-updated", $_GET)) {
             </tr>
 
             <tr valign="top">
-                <th width="92" scope="row"><?php echo _e("Position of the PopOver", "wp_upcloo");?></th>
+                <th width="92" scope="row"><?php echo __("Position of the PopOver", "wp_upcloo");?></th>
                 <td width="406">
                     <select name="<?php echo UPCLOO_POPOVER_POSITION;?>">
                         <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'br') ? "selected='selected'" : "")?> value="br"><?php _e("Bottom Right");?></option>
@@ -54,13 +54,24 @@ if (array_key_exists("settings-updated", $_GET)) {
                 </td>
             </tr>
 
+            <tr valign="top">
+                <th width="92" scope="row">
+                    <?php echo __("Personal CSS", "wp_upcloo")?>
+                </th>
+                <td width="406">
+                    &lt;style&gt;<br />
+                    <textarea style="font-family: courier, arial, verdana; width: 95%; height: 150px;" name="<?php echo UPCLOO_CSS_INLINE;?>"><?php echo get_option(UPCLOO_CSS_INLINE); ?></textarea><br />
+                    &lt;/style&gt;<br/>
+                </td>
+            </tr>
+
 			<tr valign="top">
                 <th width="92" scope="row"></th>
                 <td width="406" align='right'>
                 	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" onclick="javascript:confirmThat()" />
 
                 	<input type="hidden" name="action" value="update" />
-            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_POSTS_TYPE, UPCLOO_POPOVER_POSITION))?>" />
+            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_POSTS_TYPE, UPCLOO_POPOVER_POSITION, UPCLOO_CSS_INLINE))?>" />
                 </td>
 			</tr>
           </tbody>
