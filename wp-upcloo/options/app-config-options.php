@@ -9,6 +9,7 @@ if (array_key_exists("settings-updated", $_GET)) {
 <?php screen_icon("options-general")?>
 <h2><?php _e("UpCloo General Options", "wp_upcloo");?></h2>
     <h3 id="upcloo-app-config"><?php _e("Welcome To UpCloo", "wp_upcloo");?></h3>
+    <h4><?php _e("UpCloo takes tipically 10 minutes to show first correlations. It improves results during next hours and continues to analyze and working for you in a completely automated way.", "wp_upcloo")?></h4>
     <form method="post" action="options.php#upcloo-app-config">
         <?php wp_nonce_field('update-options'); ?>
         <table class="form-table">
