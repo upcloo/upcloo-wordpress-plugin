@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-29 18:28+0100\n"
-"PO-Revision-Date: 2012-10-29 18:28+0100\n"
+"POT-Creation-Date: 2012-10-31 17:41+0100\n"
+"PO-Revision-Date: 2012-10-31 17:42+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -17,35 +17,43 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: wp-upcloo.php:91
+#: wp-upcloo.php:134
+msgid "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Try again</a>"
+msgstr "Un errore HTTP inaspettato è stato rilevato durante la richiesta alle API.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Prova Ancora</a>"
+
+#: wp-upcloo.php:139
+msgid "An unknown error occurred"
+msgstr "C'è stato un errore sconosciuto"
+
+#: wp-upcloo.php:166
 msgid "Remember that your have to configure UpCloo Plugin: "
 msgstr "Ricordati che devi configurare il plugin di UpCloo"
 
-#: wp-upcloo.php:91
+#: wp-upcloo.php:166
 msgid "Config Page"
 msgstr "Pagina di Configurazione"
 
-#: wp-upcloo.php:91
+#: wp-upcloo.php:166
 msgid "Advanced Config Page"
 msgstr "Pagina di Configurazione Avanzata"
 
-#: wp-upcloo.php:98
+#: wp-upcloo.php:173
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:105
+#: wp-upcloo.php:180
 msgid "UpCloo"
 msgstr "UpCloo"
 
-#: wp-upcloo.php:106
+#: wp-upcloo.php:181
 msgid "Advanced Configurations"
 msgstr "Configurazione Avanzata"
 
-#: wp-upcloo.php:147
+#: wp-upcloo.php:222
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
-#: wp-upcloo.php:207
+#: wp-upcloo.php:283
 msgid "Maybe you are also interested in"
 msgstr "Forse potrebbero interessarti"
 
@@ -110,63 +118,67 @@ msgstr "UpCloo Opzioni Generali"
 msgid "Welcome To UpCloo"
 msgstr "Benvenuto in UpCloo"
 
-#: options/app-config-options.php:21
+#: options/app-config-options.php:12
+msgid "UpCloo takes tipically 10 minutes to show first correlations. It improves results during next hours and continues to analyze and working for you in a completely automated way."
+msgstr "UpCloo impiega tipicamente 10 minuti per mostrare le prime correlazioni. Il miglioramento dei risultati continue nelle successive ore e il sistema analizzerà e lavorerà per te in modo completamente automatizzato."
+
+#: options/app-config-options.php:22
 #: options/app-advanced-config-options.php:20
 msgid "Plugin Doc"
 msgstr "Documentazione Plugin"
 
-#: options/app-config-options.php:23
-#: options/app-config-options.php:90
+#: options/app-config-options.php:24
+#: options/app-config-options.php:91
 #: options/app-advanced-config-options.php:22
-#: options/app-advanced-config-options.php:60
+#: options/app-advanced-config-options.php:71
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
-#: options/app-config-options.php:28
+#: options/app-config-options.php:29
 msgid "Your sitekey"
 msgstr "La tua Sitekey"
 
-#: options/app-config-options.php:28
+#: options/app-config-options.php:29
 msgid "signup for free"
 msgstr "signup for free"
 
-#: options/app-config-options.php:35
+#: options/app-config-options.php:36
 msgid "Max Number of Links"
 msgstr "Massimo numero di link"
 
-#: options/app-config-options.php:46
+#: options/app-config-options.php:47
 msgid "Box title (let blank to hide title)"
 msgstr "Titolo del Box (lascia in bianco per nascondere)"
 
-#: options/app-config-options.php:52
+#: options/app-config-options.php:53
 msgid "Do you want to show images?"
 msgstr "Vuoi visualizzare le immagini?"
 
-#: options/app-config-options.php:55
+#: options/app-config-options.php:56
 msgid "Show only links"
 msgstr "Visualizza solo i link"
 
-#: options/app-config-options.php:56
+#: options/app-config-options.php:57
 msgid "Show links + images"
 msgstr "Visualizza link + immagini"
 
-#: options/app-config-options.php:61
+#: options/app-config-options.php:62
 msgid "Select your type"
 msgstr "Seleziona il tuo tipo"
 
-#: options/app-config-options.php:71
+#: options/app-config-options.php:72
 msgid "Choose the theme"
 msgstr "Scegli un tema"
 
-#: options/app-config-options.php:75
+#: options/app-config-options.php:76
 msgid "Elegant floating box with tiny shadow"
 msgstr "Box elegante con una leggera sfumatura"
 
-#: options/app-config-options.php:76
+#: options/app-config-options.php:77
 msgid "Simple and clear floating box"
 msgstr "Box semplice e chiaro"
 
-#: options/app-config-options.php:77
+#: options/app-config-options.php:78
 msgid "Horizontal and high impressive strip"
 msgstr "Strip orizzontale impressivo "
 
@@ -197,6 +209,10 @@ msgstr "In alto a destra"
 #: options/app-advanced-config-options.php:52
 msgid "Top Left"
 msgstr "In alto a sinistra"
+
+#: options/app-advanced-config-options.php:59
+msgid "Personal CSS"
+msgstr "CSS Personalizzato"
 
 #~ msgid "Indexed"
 #~ msgstr "Indicizzato"
