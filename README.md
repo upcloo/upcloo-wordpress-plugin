@@ -47,4 +47,6 @@ Thanks to:
  * @miziomon ([Mavida s.n.c.](http://www.mavida.com/))
   * WP messages and notifications improvement.
    * Contribution on release: 1.1.19
+  * WP Plugin Update Central
+   * Contribution on release: 1.2.9
 
