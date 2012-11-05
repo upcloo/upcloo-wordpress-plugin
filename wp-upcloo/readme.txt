@@ -6,7 +6,8 @@ Requires at least: 3.0
 Tested up to: 3.3
 Stable tag: 1.2.9
 
-UpCloo is a cloud based and fully hosted service that helps you to create incredible and automatic correlations between contents of your website.
+UpCloo is a cloud based and fully hosted service that helps you to create 
+incredible and automatic correlations between contents of your website.
 
 
 == Description ==
@@ -15,7 +16,8 @@ This plugin provide a full access to your UpCloo profile.
 
 == Installation ==
 
-You must have an active UpCloo profile before use this plugin. For create one you can go to http://www.upcloo.com and follow the instructions.
+You must have an active UpCloo profile before use this plugin. For create one 
+you can go to http://www.upcloo.com and follow the instructions.
 
 After that you can install this plugin:
 
@@ -37,6 +39,3 @@ You can always use the GitHub UpCloo pages:
  
 Through this section you can send problems, issues, requests and any else you want.
 
-= CURL Support =
-
-This plugin needs the CURL support, please check that your PHP installation have this feature enabled
