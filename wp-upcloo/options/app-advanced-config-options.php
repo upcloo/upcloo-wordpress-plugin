@@ -66,7 +66,7 @@ if (array_key_exists("settings-updated", $_GET)) {
                 </td>
             </tr>
             <tr valign="top">
-                <th width="92" scope="row"><?php echo __("Missing image URL", "wp_upcloo");?></th>
+                <th width="92" scope="row"><?php echo __("Missing image URL (eg. http://www.yourdomain.tld/path-to.img.png)", "wp_upcloo");?></th>
                 <td width="406">
                     <input name="<?php echo UPCLOO_DEFAULT_IMAGE;?>" type="text" value="<?php echo get_option(UPCLOO_DEFAULT_IMAGE); ?>" style='width:90%' />
                 </td>

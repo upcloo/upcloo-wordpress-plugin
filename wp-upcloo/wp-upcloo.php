@@ -249,9 +249,12 @@ function upcloo_install() {
     add_option(UPCLOO_CSS_INLINE, "", "", "yes");
     add_option(UPCLOO_POPIN, "350", "", "yes");
     add_option(UPCLOO_POPOUT, "100", "", "yes");
-    add_option(UPCLOO_DEFAULT_IMAGE, plugins_url(__FILE__ . '/assets/no-image.gif'), "", "yes");
+    add_option(UPCLOO_DEFAULT_IMAGE, upcloo_get_default_image(), "", "yes");
 }
 
+function upcloo_get_default_image() {
+    return plugins_url(__FILE__ . '/assets/no-image.gif');
+}
 /**
  * Get content on public side
  *
@@ -294,9 +297,9 @@ function upcloo_content($content, $noPostBody = false)
         $view->image = get_option(UPCLOO_IMAGE);
         $view->type = get_option(UPCLOO_TYPE);
         $view->position = get_option(UPCLOO_POPOVER_POSITION);
-        $view->defaultImage = get_option(UPCLOO_DEFAULT_IMAGE);
-        $view->popIn = get_option(UPCLOO_POPIN);
-        $view->popOut = get_option(UPCLOO_POPOUT);
+        $view->defaultImage = ((get_option(UPCLOO_DEFAULT_IMAGE) == "") ? upcloo_get_default_image() : get_option(UPCLOO_DEFAULT_IMAGE));
+        $view->popIn = ((intval(get_option(UPCLOO_POPIN))) > 0 ? get_option(UPCLOO_POPIN) : 500);
+        $view->popOut = ((intval(get_option(UPCLOO_POPOUT))) > 0 ? get_option(UPCLOO_POPOUT) : 500);
 
         $content .= $view->render("upcloo-js-sdk.phtml");
     }
