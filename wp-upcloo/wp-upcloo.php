@@ -253,7 +253,7 @@ function upcloo_install() {
 }
 
 function upcloo_get_default_image() {
-    return plugins_url(__FILE__ . '/assets/no-image.gif');
+    return plugins_url() . "/wp-upcloo/assets/no-image.gif";
 }
 /**
  * Get content on public side
@@ -297,7 +297,7 @@ function upcloo_content($content, $noPostBody = false)
         $view->image = get_option(UPCLOO_IMAGE);
         $view->type = get_option(UPCLOO_TYPE);
         $view->position = get_option(UPCLOO_POPOVER_POSITION);
-        $view->defaultImage = ((get_option(UPCLOO_DEFAULT_IMAGE) == "") ? upcloo_get_default_image() : get_option(UPCLOO_DEFAULT_IMAGE));
+        $view->defaultImage = ((trim(get_option(UPCLOO_DEFAULT_IMAGE)) == "") ? upcloo_get_default_image() : get_option(UPCLOO_DEFAULT_IMAGE));
         $view->popIn = ((intval(get_option(UPCLOO_POPIN))) > 0 ? get_option(UPCLOO_POPIN) : 500);
         $view->popOut = ((intval(get_option(UPCLOO_POPOUT))) > 0 ? get_option(UPCLOO_POPOUT) : 500);
 
