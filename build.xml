@@ -27,6 +27,7 @@
 			<include name="UpCloo/**"/>
 			<include name="views/**"/>
 			<include name="options/**"/>
+			<include name="assets/**"/>
             <exclude name="vendor"/>
             <exclude name="**/*.swp"/>
             <exclude name="**/*.swo"/>
