@@ -53,6 +53,24 @@ if (array_key_exists("settings-updated", $_GET)) {
                     </select>
                 </td>
             </tr>
+            <tr valign="top">
+                <th width="92" scope="row"><?php echo __("Pop out distance", "wp_upcloo");?></th>
+                <td width="406">
+                    <input name="<?php echo UPCLOO_POPOUT?>" type="text" value="<?php echo get_option(UPCLOO_POPOUT, "500"); ?>" style='width:50%;'/>
+                </td>
+            </tr>
+            <tr valign="top">
+                <th width="92" scope="row"><?php echo __("Pop in distance", "wp_upcloo");?></th>
+                <td width="406">
+                    <input name="<?php echo UPCLOO_POPIN;?>" type="text" value="<?php echo get_option(UPCLOO_POPIN, "100"); ?>" style='width:50%;'/>
+                </td>
+            </tr>
+            <tr valign="top">
+                <th width="92" scope="row"><?php echo __("Missing image URL", "wp_upcloo");?></th>
+                <td width="406">
+                    <input name="<?php echo UPCLOO_DEFAULT_IMAGE;?>" type="text" value="<?php echo get_option(UPCLOO_DEFAULT_IMAGE); ?>" />
+                </td>
+            </tr>
 
             <tr valign="top">
                 <th width="92" scope="row">
@@ -71,7 +89,7 @@ if (array_key_exists("settings-updated", $_GET)) {
                 	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" onclick="javascript:confirmThat()" />
 
                 	<input type="hidden" name="action" value="update" />
-            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_POSTS_TYPE, UPCLOO_POPOVER_POSITION, UPCLOO_CSS_INLINE))?>" />
+            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_POSTS_TYPE, UPCLOO_POPOVER_POSITION, UPCLOO_CSS_INLINE, UPCLOO_POPIN, UPCLOO_POPOUT, UPCLOO_DEFAULT_IMAGE))?>" />
                 </td>
 			</tr>
           </tbody>

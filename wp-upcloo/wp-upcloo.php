@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted service that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.2.9
+Version: 1.2.10
 Author: UpCloo Ltd.
 Author URI: http://www.corley.it/
 License: MIT
@@ -47,6 +47,9 @@ define('UPCLOO_IMAGE', "upcloo_image");
 define('UPCLOO_TYPE', "upcloo_type");
 define('UPCLOO_POPOVER_POSITION', 'upcloo_popover_position');
 define('UPCLOO_CSS_INLINE', 'upcloo_css_inline');
+define('UPCLOO_POPIN', 'upcloo_popin');
+define('UPCLOO_POPOUT', 'upcloo_popout');
+define('UPCLOO_DEFAULT_IMAGE', 'upcloo_default_image');
 
 define('UPCLOO_MENU_SLUG', 'upcloo_options_menu');
 define('UPCLOO_MENU_ADVANCED_SLUG', 'upcloo_menu_advanced');
@@ -244,6 +247,9 @@ function upcloo_install() {
     add_option(UPCLOO_TYPE, 'popover','', 'yes');
     add_option(UPCLOO_POPOVER_POSITION, 'br','', 'yes');
     add_option(UPCLOO_CSS_INLINE, "", "", "yes");
+    add_option(UPCLOO_POPIN, "350", "", "yes");
+    add_option(UPCLOO_POPOUT, "100", "", "yes");
+    add_option(UPCLOO_DEFAULT_IMAGE, plugins_url(__FILE__ . '/assets/no-image.gif'), "", "yes");
 }
 
 /**
@@ -288,6 +294,9 @@ function upcloo_content($content, $noPostBody = false)
         $view->image = get_option(UPCLOO_IMAGE);
         $view->type = get_option(UPCLOO_TYPE);
         $view->position = get_option(UPCLOO_POPOVER_POSITION);
+        $view->defaultImage = get_option(UPCLOO_DEFAULT_IMAGE);
+        $view->popIn = get_option(UPCLOO_POPIN);
+        $view->popOut = get_option(UPCLOO_POPOUT);
 
         $content .= $view->render("upcloo-js-sdk.phtml");
     }
