@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-31 18:23+0100\n"
-"PO-Revision-Date: 2012-10-31 18:23+0100\n"
+"POT-Creation-Date: 2012-11-08 12:42+0100\n"
+"PO-Revision-Date: 2012-11-08 12:42+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -17,43 +17,43 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: wp-upcloo.php:134
+#: wp-upcloo.php:137
 msgid "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Try again</a>"
 msgstr "Un errore HTTP inaspettato è stato rilevato durante la richiesta alle API.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Prova Ancora</a>"
 
-#: wp-upcloo.php:139
+#: wp-upcloo.php:142
 msgid "An unknown error occurred"
 msgstr "C'è stato un errore sconosciuto"
 
-#: wp-upcloo.php:166
+#: wp-upcloo.php:169
 msgid "Remember that your have to configure UpCloo Plugin: "
 msgstr "Ricordati che devi configurare il plugin di UpCloo"
 
-#: wp-upcloo.php:166
+#: wp-upcloo.php:169
 msgid "Config Page"
 msgstr "Pagina di Configurazione"
 
-#: wp-upcloo.php:166
+#: wp-upcloo.php:169
 msgid "Advanced Config Page"
 msgstr "Pagina di Configurazione Avanzata"
 
-#: wp-upcloo.php:173
+#: wp-upcloo.php:176
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:180
+#: wp-upcloo.php:183
 msgid "UpCloo"
 msgstr "UpCloo"
 
-#: wp-upcloo.php:181
+#: wp-upcloo.php:184
 msgid "Advanced Configurations"
 msgstr "Configurazione Avanzata"
 
-#: wp-upcloo.php:222
+#: wp-upcloo.php:225
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
-#: wp-upcloo.php:283
+#: wp-upcloo.php:289
 msgid "Maybe you are also interested in"
 msgstr "Forse potrebbero interessarti"
 
@@ -130,7 +130,7 @@ msgstr "Documentazione Plugin"
 #: options/app-config-options.php:24
 #: options/app-config-options.php:91
 #: options/app-advanced-config-options.php:22
-#: options/app-advanced-config-options.php:71
+#: options/app-advanced-config-options.php:89
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -210,7 +210,19 @@ msgstr "In alto a destra"
 msgid "Top Left"
 msgstr "In alto a sinistra"
 
-#: options/app-advanced-config-options.php:59
+#: options/app-advanced-config-options.php:57
+msgid "Fade out (pixel from border)"
+msgstr "Scomparsa (pixel dal bordo)"
+
+#: options/app-advanced-config-options.php:63
+msgid "Fade in (pixel from border)"
+msgstr "Comparsa (pixel dal bordo)"
+
+#: options/app-advanced-config-options.php:69
+msgid "Missing image URL"
+msgstr "URL immagine mancante"
+
+#: options/app-advanced-config-options.php:77
 msgid "Personal CSS"
 msgstr "CSS Personalizzato"
 

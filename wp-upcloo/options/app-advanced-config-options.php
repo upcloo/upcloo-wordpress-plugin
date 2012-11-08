@@ -54,13 +54,13 @@ if (array_key_exists("settings-updated", $_GET)) {
                 </td>
             </tr>
             <tr valign="top">
-                <th width="92" scope="row"><?php echo __("Pop out distance", "wp_upcloo");?></th>
+                <th width="92" scope="row"><?php echo __("Fade out (pixel from border)", "wp_upcloo");?></th>
                 <td width="406">
                     <input name="<?php echo UPCLOO_POPOUT?>" type="text" value="<?php echo get_option(UPCLOO_POPOUT, "500"); ?>" style='width:50%;'/>
                 </td>
             </tr>
             <tr valign="top">
-                <th width="92" scope="row"><?php echo __("Pop in distance", "wp_upcloo");?></th>
+                <th width="92" scope="row"><?php echo __("Fade in (pixel from border)", "wp_upcloo");?></th>
                 <td width="406">
                     <input name="<?php echo UPCLOO_POPIN;?>" type="text" value="<?php echo get_option(UPCLOO_POPIN, "100"); ?>" style='width:50%;'/>
                 </td>
@@ -68,7 +68,7 @@ if (array_key_exists("settings-updated", $_GET)) {
             <tr valign="top">
                 <th width="92" scope="row"><?php echo __("Missing image URL", "wp_upcloo");?></th>
                 <td width="406">
-                    <input name="<?php echo UPCLOO_DEFAULT_IMAGE;?>" type="text" value="<?php echo get_option(UPCLOO_DEFAULT_IMAGE); ?>" />
+                    <input name="<?php echo UPCLOO_DEFAULT_IMAGE;?>" type="text" value="<?php echo get_option(UPCLOO_DEFAULT_IMAGE); ?>" style='width:90%' />
                 </td>
             </tr>
 
