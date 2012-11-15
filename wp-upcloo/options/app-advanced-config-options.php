@@ -46,10 +46,10 @@ if (array_key_exists("settings-updated", $_GET)) {
                 <th width="92" scope="row"><?php echo __("Position of the PopOver", "wp_upcloo");?></th>
                 <td width="406">
                     <select name="<?php echo UPCLOO_POPOVER_POSITION;?>">
-                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'br') ? "selected='selected'" : "")?> value="br"><?php _e("Bottom Right");?></option>
-                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'bl') ? "selected='selected'" : "")?> value="bl"><?php _e("Bottom Left");?></option>
-                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'tr') ? "selected='selected'" : "")?> value="tr"><?php _e("Top Right");?></option>
-                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'tl') ? "selected='selected'" : "")?> value="tl"><?php _e("Top Left");?></option>
+                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'br') ? "selected='selected'" : "")?> value="br"><?php _e("Bottom Right", "wp_upcloo");?></option>
+                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'bl') ? "selected='selected'" : "")?> value="bl"><?php _e("Bottom Left", "wp_upcloo");?></option>
+                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'tr') ? "selected='selected'" : "")?> value="tr"><?php _e("Top Right", "wp_upcloo");?></option>
+                        <option <?php echo ((get_option(UPCLOO_POPOVER_POSITION) == 'tl') ? "selected='selected'" : "")?> value="tl"><?php _e("Top Left", "wp_upcloo");?></option>
                     </select>
                 </td>
             </tr>
@@ -82,6 +82,14 @@ if (array_key_exists("settings-updated", $_GET)) {
                     &lt;/style&gt;<br/>
                 </td>
             </tr>
+            <tr valign="top">
+                <th width="92" scope="row">
+                    <?php echo __("Track UpCloo using Google Analytics", "wp_upcloo")?>
+                </th>
+                <td width="406">
+                <input name="<?php echo UPCLOO_GAN_TRACKER; ?>" type="checkbox" <?php echo ((get_option(UPCLOO_GAN_TRACKER) ? "checked='checked'" : '')); ?> />
+                </td>
+            </tr>
 
 			<tr valign="top">
                 <th width="92" scope="row"></th>
@@ -89,7 +97,7 @@ if (array_key_exists("settings-updated", $_GET)) {
                 	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" onclick="javascript:confirmThat()" />
 
                 	<input type="hidden" name="action" value="update" />
-            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_POSTS_TYPE, UPCLOO_POPOVER_POSITION, UPCLOO_CSS_INLINE, UPCLOO_POPIN, UPCLOO_POPOUT, UPCLOO_DEFAULT_IMAGE))?>" />
+            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_POSTS_TYPE, UPCLOO_POPOVER_POSITION, UPCLOO_CSS_INLINE, UPCLOO_POPIN, UPCLOO_POPOUT, UPCLOO_DEFAULT_IMAGE, UPCLOO_GAN_TRACKER))?>" />
                 </td>
 			</tr>
           </tbody>
