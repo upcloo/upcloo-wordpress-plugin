@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-15 12:56+0100\n"
-"PO-Revision-Date: 2012-11-15 13:01+0100\n"
+"POT-Creation-Date: 2012-11-15 13:13+0100\n"
+"PO-Revision-Date: 2012-11-15 13:13+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -57,30 +57,6 @@ msgstr "Widget Rete di UpCloo."
 msgid "Maybe you are also interested in"
 msgstr "Forse potrebbero interessarti"
 
-#: search-result.php:9
-msgid "Did you mean"
-msgstr "Forse cercavi"
-
-#: search-result.php:9
-msgid "Search this occurrence"
-msgstr "Cerca questa occorrenza"
-
-#: search-result.php:13
-msgid "Your search did not match any entries."
-msgstr "La tua ricerca non ha prodotto risultati"
-
-#: search-result.php:21
-msgid "Written by"
-msgstr "Scritto da"
-
-#: search-result.php:24
-msgid "Read more"
-msgstr "Leggi ancora"
-
-#: search-result.php:32
-msgid "Pages"
-msgstr "Pagine"
-
 #: UpCloo/Widget/Partner.php:39
 msgid "UpCloo Network Widget"
 msgstr "Widget Rete di UpCloo"
@@ -130,7 +106,7 @@ msgstr "Documentazione Plugin"
 #: options/app-config-options.php:24
 #: options/app-config-options.php:91
 #: options/app-advanced-config-options.php:22
-#: options/app-advanced-config-options.php:97
+#: options/app-advanced-config-options.php:98
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -166,6 +142,10 @@ msgstr "Visualizza link + immagini"
 msgid "Select your type"
 msgstr "Seleziona il tuo tipo"
 
+#: options/app-config-options.php:67
+msgid "'Popover' is a box that appears in a corner of your website. 'Inline' is appended at the end of your content. "
+msgstr "'Popver' è un box a comparsa in un angolo del tuo sito. 'Inline' è appeso alla fine dei tuoi contenuti."
+
 #: options/app-config-options.php:72
 msgid "Choose the theme"
 msgstr "Scegli un tema"
@@ -190,45 +170,67 @@ msgstr "Opzioni UpCloo Avanzate"
 msgid "Type of content where show related links"
 msgstr "Tipo di contenuti dove visualizzare i correlati"
 
-#: options/app-advanced-config-options.php:46
+#: options/app-advanced-config-options.php:43
+msgid "Select type of content that UpCloo has to analyze (tipically just 'post' is a good choice)."
+msgstr "Seleziona il tipo di contenuti che UpCloo deve analizzare (tipicamente 'post' è una buona scelta)."
+
+#: options/app-advanced-config-options.php:47
 msgid "Position of the PopOver"
 msgstr "Posizionamento del PopOver"
 
-#: options/app-advanced-config-options.php:49
+#: options/app-advanced-config-options.php:50
 msgid "Bottom Right"
 msgstr "In basso a destra"
 
-#: options/app-advanced-config-options.php:50
+#: options/app-advanced-config-options.php:51
 msgid "Bottom Left"
 msgstr "In basso a sinistra"
 
-#: options/app-advanced-config-options.php:51
+#: options/app-advanced-config-options.php:52
 msgid "Top Right"
 msgstr "In alto a destra"
 
-#: options/app-advanced-config-options.php:52
+#: options/app-advanced-config-options.php:53
 msgid "Top Left"
 msgstr "In alto a sinistra"
 
-#: options/app-advanced-config-options.php:57
+#: options/app-advanced-config-options.php:58
 msgid "Fade in (pixel from border)"
 msgstr "Comparsa (pixel dal bordo)"
 
-#: options/app-advanced-config-options.php:63
+#: options/app-advanced-config-options.php:64
 msgid "Fade out (pixel from border)"
 msgstr "Scomparsa (pixel dal bordo)"
 
-#: options/app-advanced-config-options.php:69
+#: options/app-advanced-config-options.php:70
 msgid "Missing image URL (eg. http://www.yourdomain.tld/path-to.img.png)"
 msgstr "URL immagine mancante (es. http://www.iltuodominio.it/immagine-default.png)"
 
-#: options/app-advanced-config-options.php:77
+#: options/app-advanced-config-options.php:78
 msgid "Personal CSS"
 msgstr "CSS Personalizzato"
 
-#: options/app-advanced-config-options.php:87
+#: options/app-advanced-config-options.php:88
 msgid "Track UpCloo using Google Analytics"
 msgstr "Traccia UpCloo usando Google Analytics"
+
+#~ msgid "Did you mean"
+#~ msgstr "Forse cercavi"
+
+#~ msgid "Search this occurrence"
+#~ msgstr "Cerca questa occorrenza"
+
+#~ msgid "Your search did not match any entries."
+#~ msgstr "La tua ricerca non ha prodotto risultati"
+
+#~ msgid "Written by"
+#~ msgstr "Scritto da"
+
+#~ msgid "Read more"
+#~ msgstr "Leggi ancora"
+
+#~ msgid "Pages"
+#~ msgstr "Pagine"
 
 #~ msgid "Missing image URL"
 #~ msgstr "URL immagine mancante"

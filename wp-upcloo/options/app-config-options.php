@@ -59,14 +59,14 @@ if (array_key_exists("settings-updated", $_GET)) {
                     </td>
                 </tr>
 			<tr valign="top">
-                   <th width="92" scope="row"><?php echo _e("Select your type", "wp_upcloo");?></th>
-                    <td width="406">
-                    	 <select name="<?php echo UPCLOO_TYPE; ?>">
-                        <option <?php echo ((get_option(UPCLOO_TYPE) == "popOver") ? "selected='selected'" : '')?> value="popOver">Popover</option>
-                        <option <?php echo ((get_option(UPCLOO_TYPE) == "inline") ? "selected='selected'" : '')?> value="inline">Inline</option>
-                    </select>
-                    </td>
-                </tr>
+                <th width="92" scope="row"><?php echo _e("Select your type", "wp_upcloo");?></th>
+                <td width="406">
+                        <select name="<?php echo UPCLOO_TYPE; ?>">
+                    <option <?php echo ((get_option(UPCLOO_TYPE) == "popOver") ? "selected='selected'" : '')?> value="popOver">Popover</option>
+                    <option <?php echo ((get_option(UPCLOO_TYPE) == "inline") ? "selected='selected'" : '')?> value="inline">Inline</option>
+                </select><br /><span style="font-size:9px;"><?php _e("'Popover' is a box that appears in a corner of your website. 'Inline' is appended at the end of your content. ", "wp_upcloo");?></span>
+                </td>
+            </tr>
 
 			<tr valign="top">
                 <th width="92" scope="row"><?php _e("Choose the theme", "wp_upcloo");?></th>
