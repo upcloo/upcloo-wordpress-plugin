@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted service that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.2.11
+Version: 1.2.12
 Author: UpCloo Ltd.
 Author URI: http://www.upcloo.com/
 License: MIT
@@ -33,6 +33,7 @@ License: MIT
 load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)));
 
 require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
+require_once dirname(__FILE__) . '/UpCloo/Widget/Direct.php';
 
 require_once dirname(__FILE__) . '/SView.php';
 
@@ -61,6 +62,7 @@ define('UPCLOO_OPTION_CAPABILITY', 'manage_options');
 define('UPCLOO_GAN_TRACKER', 'upcloo_gan_tracker');
 
 add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");'));
+add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Direct");'));
 add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
 
 add_action('admin_notices', 'upcloo_show_needs_attention');
@@ -285,7 +287,7 @@ function upcloo_content($content, $noPostBody = false)
         $postTypes = array();
     }
 
-    if (is_single($post) && (in_array($post->post_type, $postTypes))) {
+    if (is_single($post) && (in_array($post->post_type, $postTypes)) && !is_active_widget(false,false,'upcloo_widget')) {
         $view = new SView();
         $view->setViewPath(UPCLOO_VIEW_PATH);
 
