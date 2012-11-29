@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-15 13:13+0100\n"
-"PO-Revision-Date: 2012-11-15 13:13+0100\n"
+"POT-Creation-Date: 2012-11-29 09:55+0100\n"
+"PO-Revision-Date: 2012-11-29 09:55+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -17,45 +17,51 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: wp-upcloo.php:139
+#: wp-upcloo.php:141
 msgid "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Try again</a>"
 msgstr "Un errore HTTP inaspettato è stato rilevato durante la richiesta alle API.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Prova Ancora</a>"
 
-#: wp-upcloo.php:144
+#: wp-upcloo.php:146
 msgid "An unknown error occurred"
 msgstr "C'è stato un errore sconosciuto"
 
-#: wp-upcloo.php:171
+#: wp-upcloo.php:173
 msgid "Remember that your have to configure UpCloo Plugin: "
 msgstr "Ricordati che devi configurare il plugin di UpCloo"
 
-#: wp-upcloo.php:171
+#: wp-upcloo.php:173
 msgid "Config Page"
 msgstr "Pagina di Configurazione"
 
-#: wp-upcloo.php:171
+#: wp-upcloo.php:173
 msgid "Advanced Config Page"
 msgstr "Pagina di Configurazione Avanzata"
 
-#: wp-upcloo.php:178
+#: wp-upcloo.php:180
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:185
+#: wp-upcloo.php:187
+#: UpCloo/Widget/Direct.php:39
 msgid "UpCloo"
 msgstr "UpCloo"
 
-#: wp-upcloo.php:186
+#: wp-upcloo.php:188
 msgid "Advanced Configurations"
 msgstr "Configurazione Avanzata"
 
-#: wp-upcloo.php:227
+#: wp-upcloo.php:229
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
-#: wp-upcloo.php:295
+#: wp-upcloo.php:297
+#: UpCloo/Widget/Direct.php:67
 msgid "Maybe you are also interested in"
 msgstr "Forse potrebbero interessarti"
+
+#: UpCloo/Widget/Direct.php:41
+msgid "Use UpCloo as a widget instead at the end of the body"
+msgstr "Usare UpCloo come un widget invece che appeso alla fine del corpo di un articolo"
 
 #: UpCloo/Widget/Partner.php:39
 msgid "UpCloo Network Widget"
@@ -106,7 +112,7 @@ msgstr "Documentazione Plugin"
 #: options/app-config-options.php:24
 #: options/app-config-options.php:91
 #: options/app-advanced-config-options.php:22
-#: options/app-advanced-config-options.php:98
+#: options/app-advanced-config-options.php:99
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -170,47 +176,47 @@ msgstr "Opzioni UpCloo Avanzate"
 msgid "Type of content where show related links"
 msgstr "Tipo di contenuti dove visualizzare i correlati"
 
-#: options/app-advanced-config-options.php:43
+#: options/app-advanced-config-options.php:27
 msgid "Select type of content that UpCloo has to analyze (tipically just 'post' is a good choice)."
 msgstr "Seleziona il tipo di contenuti che UpCloo deve analizzare (tipicamente 'post' è una buona scelta)."
 
-#: options/app-advanced-config-options.php:47
+#: options/app-advanced-config-options.php:48
 msgid "Position of the PopOver"
 msgstr "Posizionamento del PopOver"
 
-#: options/app-advanced-config-options.php:50
+#: options/app-advanced-config-options.php:51
 msgid "Bottom Right"
 msgstr "In basso a destra"
 
-#: options/app-advanced-config-options.php:51
+#: options/app-advanced-config-options.php:52
 msgid "Bottom Left"
 msgstr "In basso a sinistra"
 
-#: options/app-advanced-config-options.php:52
+#: options/app-advanced-config-options.php:53
 msgid "Top Right"
 msgstr "In alto a destra"
 
-#: options/app-advanced-config-options.php:53
+#: options/app-advanced-config-options.php:54
 msgid "Top Left"
 msgstr "In alto a sinistra"
 
-#: options/app-advanced-config-options.php:58
+#: options/app-advanced-config-options.php:59
 msgid "Fade in (pixel from border)"
 msgstr "Comparsa (pixel dal bordo)"
 
-#: options/app-advanced-config-options.php:64
+#: options/app-advanced-config-options.php:65
 msgid "Fade out (pixel from border)"
 msgstr "Scomparsa (pixel dal bordo)"
 
-#: options/app-advanced-config-options.php:70
+#: options/app-advanced-config-options.php:71
 msgid "Missing image URL (eg. http://www.yourdomain.tld/path-to.img.png)"
 msgstr "URL immagine mancante (es. http://www.iltuodominio.it/immagine-default.png)"
 
-#: options/app-advanced-config-options.php:78
+#: options/app-advanced-config-options.php:79
 msgid "Personal CSS"
 msgstr "CSS Personalizzato"
 
-#: options/app-advanced-config-options.php:88
+#: options/app-advanced-config-options.php:89
 msgid "Track UpCloo using Google Analytics"
 msgstr "Traccia UpCloo usando Google Analytics"
 
