@@ -92,6 +92,15 @@ if (array_key_exists("settings-updated", $_GET)) {
                 <input name="<?php echo UPCLOO_GAN_TRACKER; ?>" type="checkbox" <?php echo ((get_option(UPCLOO_GAN_TRACKER) ? "checked='checked'" : '')); ?> />
                 </td>
             </tr>
+            <tr valign="top">
+                <th width="92" scope="row">
+                    <?php echo __("UpCloo inline manual placeholder", "wp_upcloo")?>
+                </th>
+                <td width="406">
+                <input name="<?php echo UPCLOO_MANUAL_PLACEHOLDER; ?>" type="checkbox" <?php echo ((get_option(UPCLOO_MANUAL_PLACEHOLDER) ? "checked='checked'" : '')); ?> />
+                </td>
+            </tr>
+
 
 			<tr valign="top">
                 <th width="92" scope="row"></th>
@@ -99,7 +108,7 @@ if (array_key_exists("settings-updated", $_GET)) {
                 	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" onclick="javascript:confirmThat()" />
 
                 	<input type="hidden" name="action" value="update" />
-            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_POSTS_TYPE, UPCLOO_POPOVER_POSITION, UPCLOO_CSS_INLINE, UPCLOO_POPIN, UPCLOO_POPOUT, UPCLOO_DEFAULT_IMAGE, UPCLOO_GAN_TRACKER))?>" />
+            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_POSTS_TYPE, UPCLOO_POPOVER_POSITION, UPCLOO_CSS_INLINE, UPCLOO_POPIN, UPCLOO_POPOUT, UPCLOO_DEFAULT_IMAGE, UPCLOO_GAN_TRACKER, UPCLOO_MANUAL_PLACEHOLDER))?>" />
                 </td>
 			</tr>
           </tbody>

@@ -60,6 +60,7 @@ define('UPCLOO_VIEW_PATH', dirname(__FILE__) . '/views');
 define('UPCLOO_OPTION_CAPABILITY', 'manage_options');
 
 define('UPCLOO_GAN_TRACKER', 'upcloo_gan_tracker');
+define('UPCLOO_MANUAL_PLACEHOLDER', 'upcloo_manual_placeholder');
 
 add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");'));
 add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Direct");'));
@@ -255,6 +256,7 @@ function upcloo_install() {
     add_option(UPCLOO_POPOUT, "100", "", "yes");
     add_option(UPCLOO_DEFAULT_IMAGE, upcloo_get_default_image(), "", "yes");
     add_option(UPCLOO_GAN_TRACKER, true, "", "yes");
+    add_option(UPCLOO_MANUAL_PLACEHOLDER, false, "", "yes");
 }
 
 function upcloo_get_default_image() {

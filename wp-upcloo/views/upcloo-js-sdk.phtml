@@ -1,5 +1,11 @@
+<?php
+    if (get_option(UPCLOO_MANUAL_PLACEHOLDER) != true) :
+?>
 <div class='upcloo-suggest-widget'></div>
-<script>
+<?php
+    endif;
+?>
+<script type="text/javascript">
 (function(g,d,id){
   upCloo = g.upCloo || []; 
   upCloo.push(
