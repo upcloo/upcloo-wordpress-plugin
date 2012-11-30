@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-30 01:15+0100\n"
-"PO-Revision-Date: 2012-11-30 01:16+0100\n"
+"POT-Creation-Date: 2012-11-30 16:23+0100\n"
+"PO-Revision-Date: 2012-11-30 16:23+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -112,7 +112,7 @@ msgstr "Documentazione Plugin"
 #: options/app-config-options.php:24
 #: options/app-config-options.php:91
 #: options/app-advanced-config-options.php:22
-#: options/app-advanced-config-options.php:108
+#: options/app-advanced-config-options.php:109
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -223,6 +223,10 @@ msgstr "Traccia UpCloo usando Google Analytics"
 #: options/app-advanced-config-options.php:97
 msgid "UpCloo inline manual placeholder"
 msgstr "Attiva il placeholder di UpCloo manuale"
+
+#: options/app-advanced-config-options.php:98
+msgid "Remember that you have to add by hand the UpCloo placeholder into your template"
+msgstr "Ricordati che devi aggiungere manualmente il placehoder di UpCloo nel tuo template"
 
 #~ msgid "Did you mean"
 #~ msgstr "Forse cercavi"

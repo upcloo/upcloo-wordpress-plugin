@@ -33,7 +33,6 @@ License: MIT
 load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)));
 
 require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
-require_once dirname(__FILE__) . '/UpCloo/Widget/Direct.php';
 
 require_once dirname(__FILE__) . '/SView.php';
 

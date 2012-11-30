@@ -94,7 +94,8 @@ if (array_key_exists("settings-updated", $_GET)) {
             </tr>
             <tr valign="top">
                 <th width="92" scope="row">
-                    <?php echo __("UpCloo inline manual placeholder", "wp_upcloo")?>
+                    <?php echo __("UpCloo inline manual placeholder", "wp_upcloo")?><br />
+                    <span style="font-size: 10px"><?php _e("Remember that you have to add by hand the UpCloo placeholder into your template", "wp_upcloo"): <?php echo htmlentities("<div class='upcloo-suggest-widget'></div>");?></span>
                 </th>
                 <td width="406">
                 <input name="<?php echo UPCLOO_MANUAL_PLACEHOLDER; ?>" type="checkbox" <?php echo ((get_option(UPCLOO_MANUAL_PLACEHOLDER) ? "checked='checked'" : '')); ?> />
