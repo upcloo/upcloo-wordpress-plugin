@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-29 09:55+0100\n"
-"PO-Revision-Date: 2012-11-29 09:55+0100\n"
+"POT-Creation-Date: 2012-11-30 01:15+0100\n"
+"PO-Revision-Date: 2012-11-30 01:16+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -17,51 +17,51 @@ msgstr ""
 "X-Poedit-SourceCharset: utf-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: wp-upcloo.php:141
-msgid "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Try again</a>"
-msgstr "Un errore HTTP inaspettato è stato rilevato durante la richiesta alle API.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Prova Ancora</a>"
-
-#: wp-upcloo.php:146
-msgid "An unknown error occurred"
-msgstr "C'è stato un errore sconosciuto"
-
-#: wp-upcloo.php:173
-msgid "Remember that your have to configure UpCloo Plugin: "
-msgstr "Ricordati che devi configurare il plugin di UpCloo"
-
-#: wp-upcloo.php:173
-msgid "Config Page"
-msgstr "Pagina di Configurazione"
-
-#: wp-upcloo.php:173
-msgid "Advanced Config Page"
-msgstr "Pagina di Configurazione Avanzata"
-
-#: wp-upcloo.php:180
-msgid "You do not have sufficient permissions to access this page."
-msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
-
-#: wp-upcloo.php:187
-#: UpCloo/Widget/Direct.php:39
+#: wp-upcloo.php:66
+#: wp-upcloo.php:188
 msgid "UpCloo"
 msgstr "UpCloo"
 
-#: wp-upcloo.php:188
+#: wp-upcloo.php:66
+msgid "Use UpCloo as a widget instead at the end of the body"
+msgstr "Usare UpCloo come un widget invece che appeso alla fine del corpo di un articolo"
+
+#: wp-upcloo.php:142
+msgid "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Try again</a>"
+msgstr "Un errore HTTP inaspettato è stato rilevato durante la richiesta alle API.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Prova Ancora</a>"
+
+#: wp-upcloo.php:147
+msgid "An unknown error occurred"
+msgstr "C'è stato un errore sconosciuto"
+
+#: wp-upcloo.php:174
+msgid "Remember that your have to configure UpCloo Plugin: "
+msgstr "Ricordati che devi configurare il plugin di UpCloo"
+
+#: wp-upcloo.php:174
+msgid "Config Page"
+msgstr "Pagina di Configurazione"
+
+#: wp-upcloo.php:174
+msgid "Advanced Config Page"
+msgstr "Pagina di Configurazione Avanzata"
+
+#: wp-upcloo.php:181
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
+
+#: wp-upcloo.php:189
 msgid "Advanced Configurations"
 msgstr "Configurazione Avanzata"
 
-#: wp-upcloo.php:229
+#: wp-upcloo.php:230
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
-#: wp-upcloo.php:297
-#: UpCloo/Widget/Direct.php:67
+#: wp-upcloo.php:299
+#: wp-upcloo.php:340
 msgid "Maybe you are also interested in"
 msgstr "Forse potrebbero interessarti"
-
-#: UpCloo/Widget/Direct.php:41
-msgid "Use UpCloo as a widget instead at the end of the body"
-msgstr "Usare UpCloo come un widget invece che appeso alla fine del corpo di un articolo"
 
 #: UpCloo/Widget/Partner.php:39
 msgid "UpCloo Network Widget"
@@ -112,7 +112,7 @@ msgstr "Documentazione Plugin"
 #: options/app-config-options.php:24
 #: options/app-config-options.php:91
 #: options/app-advanced-config-options.php:22
-#: options/app-advanced-config-options.php:99
+#: options/app-advanced-config-options.php:108
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -219,6 +219,10 @@ msgstr "CSS Personalizzato"
 #: options/app-advanced-config-options.php:89
 msgid "Track UpCloo using Google Analytics"
 msgstr "Traccia UpCloo usando Google Analytics"
+
+#: options/app-advanced-config-options.php:97
+msgid "UpCloo inline manual placeholder"
+msgstr "Attiva il placeholder di UpCloo manuale"
 
 #~ msgid "Did you mean"
 #~ msgstr "Forse cercavi"
