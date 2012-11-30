@@ -63,7 +63,7 @@ define('UPCLOO_GAN_TRACKER', 'upcloo_gan_tracker');
 define('UPCLOO_MANUAL_PLACEHOLDER', 'upcloo_manual_placeholder');
 
 add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");'));
-wp_register_sidebar_widget("upcloo_widget", __("UpCloo", "wp_upcloo"), "upcloo_direct_widget");
+wp_register_sidebar_widget("upcloo_widget", __("UpCloo", "wp_upcloo"), "upcloo_direct_widget", array('description' => __('Use UpCloo as a widget instead at the end of the body', 'wp_upcloo')));
 add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
 
 add_action('admin_notices', 'upcloo_show_needs_attention');
