@@ -63,7 +63,7 @@ define('UPCLOO_GAN_TRACKER', 'upcloo_gan_tracker');
 define('UPCLOO_MANUAL_PLACEHOLDER', 'upcloo_manual_placeholder');
 
 add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Partner");'));
-add_action('widgets_init', create_function( '', 'register_widget("UpCloo_Widget_Direct");'));
+wp_register_sidebar_widget("upcloo_widget", __("UpCloo", "wp_upcloo"), "upcloo_direct_widget");
 add_action('wp_dashboard_setup', 'upcloo_add_dashboard_widgets' );
 
 add_action('admin_notices', 'upcloo_show_needs_attention');
@@ -316,3 +316,40 @@ function upcloo_content($content, $noPostBody = false)
     return $content;
 }
 
+function upcloo_direct_widget()
+{
+    global $post;
+
+    $postTypes = get_option(UPCLOO_POSTS_TYPE);
+    if (!is_array($postTypes)) {
+        $postTypes = array();
+    }
+
+    if (is_single($post) && (in_array($post->post_type, $postTypes))) {
+        $sitekey = get_option("upcloo_sitekey");
+
+        $title = $instance["upcloo_v_title"];
+        $permalink = get_permalink($post->ID);
+
+        $view = new SView();
+        $view->setViewPath(UPCLOO_VIEW_PATH);
+
+        $view->permalink = get_permalink($post->ID);
+        $view->sitekey = get_option(UPCLOO_SITEKEY);
+        $view->headline = (!(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) || trim(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) == '')
+            ? __("Maybe you are also interested in", "wp_upcloo")
+            :  get_option(UPCLOO_REWRITE_PUBLIC_LABEL);
+
+        $view->limit = get_option(UPCLOO_MAX_SHOW_LINKS, "3");
+        $view->theme = get_option(UPCLOO_THEME);
+        $view->image = get_option(UPCLOO_IMAGE);
+        $view->type = get_option(UPCLOO_TYPE);
+        $view->position = get_option(UPCLOO_POPOVER_POSITION);
+        $view->defaultImage = ((trim(get_option(UPCLOO_DEFAULT_IMAGE)) == "") ? upcloo_get_default_image() : get_option(UPCLOO_DEFAULT_IMAGE));
+        $view->popIn = ((intval(get_option(UPCLOO_POPIN))) > 0 ? get_option(UPCLOO_POPIN) : 500);
+        $view->popOut = ((intval(get_option(UPCLOO_POPOUT))) > 0 ? get_option(UPCLOO_POPOUT) : 500);
+        $view->ga = ((get_option(UPCLOO_GAN_TRACKER) == true) ? "true" : "false");
+
+        echo $view->render("upcloo-js-sdk.phtml");
+    }
+}
