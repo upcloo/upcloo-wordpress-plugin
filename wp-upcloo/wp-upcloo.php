@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted service that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.2.12
+Version: 1.2.13
 Author: UpCloo Ltd.
 Author URI: http://www.upcloo.com/
 License: MIT
@@ -40,7 +40,7 @@ require_once dirname(__FILE__) . '/SView.php';
 define("UPCLOO_SITEKEY", "upcloo_sitekey");
 define('UPCLOO_REWRITE_PUBLIC_LABEL', 'upcloo_rewrite_public_label');
 define('UPCLOO_MAX_SHOW_LINKS', "upcloo_max_show_links");
-define("UPCLOO_RSS_FEED", "http://www.mxdesign.it/contenuti/rss/0/news.xml");
+define("UPCLOO_RSS_FEED", "http://www.upcloo.com/contenuti/rss/0/news.xml");
 define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
 define('UPCLOO_THEME', "upcloo_theme");
 define('UPCLOO_IMAGE', "upcloo_image");
