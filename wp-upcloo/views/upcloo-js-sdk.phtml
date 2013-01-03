@@ -5,33 +5,20 @@
 <?php
     endif;
 ?>
-<script type="text/javascript">
+<script type="text/javascript" id="<?php echo get_option(UPCLOO_CONFIG_ID, "upcloo_1000")?>">
 (function(g,d,id){
   upCloo = g.upCloo || []; 
   upCloo.push(
     {
-        "pageId" : "<?php echo $this->permalink; ?>",
+        "permalink" : "<?php echo $this->permalink; ?>",
         "siteKey" : "<?php echo $this->sitekey; ?>",
         <?php echo (($this->vsitekey) ? "\"vsitekey\":\"{$this->vsitekey}\"," : ""); ?>
-        "opts": {
-            "sendBeacon":true,
-            "headline":"<?php echo $this->headline; ?>",
-            "limit":<?php echo $this->limit; ?>,
-            "theme":"<?php echo $this->theme; ?>",
-            "type":"<?php echo $this->type; ?>",
-            "showImage": <?php echo $this->image; ?>,
-            "pos": "<?php echo $this->position; ?>",
-            "popIn": <?php echo $this->popIn;?>,
-            "popOut": <?php echo $this->popOut;?>,
-            "defaultImage": "<?php echo $this->defaultImage; ?>",
-            "ga": <?php echo $this->ga; ?>
-        }
     }
   );
   var s = d.createElement('script') , n = d.getElementsByTagName('script')[0]; 
   s.type = 'text/javascript';
   s.async = true;s.id = id;
-  s.src = '//r.upcloo.com/a/u.js';
+  s.src = '//r.upcloo.com/a/a.js';
   !d.getElementById(id) ? n.parentNode.insertBefore(s,n) :false;
 })(this,document,'upcloo_js_sdk')
 </script>

@@ -2,9 +2,9 @@
 Contributors: wdalmut, gmittica
 Donate link: http://www.upcloo.com/
 Tags: correlate, correlation, upcloo, related, links, adv
-Requires at least: 3.0
-Tested up to: 3.3
-Stable tag: 1.2.13
+Requires at least: 2.8
+Tested up to: 3.5
+Stable tag: 1.3.0
 
 UpCloo is a cloud based and fully hosted service that helps you to create 
 incredible and automatic correlations between contents of your website.

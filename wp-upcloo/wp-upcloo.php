@@ -3,7 +3,7 @@
 Plugin Name: UpCloo WP Plugin
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted service that helps you  to create incredible and automatic correlations between contents of your website.
-Version: 1.2.13
+Version: 1.3.0
 Author: UpCloo Ltd.
 Author URI: http://www.upcloo.com/
 License: MIT
@@ -36,20 +36,16 @@ require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
 
 require_once dirname(__FILE__) . '/SView.php';
 
+/* Runs when plugin is activated */
+register_activation_hook(WP_PLUGIN_DIR . '/wp-upcloo/wp-upcloo.php', 'upcloo_install');
+
 //Only secure protocol on post/page publishing (now is beta test... no https)
 define("UPCLOO_SITEKEY", "upcloo_sitekey");
-define('UPCLOO_REWRITE_PUBLIC_LABEL', 'upcloo_rewrite_public_label');
-define('UPCLOO_MAX_SHOW_LINKS', "upcloo_max_show_links");
+define("UPCLOO_CONFIG_ID", "upcloo_config_id");
+
 define("UPCLOO_RSS_FEED", "http://www.upcloo.com/contenuti/rss/0/news.xml");
 define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
-define('UPCLOO_THEME', "upcloo_theme");
-define('UPCLOO_IMAGE', "upcloo_image");
-define('UPCLOO_TYPE', "upcloo_type");
-define('UPCLOO_POPOVER_POSITION', 'upcloo_popover_position');
 define('UPCLOO_CSS_INLINE', 'upcloo_css_inline');
-define('UPCLOO_POPIN', 'upcloo_popin');
-define('UPCLOO_POPOUT', 'upcloo_popout');
-define('UPCLOO_DEFAULT_IMAGE', 'upcloo_default_image');
 
 define('UPCLOO_MENU_SLUG', 'upcloo_options_menu');
 define('UPCLOO_MENU_ADVANCED_SLUG', 'upcloo_menu_advanced');
@@ -72,8 +68,6 @@ add_filter('admin_footer_text', "upcloo_admin_footer");
 
 add_action( 'admin_menu', 'upcloo_plugin_menu' );
 
-/* Runs when plugin is activated */
-register_activation_hook(__FILE__, 'upcloo_install');
 
 $api_url = 'http://www.upcloo.com/wp/index.php';
 $plugin_slug = basename(dirname(__FILE__));
@@ -243,18 +237,9 @@ function upcloo_admin_footer($text)
 function upcloo_install() {
     /* Creates new database field */
     add_option(UPCLOO_SITEKEY, "", "", "yes");
-    add_option(UPCLOO_MAX_SHOW_LINKS, "3", "", "yes");
+    add_option(UPCLOO_CONFIG_ID, "upcloo_1000", "", "yes");
     add_option(UPCLOO_POSTS_TYPE, array("post"), '', 'yes');
-    add_option(UPCLOO_REWRITE_PUBLIC_LABEL, "Maybe you're also interested in:",'', 'yes');
-    add_option(UPCLOO_THEME, 'light','', 'yes');
-    add_option(UPCLOO_IMAGE, '0','', 'yes');
-    add_option(UPCLOO_TYPE, 'popover','', 'yes');
-    add_option(UPCLOO_POPOVER_POSITION, 'br','', 'yes');
     add_option(UPCLOO_CSS_INLINE, "", "", "yes");
-    add_option(UPCLOO_POPIN, "350", "", "yes");
-    add_option(UPCLOO_POPOUT, "100", "", "yes");
-    add_option(UPCLOO_DEFAULT_IMAGE, upcloo_get_default_image(), "", "yes");
-    add_option(UPCLOO_GAN_TRACKER, true, "", "yes");
     add_option(UPCLOO_MANUAL_PLACEHOLDER, false, "", "yes");
 }
 
@@ -294,19 +279,6 @@ function upcloo_content($content, $noPostBody = false)
 
         $view->permalink = get_permalink($post->ID);
         $view->sitekey = get_option(UPCLOO_SITEKEY);
-        $view->headline = (!(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) || trim(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) == '')
-            ? __("Maybe you are also interested in", "wp_upcloo")
-            :  get_option(UPCLOO_REWRITE_PUBLIC_LABEL);
-
-        $view->limit = get_option(UPCLOO_MAX_SHOW_LINKS, "3");
-        $view->theme = get_option(UPCLOO_THEME);
-        $view->image = get_option(UPCLOO_IMAGE);
-        $view->type = get_option(UPCLOO_TYPE);
-        $view->position = get_option(UPCLOO_POPOVER_POSITION);
-        $view->defaultImage = ((trim(get_option(UPCLOO_DEFAULT_IMAGE)) == "") ? upcloo_get_default_image() : get_option(UPCLOO_DEFAULT_IMAGE));
-        $view->popIn = ((intval(get_option(UPCLOO_POPIN))) > 0 ? get_option(UPCLOO_POPIN) : 500);
-        $view->popOut = ((intval(get_option(UPCLOO_POPOUT))) > 0 ? get_option(UPCLOO_POPOUT) : 500);
-        $view->ga = ((get_option(UPCLOO_GAN_TRACKER) == true) ? "true" : "false");
 
         $content .= $view->render("upcloo-js-sdk.phtml");
     }
@@ -335,19 +307,6 @@ function upcloo_direct_widget()
 
         $view->permalink = get_permalink($post->ID);
         $view->sitekey = get_option(UPCLOO_SITEKEY);
-        $view->headline = (!(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) || trim(get_option(UPCLOO_REWRITE_PUBLIC_LABEL)) == '')
-            ? __("Maybe you are also interested in", "wp_upcloo")
-            :  get_option(UPCLOO_REWRITE_PUBLIC_LABEL);
-
-        $view->limit = get_option(UPCLOO_MAX_SHOW_LINKS, "3");
-        $view->theme = get_option(UPCLOO_THEME);
-        $view->image = get_option(UPCLOO_IMAGE);
-        $view->type = get_option(UPCLOO_TYPE);
-        $view->position = get_option(UPCLOO_POPOVER_POSITION);
-        $view->defaultImage = ((trim(get_option(UPCLOO_DEFAULT_IMAGE)) == "") ? upcloo_get_default_image() : get_option(UPCLOO_DEFAULT_IMAGE));
-        $view->popIn = ((intval(get_option(UPCLOO_POPIN))) > 0 ? get_option(UPCLOO_POPIN) : 500);
-        $view->popOut = ((intval(get_option(UPCLOO_POPOUT))) > 0 ? get_option(UPCLOO_POPOUT) : 500);
-        $view->ga = ((get_option(UPCLOO_GAN_TRACKER) == true) ? "true" : "false");
 
         echo $view->render("upcloo-js-sdk.phtml");
     }
