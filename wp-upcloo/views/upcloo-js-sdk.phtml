@@ -1,11 +1,11 @@
 <?php
     if (get_option(UPCLOO_MANUAL_PLACEHOLDER) != true) :
 ?>
-<div class='upcloo-suggest-widget'></div>
+<div class='upcloo-widget' id="<?php echo get_option(UPCLOO_CONFIG_ID, "upcloo_1000")?>"></div>
 <?php
     endif;
 ?>
-<script type="text/javascript" id="<?php echo get_option(UPCLOO_CONFIG_ID, "upcloo_1000")?>">
+<script type="text/javascript">
 (function(g,d,id){
   upCloo = g.upCloo || []; 
   upCloo.push(
