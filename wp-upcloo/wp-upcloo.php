@@ -279,6 +279,7 @@ function upcloo_content($content, $noPostBody = false)
 
         $view->permalink = get_permalink($post->ID);
         $view->sitekey = get_option(UPCLOO_SITEKEY);
+        $view->configId = get_option(UPCLOO_CONFIG_ID, "upcloo_1000");
 
         $content .= $view->render("upcloo-js-sdk.phtml");
     }

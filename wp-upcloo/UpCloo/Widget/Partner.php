@@ -46,24 +46,19 @@ class UpCloo_Widget_Partner
     public function form($instance)
     {
         if ( $instance ) {
-        	$title = esc_attr($instance[ 'upcloo_v_title' ]);
             $vsitekey = esc_attr($instance[ 'upcloo_v_sitekey' ]);
-            $maxLinks = $instance['upcloo_v_max_links'];
+            $confId = $instance['upcloo_v_conf_id'];
         } else {
-        	$title = __('Related', 'wp_upcloo');
             $vsitekey = '';
-            $maxLinks = '';
+            $confId = '';
         }
         ?>
-
-        <label for="<?php echo $this->get_field_id('upcloo_v_title'); ?>"><?php _e('Title:', 'wp_upcloo'); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_title'); ?>" name="<?php echo $this->get_field_name('upcloo_v_title'); ?>" type="text" value="<?php echo $title; ?>" />
 
         <label for="<?php echo $this->get_field_id('upcloo_v_sitekey'); ?>"><?php _e('Virtual Partner:', 'wp_upcloo'); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_sitekey'); ?>" name="<?php echo $this->get_field_name('upcloo_v_sitekey'); ?>" type="text" value="<?php echo $vsitekey; ?>" />
 
-        <label for="<?php echo $this->get_field_id('upcloo_v_max_links'); ?>"><?php _e('Number of links:', 'wp_upcloo'); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_max_links'); ?>" name="<?php echo $this->get_field_name('upcloo_v_max_links'); ?>" type="text" value="<?php echo $maxLinks; ?>" />
+        <label for="<?php echo $this->get_field_id('upcloo_v_conf_id'); ?>"><?php _e('Option template id:', 'wp_upcloo'); ?></label>
+        <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_conf_id'); ?>" name="<?php echo $this->get_field_name('upcloo_v_conf_id'); ?>" type="text" value="<?php echo $confId; ?>" />
 
         <?php
     }
@@ -71,37 +66,35 @@ class UpCloo_Widget_Partner
     function update($new_instance, $old_instance)
     {
         $instance = $old_instance;
-        $instance['upcloo_v_title'] = strip_tags($new_instance['upcloo_v_title']);
         $instance['upcloo_v_sitekey'] = strip_tags($new_instance['upcloo_v_sitekey']);
-        $instance['upcloo_v_max_links'] = strip_tags($new_instance['upcloo_v_max_links']);
+        $instance['upcloo_v_conf_id'] = strip_tags($new_instance['upcloo_v_conf_id']);
         return $instance;
     }
 
     public function widget($args, $instance)
     {
+        global $post;
+
         $postTypes = get_option(UPCLOO_POSTS_TYPE);
         if (!is_array($postTypes)) {
             $postTypes = array();
         }
 
         if (is_single($post) && (in_array($post->post_type, $postTypes))) {
-            global $post;
             $sitekey = get_option("upcloo_sitekey");
 
             $virtualSiteKey = $instance["upcloo_v_sitekey"];
-            $title = $instance["upcloo_v_title"];
             $permalink = get_permalink($post->ID);
 
-            echo $before_widget;
-
             $view = new SView();
+            $view->setViewPath(UPCLOO_VIEW_PATH);
+
             $view->sitekey = $sitekey;
             $view->permalink = $permalink;
             $view->vsitekey = $virtualSiteKey;
-            $view->headline = $title;
+            $view->configId = $instance["upcloo_v_conf_id"];
 
             echo $view->render("upcloo-js-sdk.phtml");
-            echo $after_widget;
         }
     }
 }
