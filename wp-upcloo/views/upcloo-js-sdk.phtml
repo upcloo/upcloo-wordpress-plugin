@@ -11,8 +11,8 @@
   upCloo.push(
     {
         "permalink" : "<?php echo $this->permalink; ?>",
-        "siteKey" : "<?php echo $this->sitekey; ?>",
-        <?php echo (($this->vsitekey) ? "\"vSiteKey\":\"{$this->vsitekey}\"" : ""); ?>
+        "siteKey" : "<?php echo $this->sitekey; ?>"
+        <?php echo (($this->vsitekey) ? ",\"vSiteKey\":\"{$this->vsitekey}\"" : ""); ?>
     }
   );
   var s = d.createElement('script') , n = d.getElementsByTagName('script')[0]; 

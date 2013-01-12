@@ -308,6 +308,7 @@ function upcloo_direct_widget()
 
         $view->permalink = get_permalink($post->ID);
         $view->sitekey = get_option(UPCLOO_SITEKEY);
+        $view->configId = get_option(UPCLOO_CONFIG_ID, "upcloo_1000");
 
         echo $view->render("upcloo-js-sdk.phtml");
     }
