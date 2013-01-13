@@ -42,7 +42,7 @@ you can copy the ```wp-upcloo``` folder directly into your ```wp-content/plugins
 In order to use SVN split plugin folder to another repository
 
 ```
-git subtree split --prefix=wp-upcloo --annotate='(READONLY) ' -b
+git subtree split --prefix=wp-upcloo --annotate='(READONLY) ' -b wp-upcloo
 git push https://github.com/upcloo/upcloo-wordpress-plugin-single.git wp-upcloo:master
 ```
 
