@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-30 16:23+0100\n"
-"PO-Revision-Date: 2012-11-30 16:23+0100\n"
+"POT-Creation-Date: 2013-01-13 15:04+0100\n"
+"PO-Revision-Date: 2013-01-13 15:04+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -15,612 +15,203 @@ msgstr ""
 "X-Poedit-Language: Italian\n"
 "X-Poedit-Country: ITALY\n"
 "X-Poedit-SourceCharset: utf-8\n"
-"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-0: ..\n"
 
-#: wp-upcloo.php:66
-#: wp-upcloo.php:188
+#: ../wp-upcloo.php:60
+#: ../wp-upcloo.php:180
 msgid "UpCloo"
 msgstr "UpCloo"
 
-#: wp-upcloo.php:66
+#: ../wp-upcloo.php:60
 msgid "Use UpCloo as a widget instead at the end of the body"
 msgstr "Usare UpCloo come un widget invece che appeso alla fine del corpo di un articolo"
 
-#: wp-upcloo.php:142
+#: ../wp-upcloo.php:134
 msgid "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Try again</a>"
 msgstr "Un errore HTTP inaspettato è stato rilevato durante la richiesta alle API.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Prova Ancora</a>"
 
-#: wp-upcloo.php:147
+#: ../wp-upcloo.php:139
 msgid "An unknown error occurred"
 msgstr "C'è stato un errore sconosciuto"
 
-#: wp-upcloo.php:174
+#: ../wp-upcloo.php:166
 msgid "Remember that your have to configure UpCloo Plugin: "
 msgstr "Ricordati che devi configurare il plugin di UpCloo"
 
-#: wp-upcloo.php:174
+#: ../wp-upcloo.php:166
 msgid "Config Page"
 msgstr "Pagina di Configurazione"
 
-#: wp-upcloo.php:174
+#: ../wp-upcloo.php:166
 msgid "Advanced Config Page"
 msgstr "Pagina di Configurazione Avanzata"
 
-#: wp-upcloo.php:181
+#: ../wp-upcloo.php:173
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: wp-upcloo.php:189
+#: ../wp-upcloo.php:181
 msgid "Advanced Configurations"
 msgstr "Configurazione Avanzata"
 
-#: wp-upcloo.php:230
+#: ../wp-upcloo.php:222
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
-#: wp-upcloo.php:299
-#: wp-upcloo.php:340
-msgid "Maybe you are also interested in"
-msgstr "Forse potrebbero interessarti"
-
-#: UpCloo/Widget/Partner.php:39
-msgid "UpCloo Network Widget"
-msgstr "Widget Rete di UpCloo"
-
-#: UpCloo/Widget/Partner.php:41
-msgid "The UpCloo Virtual Partner SiteKey Widget"
-msgstr "Widget UpCloo per le Chiavi Sito Partner Virtuali"
-
-#: UpCloo/Widget/Partner.php:53
-msgid "Related"
-msgstr "Correlati"
-
-#: UpCloo/Widget/Partner.php:59
-msgid "Title:"
-msgstr "Titolo:"
-
-#: UpCloo/Widget/Partner.php:62
-msgid "Virtual Partner:"
-msgstr "Partner Virtuale:"
-
-#: UpCloo/Widget/Partner.php:65
-msgid "Number of links:"
-msgstr "Massimo numero di link."
-
-#: options/app-config-options.php:3
-#: options/app-advanced-config-options.php:3
+#: ../options/app-config-options.php:3
+#: ../options/app-advanced-config-options.php:3
 msgid "Your configuration is saved correctly!"
 msgstr "La tua configurazione è salvata correttamente!"
 
-#: options/app-config-options.php:10
+#: ../options/app-config-options.php:10
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
-#: options/app-config-options.php:11
+#: ../options/app-config-options.php:11
 msgid "Welcome To UpCloo"
 msgstr "Benvenuto in UpCloo"
 
-#: options/app-config-options.php:12
+#: ../options/app-config-options.php:12
 msgid "UpCloo takes tipically 10 minutes to show first correlations. It improves results during next hours and continues to analyze and working for you in a completely automated way."
 msgstr "UpCloo impiega tipicamente 10 minuti per mostrare le prime correlazioni. Il miglioramento dei risultati continua nelle successive ore e il sistema analizzerà e lavorerà per te in modo completamente automatizzato."
 
-#: options/app-config-options.php:22
-#: options/app-advanced-config-options.php:20
+#: ../options/app-config-options.php:20
+#: ../options/app-advanced-config-options.php:20
 msgid "Plugin Doc"
 msgstr "Documentazione Plugin"
 
-#: options/app-config-options.php:24
-#: options/app-config-options.php:91
-#: options/app-advanced-config-options.php:22
-#: options/app-advanced-config-options.php:109
+#: ../options/app-config-options.php:22
+#: ../options/app-config-options.php:42
+#: ../options/app-advanced-config-options.php:22
+#: ../options/app-advanced-config-options.php:61
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
-#: options/app-config-options.php:29
+#: ../options/app-config-options.php:27
 msgid "Your sitekey"
 msgstr "La tua Sitekey"
 
-#: options/app-config-options.php:29
+#: ../options/app-config-options.php:27
 msgid "signup for free"
 msgstr "signup for free"
 
-#: options/app-config-options.php:36
-msgid "Max Number of Links"
-msgstr "Massimo numero di link"
+#: ../options/app-config-options.php:33
+msgid "Your option ID"
+msgstr "ID opzioni"
 
-#: options/app-config-options.php:47
-msgid "Box title (let blank to hide title)"
-msgstr "Titolo del Box (lascia in bianco per nascondere)"
-
-#: options/app-config-options.php:53
-msgid "Do you want to show images?"
-msgstr "Vuoi visualizzare le immagini?"
-
-#: options/app-config-options.php:56
-msgid "Show only links"
-msgstr "Visualizza solo i link"
-
-#: options/app-config-options.php:57
-msgid "Show links + images"
-msgstr "Visualizza link + immagini"
-
-#: options/app-config-options.php:62
-msgid "Select your type"
-msgstr "Seleziona il tuo tipo"
-
-#: options/app-config-options.php:67
-msgid "'Popover' is a box that appears in a corner of your website. 'Inline' is appended at the end of your content. "
-msgstr "'Popver' è un box a comparsa in un angolo del tuo sito. 'Inline' è appeso alla fine dei tuoi contenuti."
-
-#: options/app-config-options.php:72
-msgid "Choose the theme"
-msgstr "Scegli un tema"
-
-#: options/app-config-options.php:76
-msgid "Elegant floating box with tiny shadow"
-msgstr "Box elegante con una leggera sfumatura"
-
-#: options/app-config-options.php:77
-msgid "Simple and clear floating box"
-msgstr "Box semplice e chiaro"
-
-#: options/app-config-options.php:78
-msgid "Horizontal and high impressive strip"
-msgstr "Strip orizzontale impressivo "
-
-#: options/app-advanced-config-options.php:10
+#: ../options/app-advanced-config-options.php:10
 msgid "UpCloo Advanced Options"
 msgstr "Opzioni UpCloo Avanzate"
 
-#: options/app-advanced-config-options.php:27
+#: ../options/app-advanced-config-options.php:27
 msgid "Type of content where show related links"
 msgstr "Tipo di contenuti dove visualizzare i correlati"
 
-#: options/app-advanced-config-options.php:27
+#: ../options/app-advanced-config-options.php:27
 msgid "Select type of content that UpCloo has to analyze (tipically just 'post' is a good choice)."
 msgstr "Seleziona il tipo di contenuti che UpCloo deve analizzare (tipicamente 'post' è una buona scelta)."
 
-#: options/app-advanced-config-options.php:48
-msgid "Position of the PopOver"
-msgstr "Posizionamento del PopOver"
-
-#: options/app-advanced-config-options.php:51
-msgid "Bottom Right"
-msgstr "In basso a destra"
-
-#: options/app-advanced-config-options.php:52
-msgid "Bottom Left"
-msgstr "In basso a sinistra"
-
-#: options/app-advanced-config-options.php:53
-msgid "Top Right"
-msgstr "In alto a destra"
-
-#: options/app-advanced-config-options.php:54
-msgid "Top Left"
-msgstr "In alto a sinistra"
-
-#: options/app-advanced-config-options.php:59
-msgid "Fade in (pixel from border)"
-msgstr "Comparsa (pixel dal bordo)"
-
-#: options/app-advanced-config-options.php:65
-msgid "Fade out (pixel from border)"
-msgstr "Scomparsa (pixel dal bordo)"
-
-#: options/app-advanced-config-options.php:71
-msgid "Missing image URL (eg. http://www.yourdomain.tld/path-to.img.png)"
-msgstr "URL immagine mancante (es. http://www.iltuodominio.it/immagine-default.png)"
-
-#: options/app-advanced-config-options.php:79
-msgid "Personal CSS"
-msgstr "CSS Personalizzato"
-
-#: options/app-advanced-config-options.php:89
-msgid "Track UpCloo using Google Analytics"
-msgstr "Traccia UpCloo usando Google Analytics"
-
-#: options/app-advanced-config-options.php:97
+#: ../options/app-advanced-config-options.php:49
 msgid "UpCloo inline manual placeholder"
 msgstr "Attiva il placeholder di UpCloo manuale"
 
-#: options/app-advanced-config-options.php:98
+#: ../options/app-advanced-config-options.php:50
 msgid "Remember that you have to add by hand the UpCloo placeholder into your template"
 msgstr "Ricordati che devi aggiungere manualmente il placehoder di UpCloo nel tuo template"
 
-#~ msgid "Did you mean"
-#~ msgstr "Forse cercavi"
+#: ../UpCloo/Widget/Partner.php:39
+msgid "UpCloo Network Widget"
+msgstr "Widget Rete di UpCloo"
 
-#~ msgid "Search this occurrence"
-#~ msgstr "Cerca questa occorrenza"
+#: ../UpCloo/Widget/Partner.php:41
+msgid "The UpCloo Virtual Partner SiteKey Widget"
+msgstr "Widget UpCloo per le Chiavi Sito Partner Virtuali"
 
-#~ msgid "Your search did not match any entries."
-#~ msgstr "La tua ricerca non ha prodotto risultati"
+#: ../UpCloo/Widget/Partner.php:57
+msgid "Virtual Partner:"
+msgstr "Partner Virtuale:"
 
-#~ msgid "Written by"
-#~ msgstr "Scritto da"
+#: ../UpCloo/Widget/Partner.php:60
+msgid "Option template id:"
+msgstr "ID template opzioni"
 
-#~ msgid "Read more"
-#~ msgstr "Leggi ancora"
+#~ msgid "Maybe you are also interested in"
+#~ msgstr "Forse potrebbero interessarti"
 
-#~ msgid "Pages"
-#~ msgstr "Pagine"
+#~ msgid "Related"
+#~ msgstr "Correlati"
 
-#~ msgid "Missing image URL"
-#~ msgstr "URL immagine mancante"
+#~ msgid "Title:"
+#~ msgstr "Titolo:"
 
-#~ msgid "Indexed"
-#~ msgstr "Indicizzato"
+#~ msgid "Number of links:"
+#~ msgstr "Massimo numero di link."
 
-#~ msgid "Not Indexed"
-#~ msgstr "Non indicizzato"
+#~ msgid "Max Number of Links"
+#~ msgstr "Massimo numero di link"
 
-#~ msgid "ReIndex NOW"
-#~ msgstr "Reindicizza subito"
+#~ msgid "Box title (let blank to hide title)"
+#~ msgstr "Titolo del Box (lascia in bianco per nascondere)"
 
-#~ msgid "Index NOW"
-#~ msgstr "Indicizza Subito"
+#~ msgid "Do you want to show images?"
+#~ msgstr "Vuoi visualizzare le immagini?"
 
-#~ msgid "Content Types Selection"
-#~ msgstr "Selezione dei Tipi di Contenuto"
+#~ msgid "Show only links"
+#~ msgstr "Visualizza solo i link"
 
-#~ msgid "Enter your Site Key"
-#~ msgstr "Inserisci la tua Chiave Sito"
+#~ msgid "Show links + images"
+#~ msgstr "Visualizza link + immagini"
 
-#~ msgid "(Your signup info)"
-#~ msgstr "(La tua registrazione)"
-
-#~ msgid "Let blank for all"
-#~ msgstr "Lascia in bianco per tutti"
-
-#~ msgid "Rewrite public UpCloo label"
-#~ msgstr "Riscrivi l'etichetta pubblica di UpCloo"
-
-#~ msgid "Let blank for use default label (May be you are also interested in)"
-#~ msgstr ""
-#~ "Lascia in bianco per usare l'etichetta di default (Forse potrebbero "
-#~ "interessarti)"
-
-#~ msgid "Post Type Indexing"
-#~ msgstr "Tipo di post da indicizzare"
-
-#~ msgid "Indexing Feature"
-#~ msgstr "Indicizzazione"
-
-#~ msgid "Remote Importer"
-#~ msgstr "Importazione remota"
+#~ msgid "Select your type"
+#~ msgstr "Seleziona il tuo tipo"
 
 #~ msgid ""
-#~ "UpCloo is a new service created for web site with a lot of contents (from "
-#~ "10 to millions)."
+#~ "'Popover' is a box that appears in a corner of your website. 'Inline' is "
+#~ "appended at the end of your content. "
 #~ msgstr ""
-#~ "UpCloo è un nuovo servizio creato per siti web con milioni di contenuti "
-#~ "(da 10 a milioni)"
+#~ "'Popver' è un box a comparsa in un angolo del tuo sito. 'Inline' è appeso "
+#~ "alla fine dei tuoi contenuti."
 
-#~ msgid ""
-#~ "If you manage contents on your web site (news, pages, reviews, products, "
-#~ "comments...) then you're likely to spend a lot of time (and money!) to "
-#~ "create correlations between different contents."
+#~ msgid "Choose the theme"
+#~ msgstr "Scegli un tema"
+
+#~ msgid "Elegant floating box with tiny shadow"
+#~ msgstr "Box elegante con una leggera sfumatura"
+
+#~ msgid "Simple and clear floating box"
+#~ msgstr "Box semplice e chiaro"
+
+#~ msgid "Horizontal and high impressive strip"
+#~ msgstr "Strip orizzontale impressivo "
+
+#~ msgid "Position of the PopOver"
+#~ msgstr "Posizionamento del PopOver"
+
+#~ msgid "Bottom Right"
+#~ msgstr "In basso a destra"
+
+#~ msgid "Bottom Left"
+#~ msgstr "In basso a sinistra"
+
+#~ msgid "Top Right"
+#~ msgstr "In alto a destra"
+
+#~ msgid "Top Left"
+#~ msgstr "In alto a sinistra"
+
+#~ msgid "Fade in (pixel from border)"
+#~ msgstr "Comparsa (pixel dal bordo)"
+
+#~ msgid "Fade out (pixel from border)"
+#~ msgstr "Scomparsa (pixel dal bordo)"
+
+#~ msgid "Missing image URL (eg. http://www.yourdomain.tld/path-to.img.png)"
 #~ msgstr ""
-#~ "Se gestisci contenuti sul tuo sito web (news, pagine, revisioni, "
-#~ "prodotti, commenti...) allora probabilmente spenderai un sacco di tempo "
-#~ "(e soldi!) per creare correlazioni tra i tuoi diversi contenuti."
+#~ "URL immagine mancante (es. http://www.iltuodominio.it/immagine-default."
+#~ "png)"
 
-#~ msgid ""
-#~ "UpCloo can index your pages and send, whenever a visitor goes on you web "
-#~ "site, the best correlations at the moment through a simple xml feed, so "
-#~ "you can show links and correlations inside or outside the text of your "
-#~ "page."
-#~ msgstr ""
-#~ "UpCloo può indicizzare le tue pagine ed richiedere, quando un visitatore "
-#~ "arriva sul tuo sito, le migliori correlazioni attualmente disponibili "
-#~ "tramite una semplice e flessibile interfaccia XML. Puoi visualizzare link "
-#~ "e correlazioni dentro e fuori dalla tua pagina."
+#~ msgid "Personal CSS"
+#~ msgstr "CSS Personalizzato"
 
-#~ msgid ""
-#~ "Don't worry anymore about \"more like this\" and \"maybe you're "
-#~ "interested at\": UpCloo manages all your correlations with a cloudy, "
-#~ "smart and brilliant semantic engine."
-#~ msgstr ""
-#~ "Non preoccuparti più di problemi come: \"altri come questi\" e \"Magari "
-#~ "ti interessa anche\": UpCloo gestisce tutte le tue correlazioni "
-#~ "direttamente nella nuvola. E' un efficace, veloce e brillante motore di "
-#~ "correlazione."
-
-#~ msgid "UpCloo Security"
-#~ msgstr "Sicurezza di UpCloo"
-
-#~ msgid ""
-#~ "All information that you send to UpCloo Cloud System are secured using "
-#~ "RSA 1024 bit."
-#~ msgstr ""
-#~ "Tutte le informazioni che sono inviate verso la nuvola di servizi UpCloo "
-#~ "è messa in sicurezza tramite RSA a 1024 bit (il programma Beta-Test può "
-#~ "subire variazioni)"
-
-#~ msgid "Login parmeters"
-#~ msgstr "Parametri di Accesso"
-
-#~ msgid "Handle posts type"
-#~ msgstr "Gestisci i tipi di post"
-
-#~ msgid "Select what kind of post you want to send to UpCloo"
-#~ msgstr "Scegli il tipo di post che vuoi inviare ad UpCloo"
-
-#~ msgid "Remote Import System"
-#~ msgstr "Sistema di importazione remota"
-
-#~ msgid ""
-#~ "Consider that you have to request remote indexing using UpCloo remote "
-#~ "control panel."
-#~ msgstr ""
-#~ "Considera che devi aver richiesto l'indicizzazione remota utilizzando il "
-#~ "pannello remoto di UpCloo"
-
-#~ msgid "See this link for more information about this procedure:"
-#~ msgstr "Guarda questo link per maggiori informazioni su questa procedura:"
-
-#~ msgid "Enable MetaTags for Remote UpCloo Importer"
-#~ msgstr "Abilita i MetaTags per l'importazione remota di UpCloo"
-
-#~ msgid "(Enable only for one-time remote import after that turn if off.)"
-#~ msgstr "(Abilita solo una volta per l'importazione remota e dopo spegnilo)."
-
-#~ msgid "Other features"
-#~ msgstr "Altre Funzionalità"
-
-#~ msgid "Disable Main UpCloo Results"
-#~ msgstr "Disabilita i risultati principali di UpCloo"
-
-#~ msgid ""
-#~ "If enabled no one can see UpCloo main correlation (widgets still works)"
-#~ msgstr ""
-#~ "Se abilitato nessuno può vedere le correlazioni di UpCloo principali (I "
-#~ "widgets continueranno a funzionare)"
-
-#~ msgid "If disabled only admins can see UpCloo correlation"
-#~ msgstr ""
-#~ "Se non abilitato solo gli amministratori possono vedere le correlazioni "
-#~ "di UpCloo"
-
-#~ msgid "Use Categories during Indexing"
-#~ msgstr "Use le categorie durante l'indicizzazione"
-
-#~ msgid "Use categories during index creation"
-#~ msgstr "Usa le categorie durante l'indicizzazione"
-
-#~ msgid "Use Tags during Indexing"
-#~ msgstr "Usa i Tag durante l'indicizzazione"
-
-#~ msgid "Use tags during index creation"
-#~ msgstr "Usa i Tag durante la creazione dell'indice"
-
-#~ msgid "Default Language"
-#~ msgstr "Lingua di default"
-
-#~ msgid "it (italian), en (english), etc..."
-#~ msgstr "it (italiano), en (inglese), etc..."
-
-#~ msgid "Image missing path"
-#~ msgstr "Path immagine mancante"
-
-#~ msgid ""
-#~ "Public path of no image [eg. /images/no-image.png] - used only for "
-#~ "advanced templating method"
-#~ msgstr ""
-#~ "Path pubblica dell'immagine mancante [es. /images/no-image.png] - usata "
-#~ "solo nel sistema di template avanzato"
-
-#~ msgid "Summary Length"
-#~ msgstr "Lunghezza sommario"
-
-#~ msgid ""
-#~ "Minimum length for summary. If you set blank this field UpCloo use 120 "
-#~ "characters by default."
-#~ msgstr ""
-#~ "Lunghezza minima del sommario. Se viene lasciato in biano questo campo, "
-#~ "UpCloo utilizzerà 120 caratteri di default"
-
-#~ msgid "Italian"
-#~ msgstr "Italiano"
-
-#~ msgid "English"
-#~ msgstr "Inglese"
-
-#~ msgid "Select the language of your article/page"
-#~ msgstr "Seleziona la lingua del tuo articolo/pagina"
-
-#~ msgid "Key Switch"
-#~ msgstr "Scambio Chiavi"
-
-#~ msgid "ROI Monitor"
-#~ msgstr "Monitor ROI"
-
-#~ msgid "Templating System"
-#~ msgstr "Sistema di Template"
-
-#~ msgid "Content correctly sent to UpCloo."
-#~ msgstr "Contenuto correttamente inviato ad UpCloo."
-
-#~ msgid "Unable to send this content to UpCloo."
-#~ msgstr "Non sono riuscito ad inviare questo contenuto ad UpCloo."
-
-#~ msgid "UpCloo Language Definer"
-#~ msgstr "Lingua (i18n) per UpCloo"
-
-#~ msgid "Enter your User Key"
-#~ msgstr "Inserisci la tua Chiave Utente"
-
-#~ msgid "(eg. your-business-name)"
-#~ msgstr "(es. il-nome-gruppo)"
-
-#~ msgid "(eg. your-site-name)"
-#~ msgstr "(es. il-mio-sito)"
-
-#~ msgid "Enter your Password"
-#~ msgstr "La tua password"
-
-#~ msgid "(eg. You account password [blank for security reasons])"
-#~ msgstr "(es. La tua password UpCloo [non visibile per sicurezza])"
-
-#~ msgid "Use virtual sitekey as main"
-#~ msgstr "Usa un virtual sitekey come primaria"
-
-#~ msgid "Switch keys"
-#~ msgstr "Scambia le chiavi"
-
-#~ msgid "Enable virtual sitekey as primary sitekey"
-#~ msgstr "Abilita una virtual sitekey come se fosse primaria"
-
-#~ msgid "Virtual Sitekey"
-#~ msgstr "Chiave Sito Virtuale"
-
-#~ msgid "ROI Monitor Parameters"
-#~ msgstr "Parametri per il Monitor ROI"
-
-#~ msgid ""
-#~ "Consider that you have Google Analytics Tracker script activated and "
-#~ "visibile on your pages or almost where UpCloo is engaged."
-#~ msgstr ""
-#~ "Considera che devi avere il Tracker Google Analytics attivo e visibile "
-#~ "sulle tue pagine o almeno dove viene attivato UpCloo."
-
-#~ msgid "Enable UTM Tagging"
-#~ msgstr "Abilita il Tagging UTM"
-
-#~ msgid "(Enable Google UTM Tag Feature)"
-#~ msgstr "(Abilita la funzionalità Google UTM Tag)"
-
-#~ msgid "Enter base UTM Campaign"
-#~ msgstr "Inserisci la campagna base UTM"
-
-#~ msgid "(eg. upcloo-check)"
-#~ msgstr "(es. upcloo-check)"
-
-#~ msgid "Enter base UTM Medium"
-#~ msgstr "Inserisci il media UTM"
-
-#~ msgid "(eg. mywebsite)"
-#~ msgstr "(es. ilmiosito)"
-
-#~ msgid "Enter base UTM Source"
-#~ msgstr "Sorgente UTM"
-
-#~ msgid "(eg. upcloo-base-links)"
-#~ msgstr "(es. upcloo-base-links)"
-
-#~ msgid "Template selector"
-#~ msgstr "Selezione template"
-
-#~ msgid ""
-#~ "Use the advanced method only if you know or have someone that know CSS "
-#~ "(Cascading StyleSheet)"
-#~ msgstr ""
-#~ "Utilizza il metodo avanzato solo se conosci o c'è qualcuno che conosce i "
-#~ "CSS (Fogli di stile in cascata)"
-
-#~ msgid "Select you preferrered method"
-#~ msgstr "Seleziona il tuo metodo preferito"
-
-#~ msgid "(Default)"
-#~ msgstr "(Default)"
-
-#~ msgid "(Advanced)"
-#~ msgstr "(Avanzato)"
-
-#~ msgid "Only if advanced is selected"
-#~ msgstr "Solo se è selezionato il metodo avanzato"
-
-#~ msgid "Show post title"
-#~ msgstr "Mostra il titolo del post"
-
-#~ msgid "Show post featured image"
-#~ msgstr "Mostra l'immagine del post"
-
-#~ msgid "Show post summary"
-#~ msgstr "Mostra il sommario del post"
-
-#~ msgid "Show post tags"
-#~ msgstr "Mostra i tag del post"
-
-#~ msgid "Show post categories"
-#~ msgstr "Mostra le categorie del post"
-
-#~ msgid "upcloo"
-#~ msgstr "upcloo"
-
-#~ msgid "Enable UTM Tagging:"
-#~ msgstr "Abilita il Tagging UTM"
-
-#~ msgid "UTM Campaign:"
-#~ msgstr "Campagna UTM (UTM Campaign)"
-
-#~ msgid "UTM Media:"
-#~ msgstr "Supporto UTM"
-
-#~ msgid "UTM Source:"
-#~ msgstr "Sorgente UTM"
-
-#~ msgid "UpCloo Search Widget"
-#~ msgstr "Widget di Ricerca UpCloo"
-
-#~ msgid "The UpCloo Search (in the cloud) Widget"
-#~ msgstr "Widget UpCloo Search (Cerca nella nuvola)"
-
-#~ msgid "Search in the Cloud"
-#~ msgstr "Cerca nella nuvola"
-
-#~ msgid "Search"
-#~ msgstr "Cerca"
-
-#~ msgid "Massive Sender"
-#~ msgstr "Invio collettivo"
-
-#~ msgid ""
-#~ "The massive sender function send all your contents to the UpCloo cloud "
-#~ "for initiate your index."
-#~ msgstr ""
-#~ "L'invio collettivo manderà tutti i tuoi contenuti  verso la nuvola di "
-#~ "UpCLoo per inizializzare l'indice."
-
-#~ msgid ""
-#~ "Consider that a massive send is expensive. Use this feature only if you "
-#~ "know exactly what that means."
-#~ msgstr ""
-#~ "Considere che l'operazioni di invio massivo è molto costosa. Utilizza "
-#~ "questa funzionalità solo se sai esattamente cosa questa comporta."
-
-#~ msgid ""
-#~ "If your confirm this operation you accept all UpCloo rules and UpCloo T.O."
-#~ "S.."
-#~ msgstr ""
-#~ "Se confermi questa operazione accetti tutte le regole di UpCloo e i "
-#~ "termini di servizio."
-
-#~ msgid "Send only missing contents"
-#~ msgstr "Invia solo i contenuti non ancora inviati"
-
-#~ msgid "Send now all my contents"
-#~ msgstr "Invia ora i miei contenuti"
-
-#~ msgid "This operation takes a while depending on your posts count..."
-#~ msgstr ""
-#~ "Questa operazione potrebbe durare un po di tempo, dipende dal numero di "
-#~ "contenuti..."
-
-#~ msgid "Confirm"
-#~ msgstr "Conferma"
-
-#~ msgid "Status of checkbox (only-missing) is read on confirm button click."
-#~ msgstr ""
-#~ "Lo stato della checkbox (solo-non-inviati) è letto sulla pressione del "
-#~ "tasto conferma"
-
-#~ msgid "Index Posts"
-#~ msgstr "Indicizza i Post"
-
-#~ msgid "Show related contents on pages"
-#~ msgstr "Mostra i correlati nelle Pagine"
-
-#~ msgid "0"
-#~ msgstr "0"
+#~ msgid "Track UpCloo using Google Analytics"
+#~ msgstr "Traccia UpCloo usando Google Analytics"
