@@ -34,7 +34,7 @@ load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)) . '/langua
 
 require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
 
-require_once dirname(__FILE__) . '/UpCloo/UpCloo_SView.php';
+require_once dirname(__FILE__) . '/UpCloo/SView.php';
 
 /* Runs when plugin is activated */
 register_activation_hook(WP_PLUGIN_DIR . '/wp-upcloo/wp-upcloo.php', 'upcloo_install');
@@ -178,7 +178,7 @@ function upcloo_check_menu_capability()
 //Start menu
 function upcloo_plugin_menu()
 {
-    add_menu_page('UpCloo', __('UpCloo', "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options', plugins_url()."/wp-upcloo/u.png");
+    add_menu_page('UpCloo', __('UpCloo', "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options', plugins_url()."/wp-upcloo/assets/u.png");
     add_submenu_page(UPCLOO_MENU_SLUG, "Advanced Configs", __("Advanced Configurations", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_ADVANCED_SLUG, UPCLOO_MENU_ADVANCED_SLUG);
 }
 
