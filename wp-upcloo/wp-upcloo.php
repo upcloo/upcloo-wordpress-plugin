@@ -45,7 +45,6 @@ define("UPCLOO_CONFIG_ID", "upcloo_config_id");
 
 define("UPCLOO_RSS_FEED", "http://www.upcloo.com/contenuti/rss/0/news.xml");
 define('UPCLOO_POSTS_TYPE', "upcloo_posts_type");
-define('UPCLOO_CSS_INLINE', 'upcloo_css_inline');
 
 define('UPCLOO_MENU_SLUG', 'upcloo_options_menu');
 define('UPCLOO_MENU_ADVANCED_SLUG', 'upcloo_menu_advanced');
