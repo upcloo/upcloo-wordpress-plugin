@@ -28,6 +28,7 @@
 			<include name="views/**"/>
 			<include name="options/**"/>
 			<include name="assets/**"/>
+			<include name="languages/**"/>
             <exclude name="vendor"/>
             <exclude name="**/*.swp"/>
             <exclude name="**/*.swo"/>
