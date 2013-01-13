@@ -22,7 +22,7 @@
  */
 
 
-class SView {
+class UpCloo_SView {
 
     private $_path;
 

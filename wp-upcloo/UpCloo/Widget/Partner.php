@@ -86,7 +86,7 @@ class UpCloo_Widget_Partner
             $virtualSiteKey = $instance["upcloo_v_sitekey"];
             $permalink = get_permalink($post->ID);
 
-            $view = new SView();
+            $view = new UpCloo_SView();
             $view->setViewPath(UPCLOO_VIEW_PATH);
 
             $view->sitekey = $sitekey;

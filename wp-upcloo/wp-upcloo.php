@@ -30,11 +30,11 @@ License: MIT
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)));
+load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)) . '/languages');
 
 require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
 
-require_once dirname(__FILE__) . '/SView.php';
+require_once dirname(__FILE__) . '/UpCloo/UpCloo_SView.php';
 
 /* Runs when plugin is activated */
 register_activation_hook(WP_PLUGIN_DIR . '/wp-upcloo/wp-upcloo.php', 'upcloo_install');
@@ -205,7 +205,7 @@ function upcloo_dashboard_widget_function()
         $blogInfo = get_bloginfo();
         $blogTitle = urlencode(strtolower($blogInfo));
 
-        $view = new SView();
+        $view = new UpCloo_SView();
         $view->setViewPath(UPCLOO_VIEW_PATH);
 
         $view->xml = $xml;
@@ -274,7 +274,7 @@ function upcloo_content($content, $noPostBody = false)
     }
 
     if (is_single($post) && (in_array($post->post_type, $postTypes)) && !is_active_widget(false,false,'upcloo_widget')) {
-        $view = new SView();
+        $view = new UpCloo_SView();
         $view->setViewPath(UPCLOO_VIEW_PATH);
 
         $view->permalink = get_permalink($post->ID);
@@ -303,7 +303,7 @@ function upcloo_direct_widget()
         $title = $instance["upcloo_v_title"];
         $permalink = get_permalink($post->ID);
 
-        $view = new SView();
+        $view = new UpCloo_SView();
         $view->setViewPath(UPCLOO_VIEW_PATH);
 
         $view->permalink = get_permalink($post->ID);

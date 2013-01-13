@@ -1,14 +1,14 @@
 === Wordpress UpCloo Plugin ===
 Contributors: wdalmut, gmittica
 Donate link: http://www.upcloo.com/
-Tags: correlate, correlation, upcloo, related, links, adv
+Tags: correlate, correlation, upcloo, related, links, adv, recommended, stories
 Requires at least: 2.8
 Tested up to: 3.5
 Stable tag: 1.3.0
+license: MIT
 
 UpCloo is a cloud based and fully hosted service that helps you to create 
 incredible and automatic correlations between contents of your website.
-
 
 == Description ==
 
@@ -29,7 +29,7 @@ After that you can install this plugin:
 
 = How you can get access to UpCloo =
 
-You have to contact us, please see the main website at: www.upcloo.com
+You just have to signup at www.upcloo.com
 
 = How we can send issues, requests and other problems =
 
@@ -37,5 +37,6 @@ You can always use the GitHub UpCloo pages:
  
  * https://github.com/upcloo/upcloo-wordpress-plugin/issues
  
-Through this section you can send problems, issues, requests and any else you want.
+Through this section you can send problems, issues, requests and any else you 
+want.
 
