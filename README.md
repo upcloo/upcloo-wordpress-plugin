@@ -37,6 +37,15 @@ After compile process you have a new directory named ```dist``` that
 have only necessary stuffs for WordPress. Now open this one and
 you can copy the ```wp-upcloo``` folder directly into your ```wp-content/plugins``` .
 
+### Subtrees
+
+In order to use SVN split plugin folder to another repository
+
+```
+git subtree split --prefix=wp-upcloo --annotate='(READONLY) ' -b
+git push https://github.com/upcloo/upcloo-wordpress-plugin-single.git wp-upcloo:master
+```
+
 ### Contributors
 
 In this section we want to list all people that help us to maintain and fix problems with this
