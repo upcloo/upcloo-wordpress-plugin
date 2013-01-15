@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-13 15:04+0100\n"
-"PO-Revision-Date: 2013-01-13 15:04+0100\n"
+"POT-Creation-Date: 2013-01-15 11:01+0100\n"
+"PO-Revision-Date: 2013-01-15 11:01+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: \n"
@@ -18,7 +18,7 @@ msgstr ""
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../wp-upcloo.php:60
-#: ../wp-upcloo.php:180
+#: ../wp-upcloo.php:105
 msgid "UpCloo"
 msgstr "UpCloo"
 
@@ -26,35 +26,27 @@ msgstr "UpCloo"
 msgid "Use UpCloo as a widget instead at the end of the body"
 msgstr "Usare UpCloo come un widget invece che appeso alla fine del corpo di un articolo"
 
-#: ../wp-upcloo.php:134
-msgid "An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Try again</a>"
-msgstr "Un errore HTTP inaspettato è stato rilevato durante la richiesta alle API.</p> <p><a href=\"?\" onclick=\"document.location.reload(); return false;\">Prova Ancora</a>"
-
-#: ../wp-upcloo.php:139
-msgid "An unknown error occurred"
-msgstr "C'è stato un errore sconosciuto"
-
-#: ../wp-upcloo.php:166
+#: ../wp-upcloo.php:91
 msgid "Remember that your have to configure UpCloo Plugin: "
 msgstr "Ricordati che devi configurare il plugin di UpCloo"
 
-#: ../wp-upcloo.php:166
+#: ../wp-upcloo.php:91
 msgid "Config Page"
 msgstr "Pagina di Configurazione"
 
-#: ../wp-upcloo.php:166
+#: ../wp-upcloo.php:91
 msgid "Advanced Config Page"
 msgstr "Pagina di Configurazione Avanzata"
 
-#: ../wp-upcloo.php:173
+#: ../wp-upcloo.php:98
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: ../wp-upcloo.php:181
+#: ../wp-upcloo.php:106
 msgid "Advanced Configurations"
 msgstr "Configurazione Avanzata"
 
-#: ../wp-upcloo.php:222
+#: ../wp-upcloo.php:147
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
@@ -135,83 +127,3 @@ msgstr "Partner Virtuale:"
 msgid "Option template id:"
 msgstr "ID template opzioni"
 
-#~ msgid "Maybe you are also interested in"
-#~ msgstr "Forse potrebbero interessarti"
-
-#~ msgid "Related"
-#~ msgstr "Correlati"
-
-#~ msgid "Title:"
-#~ msgstr "Titolo:"
-
-#~ msgid "Number of links:"
-#~ msgstr "Massimo numero di link."
-
-#~ msgid "Max Number of Links"
-#~ msgstr "Massimo numero di link"
-
-#~ msgid "Box title (let blank to hide title)"
-#~ msgstr "Titolo del Box (lascia in bianco per nascondere)"
-
-#~ msgid "Do you want to show images?"
-#~ msgstr "Vuoi visualizzare le immagini?"
-
-#~ msgid "Show only links"
-#~ msgstr "Visualizza solo i link"
-
-#~ msgid "Show links + images"
-#~ msgstr "Visualizza link + immagini"
-
-#~ msgid "Select your type"
-#~ msgstr "Seleziona il tuo tipo"
-
-#~ msgid ""
-#~ "'Popover' is a box that appears in a corner of your website. 'Inline' is "
-#~ "appended at the end of your content. "
-#~ msgstr ""
-#~ "'Popver' è un box a comparsa in un angolo del tuo sito. 'Inline' è appeso "
-#~ "alla fine dei tuoi contenuti."
-
-#~ msgid "Choose the theme"
-#~ msgstr "Scegli un tema"
-
-#~ msgid "Elegant floating box with tiny shadow"
-#~ msgstr "Box elegante con una leggera sfumatura"
-
-#~ msgid "Simple and clear floating box"
-#~ msgstr "Box semplice e chiaro"
-
-#~ msgid "Horizontal and high impressive strip"
-#~ msgstr "Strip orizzontale impressivo "
-
-#~ msgid "Position of the PopOver"
-#~ msgstr "Posizionamento del PopOver"
-
-#~ msgid "Bottom Right"
-#~ msgstr "In basso a destra"
-
-#~ msgid "Bottom Left"
-#~ msgstr "In basso a sinistra"
-
-#~ msgid "Top Right"
-#~ msgstr "In alto a destra"
-
-#~ msgid "Top Left"
-#~ msgstr "In alto a sinistra"
-
-#~ msgid "Fade in (pixel from border)"
-#~ msgstr "Comparsa (pixel dal bordo)"
-
-#~ msgid "Fade out (pixel from border)"
-#~ msgstr "Scomparsa (pixel dal bordo)"
-
-#~ msgid "Missing image URL (eg. http://www.yourdomain.tld/path-to.img.png)"
-#~ msgstr ""
-#~ "URL immagine mancante (es. http://www.iltuodominio.it/immagine-default."
-#~ "png)"
-
-#~ msgid "Personal CSS"
-#~ msgstr "CSS Personalizzato"
-
-#~ msgid "Track UpCloo using Google Analytics"
-#~ msgstr "Traccia UpCloo usando Google Analytics"
