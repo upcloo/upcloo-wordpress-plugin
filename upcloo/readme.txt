@@ -17,13 +17,19 @@ This plugin provide a full access to your UpCloo profile.
 == Installation ==
 
 You must have an active UpCloo profile before use this plugin. For create one 
-you can go to http://www.upcloo.com and follow the instructions.
+you can go to http://www.upcloo.com/my/signup.html and follow the instructions.
 
 After that you can install this plugin:
 
 1. Upload `wp-upcloo` folder to the `/wp-content/plugins/` directory
 1. Activate the plugin through the 'Plugins' menu in WordPress
 1. Configure the plugin using the dedicated interface (Settings)
+
+== Screenshots ==
+
+1. Example of popover widget implementation
+2. Customize your widget as you prefer using the reserved area
+3. Monitor your statistic using the reserved area
 
 == Frequently Asked Questions ==
 
