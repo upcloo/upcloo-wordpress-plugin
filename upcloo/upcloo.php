@@ -102,7 +102,7 @@ function upcloo_check_menu_capability()
 //Start menu
 function upcloo_plugin_menu()
 {
-    add_menu_page('UpCloo', __('UpCloo', "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options', plugins_url()."/wp-upcloo/assets/u.png");
+    add_menu_page('UpCloo', __('UpCloo', "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_SLUG, 'upcloo_plugin_options', plugins_url()."/upcloo/assets/u.png");
     add_submenu_page(UPCLOO_MENU_SLUG, "Advanced Configs", __("Advanced Configurations", "wp_upcloo"), UPCLOO_OPTION_CAPABILITY, UPCLOO_MENU_ADVANCED_SLUG, UPCLOO_MENU_ADVANCED_SLUG);
 }
 
@@ -168,7 +168,7 @@ function upcloo_install() {
 }
 
 function upcloo_get_default_image() {
-    return plugins_url() . "/wp-upcloo/assets/no-image.gif";
+    return plugins_url() . "/upcloo/assets/no-image.gif";
 }
 /**
  * Get content on public side
