@@ -37,7 +37,7 @@ require_once dirname(__FILE__) . '/UpCloo/Widget/Partner.php';
 require_once dirname(__FILE__) . '/UpCloo/SView.php';
 
 /* Runs when plugin is activated */
-register_activation_hook(WP_PLUGIN_DIR . '/wp-upcloo/wp-upcloo.php', 'upcloo_install');
+register_activation_hook(WP_PLUGIN_DIR . '/upcloo/upcloo.php', 'upcloo_install');
 
 //Only secure protocol on post/page publishing (now is beta test... no https)
 define("UPCLOO_SITEKEY", "upcloo_sitekey");
