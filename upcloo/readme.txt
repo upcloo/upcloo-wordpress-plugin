@@ -46,3 +46,13 @@ You can always use the GitHub UpCloo pages:
 Through this section you can send problems, issues, requests and any else you 
 want.
 
+== Upgrade Notice ==
+
+You can't upgrade from 1.2.x version because the main folder of UpCloo is different.
+
+Please remove completely your 1.2.x version and after install a newest version
+
+== Changelog ==
+
+= 1.3.0 =
+New UpCloo JS SDK that improve the main functionalities and open new designs.
