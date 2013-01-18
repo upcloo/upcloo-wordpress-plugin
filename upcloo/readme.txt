@@ -54,5 +54,8 @@ Please remove completely your 1.2.x version and after install a newest version
 
 == Changelog ==
 
+= 1.3.1 =
+Minor fix on options
+
 = 1.3.0 =
 New UpCloo JS SDK that improve the main functionalities and open new designs.
