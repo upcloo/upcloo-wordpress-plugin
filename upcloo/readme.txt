@@ -4,7 +4,7 @@ Donate link: http://www.upcloo.com/
 Tags: correlate, correlation, upcloo, related, links, adv, recommended, stories
 Requires at least: 2.8
 Tested up to: 3.5
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 license: MIT
 
 UpCloo is a cloud based and fully hosted service that helps you to create 

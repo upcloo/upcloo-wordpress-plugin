@@ -32,7 +32,7 @@ if (array_key_exists("settings-updated", $_GET)) {
                 <tr valign="top">
                 <th width="92" scope="row"><?php _e("Your option ID", "wp_upcloo");?></th>
                     <td width="406">
-                        <input name="<?php echo UPCLOO_CONFIG_ID?>" type="text" value="<?php echo get_option(UPCLOO_CONFIG_ID); ?>" />
+                        <input name="<?php echo UPCLOO_CONFIG_ID?>" type="text" value="<?php echo get_option(UPCLOO_CONFIG_ID, "upcloo_1000"); ?>" />
                     </td>
                 </tr>
 
