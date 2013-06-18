@@ -15,7 +15,7 @@ if (array_key_exists("settings-updated", $_GET)) {
         <table class="form-table">
             <tbody>
                 <tr>
-                    <td colspan="2" class="upcloo_title">Scegli come visualizzare i correlati nei tuoi post:</td>
+                <td colspan="2" class="upcloo_title"><?php _e("Select your best related post widget", "wp_upcloo")?>:</td>
                 </tr>
                 <?php if (get_option(UPCLOO_ALTERVISTA_USE_IMAGE, 0)) : ?>
                 <tr valign="top">
@@ -28,10 +28,10 @@ if (array_key_exists("settings-updated", $_GET)) {
                 </tr>
                 <tr>
                     <td align="center">
-                       <label class="upcloo_sel"> <input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2000) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2000" />&nbsp;A comparsa</label>
+                        <label class="upcloo_sel"> <input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2000) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2000" />&nbsp;<?php _e("Popover view", "wp_upcloo")?></label>
                     </td>
                     <td align="center">
-                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2100) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2100" />&nbsp;Sotto al testo</label>
+                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2100) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2100" />&nbsp;<?php _E("Below your body", "wp_upcloo")?></label>
                     </td>
                 </tr>
                 <?php else: ?>
@@ -45,17 +45,17 @@ if (array_key_exists("settings-updated", $_GET)) {
                 </tr>
                 <tr>
                     <td align="center">
-                       <label class="upcloo_sel"> <input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2200) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2200" />&nbsp;A comparsa</label>
+                        <label class="upcloo_sel"> <input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2200) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2200" />&nbsp;<?php _e("Popover view", "wp_upcloo")?></label>
                     </td>
                     <td align="center">
-                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2300) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2300" />&nbsp;Sotto al testo</label>
+                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2300) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2300" />&nbsp;<?php _e("Below your body")?></label>
                     </td>
                 </tr>
                 <?php endif; ?>
 
                 <tr>
-                    <td align="center" class="upcloo_text">Il box appare in un angolo dopo lo scroll della pagina</td>
-                    <td align="center" class="upcloo_text">Il box appare in automatico sotto il testo del post</td>
+                    <td align="center" class="upcloo_text"><?php _e("The box appears in box after the page scroll", "wp_upcloo")?></td>
+                    <td align="center" class="upcloo_text"><?php _e("The box appears automatically below your post body", "wp_upcloo");?></td>
                 </tr>
                 <tr valign="top">
                     <td colspan="2" align='center'>
@@ -68,9 +68,6 @@ if (array_key_exists("settings-updated", $_GET)) {
           </tbody>
         </table>
     </form>
-    <div id="chart_div_impressions" style="width: 90%; height: 350px;"></div>
-    <div style="text-align:right; width: 90%"><span style="font-size:11px">Day (from today) vs Impressions</span></div>
-    <div id="chart_div_clicks" style="width: 90%; height: 350px;"></div>
 </div>
 
 <style type='text/css'>
