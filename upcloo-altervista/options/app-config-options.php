@@ -2,20 +2,19 @@
 if (array_key_exists("settings-updated", $_GET)) {
     echo '<div class="updated"><p>' . __("Your configuration is saved correctly!", "wp_upcloo") . '</p></div>';
 }
-
 ?>
 
 <div class="wrap">
 <?php screen_icon("options-general")?>
-<h2><?php _e("UpCloo General Options", "wp_upcloo");?></h2>
-    <h3 id="upcloo-app-config"><?php _e("Welcome To UpCloo", "wp_upcloo");?></h3>
-    <h4><?php _e("UpCloo takes tipically 10 minutes to show first correlations. It improves results during next hours and continues to analyze and working for you in a completely automated way.", "wp_upcloo")?></h4>
-    <form method="post" action="options.php#upcloo-app-config">
+    <h2><?php _e("UpCloo General Options", "wp_upcloo");?></h2>
         <?php wp_nonce_field('update-options'); ?>
         <table class="form-table">
             <tbody>
                 <tr>
-                <td colspan="2" class="upcloo_title"><?php _e("Select your best related post widget", "wp_upcloo")?>:</td>
+                    <td colspan="2" class="upcloo_title"><?php _e("Select your best related post widget", "wp_upcloo")?>:</td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="upcloo_title" style="font-size:11px;"><?php _e("UpCloo takes few minutes to start showing your correlations in your old content and it analyze your blog externally in order to provide always fresh results", "wp_upcloo")?></td>
                 </tr>
                 <?php if (get_option(UPCLOO_ALTERVISTA_USE_IMAGE, 0)) : ?>
                 <tr valign="top">

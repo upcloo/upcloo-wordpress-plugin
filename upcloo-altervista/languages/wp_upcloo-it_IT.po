@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-18 14:14+0100\n"
-"PO-Revision-Date: 2013-06-18 14:16+0100\n"
+"POT-Creation-Date: 2013-06-18 16:03+0100\n"
+"PO-Revision-Date: 2013-06-18 16:04+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: it_IT\n"
@@ -71,45 +71,41 @@ msgstr "ID template opzioni"
 msgid "Your configuration is saved correctly!"
 msgstr "La tua configurazione è salvata correttamente!"
 
-#: ../options/app-config-options.php:10
+#: ../options/app-config-options.php:9
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
-#: ../options/app-config-options.php:11
-msgid "Welcome To UpCloo"
-msgstr "Benvenuto in UpCloo"
-
-#: ../options/app-config-options.php:12
-msgid ""
-"UpCloo takes tipically 10 minutes to show first correlations. It improves "
-"results during next hours and continues to analyze and working for you in a "
-"completely automated way."
-msgstr ""
-"UpCloo impiega tipicamente 10 minuti per mostrare le prime correlazioni. Il "
-"miglioramento dei risultati continua nelle successive ore e il sistema "
-"analizzerà e lavorerà per te in modo completamente automatizzato."
-
-#: ../options/app-config-options.php:18
+#: ../options/app-config-options.php:14
 msgid "Select your best related post widget"
 msgstr "Seleziona come visualizzare le tue correlazioni"
 
-#: ../options/app-config-options.php:31 ../options/app-config-options.php:48
+#: ../options/app-config-options.php:17
+msgid ""
+"UpCloo takes few minutes to start showing your correlations in your old "
+"content and it analyze your blog externally in order to provide always fresh "
+"results"
+msgstr ""
+"UpCloo impiega pochi minuti per mostrare le correlazioni nei tuoi vecchi "
+"contenuti e analizza il tuo blog esternamente per garantirti sempre "
+"risultati aggiornati"
+
+#: ../options/app-config-options.php:30 ../options/app-config-options.php:47
 msgid "Popover view"
 msgstr "A comparsa"
 
-#: ../options/app-config-options.php:51
+#: ../options/app-config-options.php:50
 msgid "Below your body"
 msgstr "Sotto il tuo testo"
 
-#: ../options/app-config-options.php:57
+#: ../options/app-config-options.php:56
 msgid "The box appears in box after the page scroll"
 msgstr "Il box compare dopo aver fatto lo \"scroll\" la pagina"
 
-#: ../options/app-config-options.php:58
+#: ../options/app-config-options.php:57
 msgid "The box appears automatically below your post body"
 msgstr "Il box compare automaticamente sotto il testo del tuo post"
 
-#: ../options/app-config-options.php:62
+#: ../options/app-config-options.php:61
 #: ../options/app-advanced-config-options.php:22
 #: ../options/app-advanced-config-options.php:60
 msgid "Save Changes"
@@ -146,6 +142,18 @@ msgid ""
 msgstr ""
 "Ricordati che devi aggiungere manualmente il placehoder di UpCloo nel tuo "
 "template"
+
+#~ msgid "Welcome To UpCloo"
+#~ msgstr "Benvenuto in UpCloo"
+
+#~ msgid ""
+#~ "UpCloo takes tipically 10 minutes to show first correlations. It improves "
+#~ "results during next hours and continues to analyze and working for you in "
+#~ "a completely automated way."
+#~ msgstr ""
+#~ "UpCloo impiega tipicamente 10 minuti per mostrare le prime correlazioni. "
+#~ "Il miglioramento dei risultati continua nelle successive ore e il sistema "
+#~ "analizzerà e lavorerà per te in modo completamente automatizzato."
 
 #~ msgid "Your sitekey"
 #~ msgstr "La tua Sitekey"
