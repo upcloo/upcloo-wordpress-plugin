@@ -24,7 +24,7 @@
 	<target name="copy-resources">
         <fileset dir="${src}" id="upcloo-base">
             <include name="*"/>
-			<include name="UpCloo/**"/>
+			<include name="UpClooAlterVista/**"/>
 			<include name="views/**"/>
 			<include name="options/**"/>
 			<include name="assets/**"/>
