@@ -29,14 +29,14 @@ if (array_key_exists("settings-updated", $_GET)) {
                 <td width="406">
                     <?php
                         $postsType = get_post_types();
-                        $selected = get_option(UPCLOO_POSTS_TYPE);
+                        $selected = get_option(UPCLOO_ALTERVISTA_POSTS_TYPE);
 
                         if (!is_array($selected)) {
                             $selected = array();
                         }
                         foreach ($postsType as $key => $type):
                     ?>
-                    <input id="upcloo-checkbox-posttype-<?php echo $key;?>" <?php echo ((in_array($key, $selected)) ? 'checked="checked"' : '')?> type="checkbox" name="<?php echo UPCLOO_POSTS_TYPE?>[]" value="<?php echo $key?>" /> <label for="upcloo-checkbox-posttype-<?php echo $key;?>"><?php echo $type;?></label><br />
+                    <input id="upcloo-checkbox-posttype-<?php echo $key;?>" <?php echo ((in_array($key, $selected)) ? 'checked="checked"' : '')?> type="checkbox" name="<?php echo UPCLOO_ALTERVISTA_POSTS_TYPE?>[]" value="<?php echo $key?>" /> <label for="upcloo-checkbox-posttype-<?php echo $key;?>"><?php echo $type;?></label><br />
                     <?php
                         endforeach;
                     ?>
@@ -50,10 +50,9 @@ if (array_key_exists("settings-updated", $_GET)) {
                     <span style="font-size: 10px"><?php _e("Remember that you have to add by hand the UpCloo placeholder into your template", "wp_upcloo");?>:<br/> <?php echo htmlentities("<div class='upcloo-widget' id='{your-option-id}'></div>");?></span>
                 </th>
                 <td width="406">
-                <input name="<?php echo UPCLOO_MANUAL_PLACEHOLDER; ?>" type="checkbox" <?php echo ((get_option(UPCLOO_MANUAL_PLACEHOLDER) ? "checked='checked'" : '')); ?> />
+                <input name="<?php echo UPCLOO_ALTERVISTA_MANUAL_PLACEHOLDER; ?>" type="checkbox" <?php echo ((get_option(UPCLOO_ALTERVISTA_MANUAL_PLACEHOLDER) ? "checked='checked'" : '')); ?> />
                 </td>
             </tr>
-
 
 			<tr valign="top">
                 <th width="92" scope="row"></th>
@@ -61,7 +60,7 @@ if (array_key_exists("settings-updated", $_GET)) {
                 	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" onclick="javascript:confirmThat()" />
 
                 	<input type="hidden" name="action" value="update" />
-            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_POSTS_TYPE, UPCLOO_MANUAL_PLACEHOLDER))?>" />
+            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_ALTERVISTA_POSTS_TYPE, UPCLOO_ALTERVISTA_MANUAL_PLACEHOLDER))?>" />
                 </td>
 			</tr>
           </tbody>

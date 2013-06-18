@@ -6,7 +6,7 @@
  * get related contents usinv virtual site keys.
  *
  * @author UpCloo Ltd.
- * @package UpCloo_Widget
+ * @package UpClooAlterVista_Widget
  * @license MIT
  *
  * Copyright (C) 2012 UpCloo Ltd.
@@ -29,13 +29,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-class UpCloo_Widget_Partner
+class UpClooAlterVista_Widget_Partner
     extends WP_Widget
 {
     public function __construct()
     {
         parent::__construct(
-            "upcloo_partner_widget",
+            "upcloo_altervista_partner_widget",
             __("UpCloo Network Widget", 'wp_upcloo'),
             array(
                 'description' => __('The UpCloo Virtual Partner SiteKey Widget', 'wp_upcloo')
@@ -46,19 +46,19 @@ class UpCloo_Widget_Partner
     public function form($instance)
     {
         if ( $instance ) {
-            $vsitekey = esc_attr($instance[ 'upcloo_v_sitekey' ]);
-            $confId = $instance['upcloo_v_conf_id'];
+            $vsitekey = esc_attr($instance[ 'upcloo_altervista_v_sitekey' ]);
+            $confId = $instance['upcloo_altervista_v_conf_id'];
         } else {
             $vsitekey = '';
             $confId = '';
         }
         ?>
 
-        <label for="<?php echo $this->get_field_id('upcloo_v_sitekey'); ?>"><?php _e('Virtual Partner:', 'wp_upcloo'); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_sitekey'); ?>" name="<?php echo $this->get_field_name('upcloo_v_sitekey'); ?>" type="text" value="<?php echo $vsitekey; ?>" />
+        <label for="<?php echo $this->get_field_id('upcloo_altervista_v_sitekey'); ?>"><?php _e('Virtual Partner:', 'wp_upcloo'); ?></label>
+        <input class="widefat" id="<?php echo $this->get_field_id('upcloo_altervista_v_sitekey'); ?>" name="<?php echo $this->get_field_name('upcloo_altervista_v_sitekey'); ?>" type="text" value="<?php echo $vsitekey; ?>" />
 
-        <label for="<?php echo $this->get_field_id('upcloo_v_conf_id'); ?>"><?php _e('Option template id:', 'wp_upcloo'); ?></label>
-        <input class="widefat" id="<?php echo $this->get_field_id('upcloo_v_conf_id'); ?>" name="<?php echo $this->get_field_name('upcloo_v_conf_id'); ?>" type="text" value="<?php echo $confId; ?>" />
+        <label for="<?php echo $this->get_field_id('upcloo_altervista_v_conf_id'); ?>"><?php _e('Option template id:', 'wp_upcloo'); ?></label>
+        <input class="widefat" id="<?php echo $this->get_field_id('upcloo_altervista_v_conf_id'); ?>" name="<?php echo $this->get_field_name('upcloo_altervista_v_conf_id'); ?>" type="text" value="<?php echo $confId; ?>" />
 
         <?php
     }
@@ -66,8 +66,8 @@ class UpCloo_Widget_Partner
     function update($new_instance, $old_instance)
     {
         $instance = $old_instance;
-        $instance['upcloo_v_sitekey'] = strip_tags($new_instance['upcloo_v_sitekey']);
-        $instance['upcloo_v_conf_id'] = strip_tags($new_instance['upcloo_v_conf_id']);
+        $instance['upcloo_altervista_v_sitekey'] = strip_tags($new_instance['upcloo_altervista_v_sitekey']);
+        $instance['upcloo_altervista_v_conf_id'] = strip_tags($new_instance['upcloo_altervista_v_conf_id']);
         return $instance;
     }
 
@@ -75,24 +75,24 @@ class UpCloo_Widget_Partner
     {
         global $post;
 
-        $postTypes = get_option(UPCLOO_POSTS_TYPE);
+        $postTypes = get_option(UPCLOO_ALTERVISTA_POSTS_TYPE);
         if (!is_array($postTypes)) {
             $postTypes = array();
         }
 
         if (is_single($post) && (in_array($post->post_type, $postTypes))) {
-            $sitekey = get_option("upcloo_sitekey");
+            $sitekey = get_option("upcloo_altervista_sitekey");
 
-            $virtualSiteKey = $instance["upcloo_v_sitekey"];
+            $virtualSiteKey = $instance["upcloo_altervista_v_sitekey"];
             $permalink = get_permalink($post->ID);
 
-            $view = new UpCloo_SView();
-            $view->setViewPath(UPCLOO_VIEW_PATH);
+            $view = new UpClooAlterVista_SView();
+            $view->setViewPath(UPCLOO_ALTERVISTA_VIEW_PATH);
 
             $view->sitekey = $sitekey;
             $view->permalink = $permalink;
             $view->vsitekey = $virtualSiteKey;
-            $view->configId = $instance["upcloo_v_conf_id"];
+            $view->configId = $instance["upcloo_altervista_v_conf_id"];
 
             echo $view->render("upcloo-js-sdk.phtml");
         }

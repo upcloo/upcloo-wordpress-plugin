@@ -22,7 +22,7 @@
  */
 
 
-class UpCloo_SView {
+class UpClooAlterVista_SView {
 
     private $_path;
 
