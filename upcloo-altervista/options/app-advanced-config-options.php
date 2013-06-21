@@ -24,8 +24,17 @@ if (array_key_exists("settings-updated", $_GET)) {
 			</tr>
 
             <tr valign="top">
-                <th width="92" scope="row"><?php echo __("Type of content where show related links", "wp_upcloo");?><br/><span style="font-size: 9px"><?php _e("Select type of content that UpCloo has to analyze (tipically just 'post' is a good choice).", "wp_upcloo");?></span>
-</th>
+                <th width="92" scope="row">
+                    <?php echo __("UpCloo Widget Title", "wp_upcloo")?><br />
+                    <span style="font-size: 10px"><?php _e("Override UpCloo default widget title", "wp_upcloo");?></span>
+                </th>
+                <td width="406">
+                <input name="<?php echo UPCLOO_ALTERVISTA_BOX_TITLE; ?>" type="text" style="width: 250px" value="<?php echo get_option(UPCLOO_ALTERVISTA_BOX_TITLE, ""); ?>" />
+                </td>
+            </tr>
+
+            <tr valign="top">
+                <th width="92" scope="row"><?php echo __("Type of content where show related links", "wp_upcloo");?><br/><span style="font-size: 9px"><?php _e("Select type of content that UpCloo has to analyze (tipically just 'post' is a good choice).", "wp_upcloo");?></span></th>
                 <td width="406">
                     <?php
                         $postsType = get_post_types();
@@ -60,7 +69,7 @@ if (array_key_exists("settings-updated", $_GET)) {
                 	<input type="submit" class="button-primary" value="<?php _e('Save Changes') ?>" onclick="javascript:confirmThat()" />
 
                 	<input type="hidden" name="action" value="update" />
-            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_ALTERVISTA_POSTS_TYPE, UPCLOO_ALTERVISTA_MANUAL_PLACEHOLDER))?>" />
+            		<input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_ALTERVISTA_POSTS_TYPE, UPCLOO_ALTERVISTA_MANUAL_PLACEHOLDER, UPCLOO_ALTERVISTA_BOX_TITLE))?>" />
                 </td>
 			</tr>
           </tbody>

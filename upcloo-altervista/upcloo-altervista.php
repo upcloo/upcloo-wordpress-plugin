@@ -62,6 +62,8 @@ define('UPCLOO_ALTERVISTA_SUMMARY_LEN', 120);
 
 define('UPCLOO_ALTERVISTA_USE_IMAGE', "upcloo_altervista_use_image");
 
+define('UPCLOO_ALTERVISTA_BOX_TITLE', "upcloo_altervista_box_title");
+
 add_action('widgets_init', create_function( '', 'register_widget("UpClooAlterVista_Widget_Partner");'));
 wp_register_sidebar_widget("upcloo_altervista_widget", __("UpCloo", "wp_upcloo"), "upcloo_altervista_direct_widget", array('description' => __('Use UpCloo as a widget instead at the end of the body', 'wp_upcloo')));
 add_action('wp_dashboard_setup', 'upcloo_altervista_add_dashboard_widgets' );
@@ -183,6 +185,7 @@ function upcloo_altervista_install() {
     add_option(UPCLOO_ALTERVISTA_POSTS_TYPE, array("post"), '', 'yes');
     add_option(UPCLOO_ALTERVISTA_MANUAL_PLACEHOLDER, false, "", "yes");
     add_option(UPCLOO_ALTERVISTA_USE_IMAGE, 1);
+    add_option(UPCLOO_ALTERVISTA_BOX_TITLE, "");
 
     $sitekey = trim(get_option(UPCLOO_ALTERVISTA_SITEKEY, ""));
 
