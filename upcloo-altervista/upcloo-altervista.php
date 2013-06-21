@@ -35,9 +35,9 @@ load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)) . '/langua
 require_once dirname(__FILE__) . '/UpClooAlterVista/Widget/Partner.php';
 
 require_once dirname(__FILE__) . '/UpClooAlterVista/SView.php';
-
+$upcloo_altervista_basepath = WP_PLUGIN_DIR . '/upcloo-altervista/upcloo-altervista.php';
 /* Runs when plugin is activated */
-register_activation_hook(WP_PLUGIN_DIR . '/upcloo-altervista/upcloo-altervista.php', 'upcloo_altervista_install');
+register_activation_hook($upcloo_altervista_basepath, 'upcloo_altervista_install');
 
 define("UPCLOO_ALTERVISTA_SITEKEY", "upcloo_altervista_sitekey");
 define("UPCLOO_ALTERVISTA_SEED", "upcloo_altervista_seed");
@@ -271,9 +271,7 @@ function upcloo_altervista_get_new_sitekey()
         $body = json_decode($result);
         return $body;
     } else {
-        require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-        deactivate_plugins(plugin_basename(__FILE__));
-        return "";
+        trigger_error("We are experiencing some problems... Please try again later...", E_USER_ERROR);
     }
 }
 
