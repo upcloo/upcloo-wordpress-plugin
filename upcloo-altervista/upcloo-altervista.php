@@ -247,7 +247,7 @@ function upcloo_altervista_get_new_sitekey()
     $with_images = ceil($with_images / count($posts) * 100);
     if ($with_images < 30) {
         update_option(UPCLOO_ALTERVISTA_USE_IMAGE, 0);
-        update_option(UPCLOO_ALTERVISTA_CONFIG_ID, "upcloo_2200");
+        update_option(UPCLOO_ALTERVISTA_CONFIG_ID, "upcloo_2002");
     } else {
         update_option(UPCLOO_ALTERVISTA_USE_IMAGE, 1);
         update_option(UPCLOO_ALTERVISTA_CONFIG_ID, "upcloo_2000");
