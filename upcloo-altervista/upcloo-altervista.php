@@ -384,7 +384,7 @@ function upcloo_altervista_direct_widget()
         $postTypes = array();
     }
 
-    if (is_single($post) && (in_array($post->post_type, $postTypes))) {
+    if (is_singular($post) && (in_array($post->post_type, $postTypes))) {
         $sitekey = get_option("upcloo_altervista_sitekey");
 
         $title = $instance["upcloo_altervista_v_title"];
