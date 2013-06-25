@@ -294,8 +294,8 @@ function upcloo_altervista_is_valid_content($post)
     if (!is_array($postTypes)) {
         $postTypes = array();
     }
-    
-    if (is_single($post) && (in_array($post->post_type, $postTypes)) && !is_active_widget(false,false,'upcloo_altervista_widget')) {
+
+    if (is_singular($post) && (in_array($post->post_type, $postTypes)) && !is_active_widget(false,false,'upcloo_altervista_widget')) {
         return true;
     } else {
         return false;
