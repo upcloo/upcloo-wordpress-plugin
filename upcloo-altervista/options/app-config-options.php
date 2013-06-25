@@ -64,6 +64,12 @@ if (array_key_exists("settings-updated", $_GET)) {
                        <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_ALTERVISTA_CONFIG_ID))?>"/>
                     </td>
                 </tr>
+                <tr>
+                <td colspan="2" class="upcloo_title" style="font-size:11px;text-align:right;">
+                    <?php _e("If you have any problem, ask to us!", "wp_upcloo")?>
+                    <a target="_blank" href="http://www.upcloo.com/form/quest/modulo/6.html"><?php _e("Click here", "wp_upcloo")?></a>
+                </td>
+                </tr>
           </tbody>
         </table>
     </form>

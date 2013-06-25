@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-18 16:03+0100\n"
-"PO-Revision-Date: 2013-06-18 16:04+0100\n"
+"POT-Creation-Date: 2013-06-25 20:21+0100\n"
+"PO-Revision-Date: 2013-06-25 20:22+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: it_IT\n"
@@ -16,37 +16,37 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../upcloo-altervista.php:66 ../upcloo-altervista.php:113
+#: ../upcloo-altervista.php:68 ../upcloo-altervista.php:115
 msgid "UpCloo"
 msgstr "UpCloo"
 
-#: ../upcloo-altervista.php:66
+#: ../upcloo-altervista.php:68
 msgid "Use UpCloo as a widget instead at the end of the body"
 msgstr ""
 "Usare UpCloo come un widget invece che appeso alla fine del corpo di un "
 "articolo"
 
-#: ../upcloo-altervista.php:99
+#: ../upcloo-altervista.php:101
 msgid "Remember that your have to configure UpCloo Plugin: "
 msgstr "Ricordati che devi configurare il plugin di UpCloo"
 
-#: ../upcloo-altervista.php:99
+#: ../upcloo-altervista.php:101
 msgid "Config Page"
 msgstr "Pagina di Configurazione"
 
-#: ../upcloo-altervista.php:99
+#: ../upcloo-altervista.php:101
 msgid "Advanced Config Page"
 msgstr "Pagina di Configurazione Avanzata"
 
-#: ../upcloo-altervista.php:106
+#: ../upcloo-altervista.php:108
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: ../upcloo-altervista.php:114
+#: ../upcloo-altervista.php:116
 msgid "Advanced Configurations"
 msgstr "Configurazione Avanzata"
 
-#: ../upcloo-altervista.php:155
+#: ../upcloo-altervista.php:157
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
@@ -107,9 +107,17 @@ msgstr "Il box compare automaticamente sotto il testo del tuo post"
 
 #: ../options/app-config-options.php:61
 #: ../options/app-advanced-config-options.php:22
-#: ../options/app-advanced-config-options.php:60
+#: ../options/app-advanced-config-options.php:69
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
+
+#: ../options/app-config-options.php:69
+msgid "If you have any problem, ask to us!"
+msgstr "Per qualunque problema, chiedi a noi!"
+
+#: ../options/app-config-options.php:70
+msgid "Click here"
+msgstr "Clicca qui"
 
 #: ../options/app-advanced-config-options.php:10
 msgid "UpCloo Advanced Options"
@@ -119,11 +127,19 @@ msgstr "Opzioni UpCloo Avanzate"
 msgid "Plugin Doc"
 msgstr "Documentazione Plugin"
 
-#: ../options/app-advanced-config-options.php:27
+#: ../options/app-advanced-config-options.php:28
+msgid "UpCloo Widget Title"
+msgstr "Titolo Widget UpCloo"
+
+#: ../options/app-advanced-config-options.php:29
+msgid "Override UpCloo default widget title"
+msgstr "Riscrivi il titolo del widget di UpCloo"
+
+#: ../options/app-advanced-config-options.php:37
 msgid "Type of content where show related links"
 msgstr "Tipo di contenuti dove visualizzare i correlati"
 
-#: ../options/app-advanced-config-options.php:27
+#: ../options/app-advanced-config-options.php:37
 msgid ""
 "Select type of content that UpCloo has to analyze (tipically just 'post' is "
 "a good choice)."
@@ -131,11 +147,11 @@ msgstr ""
 "Seleziona il tipo di contenuti che UpCloo deve analizzare (tipicamente "
 "'post' è una buona scelta)."
 
-#: ../options/app-advanced-config-options.php:49
+#: ../options/app-advanced-config-options.php:58
 msgid "UpCloo inline manual placeholder"
 msgstr "Attiva il placeholder di UpCloo manuale"
 
-#: ../options/app-advanced-config-options.php:50
+#: ../options/app-advanced-config-options.php:59
 msgid ""
 "Remember that you have to add by hand the UpCloo placeholder into your "
 "template"
