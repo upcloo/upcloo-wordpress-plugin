@@ -196,7 +196,7 @@ function upcloo_content($content, $noPostBody = false)
         $postTypes = array();
     }
 
-    if (is_single($post) && (in_array($post->post_type, $postTypes)) && !is_active_widget(false,false,'upcloo_widget')) {
+    if (is_singular($post) && (in_array($post->post_type, $postTypes)) && !is_active_widget(false,false,'upcloo_widget')) {
         $view = new UpCloo_SView();
         $view->setViewPath(UPCLOO_VIEW_PATH);
 
