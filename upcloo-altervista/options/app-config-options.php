@@ -7,6 +7,7 @@ if (array_key_exists("settings-updated", $_GET)) {
 <div class="wrap">
 <?php screen_icon("options-general")?>
     <h2><?php _e("UpCloo General Options", "wp_upcloo");?></h2>
+    <form method="post" action="options.php#upcloo-app-config-options">
         <?php wp_nonce_field('update-options'); ?>
         <table class="form-table">
             <tbody>
