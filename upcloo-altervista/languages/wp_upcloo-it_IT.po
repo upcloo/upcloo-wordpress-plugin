@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-25 20:21+0100\n"
-"PO-Revision-Date: 2013-06-25 20:22+0100\n"
+"POT-Creation-Date: 2013-07-01 17:18+0100\n"
+"PO-Revision-Date: 2013-07-01 17:18+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: it_IT\n"
@@ -75,11 +75,11 @@ msgstr "La tua configurazione è salvata correttamente!"
 msgid "UpCloo General Options"
 msgstr "UpCloo Opzioni Generali"
 
-#: ../options/app-config-options.php:14
+#: ../options/app-config-options.php:15
 msgid "Select your best related post widget"
 msgstr "Seleziona come visualizzare le tue correlazioni"
 
-#: ../options/app-config-options.php:17
+#: ../options/app-config-options.php:18
 msgid ""
 "UpCloo takes few minutes to start showing your correlations in your old "
 "content and it analyze your blog externally in order to provide always fresh "
@@ -89,33 +89,33 @@ msgstr ""
 "contenuti e analizza il tuo blog esternamente per garantirti sempre "
 "risultati aggiornati"
 
-#: ../options/app-config-options.php:30 ../options/app-config-options.php:47
+#: ../options/app-config-options.php:31 ../options/app-config-options.php:48
 msgid "Popover view"
 msgstr "A comparsa"
 
-#: ../options/app-config-options.php:50
+#: ../options/app-config-options.php:51
 msgid "Below your body"
 msgstr "Sotto il tuo testo"
 
-#: ../options/app-config-options.php:56
+#: ../options/app-config-options.php:57
 msgid "The box appears in box after the page scroll"
 msgstr "Il box compare dopo aver fatto lo \"scroll\" la pagina"
 
-#: ../options/app-config-options.php:57
+#: ../options/app-config-options.php:58
 msgid "The box appears automatically below your post body"
 msgstr "Il box compare automaticamente sotto il testo del tuo post"
 
-#: ../options/app-config-options.php:61
+#: ../options/app-config-options.php:62
 #: ../options/app-advanced-config-options.php:22
 #: ../options/app-advanced-config-options.php:69
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
-#: ../options/app-config-options.php:69
+#: ../options/app-config-options.php:70
 msgid "If you have any problem, ask to us!"
 msgstr "Per qualunque problema, chiedi a noi!"
 
-#: ../options/app-config-options.php:70
+#: ../options/app-config-options.php:71
 msgid "Click here"
 msgstr "Clicca qui"
 

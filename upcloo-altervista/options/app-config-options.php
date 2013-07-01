@@ -7,7 +7,7 @@ if (array_key_exists("settings-updated", $_GET)) {
 <div class="wrap">
 <?php screen_icon("options-general")?>
     <h2><?php _e("UpCloo General Options", "wp_upcloo");?></h2>
-    <form method="post" action="options.php#upcloo-app-config-options">
+    <form method="post" action="options.php#upcloo-app-config">
         <?php wp_nonce_field('update-options'); ?>
         <table class="form-table">
             <tbody>
@@ -31,7 +31,7 @@ if (array_key_exists("settings-updated", $_GET)) {
                         <label class="upcloo_sel"> <input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2000) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2000" />&nbsp;<?php _e("Popover view", "wp_upcloo")?></label>
                     </td>
                     <td align="center">
-                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2001) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2100" />&nbsp;<?php _E("Below your body", "wp_upcloo")?></label>
+                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2001) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2001" />&nbsp;<?php _E("Below your body", "wp_upcloo")?></label>
                     </td>
                 </tr>
                 <?php else: ?>
@@ -45,10 +45,10 @@ if (array_key_exists("settings-updated", $_GET)) {
                 </tr>
                 <tr>
                     <td align="center">
-                        <label class="upcloo_sel"> <input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2002) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2200" />&nbsp;<?php _e("Popover view", "wp_upcloo")?></label>
+                        <label class="upcloo_sel"> <input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2002) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2002" />&nbsp;<?php _e("Popover view", "wp_upcloo")?></label>
                     </td>
                     <td align="center">
-                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2003) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2300" />&nbsp;<?php _e("Below your body")?></label>
+                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2003) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2003" />&nbsp;<?php _e("Below your body", "wp_upcloo")?></label>
                     </td>
                 </tr>
                 <?php endif; ?>
