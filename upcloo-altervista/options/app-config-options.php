@@ -1,18 +1,18 @@
 <?php
 if (array_key_exists("settings-updated", $_GET)) {
-    echo '<div class="updated"><p>' . __("Your configuration is saved correctly!", "wp_upcloo") . '</p></div>';
+    echo '<div class="updated"><p>' . __("Your configuration is saved correctly!") . '</p></div>';
 }
 ?>
 
 <div class="wrap">
 <?php screen_icon("options-general")?>
-    <h2><?php _e("UpCloo General Options", "wp_upcloo");?></h2>
+    <h2><?php _e("UpCloo General Options");?></h2>
     <form method="post" action="options.php#upcloo-app-config">
         <?php wp_nonce_field('update-options'); ?>
         <table class="form-table">
             <tbody>
                 <tr>
-                    <td colspan="2" class="upcloo_title"><?php _e("Start now using UpCloo for free. Select the best layout for your widget:", "wp_upcloo")?>:</td>
+                    <td colspan="2" class="upcloo_title"><?php _e("Start now using UpCloo for free. Select the best layout for your widget:")?>:</td>
                 </tr>
 
                 <?php if (get_option(UPCLOO_ALTERVISTA_USE_IMAGE, 0)) : ?>
@@ -26,10 +26,10 @@ if (array_key_exists("settings-updated", $_GET)) {
                 </tr>
                 <tr>
                     <td align="center">
-                        <label class="upcloo_sel"> <input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2000) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2000" />&nbsp;<?php _e("Popover view", "wp_upcloo")?></label>
+                        <label class="upcloo_sel"> <input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2000) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2000" />&nbsp;<?php _e("Popover view")?></label>
                     </td>
                     <td align="center">
-                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2001) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2001" />&nbsp;<?php _E("Below your body", "wp_upcloo")?></label>
+                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2001) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2001" />&nbsp;<?php _E("Below your body")?></label>
                     </td>
                 </tr>
                 <?php else: ?>
@@ -43,17 +43,17 @@ if (array_key_exists("settings-updated", $_GET)) {
                 </tr>
                 <tr>
                     <td align="center">
-                        <label class="upcloo_sel"> <input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2002) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2002" />&nbsp;<?php _e("Popover view", "wp_upcloo")?></label>
+                        <label class="upcloo_sel"> <input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2002) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2002" />&nbsp;<?php _e("Popover view")?></label>
                     </td>
                     <td align="center">
-                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2003) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2003" />&nbsp;<?php _e("Below your body", "wp_upcloo")?></label>
+                        <label class="upcloo_sel"><input <?php echo ((get_option(UPCLOO_ALTERVISTA_CONFIG_ID) == upcloo_2003) ? "checked='checked'" : "")?> name="<?php echo UPCLOO_ALTERVISTA_CONFIG_ID?>" type="radio" value="upcloo_2003" />&nbsp;<?php _e("Below your body")?></label>
                     </td>
                 </tr>
                 <?php endif; ?>
 
                 <tr>
-                    <td align="center" class="upcloo_text"><?php _e("The box appears in box after the page scroll", "wp_upcloo")?></td>
-                    <td align="center" class="upcloo_text"><?php _e("The box appears automatically below your post body", "wp_upcloo");?></td>
+                    <td align="center" class="upcloo_text"><?php _e("The box appears in box after the page scroll")?></td>
+                    <td align="center" class="upcloo_text"><?php _e("The box appears automatically below your post body");?></td>
                 </tr>
                 <tr valign="top">
                     <td colspan="2" align='center'>
@@ -66,14 +66,14 @@ if (array_key_exists("settings-updated", $_GET)) {
                 <tr>
                     <td colspan="2" class="upcloo_title" style="font-size:14px;color:#555;font-weight:normal;">
                     	&nbsp;<br/><br/>
-                    	<?php _e("UpCloo starts showing the correlations in your most recent posts. It could be required a while to show correlations in whole website.", "wp_upcloo")?>
-                    	<strong><?php _e("Now you can wait relax. UpCloo will provide the best correlations for you!", "wp_upcloo")?></strong>
+                    	<?php _e("UpCloo starts showing the correlations in your most recent posts. It could be required a while to show correlations in whole website.")?>
+                    	<strong><?php _e("Now you can wait relax. UpCloo will provide the best correlations for you!")?></strong>
                     </td>
                 </tr>
                 <tr>
                 <td colspan="2" class="upcloo_title" style="font-size:11px;color:#777;">
-                    <?php _e("If you have any problem, ask to us!", "wp_upcloo")?>
-                    <a target="_blank" href="http://www.upcloo.com/form/quest/modulo/6.html"><?php _e("Click here", "wp_upcloo")?></a>
+                    <?php _e("If you have any problem, ask to us!")?>
+                    <a target="_blank" href="http://www.upcloo.com/form/quest/modulo/6.html"><?php _e("Click here")?></a>
                 </td>
                 </tr>
           </tbody>

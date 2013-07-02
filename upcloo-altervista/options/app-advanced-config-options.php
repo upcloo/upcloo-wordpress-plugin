@@ -34,7 +34,7 @@ if (array_key_exists("settings-updated", $_GET)) {
             </tr>
 
             <tr valign="top">
-                <th width="92" scope="row"><?php echo __("Type of content where show related links");?><br/><span style="font-size: 9px"><?php _e("Select type of content that UpCloo has to analyze (tipically just 'post' is a good choice).", "wp_upcloo");?></span></th>
+                <th width="92" scope="row"><?php echo __("Type of content where show related links");?><br/><span style="font-size: 9px"><?php _e("Select type of content that UpCloo has to analyze (tipically just 'post' is a good choice).");?></span></th>
                 <td width="406">
                     <?php
                         $postsType = get_post_types();

@@ -1,6 +1,6 @@
 <?php
 if (array_key_exists("settings-updated", $_GET)) {
-    echo '<div class="updated"><p>' . __("Your configuration is saved correctly!", "wp_upcloo") . '</p></div>';
+    echo '<div class="updated"><p>' . __("Your configuration is saved correctly!") . '</p></div>';
 }
 ?>
 <div class="wrap">
