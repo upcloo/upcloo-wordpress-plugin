@@ -50,9 +50,6 @@ class UpClooAlterVista_SView {
 
     public function setViewPath($path)
     {
-        if (!is_dir($path)) {
-            throw new Exception("View path {$path} must be a directory");
-        }
         $this->_path = $path;
     }
 
@@ -67,9 +64,6 @@ class UpClooAlterVista_SView {
         }
 
         $filename = $this->_path . "/" . $filename ;
-        if (!file_exists($filename)) {
-            throw new Exception("Unable to get view at path: {$filename}");
-        }
 
         $rendered = "";
 
