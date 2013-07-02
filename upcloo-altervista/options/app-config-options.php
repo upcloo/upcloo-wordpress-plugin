@@ -12,11 +12,9 @@ if (array_key_exists("settings-updated", $_GET)) {
         <table class="form-table">
             <tbody>
                 <tr>
-                    <td colspan="2" class="upcloo_title"><?php _e("Select your best related post widget", "wp_upcloo")?>:</td>
+                    <td colspan="2" class="upcloo_title"><?php _e("Start now using UpCloo for free. Select the best layout for your widget:", "wp_upcloo")?>:</td>
                 </tr>
-                <tr>
-                    <td colspan="2" class="upcloo_title" style="font-size:11px;"><?php _e("UpCloo takes few minutes to start showing your correlations in your old content and it analyze your blog externally in order to provide always fresh results", "wp_upcloo")?></td>
-                </tr>
+                
                 <?php if (get_option(UPCLOO_ALTERVISTA_USE_IMAGE, 0)) : ?>
                 <tr valign="top">
                     <td width="406" align="center">
@@ -66,7 +64,14 @@ if (array_key_exists("settings-updated", $_GET)) {
                     </td>
                 </tr>
                 <tr>
-                <td colspan="2" class="upcloo_title" style="font-size:11px;text-align:right;">
+                    <td colspan="2" class="upcloo_title" style="font-size:14px;color:#555;font-weight:normal;">
+                    	&nbsp;<br/><br/>
+                    	<?php _e("UpCloo starts showing the correlations in your most recent posts. It could be required a while to show correlations in whole website.", "wp_upcloo")?>
+                    	<strong><?php _e("Now you can wait relax. UpCloo will provide the best correlations for you!", "wp_upcloo")?></strong>
+                    </td>
+                </tr>
+                <tr>
+                <td colspan="2" class="upcloo_title" style="font-size:11px;color:#777;">
                     <?php _e("If you have any problem, ask to us!", "wp_upcloo")?>
                     <a target="_blank" href="http://www.upcloo.com/form/quest/modulo/6.html"><?php _e("Click here", "wp_upcloo")?></a>
                 </td>
