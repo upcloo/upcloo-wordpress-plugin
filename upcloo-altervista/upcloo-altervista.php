@@ -30,8 +30,6 @@ License: MIT
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-load_plugin_textdomain('wp_upcloo', null, basename(dirname(__FILE__)) . '/languages');
-
 require_once dirname(__FILE__) . '/UpClooAlterVista/Widget/Partner.php';
 
 require_once dirname(__FILE__) . '/UpClooAlterVista/SView.php';
@@ -65,7 +63,7 @@ define('UPCLOO_ALTERVISTA_USE_IMAGE', "upcloo_altervista_use_image");
 define('UPCLOO_ALTERVISTA_BOX_TITLE', "upcloo_altervista_box_title");
 
 add_action('widgets_init', create_function( '', 'register_widget("UpClooAlterVista_Widget_Partner");'));
-wp_register_sidebar_widget("upcloo_altervista_widget", __("UpCloo", "wp_upcloo"), "upcloo_altervista_direct_widget", array('description' => __('Use UpCloo as a widget instead at the end of the body', 'wp_upcloo')));
+wp_register_sidebar_widget("upcloo_altervista_widget", __("UpCloo"), "upcloo_altervista_direct_widget", array('description' => __('Use UpCloo as a widget instead at the end of the body')));
 add_action('wp_dashboard_setup', 'upcloo_altervista_add_dashboard_widgets' );
 
 add_action('admin_notices', 'upcloo_altervista_show_needs_attention');
@@ -98,22 +96,22 @@ function upcloo_altervista_show_needs_attention()
 {
     if (!upcloo_altervista_is_configured()) {
         echo '<div class="updated">
-        <p>' . __("Remember that your have to configure UpCloo Plugin: ", "wp_upcloo") . ' <a href="admin.php?page=upcloo_altervista_options_menu">'.__("Config Page", "wp_upcloo") . '</a> - <a href="admin.php?page=upcloo_altervista_menu_advanced">'.__("Advanced Config Page", "wp_upcloo").'</a></p></div>';
+        <p>' . __("Remember that your have to configure UpCloo Plugin: ") . ' <a href="admin.php?page=upcloo_altervista_options_menu">'.__("Config Page") . '</a> - <a href="admin.php?page=upcloo_altervista_menu_advanced">'.__("Advanced Config Page").'</a></p></div>';
     }
 }
 
 function upcloo_altervista_check_menu_capability()
 {
     if ( !current_user_can(UPCLOO_ALTERVISTA_OPTION_CAPABILITY) )  {
-        wp_die(__( 'You do not have sufficient permissions to access this page.', "wp_upcloo"));
+        wp_die(__( 'You do not have sufficient permissions to access this page.'));
     }
 }
 
 //Start menu
 function upcloo_altervista_plugin_menu()
 {
-    add_menu_page('UpCloo', __('UpCloo', "wp_upcloo"), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_SLUG, 'upcloo_altervista_plugin_options', plugins_url()."/upcloo-altervista/assets/u.png");
-    add_submenu_page(UPCLOO_ALTERVISTA_MENU_SLUG, "Advanced Configs", __("Advanced Configurations", "wp_upcloo"), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_ADVANCED_SLUG, UPCLOO_ALTERVISTA_MENU_ADVANCED_SLUG);
+    add_menu_page('UpCloo', __('UpCloo'), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_SLUG, 'upcloo_altervista_plugin_options', plugins_url()."/upcloo-altervista/assets/u.png");
+    add_submenu_page(UPCLOO_ALTERVISTA_MENU_SLUG, "Advanced Configs", __("Advanced Configurations"), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_ADVANCED_SLUG, UPCLOO_ALTERVISTA_MENU_ADVANCED_SLUG);
 }
 
 function upcloo_altervista_plugin_options()
@@ -154,7 +152,7 @@ function upcloo_altervista_dashboard_widget_function()
 
 function upcloo_altervista_add_dashboard_widgets()
 {
-    wp_add_dashboard_widget('upcloo_altervista_dashboard_widget', __('UpCloo News Widget', "wp_upcloo"), 'upcloo_altervista_dashboard_widget_function');
+    wp_add_dashboard_widget('upcloo_altervista_dashboard_widget', __('UpCloo News Widget'), 'upcloo_altervista_dashboard_widget_function');
 }
 
 function upcloo_altervista_admin_head()

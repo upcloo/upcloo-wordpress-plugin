@@ -36,9 +36,9 @@ class UpClooAlterVista_Widget_Partner
     {
         parent::__construct(
             "upcloo_altervista_partner_widget",
-            __("UpCloo Network Widget", 'wp_upcloo'),
+            __("UpCloo Network Widget"),
             array(
-                'description' => __('The UpCloo Virtual Partner SiteKey Widget', 'wp_upcloo')
+                'description' => __('The UpCloo Virtual Partner SiteKey Widget')
             )
         );
     }
@@ -54,10 +54,10 @@ class UpClooAlterVista_Widget_Partner
         }
         ?>
 
-        <label for="<?php echo $this->get_field_id('upcloo_altervista_v_sitekey'); ?>"><?php _e('Virtual Partner:', 'wp_upcloo'); ?></label>
+        <label for="<?php echo $this->get_field_id('upcloo_altervista_v_sitekey'); ?>"><?php _e('Virtual Partner:'); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('upcloo_altervista_v_sitekey'); ?>" name="<?php echo $this->get_field_name('upcloo_altervista_v_sitekey'); ?>" type="text" value="<?php echo $vsitekey; ?>" />
 
-        <label for="<?php echo $this->get_field_id('upcloo_altervista_v_conf_id'); ?>"><?php _e('Option template id:', 'wp_upcloo'); ?></label>
+        <label for="<?php echo $this->get_field_id('upcloo_altervista_v_conf_id'); ?>"><?php _e('Option template id:'); ?></label>
         <input class="widefat" id="<?php echo $this->get_field_id('upcloo_altervista_v_conf_id'); ?>" name="<?php echo $this->get_field_name('upcloo_altervista_v_conf_id'); ?>" type="text" value="<?php echo $confId; ?>" />
 
         <?php
