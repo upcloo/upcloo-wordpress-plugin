@@ -117,13 +117,13 @@ function upcloo_altervista_plugin_menu()
 function upcloo_altervista_plugin_options()
 {
     upcloo_altervista_check_menu_capability();
-    include realpath(dirname(__FILE__)) . "/options/app-config-options.php";
+    include dirname(__FILE__) . "/options/app-config-options.php";
 }
 
 function upcloo_altervista_menu_advanced()
 {
     upcloo_altervista_check_menu_capability();
-    include realpath(dirname(__FILE__)) . '/options/app-advanced-config-options.php';
+    include dirname(__FILE__) . '/options/app-advanced-config-options.php';
 }
 //End menu
 
