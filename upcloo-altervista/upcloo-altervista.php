@@ -34,9 +34,8 @@ require_once dirname(__FILE__) . '/UpClooAlterVista/Widget/Partner.php';
 
 require_once dirname(__FILE__) . '/UpClooAlterVista/SView.php';
 $upcloo_altervista_basepath = WP_PLUGIN_DIR . '/upcloo-altervista/upcloo-altervista.php';
-/* Runs when plugin is activated */
-register_activation_hook($upcloo_altervista_basepath, 'upcloo_altervista_install');
 
+define("UPCLOO_ALTERVISTA_ENABLED", "upcloo_altervista_enabled");
 define("UPCLOO_ALTERVISTA_SITEKEY", "upcloo_altervista_sitekey");
 define("UPCLOO_ALTERVISTA_SEED", "upcloo_altervista_seed");
 define("UPCLOO_ALTERVISTA_CONFIG_ID", "upcloo_altervista_config_id");
@@ -48,6 +47,7 @@ define("UPCLOO_ALTERVISTA_TIMEOUT", 20);
 define('UPCLOO_ALTERVISTA_POSTS_TYPE', "upcloo_altervista_posts_type");
 
 define('UPCLOO_ALTERVISTA_MENU_SLUG', 'upcloo_altervista_options_menu');
+define('UPCLOO_ALTERVISTA_ENABLE_MENU_SLUG', 'upcloo_altervista_enable_options_menu');
 define('UPCLOO_ALTERVISTA_MENU_ADVANCED_SLUG', 'upcloo_altervista_menu_advanced');
 
 define('UPCLOO_ALTERVISTA_VIEW_PATH', dirname(__FILE__) . '/views');
@@ -62,8 +62,6 @@ define('UPCLOO_ALTERVISTA_USE_IMAGE', "upcloo_altervista_use_image");
 
 define('UPCLOO_ALTERVISTA_BOX_TITLE', "upcloo_altervista_box_title");
 
-add_action('widgets_init', create_function( '', 'register_widget("UpClooAlterVista_Widget_Partner");'));
-wp_register_sidebar_widget("upcloo_altervista_widget", __("UpCloo"), "upcloo_altervista_direct_widget", array('description' => __('Use UpCloo as a widget instead at the end of the body')));
 add_action('wp_dashboard_setup', 'upcloo_altervista_add_dashboard_widgets' );
 
 add_action('admin_notices', 'upcloo_altervista_show_needs_attention');
@@ -74,6 +72,21 @@ add_action('wp_head', 'upcloo_altervista_head');
 add_filter('admin_footer_text', "upcloo_altervista_admin_footer");
 
 add_action( 'admin_menu', 'upcloo_altervista_plugin_menu' );
+
+//Check if is an activation request of the plugin!
+if (array_key_exists(UPCLOO_ALTERVISTA_ENABLED, $_POST)) {
+    $enabled = upcloo_altervista_install();
+
+    if (!$enabled) {
+        update_option(UPCLOO_ALTERVISTA_ENABLED, 0);
+    }
+}
+
+// If upcloo is enabled activate also widgets
+if (get_option(UPCLOO_ALTERVISTA_ENABLED, false)) {
+    add_action('widgets_init', create_function( '', 'register_widget("UpClooAlterVista_Widget_Partner");'));
+    wp_register_sidebar_widget("upcloo_altervista_widget", __("UpCloo"), "upcloo_altervista_direct_widget", array('description' => __('Use UpCloo as a widget instead at the end of the body')));
+}
 
 function upcloo_altervista_is_configured()
 {
@@ -94,7 +107,7 @@ function upcloo_altervista_is_configured()
 
 function upcloo_altervista_show_needs_attention()
 {
-    if (!upcloo_altervista_is_configured()) {
+    if (get_option(UPCLOO_ALTERVISTA_ENABLED, false) && !upcloo_altervista_is_configured()) {
         echo '<div class="updated">
         <p>' . __("Remember that your have to configure UpCloo Plugin: ") . ' <a href="admin.php?page=upcloo_altervista_options_menu">'.__("Config Page") . '</a> - <a href="admin.php?page=upcloo_altervista_menu_advanced">'.__("Advanced Config Page").'</a></p></div>';
     }
@@ -110,8 +123,20 @@ function upcloo_altervista_check_menu_capability()
 //Start menu
 function upcloo_altervista_plugin_menu()
 {
-    add_menu_page('UpCloo', __('UpCloo'), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_SLUG, 'upcloo_altervista_plugin_options', "http://media.upcloo.com/u.png");
-    add_submenu_page(UPCLOO_ALTERVISTA_MENU_SLUG, "Advanced Configs", __("Advanced Configurations"), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_ADVANCED_SLUG, UPCLOO_ALTERVISTA_MENU_ADVANCED_SLUG);
+    //If not enabled
+    if (!get_option(UPCLOO_ALTERVISTA_ENABLED, false)) {
+        add_menu_page('UpCloo', __('UpCloo'), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_SLUG, 'upcloo_altervista_plugin_enable_options_page', "http://media.upcloo.com/u.png");
+    } else {
+        add_menu_page('UpCloo', __('UpCloo'), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_SLUG, 'upcloo_altervista_plugin_options', "http://media.upcloo.com/u.png");
+        add_submenu_page(UPCLOO_ALTERVISTA_MENU_SLUG, "Advanced Configs", __("Advanced Configurations"), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_ADVANCED_SLUG, UPCLOO_ALTERVISTA_MENU_ADVANCED_SLUG);
+
+    }
+}
+
+function upcloo_altervista_plugin_enable_options_page()
+{
+    upcloo_altervista_check_menu_capability();
+    include dirname(__FILE__) . "/options/app-enable-options.php";
 }
 
 function upcloo_altervista_plugin_options()
@@ -149,7 +174,6 @@ function upcloo_altervista_dashboard_widget_function()
 }
 
 // Create the function use in the action hook
-
 function upcloo_altervista_add_dashboard_widgets()
 {
     wp_add_dashboard_widget('upcloo_altervista_dashboard_widget', __('UpCloo News Widget'), 'upcloo_altervista_dashboard_widget_function');
@@ -180,6 +204,7 @@ function upcloo_altervista_install() {
     add_option(UPCLOO_ALTERVISTA_MANUAL_PLACEHOLDER, false, "", "yes");
     add_option(UPCLOO_ALTERVISTA_USE_IMAGE, 1);
     add_option(UPCLOO_ALTERVISTA_BOX_TITLE, "");
+    add_option(UPCLOO_ALTERVISTA_ENABLED, 0);
 
     $sitekey = trim(get_option(UPCLOO_ALTERVISTA_SITEKEY, ""));
 
@@ -188,6 +213,10 @@ function upcloo_altervista_install() {
 
         update_option(UPCLOO_ALTERVISTA_SITEKEY, $response->sitekey);
         update_option(UPCLOO_ALTERVISTA_SEED, $response->privatekey);
+
+        return $response;
+    } else {
+        return true;
     }
 }
 
@@ -265,7 +294,7 @@ function upcloo_altervista_get_new_sitekey()
         $body = json_decode($result);
         return $body;
     } else {
-        trigger_error("We are experiencing some problems... Please try again later...", E_USER_ERROR);
+        return false;
     }
 }
 

@@ -14,7 +14,7 @@ if (array_key_exists("settings-updated", $_GET)) {
                 <tr>
                     <td colspan="2" class="upcloo_title"><?php _e("Start now using UpCloo for free. Select the best layout for your widget:", "wp_upcloo")?>:</td>
                 </tr>
-                
+
                 <?php if (get_option(UPCLOO_ALTERVISTA_USE_IMAGE, 0)) : ?>
                 <tr valign="top">
                     <td width="406" align="center">
