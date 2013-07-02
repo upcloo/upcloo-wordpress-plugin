@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-02 13:09+0100\n"
-"PO-Revision-Date: 2013-07-02 13:09+0100\n"
+"POT-Creation-Date: 2013-07-02 17:41+0100\n"
+"PO-Revision-Date: 2013-07-02 17:42+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: it_IT\n"
@@ -16,37 +16,38 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../upcloo-altervista.php:68 ../upcloo-altervista.php:115
+#: ../upcloo-altervista.php:88 ../upcloo-altervista.php:128
+#: ../upcloo-altervista.php:130
 msgid "UpCloo"
 msgstr "UpCloo"
 
-#: ../upcloo-altervista.php:68
+#: ../upcloo-altervista.php:88
 msgid "Use UpCloo as a widget instead at the end of the body"
 msgstr ""
 "Usare UpCloo come un widget invece che appeso alla fine del corpo di un "
 "articolo"
 
-#: ../upcloo-altervista.php:101
+#: ../upcloo-altervista.php:112
 msgid "Remember that your have to configure UpCloo Plugin: "
 msgstr "Ricordati che devi configurare il plugin di UpCloo"
 
-#: ../upcloo-altervista.php:101
+#: ../upcloo-altervista.php:112
 msgid "Config Page"
 msgstr "Pagina di Configurazione"
 
-#: ../upcloo-altervista.php:101
+#: ../upcloo-altervista.php:112
 msgid "Advanced Config Page"
 msgstr "Pagina di Configurazione Avanzata"
 
-#: ../upcloo-altervista.php:108
+#: ../upcloo-altervista.php:119
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: ../upcloo-altervista.php:116
+#: ../upcloo-altervista.php:131
 msgid "Advanced Configurations"
 msgstr "Configurazione Avanzata"
 
-#: ../upcloo-altervista.php:157
+#: ../upcloo-altervista.php:179
 msgid "UpCloo News Widget"
 msgstr "Widget Rete di UpCloo."
 
@@ -66,10 +67,34 @@ msgstr "Partner Virtuale:"
 msgid "Option template id:"
 msgstr "ID template opzioni"
 
-#: ../options/app-config-options.php:3
+#: ../options/app-enable-options.php:3 ../options/app-config-options.php:3
 #: ../options/app-advanced-config-options.php:3
 msgid "Your configuration is saved correctly!"
 msgstr "La tua configurazione è salvata correttamente!"
+
+#: ../options/app-enable-options.php:8
+msgid ""
+"Thanks to this plugin you can easily show the best related posts on your "
+"contents,<br>choosing the best layout for your blog. It's fully automated "
+"and very easy to use."
+msgstr ""
+"Grazie a questo plugin puoi facilmente mostrare i migliori correlati per i "
+"tuoi contenuti,<br>scegliendo il layout che più ti piace per il tuo blog. E' "
+"completamente automatizzato e facile da utilizzare."
+
+#: ../options/app-enable-options.php:12
+msgid "Click here to activate the UpCloo Plugin!"
+msgstr "Clicca qui per attivare il plugin UpCloo per Altervista!"
+
+#: ../options/app-enable-options.php:17
+msgid "It's free and you can edit and deactivate whenever you want."
+msgstr ""
+"E' gratuito, puoi modificare le impostazioni e disattivarlo quando e come "
+"vuoi."
+
+#: ../options/app-enable-options.php:18
+msgid "Request Support"
+msgstr "Richiesta Supporto"
 
 #: ../options/app-config-options.php:9
 msgid "UpCloo General Options"
@@ -99,7 +124,7 @@ msgstr "Il box compare automaticamente sotto il testo del tuo post"
 
 #: ../options/app-config-options.php:60
 #: ../options/app-advanced-config-options.php:22
-#: ../options/app-advanced-config-options.php:69
+#: ../options/app-advanced-config-options.php:80
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -164,6 +189,16 @@ msgid ""
 msgstr ""
 "Ricordati che devi aggiungere manualmente il placehoder di UpCloo nel tuo "
 "template"
+
+#: ../options/app-advanced-config-options.php:68
+msgid "UpCloo Activation Status"
+msgstr "Stato di Attivazione"
+
+#: ../options/app-advanced-config-options.php:69
+msgid "Remember that if you deactivate the plugin you can't see related posts"
+msgstr ""
+"Ricorda che se disattivi il plugin non vedrai più le correlazioni per i tuoi "
+"contenuti"
 
 #~ msgid "Select your best related post widget"
 #~ msgstr "Seleziona come visualizzare le tue correlazioni"

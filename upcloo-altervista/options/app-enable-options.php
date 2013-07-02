@@ -5,17 +5,17 @@ if (array_key_exists("settings-updated", $_GET)) {
 ?>
 <div class="wrap">
 <h2 class="upclooh2">UpCloo <strong>Related Post Plugin</strong> for Altervista</h2>
-<h3 class="upclooh3">Thanks to this plugin you can easily show the best related posts on your contents,<br>choosing the best layout for your blog. It's fully automated and very easy to use.</h3>
+<h3 class="upclooh3"><?php _e("Thanks to this plugin you can easily show the best related posts on your contents,<br>choosing the best layout for your blog. It's fully automated and very easy to use.");?></h3>
 <form action="options.php#upcloo-app-enable" method="post" class="upclooform">
     <?php wp_nonce_field('update-options'); ?>
     <input type="hidden" value="1" name="<?php echo UPCLOO_ALTERVISTA_ENABLED; ?>"/>
-    <input type="submit" value="Click here to activate the UpCloo Plugin!" name="activate" class="upclooinput">
+        <input type="submit" value="<?php _e("Click here to activate the UpCloo Plugin!");?>" name="activate" class="upclooinput">
 
     <input type="hidden" name="action" value="update" />
     <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_ALTERVISTA_ENABLED))?>"/>
 </form>
-<h3 class="upclooh3 upclooh3bis">It's free and you can edit and deactivate whenever you want.</h3>
-<h3 class="upclooh3 upclooh3bis"><a target="_blank" href="http://www.upcloo.com/lista/nota/terms-of-service/15/1.html">Terms of Service</a> - <a target="_blank" href="http://www.upcloo.com/form/quest/modulo/6.html">Request Support</a></h3>
+<h3 class="upclooh3 upclooh3bis"><?php _e("It's free and you can edit and deactivate whenever you want.");?></h3>
+<h3 class="upclooh3 upclooh3bis"><a target="_blank" href="http://www.upcloo.com/lista/nota/terms-of-service/15/1.html">Terms of Service</a> - <a target="_blank" href="http://www.upcloo.com/form/quest/modulo/6.html"><?php _e("Request Support");?></a></h3>
 </div>
 
 <style type="text/css">
