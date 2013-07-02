@@ -44,9 +44,12 @@ if (array_key_exists("settings-updated", $_GET)) {
                             $selected = array();
                         }
                         foreach ($postsType as $key => $type):
+                            //Limit to post and pages
+                            if($key == 'post' || $key == 'page'):
                     ?>
                     <input id="upcloo-checkbox-posttype-<?php echo $key;?>" <?php echo ((in_array($key, $selected)) ? 'checked="checked"' : '')?> type="checkbox" name="<?php echo UPCLOO_ALTERVISTA_POSTS_TYPE?>[]" value="<?php echo $key?>" /> <label for="upcloo-checkbox-posttype-<?php echo $key;?>"><?php echo $type;?></label><br />
                     <?php
+                            endif;
                         endforeach;
                     ?>
                 </td>
