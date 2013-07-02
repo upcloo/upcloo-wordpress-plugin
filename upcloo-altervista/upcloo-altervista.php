@@ -110,7 +110,7 @@ function upcloo_altervista_check_menu_capability()
 //Start menu
 function upcloo_altervista_plugin_menu()
 {
-    add_menu_page('UpCloo', __('UpCloo'), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_SLUG, 'upcloo_altervista_plugin_options', plugins_url()."/upcloo-altervista/assets/u.png");
+    add_menu_page('UpCloo', __('UpCloo'), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_SLUG, 'upcloo_altervista_plugin_options', "http://media.upcloo.com/u.png");
     add_submenu_page(UPCLOO_ALTERVISTA_MENU_SLUG, "Advanced Configs", __("Advanced Configurations"), UPCLOO_ALTERVISTA_OPTION_CAPABILITY, UPCLOO_ALTERVISTA_MENU_ADVANCED_SLUG, UPCLOO_ALTERVISTA_MENU_ADVANCED_SLUG);
 }
 
@@ -157,11 +157,7 @@ function upcloo_altervista_add_dashboard_widgets()
 
 function upcloo_altervista_admin_head()
 {
-    //Show charts
-    if (array_key_exists("page", $_GET) && $_GET["page"] == UPCLOO_ALTERVISTA_MENU_SLUG) {
-        echo '<script type="text/javascript" src="https://www.google.com/jsapi"></script>';
-        echo '<script type="text/javascript" src="' . plugins_url() . '/upcloo/js/upcloo.js"></script>';
-    }
+
 }
 
 function upcloo_altervista_admin_footer($text)
@@ -271,10 +267,6 @@ function upcloo_altervista_get_new_sitekey()
     } else {
         trigger_error("We are experiencing some problems... Please try again later...", E_USER_ERROR);
     }
-}
-
-function upcloo_altervista_get_default_image() {
-    return plugins_url() . "/upcloo/assets/no-image.gif";
 }
 
 /**
