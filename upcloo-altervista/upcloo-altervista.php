@@ -3,7 +3,7 @@
 Plugin Name: UpCloo Related Posts (for AlterVista)
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted service that helps you to create incredible and automatic related posts between contents of your website. Start now for free! See our <a href="http://www.upcloo.com/lista/nota/terms-of-service/15/1.html">Term of Use</a>
-Version: 1.3.2-altervista
+Version: 1.3.3-altervista
 Author: UpCloo Ltd.
 Author URI: http://www.upcloo.com/
 License: MIT
