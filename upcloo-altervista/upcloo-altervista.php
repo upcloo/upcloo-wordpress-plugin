@@ -369,13 +369,64 @@ function upcloo_altervista_head()
         echo '<meta property="upcloo:title" content="' . $post->post_title . '" />' . PHP_EOL;
 
         // If featured exists add the dedicated meta info
-        if (get_post_thumbnail_id($post->ID, 'thumbnail')) {
-            echo '<meta property="upcloo:image" content="' . wp_get_attachment_url(get_post_thumbnail_id($post->ID, 'thumbnail'))  . '" />' . PHP_EOL;
+        $image = upcloo_altervista_get_image();
+        if (!empty($image)) {
+            echo '<meta property="upcloo:image" content="' . $image  . '" />' . PHP_EOL;
         }
 
         $post_summary = upcloo_altervista_extract_summary($post);
-        echo '<meta property="upcloo:summary" content="' . $post_summary . '" />' . PHP_EOL;
+        echo '<meta property="upcloo:summary" content="' . esc_attr($post_summary) . '" />' . PHP_EOL;
     }
+}
+
+/**
+ * Get image from post. In order:
+ *  - thumbnail
+ *  - attachments
+ *  - content search
+ * @return [string] [the image]
+ */
+function upcloo_altervista_get_image()
+{
+    global $post;
+    if (function_exists('has_post_thumbnail') && has_post_thumbnail( $post->ID ) ) {
+            $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' );
+            if ( $thumbnail )
+                $image = $thumbnail[0];
+    // If that's not there, grab the first attached image
+    } else {
+        $files = get_children(
+                    array(
+                    'post_parent' => $post->ID,
+                    'post_type' => 'attachment',
+                    'post_mime_type' => 'image',
+                    )
+                );
+        if ( $files ) {
+            $keys = array_reverse( array_keys( $files ) );
+            $image = image_downsize( $keys[0], 'thumbnail' );
+            $image = $image[0];
+        //if there's no attached image, try to grab first image in content
+        } else {
+            $image = upcloo_altervista_get_first_image_from_content();
+        }
+    }
+    return $image;
+}
+
+/**
+ * Get first image by parsing post content
+ * @return [type] [description]
+ */
+function upcloo_altervista_get_first_image_from_content() {
+  global $post;
+  $first_img = '';
+
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i',
+       $post->post_content, $matches);
+  $first_img = $matches [1] [0];
+
+  return $first_img;
 }
 
 function upcloo_altervista_extract_summary($post)
