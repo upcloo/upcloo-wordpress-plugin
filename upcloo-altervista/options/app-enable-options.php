@@ -15,6 +15,7 @@ if (array_key_exists("settings-updated", $_GET)) {
     <input type="hidden" name="page_options" value="<?php echo implode(",", array(UPCLOO_ALTERVISTA_ENABLED))?>"/>
 </form>
 <h3 class="upclooh3 upclooh3bis"><?php _e("It's free and you can edit and deactivate whenever you want.");?></h3>
+<h3 class="upclooh3 upclooh3bis"><?php _e("Sometimes it could show some adv message.");?></h3>
 <h3 class="upclooh3 upclooh3bis"><a target="_blank" href="http://www.upcloo.com/lista/nota/terms-of-service/15/1.html">Terms of Service</a> - <a target="_blank" href="http://www.upcloo.com/form/quest/modulo/6.html"><?php _e("Request Support");?></a></h3>
 </div>
 
