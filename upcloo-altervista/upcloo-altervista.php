@@ -31,9 +31,7 @@ License: MIT
  * THE SOFTWARE.
  */
 require_once dirname(__FILE__) . '/UpClooAlterVista/Widget/Partner.php';
-
 require_once dirname(__FILE__) . '/UpClooAlterVista/SView.php';
-$upcloo_altervista_basepath = WP_PLUGIN_DIR . '/upcloo-altervista/upcloo-altervista.php';
 
 define("UPCLOO_ALTERVISTA_ENABLED", "upcloo_altervista_enabled");
 define("UPCLOO_ALTERVISTA_SITEKEY", "upcloo_altervista_sitekey");
