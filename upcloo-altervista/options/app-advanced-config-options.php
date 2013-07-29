@@ -65,10 +65,11 @@ if (array_key_exists("settings-updated", $_GET)) {
                 <input name="<?php echo UPCLOO_ALTERVISTA_MANUAL_PLACEHOLDER; ?>" type="checkbox" <?php echo ((get_option(UPCLOO_ALTERVISTA_MANUAL_PLACEHOLDER) ? "checked='checked'" : '')); ?> />
                 </td>
             </tr>
+
             <tr valign="top">
                 <th width="92" scope="row">
-                    <?php echo __("UpCloo force image")?><br />
-                    <span style="font-size: 10px"><?php _e("TODO");?>:</span>
+                    <?php echo __("Show images")?><br />
+                    <span style="font-size: 10px"><?php _e("If you activate/disactivate this option you have to select a new layout in UpCloo base settings and save it!");?>:</span>
                 </th>
                 <td width="406">
                 <input name="<?php echo UPCLOO_ALTERVISTA_USE_IMAGE; ?>" type="checkbox" <?php echo ((get_option(UPCLOO_ALTERVISTA_USE_IMAGE) ? "checked='checked'" : '')); ?> />
