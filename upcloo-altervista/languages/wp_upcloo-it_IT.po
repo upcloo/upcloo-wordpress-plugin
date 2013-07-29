@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-02 19:36+0100\n"
-"PO-Revision-Date: 2013-07-02 19:36+0100\n"
+"POT-Creation-Date: 2013-07-29 12:28+0100\n"
+"PO-Revision-Date: 2013-07-29 12:29+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: it_IT\n"
@@ -16,56 +16,29 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../upcloo-altervista.php:88 ../upcloo-altervista.php:128
-#: ../upcloo-altervista.php:130
-msgid "UpCloo"
-msgstr "UpCloo"
-
-#: ../upcloo-altervista.php:88
-msgid "Use UpCloo as a widget instead at the end of the body"
-msgstr ""
-"Usare UpCloo come un widget invece che appeso alla fine del corpo di un "
-"articolo"
-
-#: ../upcloo-altervista.php:112
+#: ../upcloo-altervista.php:101
 msgid "Remember that your have to configure UpCloo Plugin: "
 msgstr "Ricordati che devi configurare il plugin di UpCloo"
 
-#: ../upcloo-altervista.php:112
+#: ../upcloo-altervista.php:101
 msgid "Config Page"
 msgstr "Pagina di Configurazione"
 
-#: ../upcloo-altervista.php:112
+#: ../upcloo-altervista.php:101
 msgid "Advanced Config Page"
 msgstr "Pagina di Configurazione Avanzata"
 
-#: ../upcloo-altervista.php:119
+#: ../upcloo-altervista.php:108
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: ../upcloo-altervista.php:131
+#: ../upcloo-altervista.php:117 ../upcloo-altervista.php:119
+msgid "UpCloo"
+msgstr "UpCloo"
+
+#: ../upcloo-altervista.php:120
 msgid "Advanced Configurations"
 msgstr "Configurazione Avanzata"
-
-#: ../upcloo-altervista.php:179
-msgid "UpCloo News Widget"
-msgstr "Widget Rete di UpCloo."
-
-#: ../UpClooAlterVista/Widget/Partner.php:39
-msgid "UpCloo Network Widget"
-msgstr "Widget Rete di UpCloo"
-
-#: ../UpClooAlterVista/Widget/Partner.php:41
-msgid "The UpCloo Virtual Partner SiteKey Widget"
-msgstr "Widget UpCloo per le Chiavi Sito Partner Virtuali"
-
-#: ../UpClooAlterVista/Widget/Partner.php:57
-msgid "Virtual Partner:"
-msgstr "Partner Virtuale:"
-
-#: ../UpClooAlterVista/Widget/Partner.php:60
-msgid "Option template id:"
-msgstr "ID template opzioni"
 
 #: ../options/app-enable-options.php:3 ../options/app-config-options.php:3
 #: ../options/app-advanced-config-options.php:3
@@ -93,6 +66,10 @@ msgstr ""
 "vuoi."
 
 #: ../options/app-enable-options.php:18
+msgid "Sometimes it could show some adv message."
+msgstr "Qualche volta può visualizzare qualche messaggio pubblicitario."
+
+#: ../options/app-enable-options.php:19
 msgid "Request Support"
 msgstr "Richiesta Supporto"
 
@@ -124,7 +101,7 @@ msgstr "Il box compare automaticamente sotto il testo del tuo post"
 
 #: ../options/app-config-options.php:60
 #: ../options/app-advanced-config-options.php:22
-#: ../options/app-advanced-config-options.php:80
+#: ../options/app-advanced-config-options.php:94
 msgid "Save Changes"
 msgstr "Salva le Modifiche"
 
@@ -178,11 +155,11 @@ msgstr ""
 "Seleziona il tipo di contenuti che UpCloo deve analizzare (tipicamente "
 "'post' è una buona scelta)."
 
-#: ../options/app-advanced-config-options.php:58
+#: ../options/app-advanced-config-options.php:61
 msgid "UpCloo inline manual placeholder"
 msgstr "Attiva il placeholder di UpCloo manuale"
 
-#: ../options/app-advanced-config-options.php:59
+#: ../options/app-advanced-config-options.php:62
 msgid ""
 "Remember that you have to add by hand the UpCloo placeholder into your "
 "template"
@@ -190,15 +167,47 @@ msgstr ""
 "Ricordati che devi aggiungere manualmente il placehoder di UpCloo nel tuo "
 "template"
 
-#: ../options/app-advanced-config-options.php:68
+#: ../options/app-advanced-config-options.php:71
+msgid "Show images"
+msgstr "Mostra le immagini"
+
+#: ../options/app-advanced-config-options.php:72
+msgid ""
+"If you activate/disactivate this option you have to select a new layout in "
+"UpCloo base settings and save it!"
+msgstr ""
+"Se attivi/disattivi questa opzione devi selezionare un nuovo layout nei "
+"settaggi di base di UpCloo e salvare!"
+
+#: ../options/app-advanced-config-options.php:82
 msgid "UpCloo Activation Status"
 msgstr "Stato di Attivazione"
 
-#: ../options/app-advanced-config-options.php:69
+#: ../options/app-advanced-config-options.php:83
 msgid "Remember that if you deactivate the plugin you can't see related posts"
 msgstr ""
 "Ricorda che se disattivi il plugin non vedrai più le correlazioni per i tuoi "
 "contenuti"
+
+#~ msgid "Use UpCloo as a widget instead at the end of the body"
+#~ msgstr ""
+#~ "Usare UpCloo come un widget invece che appeso alla fine del corpo di un "
+#~ "articolo"
+
+#~ msgid "UpCloo News Widget"
+#~ msgstr "Widget Rete di UpCloo."
+
+#~ msgid "UpCloo Network Widget"
+#~ msgstr "Widget Rete di UpCloo"
+
+#~ msgid "The UpCloo Virtual Partner SiteKey Widget"
+#~ msgstr "Widget UpCloo per le Chiavi Sito Partner Virtuali"
+
+#~ msgid "Virtual Partner:"
+#~ msgstr "Partner Virtuale:"
+
+#~ msgid "Option template id:"
+#~ msgstr "ID template opzioni"
 
 #~ msgid "Select your best related post widget"
 #~ msgstr "Seleziona come visualizzare le tue correlazioni"
