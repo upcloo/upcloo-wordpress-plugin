@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: UpCloo\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-07-29 12:28+0100\n"
-"PO-Revision-Date: 2013-07-29 12:29+0100\n"
+"POT-Creation-Date: 2013-07-29 15:19+0100\n"
+"PO-Revision-Date: 2013-07-29 15:20+0100\n"
 "Last-Translator: Walter Dal Mut <walter.dalmut@gmail.com>\n"
 "Language-Team: UpCloo Ltd. <info@upcloo.com>\n"
 "Language: it_IT\n"
@@ -16,27 +16,27 @@ msgstr ""
 "X-Generator: Poedit 1.5.4\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../upcloo-altervista.php:101
+#: ../upcloo-altervista.php:104
 msgid "Remember that your have to configure UpCloo Plugin: "
 msgstr "Ricordati che devi configurare il plugin di UpCloo"
 
-#: ../upcloo-altervista.php:101
+#: ../upcloo-altervista.php:104
 msgid "Config Page"
 msgstr "Pagina di Configurazione"
 
-#: ../upcloo-altervista.php:101
+#: ../upcloo-altervista.php:104
 msgid "Advanced Config Page"
 msgstr "Pagina di Configurazione Avanzata"
 
-#: ../upcloo-altervista.php:108
+#: ../upcloo-altervista.php:111
 msgid "You do not have sufficient permissions to access this page."
 msgstr "Non hai permessi a sufficienza per visualizzare questa pagina."
 
-#: ../upcloo-altervista.php:117 ../upcloo-altervista.php:119
+#: ../upcloo-altervista.php:120 ../upcloo-altervista.php:122
 msgid "UpCloo"
 msgstr "UpCloo"
 
-#: ../upcloo-altervista.php:120
+#: ../upcloo-altervista.php:123
 msgid "Advanced Configurations"
 msgstr "Configurazione Avanzata"
 
@@ -55,21 +55,29 @@ msgstr ""
 "tuoi contenuti,<br>scegliendo il layout che più ti piace per il tuo blog. E' "
 "completamente automatizzato e facile da utilizzare."
 
-#: ../options/app-enable-options.php:12
+#: ../options/app-enable-options.php:11
+msgid ""
+"In order to guarantee a minimum quality of service you can't activate UpCloo "
+"now, but don't be shy, you have just to add more articles!"
+msgstr ""
+"Per garantire la minima qualità di servizio non puoi ancora attivare UpCloo, "
+"ma non essere timido, devi solo scrivere più articoli!"
+
+#: ../options/app-enable-options.php:16
 msgid "Click here to activate the UpCloo Plugin!"
 msgstr "Clicca qui per attivare il plugin UpCloo per Altervista!"
 
-#: ../options/app-enable-options.php:17
+#: ../options/app-enable-options.php:22
 msgid "It's free and you can edit and deactivate whenever you want."
 msgstr ""
 "E' gratuito, puoi modificare le impostazioni e disattivarlo quando e come "
 "vuoi."
 
-#: ../options/app-enable-options.php:18
+#: ../options/app-enable-options.php:23
 msgid "Sometimes it could show some adv message."
 msgstr "Qualche volta può visualizzare qualche messaggio pubblicitario."
 
-#: ../options/app-enable-options.php:19
+#: ../options/app-enable-options.php:24
 msgid "Request Support"
 msgstr "Richiesta Supporto"
 
