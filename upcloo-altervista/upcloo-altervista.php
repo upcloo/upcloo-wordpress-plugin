@@ -59,6 +59,9 @@ define('UPCLOO_ALTERVISTA_USE_IMAGE', "upcloo_altervista_use_image");
 
 define('UPCLOO_ALTERVISTA_BOX_TITLE', "upcloo_altervista_box_title");
 
+define('UPCLOO_ALTERVISTA_POSTS_TO_SEND', 30);
+define('UPCLOO_ALTERVISTA_MIN_POSTS_COUNT', 30);
+
 add_action('admin_notices', 'upcloo_altervista_show_needs_attention');
 
 add_filter('the_content', 'upcloo_altervista_content');
@@ -202,7 +205,7 @@ function upcloo_altervista_get_new_sitekey()
         "posts" => array()
     );
     $posts_args = array(
-        "posts_per_page" => 30,
+        "posts_per_page" => UPCLOO_ALTERVISTA_POSTS_TO_SEND,
         'offset' => 0,
         'orderby' => 'post_date',
         'order' => 'DESC',
