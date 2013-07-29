@@ -3,7 +3,7 @@
 Plugin Name: UpCloo Related Posts (for AlterVista)
 Plugin URI: http://www.upcloo.com/
 Description: UpCloo is a cloud based and fully hosted service that helps you to create incredible and automatic related posts between contents of your website. Start now for free! See our <a href="http://www.upcloo.com/lista/nota/terms-of-service/15/1.html">Term of Use</a>
-Version: 1.3.3-altervista
+Version: 1.3.4-altervista
 Author: UpCloo Ltd.
 Author URI: http://www.upcloo.com/
 License: MIT
@@ -30,7 +30,7 @@ License: MIT
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-require_once dirname(__FILE__) . '/UpClooAlterVista/Widget/Partner.php';
+
 require_once dirname(__FILE__) . '/UpClooAlterVista/SView.php';
 
 define("UPCLOO_ALTERVISTA_ENABLED", "upcloo_altervista_enabled");
@@ -38,7 +38,6 @@ define("UPCLOO_ALTERVISTA_SITEKEY", "upcloo_altervista_sitekey");
 define("UPCLOO_ALTERVISTA_SEED", "upcloo_altervista_seed");
 define("UPCLOO_ALTERVISTA_CONFIG_ID", "upcloo_altervista_config_id");
 
-define("UPCLOO_ALTERVISTA_RSS_FEED", "http://www.upcloo.com/contenuti/rss/0/news.xml");
 define("UPCLOO_ALTERVISTA_ENDPOINT", "http://www.upcloo.com/index/ac.html");
 define("UPCLOO_ALTERVISTA_TIMEOUT", 20);
 
@@ -60,8 +59,6 @@ define('UPCLOO_ALTERVISTA_USE_IMAGE', "upcloo_altervista_use_image");
 
 define('UPCLOO_ALTERVISTA_BOX_TITLE', "upcloo_altervista_box_title");
 
-add_action('wp_dashboard_setup', 'upcloo_altervista_add_dashboard_widgets' );
-
 add_action('admin_notices', 'upcloo_altervista_show_needs_attention');
 
 add_filter('the_content', 'upcloo_altervista_content');
@@ -78,12 +75,6 @@ if (array_key_exists(UPCLOO_ALTERVISTA_ENABLED, $_POST)) {
     if (!$enabled) {
         update_option(UPCLOO_ALTERVISTA_ENABLED, 0);
     }
-}
-
-// If upcloo is enabled activate also widgets
-if (get_option(UPCLOO_ALTERVISTA_ENABLED, false)) {
-    add_action('widgets_init', create_function( '', 'register_widget("UpClooAlterVista_Widget_Partner");'));
-    wp_register_sidebar_widget("upcloo_altervista_widget", __("UpCloo"), "upcloo_altervista_direct_widget", array('description' => __('Use UpCloo as a widget instead at the end of the body')));
 }
 
 function upcloo_altervista_is_configured()
@@ -149,33 +140,6 @@ function upcloo_altervista_menu_advanced()
     include dirname(__FILE__) . '/options/app-advanced-config-options.php';
 }
 //End menu
-
-// Create the function to output the contents of our Dashboard Widget
-function upcloo_altervista_dashboard_widget_function()
-{
-    // Display whatever it is you want to show
-    $xml = @simplexml_load_file(UPCLOO_ALTERVISTA_RSS_FEED);
-
-    if ($xml !== false) {
-        $blogInfo = get_bloginfo();
-        $blogTitle = urlencode(strtolower($blogInfo));
-
-        $view = new UpClooAlterVista_SView();
-        $view->setViewPath(UPCLOO_ALTERVISTA_VIEW_PATH);
-
-        $view->xml = $xml;
-        $view->blogTitle = $blogTitle;
-        $view->blogInfo = $blogInfo;
-
-        echo $view->render("dashboard-widget.phtml");
-    }
-}
-
-// Create the function use in the action hook
-function upcloo_altervista_add_dashboard_widgets()
-{
-    wp_add_dashboard_widget('upcloo_altervista_dashboard_widget', __('UpCloo News Widget'), 'upcloo_altervista_dashboard_widget_function');
-}
 
 function upcloo_altervista_admin_head()
 {
@@ -388,7 +352,7 @@ function upcloo_altervista_get_image()
 {
     global $post;
     if (function_exists('has_post_thumbnail') && has_post_thumbnail( $post->ID ) ) {
-            $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'post-thumbnail' );
+            $thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
             if ( $thumbnail )
                 $image = $thumbnail[0];
     // If that's not there, grab the first attached image
@@ -440,31 +404,4 @@ function upcloo_altervista_extract_summary($post)
         }
     }
     return $post_summary;
-}
-
-
-function upcloo_altervista_direct_widget()
-{
-    global $post;
-
-    $postTypes = get_option(UPCLOO_ALTERVISTA_POSTS_TYPE);
-    if (!is_array($postTypes)) {
-        $postTypes = array();
-    }
-
-    if (is_singular($post) && (in_array($post->post_type, $postTypes))) {
-        $sitekey = get_option("upcloo_altervista_sitekey");
-
-        $title = $instance["upcloo_altervista_v_title"];
-        $permalink = get_permalink($post->ID);
-
-        $view = new UpClooAlterVista_SView();
-        $view->setViewPath(UPCLOO_ALTERVISTA_VIEW_PATH);
-
-        $view->permalink = get_permalink($post->ID);
-        $view->sitekey = get_option(UPCLOO_ALTERVISTA_SITEKEY);
-        $view->configId = get_option(UPCLOO_ALTERVISTA_CONFIG_ID, "upcloo_1000");
-
-        echo $view->render("upcloo-js-sdk.phtml");
-    }
 }
