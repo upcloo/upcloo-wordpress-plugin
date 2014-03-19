@@ -1,0 +1,26 @@
+{
+    "require-dev": {
+        "wordpress/wordpress": "3.8.1",
+        "behat/behat": "2.5.*@stable",
+        "behat/mink-goutte-driver": "*",
+        "wdalmut/wordpress-extension": "0.0.4",
+        "behat/mink-browserkit-driver": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "wordpress/wordpress",
+                "version": "3.8.1",
+                "dist": {
+                    "url": "https://github.com/WordPress/WordPress/archive/3.8.1.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
+    "minimum-stability": "dev",
+    "config": {
+        "bin-dir": "bin"
+    }
+}

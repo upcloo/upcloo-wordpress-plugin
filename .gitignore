@@ -4,3 +4,9 @@ dist
 dist/*
 *.swp
 *.swo
+vendor
+bin
+*.phar
+server.out
+tags
+config.php

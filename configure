@@ -1,0 +1,36 @@
+#!/usr/bin/env php
+<?php
+
+$basePath = __DIR__ . '/vendor/wordpress/wordpress';
+$wpConfigSamplePath = $basePath . '/wp-config-sample.php';
+$wpConfigPath = $basePath . '/wp-config.php';
+
+if (!file_exists($wpConfigSamplePath)) {
+    echo "Please install all dependencies using composer" . PHP_EOL;
+    exit(1);
+}
+
+$config = file_get_contents($wpConfigSamplePath);
+
+if (!file_exists(__DIR__ . '/config.php')) {
+    $conf = include __DIR__ . '/config.php.dist';
+} else {
+    $conf = include __DIR__ . '/config.php';
+}
+
+$config = str_replace("database_name_here", $conf["db"]["dbname"], $config);
+$config = str_replace("username_here", $conf["db"]["user"], $config);
+$config = str_replace("password_here", $conf["db"]["password"], $config);
+$config = str_replace("localhost", $conf["db"]["host"], $config);
+
+file_put_contents($wpConfigPath, $config);
+
+chdir($basePath . "/wp-content/plugins");
+
+$sym = '../../../../../upcloo';
+if (!file_exists("upcloo")) {
+    shell_exec("ln -s {$sym}");
+}
+
+echo "Remember your DEV server" . PHP_EOL;
+echo "php -S localhost:8080 -t vendor/wordpress/wordpress/" . PHP_EOL;

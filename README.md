@@ -1,5 +1,7 @@
 # Upcloo Wordpress Plugin
 
+[![Build Status](https://travis-ci.org/upcloo/upcloo-wordpress-plugin.svg?branch=master)](https://travis-ci.org/upcloo/upcloo-wordpress-plugin)
+
 UpCloo is a cloud based and fully hosted indexing engine that helps you to create incredible and automatic correlations between contents of your website.
 
 ## Highlights

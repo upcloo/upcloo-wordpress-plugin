@@ -1,0 +1,12 @@
+# behat.yml
+default:
+    extensions:
+        Behat\MinkExtension\Extension:
+            base_url:    'http://localhost:8080'
+            goutte:
+                guzzle_parameters:
+                    curl.options:
+                        CURLOPT_PORT: 8080
+            show_cmd:    "firefox %s"
+        Corley\WordPressExtension\Extension:
+            path: "./vendor/wordpress/wordpress"

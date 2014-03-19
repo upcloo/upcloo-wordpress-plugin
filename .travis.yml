@@ -1,0 +1,16 @@
+language: php
+php:
+    - 5.5
+    - 5.4
+before_script:
+    - curl -s http://getcomposer.org/installer | php
+    - php composer.phar install
+    - mysql -e 'create database wp;'
+    - chmod a+x configure
+    - ./configure
+    - sleep 3
+    - php -S localhost:8080 -t vendor/wordpress/wordpress/ &> server.out &
+    - sleep 3
+    - cat server.out
+script:
+    - bin/behat
