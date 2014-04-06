@@ -97,11 +97,11 @@ class FeatureContext extends BehatContext implements MinkAwareInterface
     }
 
     /**
-     * @Given /^I go to preview of post "([^"]*)"$/
+     * @Given /^I go to preview of (post|page) "([^"]*)"$/
      */
-    public function visitPreview($postTitle)
+    public function visitPreview($type, $postTitle)
     {
-        $post = get_page_by_title($postTitle, "OBJECT", "post");
+        $post = get_page_by_title($postTitle, "OBJECT", $type);
         assertNotNull($post);
 
         $this->mink->getSession()->visit("/?p={$post->ID}&preview=true");
