@@ -3,7 +3,7 @@ Contributors: wdalmut, gmittica
 Donate link: http://www.upcloo.com/
 Tags: correlate, correlation, upcloo, related, links, adv, recommended, stories
 Requires at least: 2.8
-Tested up to: 3.5
+Tested up to: 3.9
 Stable tag: 1.3.1
 license: MIT
 
